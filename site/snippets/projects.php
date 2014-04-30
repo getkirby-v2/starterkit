@@ -5,7 +5,7 @@
     <h3><a href="<?php echo $project->url() ?>"><?php echo html($project->title()) ?></a></h3>
     <p><?php echo excerpt($project->text(), 80) ?> <a href="<?php echo $project->url() ?>">read&nbsp;more &rsaquo;</a></p>
     <a href="<?php echo $project->url() ?>">
-      <?php echo thumb($project->image(), array('width' => 320, 'height' => 200, 'crop' => true)) ?>
+      <img src="<?php echo $project->image()->url() ?>" alt="<?php echo html($project->title()) ?>" >
     </a>
   </li>
   <?php endforeach ?>
