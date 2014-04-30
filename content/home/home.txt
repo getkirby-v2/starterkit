@@ -8,5 +8,6 @@ Yay! If you are seeing this, the installation of Kirby worked. :)
 Now just give the links in the menu a try to see if URL redirection works as well.
 
 Check out the (link: http://getkirby.com/docs text: docs) if you run into any problems or send me an email: (email: support@getkirby.com)!
+Follow (twitter: @getkirby) on Twitter for updates.
 
 **Have fun with Kirby!**
