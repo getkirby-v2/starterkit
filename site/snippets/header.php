@@ -14,8 +14,6 @@
     'assets/css/main.css',
   ));
 
-  echo html::shiv();
-
   ?>
 
 </head>
