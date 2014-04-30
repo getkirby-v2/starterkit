@@ -1,9 +1,7 @@
-Title: Kirby
+Title: Kirby Default Theme
 ----
-Author: Bastian Allgeier
+Author: Bastian Allgeier GmbH
 ----
-Description: Kirby is awesome
+Description: This is the Default Theme to get started with Kirby.
 ----
-Keywords: kirby, cms, kirbycms, php, filesystem
-----
-Copyright: © 2009-(date: Year) (link: http://bastianallgeier.com text: Bastian Allgeier)
+Copyright: © 2009-(date: Year) (link: http://bastianallgeier.com text: Bastian Allgeier GmbH)

@@ -3,10 +3,9 @@
 title: Page
 subpages: true
 fields:
-  title: 
+  title:
     label: Title
     type:  text
-  text: 
+  text:
     label: Text
     type:  textarea
-    size:  large    

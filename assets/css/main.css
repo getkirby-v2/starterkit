@@ -1,0 +1,296 @@
+/***************************************************
+
+****** Starterkit / Kirby Default Theme ******
+
+*** Author:     Bastian Allgeier GmbH
+*** Theme-URL:  http://default.getkirby.com
+*** Version:    2.0
+
+****************************************************/
+
+
+/*
+ :::  Reset
+-------------------------------------------------- */
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, nav, section, summary {
+  display: block;
+}
+ol, ul {
+  list-style: none;
+}
+
+
+
+/*
+ :::  Site
+-------------------------------------------------- */
+html {
+  height: 101%;
+  font-family: 'Source Sans Pro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body {
+  margin: 50px auto;
+  padding: 0 30px;
+  max-width: 1100px;
+  background: #fff;
+  color: #333;
+}
+
+
+
+/*
+ :::  Header
+-------------------------------------------------- */
+header {
+  border-bottom: 1px solid #ddd;
+}
+.branding {
+  float: left;
+  margin-bottom: 20px;
+}
+
+
+
+/*
+ :::  Navigation
+-------------------------------------------------- */
+.menu {
+  float: right;
+}
+
+.menu a {
+  display: block;
+  color: #333;
+}
+  .menu a:hover {
+    color: #ff0100;
+    text-decoration: none;
+  }
+  .menu .active {
+    color: #ff0100;
+  }
+
+.menu > li {
+  float: left;
+  position: relative;
+  margin-left: 40px;
+}
+  .menu > li:hover ul {
+    display: block;
+  }
+  .menu > li > a {
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 10px 0;
+    font-size: 18px;
+  }
+
+.submenu {
+  position: absolute;
+  z-index: 999;
+  display: none;
+  border-top: none;
+  background-color: #333;
+}
+  .submenu:before {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    top: -10px;
+    left: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #333;
+  }
+  .submenu li {
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #444;
+  }
+    .submenu a {
+      font-weight: normal;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #333;
+      white-space: nowrap;
+    }
+    .submenu a:hover {
+      background-color: #222;
+      color: #fff;
+    }
+@media screen and (max-width: 600px) {
+  .menu {
+    float: left;
+    width: 100%;
+  }
+  .menu > li {
+    margin-left: 0;
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+  .submenu {
+    display: block;
+    position: relative;
+  }
+}
+
+
+
+/*
+ :::  Links
+-------------------------------------------------- */
+a {
+  color: #ff0100;
+  text-decoration: none;
+}
+a:hover {
+  color: #111;
+  text-decoration: underline;
+}
+
+
+
+/*
+ :::  Headings
+-------------------------------------------------- */
+h1 {
+  font-size: 48px;
+  line-height: 60px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: 40px;
+  line-height: 52px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: #ff0100;
+}
+h3 {
+  font-size: 26px;
+  line-height: 36px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+h4 {
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #777;
+}
+
+
+
+/*
+ :::  Main
+-------------------------------------------------- */
+main {
+  margin: 50px 0;
+}
+main p {
+  font-size: 18px;
+  line-height: 26px;
+  margin-bottom: 20px;
+}
+main img {
+  margin-bottom: 20px;
+}
+section {
+  margin-top: 50px;
+  padding-top: 50px;
+  border-top: 1px solid #ddd;
+}
+
+.meta {
+  width: 100%;
+  margin: 0 0 20px 0;
+}
+.meta li {
+  float: left;
+  margin-right: 20px;
+  color: #888;
+}
+
+.teaser {
+  list-style: none;
+  margin-left: 0;
+}
+.teaser li {
+  float: left;
+  width: 30%;
+  margin-left: 5%;
+}
+.teaser li:first-child {
+  margin-left: 0;
+}
+@media screen and (max-width: 750px) {
+  .teaser li {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 30px;
+  }
+}
+
+
+
+/*
+ :::  Projects
+-------------------------------------------------- */
+.nextprev {
+  margin-bottom: 20px;
+}
+.nextprev .prev {
+  float: left;
+}
+.nextprev .next {
+  float: right;
+}
+
+
+
+/*
+ :::  Footer
+-------------------------------------------------- */
+footer {
+  padding: 20px 0 100px;
+  font-size: 13px;
+  color: #222;
+  border-top: 1px solid #ddd;
+}
+
+
+
+/*
+ :::  Pix
+-------------------------------------------------- */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+
+
+/*
+ :::  Clearfix
+-------------------------------------------------- */
+.cf:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -3,20 +3,11 @@
 title: Contact
 subpages: false
 fields:
-  title: 
+  title:
     label: Title
     type:  text
-  text: 
+  text:
     label: Text
     type:  textarea
-  address: 
-    label: Address
-    type:  textarea
-  email: 
-    label: Email
-    type:  text
-  phone: 
-    label: Phone
-    type:  text
 
 

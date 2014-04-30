@@ -4,15 +4,15 @@ title: Project
 subpages: false
 files: true
 fields:
-  title: 
+  title:
     label: Title
     type:  text
-  date: 
-    label: Date
-    type:  date
-  text: 
+  year:
+    label: Year
+    type:  text
+  text:
     label: Text
-    type:  textarea    
-  tags: 
+    type:  textarea
+  tags:
     label: Tags
     type:  tags
