@@ -8,7 +8,7 @@
     <a href="<?php echo $project->url() ?>">
       <img src="<?php echo $project->image()->url() ?>" alt="<?php echo html($project->title()) ?>" >
     </a>
-	<?php endif; ?>
+  <?php endif; ?>
   </li>
   <?php endforeach ?>
 </ul>
