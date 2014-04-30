@@ -1,13 +1,13 @@
 <?php if(!defined('KIRBY')) exit ?>
 
 title: Home
-subpages: false
+pages: false
 files: false
 fields:
-  title: 
+  title:
     label: Title
     type:  text
-  text: 
+  text:
     label: Text
     type:  textarea
-    size:  large    
+    size:  large

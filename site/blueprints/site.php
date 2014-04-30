@@ -1,7 +1,7 @@
 <?php if(!defined('KIRBY')) exit ?>
 
 title: Site
-subpages: true
+pages: default
 fields:
   title:
     label: Title
