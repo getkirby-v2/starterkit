@@ -3,13 +3,18 @@
 <head>
 
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,400italic' rel='stylesheet' type='text/css'>
 
   <title><?php echo html($site->title()) ?> | <?php echo html($page->title()) ?></title>
   <meta name="description" content="<?php echo html($site->description()) ?>" />
 
-  <?php echo css('assets/css/main.css') ?>
+  <?php
+
+  echo css(array(
+    'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,400italic',
+    'assets/css/main.css',
+  ));
+
+  ?>
 
 </head>
 <body>

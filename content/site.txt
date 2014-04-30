@@ -1,7 +1,7 @@
-Title: Kirby Default Theme
+Title: Kirby Starterkit
 ----
 Author: Bastian Allgeier GmbH
 ----
-Description: This is the Default Theme to get started with Kirby.
+Description: This is Kirby's Starterkit.
 ----
 Copyright: © 2009-(date: Year) (link: http://bastianallgeier.com text: Bastian Allgeier GmbH)

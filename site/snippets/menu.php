@@ -2,11 +2,10 @@
 
   <ul class="menu cf">
     <?php foreach($pages->visible() as $p): ?>
-    <?php $hasSubmenu = ($p->children()->visible() != 0) ?>
     <li>
-      <a <?php echo ($p->isOpen()) ? ' class="active"' : '' ?> href="<?php echo $p->url() ?>"><?php echo html($p->title()) ?></a>
+      <a <?php e($p->isOpen(), ' class="active"') ?> href="<?php echo $p->url() ?>"><?php echo html($p->title()) ?></a>
 
-      <?php if($p->children()->visible() != ''): ?>
+      <?php if($p->hasVisibleChildren()): ?>
       <ul class="submenu">
         <?php foreach($p->children()->visible() as $p): ?>
         <li>

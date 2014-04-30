@@ -36,17 +36,17 @@ ol, ul {
 html {
   height: 101%;
   font-family: 'Source Sans Pro', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
 body {
-  margin: 50px auto;
-  padding: 0 30px;
-  max-width: 1100px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.5em;
+  padding: 3em;
+  max-width: 50em;
   background: #fff;
-  color: #333;
+  color: #000;
 }
 
 
@@ -55,11 +55,11 @@ body {
  :::  Header
 -------------------------------------------------- */
 header {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2px solid red;
 }
 .branding {
   float: left;
-  margin-bottom: 20px;
+  margin-bottom: 1.5em;
 }
 
 
@@ -73,7 +73,7 @@ header {
 
 .menu a {
   display: block;
-  color: #333;
+  color: #000;
 }
   .menu a:hover {
     color: #ff0100;
@@ -86,16 +86,14 @@ header {
 .menu > li {
   float: left;
   position: relative;
-  margin-left: 40px;
+  margin-left: 2em;
 }
   .menu > li:hover ul {
     display: block;
   }
   .menu > li > a {
-    text-transform: uppercase;
-    font-weight: 700;
-    padding: 10px 0;
-    font-size: 18px;
+    font-weight: 600;
+    padding: .75em 0 1em;
   }
 
 .submenu {
@@ -103,7 +101,6 @@ header {
   z-index: 999;
   display: none;
   border-top: none;
-  background-color: #333;
 }
   .submenu:before {
     position: absolute;
@@ -113,7 +110,7 @@ header {
     left: 0;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-left: 10px solid #333;
+    border-left: 10px solid #000;
   }
   .submenu li {
     float: left;
@@ -122,17 +119,22 @@ header {
   }
     .submenu a {
       font-weight: normal;
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: .5em 1.5em;
+      font-size: .9em;
+      font-weight: 300;
       color: #fff;
-      background-color: #333;
+      background-color: #000;
       white-space: nowrap;
     }
     .submenu a:hover {
-      background-color: #222;
+      background-color: #333;
       color: #fff;
     }
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 40em) {
+  body {
+    padding: 1.5em;
+  }
   .menu {
     float: left;
     width: 100%;
@@ -140,7 +142,11 @@ header {
   .menu > li {
     margin-left: 0;
     width: 100%;
-    margin: 0 0 10px 0;
+    margin: 0;
+  }
+  .menu > li > a {
+    padding: .5em 0;
+    border-top: 2px solid #ddd;
   }
   .submenu {
     display: block;
@@ -154,12 +160,12 @@ header {
  :::  Links
 -------------------------------------------------- */
 a {
-  color: #ff0100;
+  color: red;
   text-decoration: none;
+  transition: color .3s, background .3s, border .3s;
 }
 a:hover {
-  color: #111;
-  text-decoration: underline;
+  color: #000;
 }
 
 
@@ -168,62 +174,67 @@ a:hover {
  :::  Headings
 -------------------------------------------------- */
 h1 {
-  font-size: 48px;
-  line-height: 60px;
+  font-size: 2em;
+  line-height: 1.25em;
   font-weight: 400;
-  margin-bottom: 20px;
+  margin-bottom: .5em;
 }
 h2 {
-  font-size: 40px;
-  line-height: 52px;
+  font-size: 2em;
+  line-height: 1.25em;
   font-weight: 300;
-  margin-bottom: 20px;
-  color: #ff0100;
+  margin-bottom: .5em;
+  color: red;
 }
 h3 {
-  font-size: 26px;
-  line-height: 36px;
-  font-weight: 400;
-  margin-bottom: 10px;
+  font-size: 1.5em;
+  line-height: 1.25em;
+  font-weight: 300;
+  margin-bottom: .5em;
 }
 h4 {
   font-size: 22px;
   line-height: 30px;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 10px;
-  color: #777;
+  color: red;
 }
-
+h1 a, h2 a, h3 a, h4 a {
+  color: inherit;
+}
 
 
 /*
  :::  Main
 -------------------------------------------------- */
 main {
-  margin: 50px 0;
+  margin: 1.5em 0 3em;
 }
 main p {
-  font-size: 18px;
-  line-height: 26px;
-  margin-bottom: 20px;
+  margin-bottom: 1em;
 }
 main img {
   margin-bottom: 20px;
 }
 section {
-  margin-top: 50px;
-  padding-top: 50px;
-  border-top: 1px solid #ddd;
+  margin-top: 3em;
+  padding-top: 3em;
+  border-top: 2px solid #ddd;
 }
 
 .meta {
   width: 100%;
-  margin: 0 0 20px 0;
+  margin: 0 0 1em 0;
 }
 .meta li {
   float: left;
-  margin-right: 20px;
-  color: #888;
+  margin-right: 2em;
+  color: red;
+}
+.meta li b {
+  font-weight: 400;
+  color: #000;
+  padding-right: .25em;
 }
 
 .teaser {
@@ -242,7 +253,7 @@ section {
   .teaser li {
     width: 100%;
     margin-left: 0;
-    margin-bottom: 30px;
+    margin-bottom: 1.5em;
   }
 }
 
@@ -252,7 +263,7 @@ section {
  :::  Projects
 -------------------------------------------------- */
 .nextprev {
-  margin-bottom: 20px;
+  padding: 1em 0;
 }
 .nextprev .prev {
   float: left;
@@ -260,19 +271,30 @@ section {
 .nextprev .next {
   float: right;
 }
-
-
+.nextprev a {
+  border: 2px solid #000;
+  padding: .25em 1em;
+  line-height: 1em;
+  color: #000;
+  border-radius: 5em;
+}
+.nextprev a:hover {
+  border-color: red;
+  color: red;
+}
 
 /*
  :::  Footer
 -------------------------------------------------- */
 footer {
-  padding: 20px 0 100px;
-  font-size: 13px;
+  padding: 1em 0 6em;
+  font-size: .9em;
   color: #222;
-  border-top: 1px solid #ddd;
+  border-top: 2px solid red;
 }
-
+footer a {
+  padding-left: .5em;
+}
 
 
 /*

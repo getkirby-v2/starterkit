@@ -9,11 +9,11 @@
     <?php echo kirbytext($page->text()) ?>
 
     <nav class="nextprev cf">
-      <?php if($page->PrevVisible()): ?>
-      <a class="prev" href="<?php echo $page->prevVisible()->url() ?>">&lsaquo;&lsaquo; previous project</a>
+      <?php if($prev = $page->prevVisible()): ?>
+      <a class="prev" href="<?php echo $prev->url() ?>">&larr;</a>
       <?php endif ?>
-      <?php if($page->NextVisible()): ?>
-      <a class="next" href="<?php echo $page->nextVisible()->url() ?>">next project &rsaquo;&rsaquo;</a>
+      <?php if($next = $page->nextVisible()): ?>
+      <a class="next" href="<?php echo $next->url() ?>">&rarr;</a>
       <?php endif ?>
     </nav>
   </main>
