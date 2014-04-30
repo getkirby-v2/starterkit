@@ -4,7 +4,9 @@ Kirby's default theme is the easiest way to get started with Kirby. You get a be
 
 ## Installation
 
+````
 git clone --recursive https://github.com/getkirby/starterkit.git
+````
 
 ## Issues
 
