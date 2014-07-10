@@ -6,14 +6,15 @@
       <li><b>Year:</b> <time datetime="<?php echo $page->date('c') ?>"><?php echo $page->date('Y', 'year') ?></time></li>
       <li><b>Tags:</b> <?php echo $page->tags() ?></li>
     </ul>
-    <?php echo kirbytext($page->text()) ?>
-
+    <div class="text">
+      <?php echo kirbytext($page->text()) ?>
+    </div>
     <nav class="nextprev cf">
       <?php if($prev = $page->prevVisible()): ?>
-      <a class="prev" href="<?php echo $prev->url() ?>">&larr;</a>
+      <a class="btn prev" href="<?php echo $prev->url() ?>">&larr; previous</a>
       <?php endif ?>
       <?php if($next = $page->nextVisible()): ?>
-      <a class="next" href="<?php echo $next->url() ?>">&rarr;</a>
+      <a class="btn next" href="<?php echo $next->url() ?>">next &rarr;</a>
       <?php endif ?>
     </nav>
   </main>
