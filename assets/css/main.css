@@ -2,9 +2,8 @@
 
 ****** Starterkit / Kirby Default Theme ******
 
-*** Author:     Bastian Allgeier GmbH
-*** Theme-URL:  http://default.getkirby.com
-*** Version:    2.0
+*** Author:    Bastian Allgeier GmbH
+*** Showcase:  http://default.getkirby.com
 
 ****************************************************/
 
@@ -46,7 +45,7 @@ body {
   padding: 3em;
   max-width: 50em;
   background: #fff;
-  color: #000;
+  color: #222;
 }
 
 
@@ -73,14 +72,14 @@ header {
 
 .menu a {
   display: block;
-  color: #000;
+  color: #222;
 }
   .menu a:hover {
-    color: #ff0100;
+    color: red;
     text-decoration: none;
   }
   .menu .active {
-    color: #ff0100;
+    color: red;
   }
 
 .menu > li {
@@ -110,7 +109,7 @@ header {
     left: 0;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-left: 10px solid #000;
+    border-left: 10px solid #222;
   }
   .submenu li {
     float: left;
@@ -123,7 +122,7 @@ header {
       font-size: .9em;
       font-weight: 300;
       color: #fff;
-      background-color: #000;
+      background-color: #222;
       white-space: nowrap;
     }
     .submenu a:hover {
@@ -146,7 +145,7 @@ header {
   }
   .menu > li > a {
     padding: .5em 0;
-    border-top: 2px solid #ddd;
+    border-top: 1px solid #ddd;
   }
   .submenu {
     display: block;
@@ -160,12 +159,18 @@ header {
  :::  Links
 -------------------------------------------------- */
 a {
-  color: red;
+  color: #222;
   text-decoration: none;
   transition: color .3s, background .3s, border .3s;
 }
 a:hover {
-  color: #000;
+  color: red;
+}
+.text a {
+  border-bottom: 2px solid #ddd;
+}
+.text a:hover {
+  border-color: #222;
 }
 
 
@@ -187,21 +192,41 @@ h2 {
   color: red;
 }
 h3 {
-  font-size: 1.5em;
-  line-height: 1.25em;
-  font-weight: 300;
+  font-size: 1.4em;
+  line-height: 1.5em;
+  font-weight: 400;
   margin-bottom: .5em;
 }
 h4 {
-  font-size: 22px;
-  line-height: 30px;
-  font-weight: 400;
-  margin-bottom: 10px;
+  font-size: 1.125em;
+  font-weight: 600;
+  line-height: 1.5em;
+  margin-bottom: .5em;
   color: red;
 }
 h1 a, h2 a, h3 a, h4 a {
   color: inherit;
 }
+
+
+
+/*
+ :::  Buttons
+-------------------------------------------------- */
+.btn {
+  display: inline-block;
+  padding: .5em 1.5em;
+  font-weight: 600;
+  border: 2px solid #222;
+  border-radius: 5em;
+  color: #222;
+}
+.btn:hover,
+.btn:focus {
+  background-color: #222;
+  color: #fff;
+}
+
 
 
 /*
@@ -222,6 +247,11 @@ section {
   border-top: 2px solid #ddd;
 }
 
+
+
+/*
+ :::  Project meta
+-------------------------------------------------- */
 .meta {
   width: 100%;
   margin: 0 0 1em 0;
@@ -237,6 +267,11 @@ section {
   padding-right: .25em;
 }
 
+
+
+/*
+ :::  Project teaser
+-------------------------------------------------- */
 .teaser {
   list-style: none;
   margin-left: 0;
@@ -249,6 +284,9 @@ section {
 .teaser li:first-child {
   margin-left: 0;
 }
+.teaser a {
+  color: red;
+}
 @media screen and (max-width: 750px) {
   .teaser li {
     width: 100%;
@@ -260,7 +298,7 @@ section {
 
 
 /*
- :::  Projects
+ :::  Nextprev nav
 -------------------------------------------------- */
 .nextprev {
   padding: 1em 0;
@@ -271,30 +309,19 @@ section {
 .nextprev .next {
   float: right;
 }
-.nextprev a {
-  border: 2px solid #000;
-  padding: .25em 1em;
-  line-height: 1em;
-  color: #000;
-  border-radius: 5em;
-}
-.nextprev a:hover {
-  border-color: red;
-  color: red;
-}
+
+
 
 /*
  :::  Footer
 -------------------------------------------------- */
 footer {
   padding: 1em 0 6em;
-  font-size: .9em;
+  font-size: .8em;
   color: #222;
   border-top: 2px solid red;
 }
-footer a {
-  padding-left: .5em;
-}
+
 
 
 /*
@@ -304,7 +331,6 @@ img {
   display: block;
   max-width: 100%;
 }
-
 
 
 
