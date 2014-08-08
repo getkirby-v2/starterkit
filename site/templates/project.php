@@ -8,6 +8,13 @@
     </ul>
     <div class="text">
       <?php echo kirbytext($page->text()) ?>
+
+      <?php foreach($page->images() as $image): ?>
+      <figure>
+        <img src="<?php echo $image->url() ?>" alt="<?php echo html($page->title()) ?>">
+      </figure>
+      <?php endforeach ?>
+
     </div>
     <nav class="nextprev cf">
       <?php if($prev = $page->prevVisible()): ?>

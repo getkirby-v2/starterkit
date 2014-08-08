@@ -215,16 +215,9 @@ h1 a, h2 a, h3 a, h4 a {
 -------------------------------------------------- */
 .btn {
   display: inline-block;
-  padding: .5em 1.5em;
+  line-height: 1em;
   font-weight: 600;
-  border: 2px solid #222;
-  border-radius: 5em;
   color: #222;
-}
-.btn:hover,
-.btn:focus {
-  background-color: #222;
-  color: #fff;
 }
 
 
