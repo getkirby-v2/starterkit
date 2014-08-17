@@ -206,6 +206,7 @@ h4 {
 }
 h1 a, h2 a, h3 a, h4 a {
   color: inherit;
+  border: 0 !important;
 }
 
 
@@ -277,7 +278,7 @@ section {
 .teaser li:first-child {
   margin-left: 0;
 }
-.teaser a {
+.teaser p a {
   color: red;
 }
 @media screen and (max-width: 750px) {

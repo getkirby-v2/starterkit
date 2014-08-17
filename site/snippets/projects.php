@@ -2,7 +2,7 @@
 <ul class="teaser cf">
   <?php foreach(page('projects')->children()->visible()->limit(3) as $project): ?>
   <li>
-    <h3><?php echo html($project->title()) ?></h3>
+    <h3><a href="<?php echo $project->url() ?>"><?php echo html($project->title()) ?></a></h3>
     <p><?php echo excerpt($project->text(), 80) ?> <a href="<?php echo $project->url() ?>">read more →</a></p>
     <?php if($image = $project->image()): ?>
     <a href="<?php echo $project->url() ?>">
