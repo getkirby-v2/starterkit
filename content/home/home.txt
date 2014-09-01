@@ -2,9 +2,7 @@ Title: Home
 
 ----
 
-Text:
-
-Yay! If you are seeing this, the installation of Kirby worked. :)
+Text: Yay! If you are seeing this, the installation of Kirby worked. :)
 Now just give the links in the menu a try to see if URL redirection works as well.
 
 Go to the (link: panel text: panel) to get started with Kirby's admin interface.

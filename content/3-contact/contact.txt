@@ -1,12 +1,8 @@
-Title: 
-
-Contact
+Title: Contact
 
 ----
 
-Text: 
-
-Kirby is designed and developed by (link: http://bastianallgeier.com text: Bastian Allgeier) and published by the Bastian Allgeier GmbH.
+Text: Kirby is designed and developed by (link: http://bastianallgeier.com text: Bastian Allgeier) and published by the Bastian Allgeier GmbH.
 
 Please just send an email if you've got any questions or bug reports.
 <support@getkirby.com>

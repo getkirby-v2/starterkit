@@ -1,9 +1,5 @@
-Title: 
-
-Error
+Title: Error
 
 ----
 
-Text: 
-
-The page has not been found.
+Text: The page has not been found.
