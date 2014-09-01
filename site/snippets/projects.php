@@ -5,7 +5,7 @@
   <li>
     <h3><a href="<?php echo $project->url() ?>"><?php echo html($project->title()) ?></a></h3>
     <p><?php echo excerpt($project->text(), 80) ?> <a href="<?php echo $project->url() ?>">read&nbsp;more&nbsp;→</a></p>
-    <?php if($image = $project->image()): ?>
+    <?php if($image = $project->images()->sortBy('sort', 'asc')->first()): ?>
     <a href="<?php echo $project->url() ?>">
       <img src="<?php echo $image->url() ?>" alt="<?php echo html($project->title()) ?>" >
     </a>
