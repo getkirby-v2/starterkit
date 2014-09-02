@@ -1,0 +1,25 @@
+{
+  "name": "kirby/starterkit",
+  "description": "Kirby's default theme is the easiest way to get started with Kirby.",
+  "type": "project",
+  "keywords": ["cms"],
+  "homepage": "http://getkirby.com",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Bastian Allgeier",
+      "email": "bastian@getkirby.com",
+      "homepage": "http://bastianallgeier.com"
+    }
+  ],
+  "support": {
+    "email": "support@getkirby.com",
+    "issues": "https://github.com/getkirby/starterkit/issues",
+    "forum": "http://forum.getkirby.com",
+    "source": "https://github.com/getkirby/starterkit"
+  },
+  "require": {
+    "kirby/kirby": "~2.0",
+    "kirby/panel": "~2.0"
+  }
+}
