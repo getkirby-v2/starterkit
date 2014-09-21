@@ -10,4 +10,8 @@ Description: This is Kirby's Starterkit.
 
 ----
 
-Copyright: © 2009-(date: Year) (link: http://bastianallgeier.com text: Kirby)
+Keywords: Kirby, CMS, file-based
+
+----
+
+Copyright: © 2009-(date: Year) (link: http://getkirby.com text: Kirby)
