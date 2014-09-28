@@ -3,20 +3,18 @@
 # rewrite rules
 <IfModule mod_rewrite.c>
 
-# enable awesome urls. i.e.: 
+# enable awesome urls. i.e.:
 # http://yourdomain.com/about-us/team
 RewriteEngine on
 
 # make sure to set the RewriteBase correctly
 # if you are running the site in a subfolder.
 # Otherwise links or the entire site will break.
-# 
+#
 # If your homepage is http://yourdomain.com/mysite
 # Set the RewriteBase to:
-# 
+#
 # RewriteBase /mysite
-# 
-# RewriteBase /
 
 # block text files in the content folder from being accessed directly
 RewriteRule ^content/(.*)\.(txt|md|mdown)$ error [R=301,L]
@@ -36,13 +34,12 @@ RewriteRule ^panel/(.*) panel/index.php [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*) index.php [L]
- 
+
 </IfModule>
 
-
 # Additional recommended values
-# Remove comments for those you want to use. 
-# 
+# Remove comments for those you want to use.
+#
 # AddDefaultCharset UTF-8
 #
-# php_flag short_open_tag on 
+# php_flag short_open_tag on

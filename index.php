@@ -2,8 +2,15 @@
 
 define('DS', DIRECTORY_SEPARATOR);
 
-// load the cms bootstrapper
-include(__DIR__ . DS . 'kirby' . DS . 'bootstrap.php');
+// load kirby
+require(__DIR__ . DS . 'kirby' . DS . 'bootstrap.php');
 
-// start the cms
-echo kirby::start();
+// check for a custom site.php
+if(file_exists(__DIR__ . DS . 'site.php')) {
+  require(__DIR__ . DS . 'site.php');
+} else {
+  $kirby = kirby();
+}
+
+// render
+echo $kirby->launch();
