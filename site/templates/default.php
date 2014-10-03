@@ -1,9 +1,11 @@
 <?php snippet('header') ?>
 
-  <main class="main text" role="main">
+  <main class="main" role="main">
 
-    <h1><?php echo $page->title()->html() ?></h1>
-    <?php echo $page->text()->kirbytext() ?>
+    <div class="text">
+      <h1><?php echo $page->title()->html() ?></h1>
+      <?php echo $page->text()->kirbytext() ?>
+    </div>
 
   </main>
 

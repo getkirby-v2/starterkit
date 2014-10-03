@@ -51,9 +51,6 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, main, nav, section, summary {
   display: block;
 }
-ol, ul {
-  list-style: none;
-}
 
 
 /* Pix
@@ -131,6 +128,9 @@ body {
 }
 .menu .active {
   color: red;
+}
+.menu li {
+  list-style: none;
 }
 .menu > li {
   position: relative;
@@ -256,6 +256,11 @@ h1 a, h2 a, h3 a, h4 a {
   border-color: #222;
 }
 
+/* Text blocks */
+.text ul,
+.text ol {
+  margin-left: 1em;
+}
 
 /* Project meta
 -------------------------------------------------- */
@@ -264,6 +269,7 @@ h1 a, h2 a, h3 a, h4 a {
 }
 .meta li {
   float: left;
+  list-style: none;
   margin-right: 2em;
   color: red;
 }
@@ -281,6 +287,7 @@ h1 a, h2 a, h3 a, h4 a {
 }
 .teaser li {
   margin-bottom: 1.5em;
+  list-style: none;
 }
 @media screen and (min-width: 50em) {
   .teaser li {
