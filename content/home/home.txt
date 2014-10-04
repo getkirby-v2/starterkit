@@ -3,11 +3,13 @@ Title: Home
 ----
 
 Text: Yay! If you are seeing this, the installation of Kirby worked. :)
-Now just give the links in the menu a try to see if URL redirection works as well.
 
-Go to the (link: panel text: panel) to get started with Kirby's admin interface.
+## Get started
 
-Check out the (link: http://getkirby.com/docs text: docs) if you run into any problems or send me an email: (email: support@getkirby.com)!
-Follow (twitter: @getkirby) on Twitter for updates.
+- Go to the (link: panel text: panel) to give Kirby's admin interface a try
+- Check out the (link: http://getkirby.com/docs text: docs) and start building your own site
+- Follow (twitter: @getkirby) on Twitter for updates
+- Visit the (link: http://getkirby.com/forum text: forum) to connect with other Kirby users
+- (link: http://getkirby.com/support text: Get in contact) if you need support.
 
 **Have fun with Kirby!**

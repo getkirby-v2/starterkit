@@ -2,10 +2,18 @@ Title: Contact
 
 ----
 
-Text: Kirby is designed and developed by (link: http://bastianallgeier.com text: Bastian Allgeier) and published by the Bastian Allgeier GmbH.
+Text:
 
-Please just send an email if you've got any questions or bug reports.
-<support@getkirby.com>
+## Get in touch
 
-Follow Kirby on Twitter (twitter: @getkirby)
-Follow me on Twitter (twitter: @bastianallgeier)
+- (link: http://getkirby.com/support text: Kirby's support page)
+- (link: http://getkirby.com/forum text: Kirby's forum)
+- (link: http://github.com/getkirby text: Kirby on Github)
+- <support@getkirby.com>
+
+## Follow us on Twitter
+
+- Follow Kirby on Twitter (twitter: @getkirby)
+- Follow Bastian on Twitter (twitter: @bastianallgeier)
+- Follow Sascha on Twitter (twitter: @sashtown)
+
