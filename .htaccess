@@ -17,13 +17,10 @@ RewriteEngine on
 # RewriteBase /mysite
 
 # block text files in the content folder from being accessed directly
-RewriteRule ^content/(.*)\.(txt|md|mdown)$ error [R=301,L]
+RewriteRule ^content/(.*)\.(txt|md|mdown)$ error [L]
 
-# block all files in the site folder from being accessed directly
-RewriteRule ^site/(.*) error [R=301,L]
-
-# block all files in the kirby folder from being accessed directly
-RewriteRule ^kirby/(.*) error [R=301,L]
+# block all files in the site and kirby folder from being accessed directly
+RewriteRule ^(site|kirby)/(.*) error [L]
 
 # make panel links work
 RewriteCond %{REQUEST_FILENAME} !-f
