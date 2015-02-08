@@ -16,8 +16,8 @@ RewriteEngine on
 #
 # RewriteBase /mysite
 
-# forbid access to the .git directory
-RewriteRule ^(\.git/) - [F,L,NC]
+# forbid access to all .git directories
+RewriteRule \.git - [F,L,NC]
 
 # block text files in the content folder from being accessed directly
 RewriteRule ^content/(.*)\.(txt|md|mdown)$ error [R=301,L]
