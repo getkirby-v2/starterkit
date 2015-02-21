@@ -12,5 +12,11 @@ if(file_exists(__DIR__ . DS . 'site.php')) {
   $kirby = kirby();
 }
 
+// compress kirby output
+function compress_output($comprs){
+return preg_replace('!\s+!', ' ',str_replace(array("\n","\r","\t"),'',$comprs));
+}
+ob_start("compress_output");
 // render
 echo $kirby->launch();
+ob_end_flush();
