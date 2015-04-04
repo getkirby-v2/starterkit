@@ -298,6 +298,9 @@ h1 a, h2 a, h3 a, h4 a {
   .teaser li:first-child {
     margin-left: 0;
   }
+  .teaser li:nth-child(3n+1) {
+  margin-left: 0;
+  }
 }
 
 
