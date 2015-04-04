@@ -295,11 +295,9 @@ h1 a, h2 a, h3 a, h4 a {
     width: 30%;
     margin-left: 5%;
   }
-  .teaser li:first-child {
-    margin-left: 0;
-  }
+  .teaser li:first-child,
   .teaser li:nth-child(3n+1) {
-  margin-left: 0;
+    margin-left: 0;
   }
 }
 
