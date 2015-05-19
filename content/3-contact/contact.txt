@@ -7,7 +7,7 @@ Text:
 ## Get in touch
 
 - (link: http://getkirby.com/support text: Kirby's support page)
-- (link: http://getkirby.com/forum text: Kirby's forum)
+- (link: http://forum.getkirby.com text: Kirby's forum)
 - (link: http://github.com/getkirby text: Kirby on Github)
 - <support@getkirby.com>
 
@@ -15,5 +15,5 @@ Text:
 
 - Follow Kirby on Twitter (twitter: @getkirby)
 - Follow Bastian on Twitter (twitter: @bastianallgeier)
+- Follow Nico on Twitter (twitter: @distantnative)
 - Follow Sascha on Twitter (twitter: @sashtown)
-
