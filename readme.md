@@ -67,7 +67,7 @@ directly on Github:
 - <https://github.com/getkirby/panel/issues>
 - <https://github.com/getkirby/starterkit/issues>
 
-Otherwise you can use Kirby's forum: http://getkirby.com/forum
+Otherwise you can use Kirby's forum: http://forum.getkirby.com/
 or send us an email: <support@getkirby.com>
 
 ## Support
