@@ -16,6 +16,9 @@ RewriteEngine on
 #
 # RewriteBase /mysite
 
+# block readme file from being accessed directly
+RewriteRule ^readme\.(txt|md|mdown|html)$ index.php [L]
+
 # block text files in the content folder from being accessed directly
 RewriteRule ^content/(.*)\.(txt|md|mdown)$ index.php [L]
 
