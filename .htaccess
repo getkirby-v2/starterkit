@@ -16,14 +16,11 @@ RewriteEngine on
 #
 # RewriteBase /mysite
 
-# block text files in the content folder from being accessed directly
-RewriteRule ^content/(.*)\.(txt|md|mdown)$ index.php [L]
+# block access to all unbrowsable files
+RewriteRule ^.*\.(txt|md|mdown|yaml|yml|svn.*|git.*)$ - [NC,R=404]
 
-# block all files in the site folder from being accessed directly
-RewriteRule ^site/(.*) index.php [L]
-
-# block all files in the kirby folder from being accessed directly
-RewriteRule ^kirby/(.*) index.php [L]
+# block access to all site and kirby files
+RewriteRule ^(site|kirby|panel/app|panel/test)/.*$ - [NC,R=404]
 
 # make panel links work
 RewriteCond %{REQUEST_FILENAME} !-f
