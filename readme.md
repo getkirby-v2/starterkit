@@ -41,7 +41,7 @@ copied to your server correctly**
 
 ### Requirements
 
-Kirby runs on PHP 5.3+, Apache or Nginx.
+Kirby runs on PHP 5.4+, Apache or Nginx.
 
 ### Download
 
