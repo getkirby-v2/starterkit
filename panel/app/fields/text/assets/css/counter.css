@@ -1,0 +1,12 @@
+.field-counter {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  top: 0;
+  text-align: right;
+  font-size: .9em;
+  line-height: 1.66666666666667;
+}
+.field-counter.outside-range {
+  color: #b3000a;
+}
