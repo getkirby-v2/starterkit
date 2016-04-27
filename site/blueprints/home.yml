@@ -1,5 +1,3 @@
-<?php if(!defined('KIRBY')) exit ?>
-
 title: Home
 pages: false
 fields:
@@ -9,4 +7,3 @@ fields:
   text:
     label: Text
     type:  textarea
-    size:  large
