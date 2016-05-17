@@ -4,6 +4,7 @@ namespace Kirby\Panel;
 
 use A;
 use Exception;
+use Pages;
 
 class Autocomplete {
 
@@ -61,6 +62,7 @@ class Autocomplete {
       'uri'       => '/',
       'field'     => 'tags',
       'yaml'      => false,
+      'model'     => 'page',
       'separator' => true
     );
 
@@ -69,10 +71,15 @@ class Autocomplete {
     $pages   = $this->pages($page, $options['index'], $options);
     $yaml    = $options['yaml'];
 
-    if($yaml) {
+    if($yaml or $options['model'] == 'file') {
       $result = array();
       foreach($pages as $p) {
-        $values = $p->$yaml()->toStructure()->pluck($options['field'], $options['separator'], true);
+        if($yaml) {
+          $index = $p->$yaml()->toStructure();
+        } elseif($options['model'] == 'file') {
+          $index = $p->files();
+        }
+        $values = $index->pluck($options['field'], $options['separator'], true);
         $result = array_merge($result, $values);
       }
       $result = array_unique($result);
@@ -87,6 +94,9 @@ class Autocomplete {
   public function pages($page, $index, $params = array()) {
 
     switch($index) {
+      case 'self':
+        return new Pages(array($page));
+        break;
       case 'siblings':
       case 'children':
         return $page->$index();

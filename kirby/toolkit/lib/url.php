@@ -23,7 +23,8 @@ class Url {
         (isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) != 'off') ||
         server::get('SERVER_PORT')            == '443' || 
         server::get('HTTP_X_FORWARDED_PORT')  == '443' || 
-        server::get('HTTP_X_FORWARDED_PROTO') == 'https'
+        server::get('HTTP_X_FORWARDED_PROTO') == 'https' ||
+        server::get('HTTP_X_FORWARDED_PROTO') == 'https, http'
       ) {
         return 'https';
       } else {

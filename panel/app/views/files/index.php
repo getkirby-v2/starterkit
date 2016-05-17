@@ -35,7 +35,7 @@
             <?php if($file->extension() == 'svg'): ?>
             <object data="<?php __($file->url('preview')) ?>"></object>
             <?php elseif($file->canHavePreview()): ?>
-            <img src="<?php __($file->thumb()) ?>" alt="<?php __($file->filename()) ?>">
+            <img src="<?php __($file->crop(400, 266)->url()) ?>" alt="<?php __($file->filename()) ?>">
             <?php else: ?>
             <span><?php __($file->extension()) ?></span>
             <?php endif ?>

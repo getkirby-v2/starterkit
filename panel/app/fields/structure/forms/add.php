@@ -1,8 +1,8 @@
 <?php 
 
-return function($model, $store) {
+return function($model, $structure) {
 
-  $form = new Kirby\Panel\Form($store->fields());
+  $form = new Kirby\Panel\Form($structure->fields(), array(), $structure->field());
   $form->cancel($model);
   $form->buttons->submit->value = l('add');
 

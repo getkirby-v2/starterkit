@@ -31,6 +31,7 @@ class Upload {
 
     $defaults = array(
       'input'     => 'file',
+      'index'     => 0,
       'to'        => $to,
       'overwrite' => true,
       'maxSize'   => false,
@@ -55,6 +56,17 @@ class Upload {
   public function source() {
 
     $source = isset($_FILES[$this->options['input']]) ? $_FILES[$this->options['input']] : null;
+
+    // get the correct file out of multiple based on the "index" option
+    if($source && is_int($this->options['index']) && is_array($source['name'])) {
+      $allSources = $source;
+      $source = array();
+      
+      // get the correct value out of the $values array with all files
+      foreach($allSources as $key => $values) {
+        $source[$key] = isset($values[$this->options['index']]) ? $values[$this->options['index']] : null;
+      }
+    }
 
     // prevent duplicate ios uploads
     // ios automatically uploads all images as image.jpg, 

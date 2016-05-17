@@ -281,18 +281,6 @@ function yaml($string) {
 }
 
 /**
- * Shortcut to create a new thumb object
- *
- * @param mixed Either a file path or a Media object
- * @param array An array of additional params for the thumb
- * @return object Thumb
- */
-function thumb($image, $params = array(), $obj = true) {
-  $class = new Thumb($image, $params);
-  return $obj ? $class : $class->url();
-}
-
-/**
  * Simple email sender helper
  *
  * @param array $params

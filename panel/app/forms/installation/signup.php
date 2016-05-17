@@ -20,20 +20,20 @@ return function() {
       'autofocus'    => true,
     ),
 
-    'email' => array(
-      'label'        => 'installation.signup.email.label',
-      'placeholder'  => 'installation.signup.email.placeholder',
-      'type'         => 'email',
-      'required'     => true,
-      'autocomplete' => false,
-    ),
-
     'password' => array(
       'label'        => 'installation.signup.password.label',
       'type'         => 'password',
       'required'     => true,
       'autocomplete' => false,
       'suggestion'   => true,
+    ),
+
+    'email' => array(
+      'label'        => 'installation.signup.email.label',
+      'placeholder'  => 'installation.signup.email.placeholder',
+      'type'         => 'email',
+      'required'     => true,
+      'autocomplete' => false,
     ),
 
     'language' => array(

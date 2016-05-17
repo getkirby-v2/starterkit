@@ -20,7 +20,7 @@
       <div class="item-content">
         <figure class="item-image">
           <a class="item-image-container" href="<?php __($user->url('edit')) ?>">
-            <img src="<?php __($user->avatar()->url()) ?>" alt="<?php __($user->username()) ?>">
+            <img src="<?php __($user->avatar(50)->url()) ?>" alt="<?php __($user->username()) ?>">
           </a>
         </figure>
         <div class="item-info">

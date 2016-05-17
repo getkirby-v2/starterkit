@@ -31,7 +31,7 @@ return function($page) {
       'default'  => key($options),
       'required' => true,
       'readonly' => count($options) == 1 ? true : false,
-      'icon'     => count($options) == 1 ? 'file-o' : 'chevron-down',
+      'icon'     => count($options) == 1 ? $page->blueprint()->pages()->template()->first()->icon() : 'chevron-down',
     )
   ));
 

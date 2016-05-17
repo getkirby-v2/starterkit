@@ -125,7 +125,7 @@ class PagesController extends Kirby\Panel\Controllers\Base {
     if(!$page->canChangeUrl()) {
       return $this->modal('error', array(
         'headline' => l('error'),
-        'text'     => l('pages.url.home.error.error'),
+        'text'     => l('pages.url.error.rights'),
       ));
     }
 
@@ -143,6 +143,43 @@ class PagesController extends Kirby\Panel\Controllers\Base {
     });
 
     return $this->modal('pages/url', compact('form'));
+
+  }
+
+  public function template($id) {
+
+    $self = $this;
+    $page = $this->page($id);
+
+    if(!$page->canChangeTemplate()) {
+      return $this->modal('error', array(
+        'headline' => l('error'),
+        'text'     => l('pages.template.error'),
+      ));
+    }
+
+    if($info = get('info')) {
+      $prep = $page->prepareForNewTemplate($page->blueprint()->name(), $info);      
+      return $this->snippet('template', $prep);
+    }
+
+    $form = $page->form('template', function($form) use($page, $self) {
+
+      try {
+
+        $data = $form->serialize();
+
+        $page->changeTemplate(a::get($data, 'template'));
+
+        $self->notify(':)');
+        $self->redirect($page);
+      } catch(Exception $e) {
+        $form->alert($e->getMessage());
+      }
+
+    });
+
+    return $this->modal('pages/template', compact('form'));
 
   }
 

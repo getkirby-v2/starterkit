@@ -36,10 +36,26 @@ class Structure {
       throw new Exception('The field name: ' . $field . ' cannot be used as it is reserved');
     }
 
+
     $this->field  = $field;
     $this->config = $this->model->getBlueprintFields()->get($this->field);
-    $this->source = (array)yaml::decode($this->model->{$this->field}());
-    $this->store  = new Store($this, $this->source());
+
+
+    if(is_a($this->model, 'Page')) {
+      $source = $this->model->content()->get($this->field);
+      $decode = true;
+    } else if(is_a($this->model, 'File')) {
+      $source = $this->model->meta()->get($this->field);
+      $decode = true;
+    } else if(is_a($this->model, 'User')) {
+      $source = $this->model->{$this->field}();
+      $decode = false;
+    } else {
+      throw new Exception('Invalid model for structure field: ' . $this->field);
+    }
+
+    $this->source = $decode ? (array)yaml::decode($source) : (array)$source;  
+    $this->store  = new Store($this, $this->source);
 
     return $this;
 
@@ -82,7 +98,9 @@ class Structure {
       // remove all structure fields within structures
       if($field['type'] == 'structure') {
         unset($fields[$name]);
-
+      // convert title fields to normal text fields
+      } else if($field['type'] == 'title') {
+        $fields[$name]['type'] = 'text';
       // remove invalid buttons from textareas
       } else if($field['type'] == 'textarea') {
         $buttons = a::get($fields[$name], 'buttons');

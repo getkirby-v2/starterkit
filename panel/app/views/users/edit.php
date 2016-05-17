@@ -35,7 +35,7 @@
 
       <?php if($user->avatar()->exists()): ?>
       <div class="field">
-        <a data-upload class="avatar avatar-large" href="#upload"><img src="<?php echo $user->avatar()->url()  ?>"></a>
+        <a data-upload class="avatar avatar-large" href="#upload"><img src="<?php echo $user->avatar(150)->url()  ?>"></a>
       </div>
       <?php endif ?>
 

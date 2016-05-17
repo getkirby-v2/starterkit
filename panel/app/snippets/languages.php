@@ -1,4 +1,4 @@
-<?php if($languages): ?>
+<?php if($languages && $languages->count() > 1): ?>
 
 <div class="languages">
 

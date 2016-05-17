@@ -470,4 +470,26 @@ class A {
     return $merged;
   }
 
+  /**
+   * Update an array with a second array
+   * The second array can contain callbacks as values, 
+   * which will get the original values as argument
+   * 
+   * @param array $array
+   * @param array $update
+   */
+  public static function update($array, $update) {
+
+    foreach($update as $key => $value) {
+      if(is_a($value, 'Closure')) {
+        $array[$key] = call($value, static::get($array, $key));
+      } else {
+        $array[$key] = $value;
+      }
+    }
+
+    return $array;
+
+  }
+
 }

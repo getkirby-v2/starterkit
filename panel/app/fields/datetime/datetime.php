@@ -49,9 +49,15 @@ class DatetimeField extends BaseField {
       $timestamp = strtotime($this->value());      
     }
 
+    $dateDefault = a::get($this->date, 'default', ($this->required() ? 'now' : false));
+    $timeDefault = a::get($this->time, 'default', ($this->required() ? 'now' : false));
+
+    $dateValue = $timestamp ? date('Y-m-d', $timestamp) : $dateDefault;
+    $timeValue = $timestamp ? date('H:i', $timestamp)   : $timeDefault;
+
     $date = form::field('date', array(
       'name'     => $this->name() . '[date]',
-      'value'    => $timestamp ? date('Y-m-d', $timestamp) : null,      
+      'value'    => $dateValue,
       'format'   => a::get($this->date, 'format', 'YYYY-MM-DD'),      
       'id'       => 'form-field-' . $this->name() . '-date',
       'required' => $this->required(),
@@ -60,7 +66,7 @@ class DatetimeField extends BaseField {
 
     $time = form::field('time', array(
       'name'     => $this->name() . '[time]',
-      'value'    => $timestamp ? date('H:i', $timestamp) : ($this->required() ? 'now' : false),
+      'value'    => $timeValue,
       'format'   => a::get($this->time, 'format', 24),
       'interval' => a::get($this->time, 'interval', 60),
       'id'       => 'form-field-' . $this->name() . '-time',

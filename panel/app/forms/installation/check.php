@@ -8,10 +8,16 @@ return function($problems) {
     )
   ));
 
-  $info = new Brick('ol');
-
-  foreach($problems as $problem) {
-    $info->append('<li>' . $problem . '</li>');        
+  if(count($problems) > 1) {
+    $info = new Brick('ol');
+    foreach($problems as $problem) {
+      $info->append('<li>' . $problem . '</li>');        
+    }
+  } else {
+    $info = new Brick('p');
+    foreach($problems as $problem) {
+      $info->append($problem);        
+    }    
   }
 
   // add the list of problems to the info field

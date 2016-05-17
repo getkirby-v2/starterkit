@@ -198,7 +198,7 @@ class F {
       'flv',
       'swf',
       'mp4',
-      'mv4',
+      'm4v',
       'mpg',
       'mpe'
     ),
@@ -515,7 +515,11 @@ class F {
    * @return int
    */
   public static function modified($file, $format = null, $handler = 'date') {
-    return !is_null($format) ? $handler($format, filemtime($file)) : filemtime($file);
+    if(file_exists($file)) {
+      return !is_null($format) ? $handler($format, filemtime($file)) : filemtime($file);      
+    } else {
+      return false;
+    }
   }
 
   /**

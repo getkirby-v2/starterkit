@@ -103,7 +103,7 @@ data::$adapters['kd'] = array(
       }
 
       // escape accidental dividers within a field
-      $value = preg_replace('!\n----(.*?\R*)!', "\n ----$1", $value);
+      $value = preg_replace('!(\n|^)----(.*?\R*)!', "$1\\----$2", $value);
 
       // multi-line content
       if(preg_match('!\R!', $value, $matches)) {

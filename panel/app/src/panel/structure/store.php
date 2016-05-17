@@ -4,6 +4,7 @@ namespace Kirby\Panel\Structure;
 
 use A;
 use Collection;
+use F;
 use S;
 use Str;
 use Yaml;
@@ -13,13 +14,16 @@ class Store {
   public $id = null;
   public $structure;
   public $source = array();
-  public $data = array();
+  public $data   = array();
+  public $age    = null;
 
   public function __construct($structure, $source) {
     $this->structure = $structure;  
     $this->source    = $source;
     $this->id        = $structure->id() . '_' . $structure->field();
+    $this->age       = time();
 
+    $this->sync();
     $this->init();
   } 
 
@@ -36,14 +40,40 @@ class Store {
     $data = array();
 
     foreach($raw as $row) {
+
+      if(is_string($row)) {
+        continue;
+      }
+
       if(!isset($row['id'])) {
         $row['id'] = str::random(32);
       }
+
       $data[$row['id']] = $row;
+
     }
 
     $this->data = $data;
     s::set($this->id, $this->data);
+    s::set($this->id . '_age', $this->age);
+
+  }
+
+  /**
+   * Resets store if necessary to stay in sync with content file
+   */
+  public function sync() {
+
+    $file     = $this->structure->model()->textfile();
+    $ageModel = f::exists($file) ? f::modified($file) : 0;
+    $ageStore = s::get($this->id() . '_age');
+
+    if($ageStore < $ageModel) {
+      $this->reset();
+      $this->age = $ageModel;
+    } else {
+      $this->age = $ageStore;
+    }
 
   }
 

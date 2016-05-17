@@ -62,9 +62,10 @@ class Pages extends Obj {
 
     $obj = new Obj();
 
-    $obj->mode   = 'default';
-    $obj->field  = null;
-    $obj->format = null;
+    $obj->mode    = 'default';
+    $obj->field   = null;
+    $obj->format  = null;
+    $obj->display = null;
 
     if(is_array($this->num)) {
       foreach($this->num as $k => $v) $obj->$k = $v;
@@ -73,13 +74,18 @@ class Pages extends Obj {
     }
 
     switch($obj->mode) {
+      case 'field':
+        isset($obj->field) or $obj->field = 'num';
+        break;
       case 'date':
         // switch the default date format by configured handler
-        $defaultDateFormat = kirby()->option('date.handler') == 'strftime' ? '%Y%m%d' : 'Ymd';
+        $defaultDateFormat    = kirby()->option('date.handler') == 'strftime' ? '%Y%m%d' : 'Ymd';
+        $defaultDisplayFormat = kirby()->option('date.handler') == 'strftime' ? '%Y/%m/%d' : 'Y/m/d';
 
         // set the defaults
-        isset($obj->field)  or $obj->field  = 'date';
-        isset($obj->format) or $obj->format = $defaultDateFormat;
+        isset($obj->field)   or $obj->field   = 'date';
+        isset($obj->format)  or $obj->format  = $defaultDateFormat;
+        isset($obj->display) or $obj->display = $defaultDisplayFormat;
         break;
     }
 

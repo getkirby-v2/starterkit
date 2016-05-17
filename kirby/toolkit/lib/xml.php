@@ -72,7 +72,7 @@ class Xml {
   public static function parse($xml) {
 
     $xml = preg_replace('/(<\/?)(\w+):([^>]*>)/', '$1$2$3', $xml);
-    $xml = @simplexml_load_string($xml, null, LIBXML_NOENT);
+    $xml = @simplexml_load_string($xml, null, LIBXML_NOENT | LIBXML_NOCDATA);
     $xml = @json_encode($xml);
     $xml = @json_decode($xml, true);
     return (is_array($xml)) ? $xml : false;

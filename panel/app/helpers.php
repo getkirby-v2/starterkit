@@ -20,6 +20,27 @@ function _l($key, $default = null) {
   echo htmlspecialchars(l($key, $default));
 }
 
+function i18n($value) {
+
+  if(empty($value)) {
+    return null;
+  } else if(is_array($value)) {
+    $translation = a::get($value, panel()->translation()->code());
+
+    if(empty($translation)) {
+      // try to fallback to the default language at least
+      $translation = a::get($value, kirby()->option('panel.language'), $this->name());
+    }
+
+    return $translation;
+  } else if(is_string($value) and $translation = l::get($value)) {
+    return $translation;
+  } else {
+    return $value;
+  }
+
+}
+
 function _u($obj = '', $action = false) {
   echo purl($obj, $action);
 }

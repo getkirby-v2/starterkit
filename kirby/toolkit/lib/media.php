@@ -39,7 +39,7 @@ class Media {
    */
   public function __construct($root, $url = null) {
     $this->url       = $url;
-    $this->root      = realpath($root);
+    $this->root      = $root === null ? $root : realpath($root);
     $this->filename  = basename($root);
     $this->name      = pathinfo($root, PATHINFO_FILENAME);
     $this->extension = strtolower(pathinfo($root, PATHINFO_EXTENSION));
@@ -526,6 +526,7 @@ class Media {
 
     $img = new Brick('img');
     $img->attr('src', $this->url());
+    $img->attr('alt', ' ');
 
     if(is_string($attr) || (is_object($attr) && method_exists($attr, '__toString'))) {
       $img->attr('alt', (string)$attr);

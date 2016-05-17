@@ -65,7 +65,11 @@ class Dimensions {
    * @return float
    */
   public function ratio() {
-    return ($this->width / $this->height);
+    if($this->width && $this->height) {
+      return ($this->width / $this->height);      
+    } else {
+      return 0;
+    }
   }
 
   /**
@@ -216,11 +220,43 @@ class Dimensions {
   }
 
   /**
+   * @param int $width
+   * @param int $height
+   * @param boolean $force
+   * @return Dimensions
+   */
+  public function resize($width, $height, $force = false) {
+    $this->fitWidthAndHeight($width, $height, $force);
+    return $this;
+  }
+
+  /**
+   * Crops the dimensions by width and height
+   * 
+   * @param int $width
+   * @param int $height
+   * @return object
+   */
+  public function crop($width, $height = null) {
+
+    $this->width  = $width;
+    $this->height = $width;
+
+    if($height) {
+      $this->height = $height;
+    }
+
+    return $this;
+
+  }
+
+  /**
    * Returns a string representation of the orientation
    *
    * @return string
    */
   public function orientation() {
+    if(!$this->ratio())    return false;
     if($this->portrait())  return 'portrait';
     if($this->landscape()) return 'landscape';
     if($this->square())    return 'square';
@@ -269,12 +305,12 @@ class Dimensions {
   }
 
   /**
-   * Echos the dimensions as width x height
+   * Echos the dimensions as width × height
    *
    * @return string
    */
   public function __toString() {
-    return $this->width . ' x ' . $this->height;
+    return $this->width . ' × ' . $this->height;
   }
 
 }

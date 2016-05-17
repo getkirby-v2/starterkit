@@ -13,12 +13,23 @@ class TitleField extends TextField {
   public function help() {
 
     if($this->page and !$this->page->isSite()) {
-      
+
       if(!empty($this->help)) {
+        $this->help  = $this->i18n($this->help);
         $this->help .= '<br />';
       }
 
-      $this->help .= '&rarr;&nbsp;&nbsp;<a style="color: #777; border:none" data-modal title="' . $this->page->previewUrl() . '" href="' . $this->page->url('url') . '">' . ltrim($this->page->parent()->slug() . '/', '/') . $this->page->slug() . '</a>';      
+      // build a readable version of the page slug
+      $slug = ltrim($this->page->parent()->slug() . '/', '/') . $this->page->slug();
+
+      // TODO: move this to the css file
+      $style = 'padding-left: .5rem; color: #777; border:none';
+
+      if($this->page->canChangeUrl()) {
+        $this->help .= '&rarr;<a style="' . $style . '" data-modal title="' . $this->page->url('preview') . '" href="' . $this->page->url('url') . '">' . $slug . '</a>';      
+      } else {
+        $this->help .= '&rarr;<span style="' . $style . '" title="' . $this->page->url('preview') . '">' . $slug . '</span>';      
+      }
 
     }
 

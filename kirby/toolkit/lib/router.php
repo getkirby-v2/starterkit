@@ -88,9 +88,13 @@ class Router {
    */
   public function register($pattern, $params = array(), $optional = array()) {
 
-    if(is_array($pattern)) {
+    if($pattern === false) {
+      return false;
+    } else if(is_array($pattern)) {
       foreach($pattern as $v) {
-        if(is_array($v['pattern'])) {
+        if($v === false || empty($v['pattern'])) {
+          continue;
+        } else if(is_array($v['pattern'])) {
           foreach($v['pattern'] as $p) {
             $v['pattern'] = $p;
             $this->register($p, $v);

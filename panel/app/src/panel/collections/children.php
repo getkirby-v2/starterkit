@@ -72,7 +72,8 @@ class Children extends \Children {
     foreach((array)$page->blueprint()->pages()->build() as $build) {
       $missing = a::missing($build, array('title', 'template', 'uid'));
       if(!empty($missing)) continue;
-      $page->children()->create($build['uid'], $build['template'], array('title' => $build['title']));
+      $subpage = $page->children()->create($build['uid'], $build['template'], array('title' => $build['title']));
+      if(isset($build['num'])) $subpage->sort($build['num']);
     }
 
     return $page;
@@ -100,11 +101,17 @@ class Children extends \Children {
           break;
       }
 
-      $children = $this->paginate($limit, array(
+      // filter out hidden pages
+      $children = $this->filter(function($child) {
+        return $child->blueprint()->hide() === false;
+      });
+
+      $children = $children->paginate($limit, array(
         'page'          => get($var, s::get($id)), 
         'omitFirstPage' => false, 
         'variable'      => $var,
-        'method'        => 'query'
+        'method'        => 'query',
+        'redirect'      => false
       ));
 
       // store the last page

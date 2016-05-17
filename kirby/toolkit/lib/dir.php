@@ -144,10 +144,10 @@ class Dir {
    * @param   string   $format
    * @return  int
    */
-  public static function modified($dir, $format = null) {
+  public static function modified($dir, $format = null, $handler = 'date') {
     // It's easier to handle this with the Folder class
     $object = new Folder($dir);
-    return $object->modified($format);
+    return $object->modified($format, $handler);
   }
 
   /**

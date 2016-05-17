@@ -28,13 +28,15 @@ class TagsField extends TextField {
 
     } else if($page = $this->page()) {
 
-      empty($this->field) ? $field = $this->name() : $field = $this->field;
+      $field = empty($this->field) ? $this->name() : $this->field;
+      $model = is_a($this->model, 'File') ? 'file' : 'page';
 
       $query = array(
         'uri'       => $page->id(),
         'index'     => $this->index(),
         'field'     => $field,
         'yaml'      => $this->parentField,
+        'model'     => $model,
         'separator' => $this->separator(),
         '_csrf'     => panel()->csrf(),
       );

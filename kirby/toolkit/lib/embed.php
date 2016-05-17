@@ -37,9 +37,18 @@ class Embed {
     // no id no result!
     if(empty($id)) return false;
 
+    // default options
+    if(!empty($attr['options'])) {
+      $options = '?' . http_build_query($attr['options']);      
+      // options should not propagate to the attr list
+      unset($attr['options']);
+    } else {
+      $options = '';
+    }
+
     // default attributes
     $attr = array_merge(array(
-      'src'                   => '//youtube.com/embed/' . $id,
+      'src'                   => '//youtube.com/embed/' . $id . $options,
       'frameborder'           => '0',
       'webkitAllowFullScreen' => 'true',
       'mozAllowFullScreen'    => 'true',
@@ -71,9 +80,18 @@ class Embed {
     // no id no result!
     if(empty($id)) return false;
 
+    // default options
+    if(!empty($attr['options'])) {
+      $options = '?' . http_build_query($attr['options']);      
+      // options should not propagate to the attr list
+      unset($attr['options']);
+    } else {
+      $options = '';
+    }
+
     // default attributes
     $attr = array_merge(array(
-      'src'                   => '//player.vimeo.com/video/' . $id,
+      'src'                   => '//player.vimeo.com/video/' . $id . $options,
       'frameborder'           => '0',
       'webkitAllowFullScreen' => 'true',
       'mozAllowFullScreen'    => 'true',

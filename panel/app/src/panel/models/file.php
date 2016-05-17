@@ -104,12 +104,15 @@ class File extends \File {
     // rename and get the new filename          
     $filename = parent::rename($name, $safeName);
 
+    // clean the thumbs folder
+    $this->page()->removeThumbs();
+
     // trigger the rename hook
     kirby()->trigger('panel.file.rename', array($this, $old));          
 
   }
 
-  public function update($data = array(), $sort = null) {  
+  public function update($data = array(), $sort = null, $trigger = true) {
 
     if($data == 'sort') {
       parent::update(array('sort' => $sort));
@@ -131,7 +134,9 @@ class File extends \File {
       parent::update($data);          
     }
 
-    kirby()->trigger('panel.file.update', $this);
+    if($trigger) {
+      kirby()->trigger('panel.file.update', $this);
+    }
 
   }
 
@@ -140,12 +145,14 @@ class File extends \File {
   }
 
   public function delete() {
-    parent::delete();
-    kirby()->trigger('panel.file.delete', $this);    
-  }
 
-  public function thumb($width = 400, $height = 266, $crop = false) {
-    return $this->url('thumb') . '?width=' . $width . '&height=' . $height . '&crop=' . $crop;
+    parent::delete();
+
+    // clean the thumbs folder
+    $this->page()->removeThumbs();
+
+    kirby()->trigger('panel.file.delete', $this);    
+
   }
 
   public function icon($position = 'left') {
@@ -213,20 +220,20 @@ class File extends \File {
 
     $this->files()->topbar($topbar);
 
-    $topbar->append($this->url(), $this->filename());
+    $topbar->append($this->url('edit'), $this->filename());
    
   }
 
-  public function createMeta() {
+  public function createMeta($triggerUpdateHook = true) {
 
     // save default meta 
     $meta = array();
 
-    foreach($this->page()->blueprint()->files()->fields() as $field) {
+    foreach($this->page()->blueprint()->files()->fields($this) as $field) {
       $meta[$field->name()] = $field->default();
     }
 
-    $this->update($meta);
+    $this->update($meta, null, $triggerUpdateHook);
 
     return $this;
 

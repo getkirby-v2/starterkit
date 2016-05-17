@@ -7,7 +7,7 @@
     <li class="dashboard-item">
       <a title="<?php __($item->title()) ?>" href="<?php __($item->url('edit')) ?>">
         <figure>
-          <span class="dashboard-item-icon dashboard-item-icon-with-border"><i class="fa fa-file-o"></i></span>
+          <span class="dashboard-item-icon dashboard-item-icon-with-border"><?php echo $item->icon('') ?></span>
           <figcaption class="dashboard-item-text"><?php __($item->title()) ?></figcaption>
         </figure>
       </a>

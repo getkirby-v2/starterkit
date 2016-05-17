@@ -91,24 +91,7 @@ class BaseField {
   }
 
   public function i18n($value) {
-
-    if(empty($value)) {
-      return null;
-    } else if(is_array($value)) {
-      $translation = a::get($value, panel()->translation()->code());
-
-      if(empty($translation)) {
-        // try to fallback to the default language at least
-        $translation = a::get($value, kirby()->option('panel.language'), $this->name());
-      }
-
-      return $translation;
-    } else if(is_string($value) and $translation = l::get($value)) {
-      return $translation;
-    } else {
-      return $value;
-    }
-
+    return i18n($value);
   }
 
   public function icon() {
@@ -182,6 +165,8 @@ class BaseField {
       $element->addClass('field-with-icon');
     }
 
+    $element->addClass('field-name-' . $this->name);
+
     return $element;
 
   }
@@ -199,7 +184,7 @@ class BaseField {
     try {
       return (string)$this->template();
     } catch(Exception $e) {
-      die($e);
+      return (string)$e->getMessage();
     }
   }
 

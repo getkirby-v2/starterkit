@@ -7,8 +7,8 @@ use Dir;
 
 class Widgets extends Collection {
 
-  public $order    = array();
-  public $unsorted = array();
+  public $order     = array();
+  public $available = array();
 
   public function __construct() {
 
@@ -20,7 +20,14 @@ class Widgets extends Collection {
 
   }
 
-  public function load($name, $file) {
+  public function load($name) {
+
+    if(!isset($this->available[$name])) {
+      return false;
+    }
+
+    $dir  = $this->available[$name];    
+    $file = $dir . DS . $name . '.php';
 
     if(!file_exists($file)) {
       return false;
@@ -28,56 +35,56 @@ class Widgets extends Collection {
 
     $widget = require($file);
 
-    if(!is_array($widget)) {
+    if(is_array($widget)) {
+      $this->append($name, $widget);
+      return $widget;
+    } else {
       return false;
     }
-
-    $this->unsorted[$name] = $widget;
 
   }
 
   public function defaults() {
 
-    $root = panel()->roots()->widgets();
+    $kirby = kirby();    
+    $root  = panel()->roots()->widgets();
 
     foreach(dir::read($root) as $dir) {
-
-      // add missing widgets to the order array
-      if(!array_key_exists($dir, $this->order)) {
-        $this->order[$dir] = true;
-      }
-
-      $this->load($dir, $root . DS . $dir . DS . $dir . '.php');
-
+      $kirby->registry->set('widget', $dir, $root . DS . $dir);
     }
 
   }
 
   public function custom() {
 
-    $root = kirby()->roots()->widgets();
+    $kirby = kirby();    
+    $root  = $kirby->roots()->widgets();
 
     foreach(dir::read($root) as $dir) {
-
-      // add missing widgets to the order array
-      if(!array_key_exists($dir, $this->order)) {
-        $this->order[$dir] = true;
-      }
-
-      $this->load($dir, $root . DS . $dir . DS . $dir . '.php');
+      $kirby->registry->set('widget', $dir, $root . DS . $dir);
     }
 
   }
 
   public function sort() {
 
+    // load all widgets from the registry
+    $this->available = kirby()->registry()->get('widget');
+
     // the license warning must always be included
     $this->order['license'] = true;
 
+    // append ordered widgets
     foreach($this->order as $name => $add) {
-      if($add and isset($this->unsorted[$name])) {
-        $this->append($name, $this->unsorted[$name]);        
+      if($add) {
+        $this->load($name);
       }
+      unset($this->available[$name]);
+    }
+
+    // append the unsorted widgets 
+    foreach($this->available as $name => $dir) {
+      $this->load($name);
     }
 
   }

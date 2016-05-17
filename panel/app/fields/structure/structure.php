@@ -79,8 +79,18 @@ class StructureField extends BaseField {
     return $this->structure()->data();
   }
 
-  public function result() {
-    return $this->structure()->toYaml();
+  public function result() {  
+    /**
+     * Users store their data as plain yaml. 
+     * So we need this hacky solution to give data 
+     * as an array to the form serializer in case 
+     * of users, in order to not mess up their data
+     */
+    if(is_a($this->model, 'Kirby\\Panel\\Models\\User')) {
+      return $this->structure()->toArray();      
+    } else {
+      return $this->structure()->toYaml();            
+    }
   }
 
   public function entry($data) {
@@ -128,6 +138,11 @@ class StructureField extends BaseField {
       $add = null;
     }
 
+    // make sure there's at least an empty label
+    if(!$this->label) {
+      $this->label = '&nbsp;';
+    }
+ 
     $label = parent::label();
     $label->addClass('structure-label');
     $label->append($add);
