@@ -19,7 +19,7 @@
     "installation.check.text": "Kirby påträffade följande fel under installationen…",
     "installation.check.retry": "Försök igen",
     "installation.check.error": "Det finns några problem!",
-    "installation.check.error.allowed": "You are only allowed to run the panel installer on a local machine or by setting the option panel.install to true in your /site/config/config.php",
+    "installation.check.error.allowed": "You are only allowed to run the panel installer from the same computer that is the server or by setting the option panel.install to true in your /site/config/config.php",
     "installation.check.error.accounts": "Mappen /site/accounts saknar skrivrättigheter",
     "installation.check.error.avatars": "Mappen /assets/avatars saknar skrivrättigheter",
     "installation.check.error.blueprints": "Vänligen lägg till en mapp för /site/blueprints",

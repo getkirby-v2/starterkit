@@ -60,13 +60,13 @@ class Field extends Obj {
   public function _extend($params) {
 
     $extends = $params['extends'];
-    $snippet = f::resolve(kirby()->roots()->blueprints() . DS . 'fields' . DS . $extends, array('yml', 'php', 'yaml'));
+    $file = kirby()->get('blueprint', 'fields/' . $extends);
 
-    if(empty($snippet)) {
+    if(empty($file) || !is_file($file)) {
       throw new Exception(l('fields.error.extended'));
     }
 
-    $yaml   = data::read($snippet, 'yaml');
+    $yaml   = data::read($file, 'yaml');
     $params = a::merge($yaml, $params);
 
     return $params;

@@ -19,7 +19,7 @@
     "installation.check.text": "المشاكل التالية واجهت كيربي أثناء التنصيب…",
     "installation.check.retry": "إعادة المحاولة",
     "installation.check.error": "هناك بعض المشاكل!",
-    "installation.check.error.allowed": "You are only allowed to run the panel installer on a local machine or by setting the option panel.install to true in your /site/config/config.php",
+    "installation.check.error.allowed": "You are only allowed to run the panel installer from the same computer that is the server or by setting the option panel.install to true in your /site/config/config.php",
     "installation.check.error.accounts": "المجلد /site/accounts غير قابل للكتابة",
     "installation.check.error.avatars": "المجلد /assets/avatars غير قابل للكتابة",
     "installation.check.error.blueprints": "فضلا قم بإضافة المجلد /site/blueprints",

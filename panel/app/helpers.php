@@ -29,7 +29,7 @@ function i18n($value) {
 
     if(empty($translation)) {
       // try to fallback to the default language at least
-      $translation = a::get($value, kirby()->option('panel.language'), $this->name());
+      $translation = a::get($value, kirby()->option('panel.language'));
     }
 
     return $translation;

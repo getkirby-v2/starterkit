@@ -62,6 +62,7 @@ class DatetimeField extends BaseField {
       'id'       => 'form-field-' . $this->name() . '-date',
       'required' => $this->required(),
       'readonly' => $this->readonly(),
+      'disabled' => $this->disabled()
     ));
 
     $time = form::field('time', array(
@@ -72,6 +73,7 @@ class DatetimeField extends BaseField {
       'id'       => 'form-field-' . $this->name() . '-time',
       'required' => $this->required(),
       'readonly' => $this->readonly(),
+      'disabled' => $this->disabled()
     ));
 
     $grid  = '<div class="field-grid">';

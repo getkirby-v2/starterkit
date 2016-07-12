@@ -33,7 +33,7 @@ use Kirby\Panel\Models\Page\Blueprint as PageBlueprint;
 
 class Panel {
 
-  static public $version = '2.3.0';
+  static public $version = '2.3.1';
 
   // minimal requirements
   static public $requires = array(
@@ -355,11 +355,11 @@ class Panel {
   }
 
   public function language() {
-    return $this->translation;
+    return $this->translation();
   }
 
   public function direction() {
-    return $this->translation->direction();
+    return $this->translation()->direction();
   }
 
   public function launch($path = null) {

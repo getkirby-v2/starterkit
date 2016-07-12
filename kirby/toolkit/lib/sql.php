@@ -93,21 +93,21 @@ class Sql {
     if(!isset(static::$methods[$type])) static::$methods[$type] = array();
     static::$methods[$type][$name] = $function;
   }
-  
-  /**
-   * Returns a randomly generated binding name
-   *
-   * @param string $label String that contains lowercase letters and numbers to use as a readable identifier
-   * @return string
-   */
-  public static function generateBindingName($label) {
-    // make sure that the binding name is valid to prevent injections
-    if(!preg_match('/^[a-z0-9]+$/', $label)) $label = 'invalid';
-    
-    return ':' . $label . '_' . uniqid();
-  }
 
 }
+
+/**
+ * Returns a randomly generated binding name
+ *
+ * @param string $label String that contains lowercase letters and numbers to use as a readable identifier
+ * @return string
+ */
+sql::registerMethod('generateBindingName', function($sql, $label) {
+  // make sure that the binding name is valid to prevent injections
+  if(!preg_match('/^[a-z0-9]+$/', $label)) $label = 'invalid';
+  
+  return ':' . $label . '_' . uniqid();
+});
 
 /**
  * Builds a select clause
@@ -216,9 +216,9 @@ sql::registerMethod('select', function($sql, $params = array()) {
   if($options['offset'] > 0 || $options['limit']) {
     if(!$options['limit']) $options['limit'] = '18446744073709551615';
     
-    $offsetBinding = sql::generateBindingName('offset');
+    $offsetBinding = $sql->generateBindingName('offset');
     $bindings[$offsetBinding] = $options['offset'];
-    $limitBinding = sql::generateBindingName('limit');
+    $limitBinding = $sql->generateBindingName('limit');
     $bindings[$limitBinding] = $options['limit'];
     
     $query[] = 'LIMIT ' . $offsetBinding . ', ' . $limitBinding;
@@ -365,7 +365,7 @@ sql::registerMethod('values', function($sql, $table, $values, $separator = ', ',
         $value = json_encode($value);
       }
       
-      $valueBinding = sql::generateBindingName('value');
+      $valueBinding = $sql->generateBindingName('value');
       $bindings[$valueBinding] = $value;
       
       $output[] = $key . ' = ' . $valueBinding;
@@ -397,7 +397,7 @@ sql::registerMethod('values', function($sql, $table, $values, $separator = ', ',
         $value = json_encode($value);
       }
       
-      $valueBinding = sql::generateBindingName('value');
+      $valueBinding = $sql->generateBindingName('value');
       $bindings[$valueBinding] = $value;
       
       $output[] = $valueBinding;
@@ -427,7 +427,7 @@ sql::registerMethod('dropTable', function($sql, $table) {
 
 /**
  * Creates a table with a simple scheme array for columns
- * MySQL version
+ * Default version for MySQL
  *
  * @todo  add more options per column
  * @param string $table The table name
@@ -488,7 +488,7 @@ sql::registerMethod('createTable', function($sql, $table, $columns = array()) {
     // default value
     $defaultBinding = null;
     if(isset($column['default'])) {
-      $defaultBinding = sql::generateBindingName('default');
+      $defaultBinding = $sql->generateBindingName('default');
       $bindings[$defaultBinding] = $column['default'];
     }
 
@@ -514,7 +514,7 @@ sql::registerMethod('createTable', function($sql, $table, $columns = array()) {
   $sql->bindings($query, $bindings);
   return $query;
 
-}, 'mysql');
+});
 
 /**
  * Creates a table with a simple scheme array for columns
@@ -659,7 +659,7 @@ sql::registerMethod('unquoteIdentifier', function($sql, $identifier) {
 
 /**
  * Combines an identifier (table and column)
- * MySQL version
+ * Default version for MySQL
  * 
  * @param $table string
  * @param $column string
@@ -671,7 +671,7 @@ sql::registerMethod('combineIdentifier', function($sql, $table, $column, $values
 
   return $sql->quoteIdentifier($table) . '.' . $sql->quoteIdentifier($column);
 
-}, 'mysql');
+});
 
 /**
  * Combines an identifier (table and column)
@@ -693,7 +693,7 @@ sql::registerMethod('combineIdentifier', function($sql, $table, $column, $values
 
 /**
  * Quotes an identifier (table *or* column)
- * MySQL version
+ * Default version for MySQL
  * 
  * @param $identifier string
  * @return string
@@ -709,7 +709,7 @@ sql::registerMethod('quoteIdentifier', function($sql, $identifier) {
   // wrap in backticks
   return '`' . $identifier . '`';
 
-}, 'mysql');
+});
 
 /**
  * Quotes an identifier (table *or* column)
@@ -741,7 +741,7 @@ sql::registerMethod('quoteIdentifier', function($sql, $identifier) {
 sql::registerMethod('tableList', function($sql, $database) {
 
   $bindings = array();
-  $databaseBinding = sql::generateBindingName('database');
+  $databaseBinding = $sql->generateBindingName('database');
   $bindings[$databaseBinding] = $database;
   
   $query = 'SELECT TABLE_NAME AS name FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = ' . $databaseBinding;
@@ -775,9 +775,9 @@ sql::registerMethod('tableList', function($sql, $database) {
 sql::registerMethod('columnList', function($sql, $database, $table) {
 
   $bindings = array();
-  $databaseBinding = sql::generateBindingName('database');
+  $databaseBinding = $sql->generateBindingName('database');
   $bindings[$databaseBinding] = $database;
-  $tableBinding = sql::generateBindingName('table');
+  $tableBinding = $sql->generateBindingName('table');
   $bindings[$tableBinding] = $table;
   
   $query = 'SELECT COLUMN_NAME AS name FROM INFORMATION_SCHEMA.COLUMNS ';

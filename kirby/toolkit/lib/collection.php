@@ -194,10 +194,15 @@ class Collection extends I {
    * @return object a new shuffled collection
    */
   public function shuffle() {
-    $collection = clone $this;
-    $keys = array_keys($collection->data);
+    $keys = array_keys($this->data);
     shuffle($keys);
-    $collection->data = array_merge(array_flip($keys), $collection->data);
+    
+    $collection = clone $this;
+    $collection->data = array();
+    foreach($keys as $key) {
+      $collection->data[$key] = $this->data[$key];
+    }
+    
     return $collection;
   }
 

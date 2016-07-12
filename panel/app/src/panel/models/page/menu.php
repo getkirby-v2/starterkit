@@ -11,6 +11,7 @@ class Menu {
   public $parent;
   public $blueprint;
   public $position;
+  protected $isEmpty = true;
 
   public function __construct($page, $position = 'sidebar') {
     $this->page      = $page;
@@ -49,6 +50,8 @@ class Menu {
 
   public function previewOption() {  
     if($preview = $this->page->url('preview') and $this->page->canShowPreview()) {
+      $this->isEmpty = false;
+
       return $this->item('play-circle-o', 'pages.show.preview', array(
         'href'          => $preview,
         'target'        => '_blank',
@@ -62,6 +65,8 @@ class Menu {
 
   public function editOption() {  
     if($this->position == 'context') {
+      $this->isEmpty = false;
+
       return $this->item('pencil', 'pages.show.subpages.edit', array(
         'href' => $this->page->url('edit'),
       ));      
@@ -71,6 +76,7 @@ class Menu {
   public function statusOption() {
 
     if($this->page->canChangeStatus()) {
+      $this->isEmpty = false;
 
       if($this->page->isInvisible()) {
         $icon  = 'toggle-off';
@@ -93,6 +99,8 @@ class Menu {
 
   public function templateOption() {  
     if($this->page->canChangeTemplate()) {
+      $this->isEmpty = false;
+
       return $this->item('file-code-o', l('pages.show.template') . ': ' . i18n($this->page->blueprint()->title()), array(
         'href'          => $this->modalUrl('template'),
         'data-modal'    => true,
@@ -105,6 +113,8 @@ class Menu {
 
   public function urlOption() {
     if($this->page->canChangeUrl()) {
+      $this->isEmpty = false;
+
       return $this->item('chain', 'pages.show.changeurl', array(
         'href'          => $this->modalUrl('url'),
         'title'         => 'u',
@@ -118,6 +128,8 @@ class Menu {
 
   public function deleteOption() {
     if($this->page->isDeletable()) {
+      $this->isEmpty = false;
+
       return $this->item('trash-o', 'pages.show.delete', array(
         'href'          => $this->modalUrl('delete'),
         'title'         => '#',
@@ -153,6 +165,10 @@ class Menu {
       return $list;
     }
 
+  }
+
+  public function isEmpty() {
+    return $this->isEmpty;
   }
 
   public function __toString() {

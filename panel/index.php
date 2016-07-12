@@ -23,8 +23,11 @@ if(file_exists($index . DS . 'site.php')) {
 }
 
 // fix the base url for the kirby installation
-if(!isset($kirby->urls->index)) {
-  $kirby->urls->index = dirname($kirby->url());
+// we always need to call the index() method because
+// it needs to detect the URL for the check below to work
+$indexUrl = $kirby->urls()->index();
+if($kirby->urls()->indexDetected === true) {
+  $kirby->urls->index = dirname($indexUrl);
 }
 
 // the default index directory

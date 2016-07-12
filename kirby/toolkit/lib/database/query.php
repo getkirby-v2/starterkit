@@ -95,6 +95,7 @@ class Query {
    * Reset the query class after each db hit
    */
   protected function reset() {
+    $this->bindings = array();
     $this->join     = null;
     $this->select   = null;
     $this->distinct = null;
@@ -104,9 +105,9 @@ class Query {
     $this->group    = null;
     $this->having   = null;
     $this->order    = null;
-    $this->offset   = null;
+    $this->offset   = 0;
     $this->limit    = null;
-    $this->debug    = null;
+    $this->debug    = false;
   }
 
   /**
@@ -873,7 +874,7 @@ class Query {
             $values   = array();
             $bindings = array();
             foreach($args[2] as $value) {
-              $valueBinding = sql::generateBindingName('value');
+              $valueBinding = $sql->generateBindingName('value');
               $bindings[$valueBinding] = $value;
               $values[] = $valueBinding;
             }
@@ -896,7 +897,7 @@ class Query {
               'REGEXP', 'NOT REGEXP'
             ))) throw new Error('Invalid predicate/operator ' . $predicate);
               
-            $valueBinding = sql::generateBindingName('value');
+            $valueBinding = $sql->generateBindingName('value');
             $bindings[$valueBinding] = $args[2];
             
             $result = $key . ' ' . $predicate . ' ' . $valueBinding;

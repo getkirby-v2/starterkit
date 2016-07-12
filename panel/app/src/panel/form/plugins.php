@@ -24,7 +24,7 @@ class Plugins {
 
     // load the default panel fields first, because they can be overwritten
     foreach(dir::read(form::$root['default']) as $name) {
-      $kirby->set('field', $name, form::$root['default'] . DS . $name);
+      $kirby->set('field', $name, form::$root['default'] . DS . $name, true);
     }
 
     // load the plugin fields again. A bit hacky, but works
@@ -34,7 +34,7 @@ class Plugins {
 
     // load all custom fields, which can overwrite all the others
     foreach(dir::read(form::$root['custom']) as $name) {
-      $kirby->set('field', $name, form::$root['custom'] . DS . $name);
+      $kirby->set('field', $name, form::$root['custom'] . DS . $name, true);
     }
 
   }

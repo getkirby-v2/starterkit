@@ -19,7 +19,7 @@
     "installation.check.text": "Kirbyのインストールプロセスで以下の問題が発生しました",
     "installation.check.retry": "リトライ",
     "installation.check.error": "次の項目を確認してください。",
-    "installation.check.error.allowed": "You are only allowed to run the panel installer on a local machine or by setting the option panel.install to true in your /site/config/config.php",
+    "installation.check.error.allowed": "You are only allowed to run the panel installer from the same computer that is the server or by setting the option panel.install to true in your /site/config/config.php",
     "installation.check.error.accounts": "/site/accounts に書き込み権限がありません",
     "installation.check.error.avatars": "/assets/avatars に書き込み権限がありません",
     "installation.check.error.blueprints": "/site/blueprints フォルダがありません",

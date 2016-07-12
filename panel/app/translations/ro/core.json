@@ -19,7 +19,7 @@
     "installation.check.text": "Sistemul a întâmpinat următoarele probleme în timpul instalării:",
     "installation.check.retry": "Ignoră",
     "installation.check.error": "Sunt câteva probleme!",
-    "installation.check.error.allowed": "You are only allowed to run the panel installer on a local machine or by setting the option panel.install to true in your /site/config/config.php",
+    "installation.check.error.allowed": "You are only allowed to run the panel installer from the same computer that is the server or by setting the option panel.install to true in your /site/config/config.php",
     "installation.check.error.accounts": "Directorul <i>/site/accounts</i> nu are permisiuni de scriere.",
     "installation.check.error.avatars": "Directorul <i>/assets/avatars</i> nu are permisiuni de scriere.",
     "installation.check.error.blueprints": "Creează te rog directorul <i>/site/blueprints</i>!",

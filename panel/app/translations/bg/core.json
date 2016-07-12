@@ -19,7 +19,7 @@
     "installation.check.text": "Kirby откри следните проблеми по време на инсталацията...",
     "installation.check.retry": "Опитай пак",
     "installation.check.error": "Има няколко проблема!",
-    "installation.check.error.allowed": "You are only allowed to run the panel installer on a local machine or by setting the option panel.install to true in your /site/config/config.php",
+    "installation.check.error.allowed": "You are only allowed to run the panel installer from the same computer that is the server or by setting the option panel.install to true in your /site/config/config.php",
     "installation.check.error.accounts": "папката /site/accounts не е записваема",
     "installation.check.error.avatars": "Папката assets/avatars не е записваема",
     "installation.check.error.blueprints": "моля добавете папка /site/blueprints",

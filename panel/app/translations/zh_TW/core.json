@@ -19,7 +19,7 @@
     "installation.check.text": "Kirby在安裝過程中遇到以下問題…",
     "installation.check.retry": "重試",
     "installation.check.error": "這裡發生了一些問題!",
-    "installation.check.error.allowed": "You are only allowed to run the panel installer on a local machine or by setting the option panel.install to true in your /site/config/config.php",
+    "installation.check.error.allowed": "You are only allowed to run the panel installer from the same computer that is the server or by setting the option panel.install to true in your /site/config/config.php",
     "installation.check.error.accounts": "您沒有「/site/accounts」資料夾的修改權限",
     "installation.check.error.avatars": "您沒有「/assets/avatars」資料夾的修改權限",
     "installation.check.error.blueprints": "請新增「/site/blueprints」資料夾",

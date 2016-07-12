@@ -19,7 +19,7 @@
     "installation.check.text": "Kirby ha trobat els següents problemes durant l'instal·lació…",
     "installation.check.retry": "Reintentar",
     "installation.check.error": "Hi ha alguns problemes!",
-    "installation.check.error.allowed": "You are only allowed to run the panel installer on a local machine or by setting the option panel.install to true in your /site/config/config.php",
+    "installation.check.error.allowed": "You are only allowed to run the panel installer from the same computer that is the server or by setting the option panel.install to true in your /site/config/config.php",
     "installation.check.error.accounts": "/site/accounts no té permís d'escriptura",
     "installation.check.error.avatars": "/assets/avatars no té permís d'escriptura",
     "installation.check.error.blueprints": "Afegeix el directori /site/blueprints",
