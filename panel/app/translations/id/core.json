@@ -272,6 +272,7 @@
     "fields.structure.add.first": "Tambahkan entri pertama",
     "fields.structure.empty": "Belum ada entri",
     "fields.structure.entry.error": "The item could not be found",
+    "fields.structure.max.error": "No new items allowed or field is readonly",
     "fields.structure.cancel": "Batal",
     "fields.structure.save": "Simpan",
     "fields.structure.edit": "Sunting",

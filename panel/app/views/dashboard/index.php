@@ -26,9 +26,9 @@
           <span class="hgroup-option-right">
             <?php foreach($widget['options'] as $option): ?>
             <?php if(!empty($option['key'])): ?>
-            <a title="<?php __($option['key']) ?>"<?php e(a::get($option, 'modal'), ' data-modal') ?> data-shortcut="<?php __($option['key']) ?>" href="<?php __($option['link']) ?>">
+            <a title="<?php __($option['key']) ?>"<?php e(a::get($option, 'modal'), ' data-modal') ?><?php e(a::get($option, 'target'), ' target="' . a::get($option, 'target') . '"') ?> data-shortcut="<?php __($option['key']) ?>" href="<?php __($option['link']) ?>">
             <?php else: ?>
-            <a title="<?php __($option['text']) ?>"<?php e(a::get($option, 'modal'), ' data-modal') ?> href="<?php __($option['link']) ?>">            
+            <a title="<?php __($option['text']) ?>"<?php e(a::get($option, 'modal'), ' data-modal') ?><?php e(a::get($option, 'target'), ' target="' . a::get($option, 'target') . '"') ?> href="<?php __($option['link']) ?>">            
             <?php endif ?>
               <?php i($option['icon'], 'left') ?><span><?php __($option['text']) ?></span>
             </a>

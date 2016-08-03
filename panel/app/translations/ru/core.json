@@ -272,6 +272,7 @@
     "fields.structure.add.first": "Добавить первую запись",
     "fields.structure.empty": "Пока нет записей.",
     "fields.structure.entry.error": "The item could not be found",
+    "fields.structure.max.error": "No new items allowed or field is readonly",
     "fields.structure.cancel": "Отмена",
     "fields.structure.save": "Сохранить",
     "fields.structure.edit": "Настроить",

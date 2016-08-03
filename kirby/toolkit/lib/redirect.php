@@ -28,9 +28,18 @@ class Redirect {
   /**
    * Redirects to a specific URL. You can pass either a normal URI
    * a controller path or simply nothing (which redirects home)
+   * You can also pass a second param with the HTTP status code
    */
   public static function to() {
-    static::send(call_user_func_array(array('url', 'to'), func_get_args()));
+    $args = func_get_args();
+
+    // if the last element is a number, use it as HTTP status code
+    $code = false;
+    if(is_int(end($args))) {
+      $code = array_pop($args);
+    }
+
+    return static::send(call_user_func_array(array('url', 'to'), $args), $code);
   }
 
   /**

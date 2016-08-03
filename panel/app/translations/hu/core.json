@@ -272,6 +272,7 @@
     "fields.structure.add.first": "Első bejegyzés hozzáadása",
     "fields.structure.empty": "Nincs még bejegyzés",
     "fields.structure.entry.error": "Az elem nem található",
+    "fields.structure.max.error": "No new items allowed or field is readonly",
     "fields.structure.cancel": "Mégse",
     "fields.structure.save": "Mentés",
     "fields.structure.edit": "Szerkeszt",

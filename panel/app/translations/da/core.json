@@ -272,6 +272,7 @@
     "fields.structure.add.first": "Tilføj den første indtastning",
     "fields.structure.empty": "Ingen indtastninger endnu.",
     "fields.structure.entry.error": "Emnet blev ikke fundet",
+    "fields.structure.max.error": "No new items allowed or field is readonly",
     "fields.structure.cancel": "Annuller",
     "fields.structure.save": "Gem",
     "fields.structure.edit": "Rediger",

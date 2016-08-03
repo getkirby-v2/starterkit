@@ -50,7 +50,7 @@ class Widgets extends Collection {
     $root  = panel()->roots()->widgets();
 
     foreach(dir::read($root) as $dir) {
-      $kirby->registry->set('widget', $dir, $root . DS . $dir);
+      $kirby->registry->set('widget', $dir, $root . DS . $dir, true);
     }
 
   }
@@ -61,7 +61,7 @@ class Widgets extends Collection {
     $root  = $kirby->roots()->widgets();
 
     foreach(dir::read($root) as $dir) {
-      $kirby->registry->set('widget', $dir, $root . DS . $dir);
+      $kirby->registry->set('widget', $dir, $root . DS . $dir, true);
     }
 
   }

@@ -272,6 +272,7 @@
     "fields.structure.add.first": "افزودن نخستین مورد",
     "fields.structure.empty": "موردی وجود ندارد.",
     "fields.structure.entry.error": "آیتم یافت نشد",
+    "fields.structure.max.error": "No new items allowed or field is readonly",
     "fields.structure.cancel": "انصراف",
     "fields.structure.save": "تایید",
     "fields.structure.edit": "ویرایش",

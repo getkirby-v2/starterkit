@@ -4,8 +4,8 @@ class TextField extends InputField {
 
   public $type     = 'text';
   public $validate = array(
-    'min' => 0,
-    'max' => null
+    'minLength' => 0,
+    'maxLength' => null
   );
 
   static public $assets = array(
@@ -14,20 +14,20 @@ class TextField extends InputField {
     )
   );
 
-  public function min() {
-    return isset($this->validate['min']) ? $this->validate['min'] : false;
+  public function minLength() {
+    return isset($this->validate['minLength']) ? $this->validate['minLength'] : false;
   }
 
-  public function max() {
-    return isset($this->validate['max']) ? $this->validate['max'] : false;
+  public function maxLength() {
+    return isset($this->validate['maxLength']) ? $this->validate['maxLength'] : false;
   }
 
   public function input() {
 
     $input = parent::input();
 
-    if(!$this->readonly() && ($this->min() || $this->max())) {
-      $input->data('max', $this->max())->data('min', $this->min());
+    if(!$this->readonly() && ($this->minLength() || $this->maxLength())) {
+      $input->data('max', $this->maxLength())->data('min', $this->minLength());
     }
 
     return $input;
@@ -36,8 +36,8 @@ class TextField extends InputField {
 
   public function outsideRange($length) {
 
-    if($this->min() && $length < $this->min()) return true;
-    if($this->max() && $length > $this->max()) return true;
+    if($this->minLength() && $length < $this->minLength()) return true;
+    if($this->maxLength() && $length > $this->maxLength()) return true;
 
     return false;
 
@@ -45,19 +45,19 @@ class TextField extends InputField {
 
   public function counter() {
 
-    if(!$this->min() && !$this->max() || $this->readonly()) return null;
+    if(!$this->minLength() && !$this->maxLength() || $this->readonly()) return null;
 
     $counter = new Brick('div');
     $counter->addClass('field-counter marginalia text');
 
-    $length = str::length($this->value());
+    $length = str::length(trim($this->value()));
 
     if($this->outsideRange($length)) {
       $counter->addClass('outside-range');
     }
 
     $counter->data('field', 'counter');
-    $counter->html($length . ($this->max() ? '/' . $this->max() : ''));
+    $counter->html($length . ($this->maxLength() ? '/' . $this->maxLength() : ''));
 
     return $counter;
 

@@ -101,13 +101,16 @@ class Site extends \Site {
 
   public function update($input = array(), $lang = null) {
 
+    // keep the old state of the site object
+    $old = clone $this;
+
     $data = $this->filterInput($input);
 
     $this->changes()->discard();
 
     parent::update($data, $lang);
 
-    kirby()->trigger('panel.site.update', $this);
+    kirby()->trigger('panel.site.update', array($this, $old));
 
   }
 

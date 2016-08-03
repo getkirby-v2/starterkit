@@ -20,7 +20,8 @@ class Yaml {
    * @return string
    */
   public static function encode($array) {
-    return preg_replace('!^---\n!', '', spyc::yamldump($array));
+    // don't include the opening dashes
+    return spyc::yamldump($array, false, false, true);
   }
 
   /**

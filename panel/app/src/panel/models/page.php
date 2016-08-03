@@ -284,7 +284,8 @@ class Page extends \Page {
 
   public function move($uid) {
 
-    $old = clone($this);
+    // keep the old state of the page object
+    $old = clone $this;
 
     if(!$this->canChangeUrl()) {
       throw new Exception(l('pages.url.error.rights'));
@@ -323,6 +324,9 @@ class Page extends \Page {
 
   public function sort($to = null) {
 
+    // keep the old state of the page object
+    $old = clone $this;
+
     if($this->isErrorPage()) {
       return $this->num();
     }
@@ -332,16 +336,13 @@ class Page extends \Page {
       return false;      
     }
 
-    // store the old number
-    $oldNum = $this->num();
-
     // run the sorter
     $this->sorter()->to($to);    
 
     // run the hook if the number changed
-    if($oldNum != $this->num()) {
+    if($old->num() != $this->num()) {
       // hit the hook
-      kirby()->trigger('panel.page.sort', $this);
+      kirby()->trigger('panel.page.sort', array($this, $old));
     }
 
     return $this->num();
@@ -354,6 +355,9 @@ class Page extends \Page {
 
   public function hide() {
 
+    // keep the old state of the page object
+    $old = clone $this;
+
     // don't hide pages, which are not allowed to change their status
     if(!$this->canChangeStatus()) {
       return false;
@@ -361,7 +365,7 @@ class Page extends \Page {
 
     parent::hide();
     $this->sorter()->hide();
-    kirby()->trigger('panel.page.hide', $this);
+    kirby()->trigger('panel.page.hide', array($this, $old));
 
   }
 
@@ -441,6 +445,9 @@ class Page extends \Page {
 
   public function update($data = array(), $lang = null) {
 
+    // keep the old state of the page object
+    $old = clone $this;
+
     $this->changes()->discard();
     
     parent::update($data, $lang);
@@ -449,7 +456,7 @@ class Page extends \Page {
     // changed for example
     $this->updateNum();
 
-    kirby()->trigger('panel.page.update', $this);
+    kirby()->trigger('panel.page.update', array($this, $old));
 
     // add the page to the history
     $this->addToHistory();

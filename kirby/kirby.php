@@ -9,7 +9,7 @@ use Kirby\Urls;
 
 class Kirby {
 
-  static public $version = '2.3.1';
+  static public $version = '2.3.2';
   static public $instance;
   static public $hooks = array();
   static public $triggered = array();
@@ -697,10 +697,15 @@ class Kirby {
   /**
    * Register a new hook
    * 
-   * @param string $hook The name of the hook
+   * @param string/array $hook The name of the hook
    * @param closure $callback
    */
   public function hook($hook, $callback) {
+
+    if(is_array($hook)) {
+      foreach($hook as $h) $this->hook($h, $callback);
+      return;
+    }
 
     if(isset(static::$hooks[$hook]) and is_array(static::$hooks[$hook])) {
       static::$hooks[$hook][] = $callback;

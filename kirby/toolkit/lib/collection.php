@@ -9,7 +9,7 @@
  * @copyright Bastian Allgeier
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
-class Collection extends I {
+class Collection extends I implements Countable {
 
   public static $filters = array();
 
@@ -340,7 +340,7 @@ class Collection extends I {
         } else {
           ${"param_$i"} = array();
           foreach($array as $index => $row) {
-            ${"param_$i"}[$index] = is_array($row) ? str::lower($row[$param]) : str::lower($row->$param());
+            ${"param_$i"}[$index] = str::ascii(is_array($row) ? str::lower($row[$param]) : str::lower($row->$param()));
           }
         }
       } else {
@@ -497,6 +497,34 @@ class Collection extends I {
 
   }
 
+  /**
+   * Creates chunks of the same size
+   * The last chunk may be smaller
+   *
+   * @param int $size Number of items per chunk
+   * @return object A new collection with an item for each chunk and a subcollection in each chunk
+   */
+  public function chunk($size) {
+
+    // create a multidimensional array that is chunked with the given chunk size
+    // keep keys of the items
+    $chunks = array_chunk($this->data, $size, true);
+
+    // convert each subcollection to a collection object
+    $chunkCollections = array();
+    foreach($chunks as $items) {
+      // we clone $this instead of creating a new object because
+      // different collections may have different constructors
+      $collection = clone $this;
+      $collection->data = $items;
+      $chunkCollections[] = $collection;
+    }
+
+    // convert the array of chunks to a collection object
+    return new Collection($chunkCollections);
+
+  }
+
   public function set($key, $value) {
     if(is_array($key)) {
       $this->data = array_merge($this->data, $key);
@@ -571,6 +599,30 @@ collection::$filters['=='] = function($collection, $field, $value, $split = fals
 
 };
 
+// take all elements that match one element from the passed array
+collection::$filters['in'] = function($collection, $field, $value, $split = false) {
+  if(!is_array($value)) $value = [$value];
+
+  foreach($collection->data as $key => $item) {
+
+    if($split) {
+      $values = str::split((string)collection::extractValue($item, $field), $split);
+
+      $match = false;
+      foreach($value as $v) {
+        if(in_array($v, $values)) $match = true;
+      }
+      if(!$match) unset($collection->$key);
+    } else if(!in_array(collection::extractValue($item, $field), $value)) {
+      unset($collection->$key);
+    }
+
+  }
+
+  return $collection;
+
+};
+
 // take all elements that won't match
 collection::$filters['!='] = function($collection, $field, $value, $split = false) {
 
@@ -581,6 +633,31 @@ collection::$filters['!='] = function($collection, $field, $value, $split = fals
     } else if(collection::extractValue($item, $field) == $value) {
       unset($collection->$key);
     }
+  }
+
+  return $collection;
+
+};
+
+// take all elements that don't match an element from the passed array
+collection::$filters['not in'] = function($collection, $field, $value, $split = false) {
+  if(!is_array($value)) $value = [$value];
+
+  foreach($collection->data as $key => $item) {
+
+    if($split) {
+      $values = str::split((string)collection::extractValue($item, $field), $split);
+
+      foreach($value as $v) {
+        if(in_array($v, $values)) {
+          unset($collection->$key);
+          break;
+        }
+      }
+    } else if(in_array(collection::extractValue($item, $field), $value)) {
+      unset($collection->$key);
+    }
+
   }
 
   return $collection;

@@ -272,6 +272,7 @@
     "fields.structure.add.first": "新增第一筆資料",
     "fields.structure.empty": "還沒有資料",
     "fields.structure.entry.error": "The item could not be found",
+    "fields.structure.max.error": "No new items allowed or field is readonly",
     "fields.structure.cancel": "取消",
     "fields.structure.save": "儲存",
     "fields.structure.edit": "編輯",

@@ -28,6 +28,9 @@ class User extends \User {
 
   public function update($data = array()) {
 
+    // keep the old state of the user object
+    $old = clone $this;
+
     if(!panel()->user()->isAdmin() and !$this->isCurrent()) {
       throw new Exception(l('users.form.error.update.rights'));
     }
@@ -58,7 +61,7 @@ class User extends \User {
     // used somewhere on the site (i.e. for profiles)
     kirby()->cache()->flush();
 
-    kirby()->trigger('panel.user.update', $this);
+    kirby()->trigger('panel.user.update', array($this, $old));
 
     return $this;
 

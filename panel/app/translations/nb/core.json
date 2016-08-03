@@ -272,6 +272,7 @@
     "fields.structure.add.first": "Legg til den første oppføringen",
     "fields.structure.empty": "Ingen oppføringer enda",
     "fields.structure.entry.error": "Elementet kunne ikke bli funnet",
+    "fields.structure.max.error": "No new items allowed or field is readonly",
     "fields.structure.cancel": "Avbryt",
     "fields.structure.save": "Lagre",
     "fields.structure.edit": "Rediger",

@@ -272,6 +272,7 @@
     "fields.structure.add.first": "Add the first entry",
     "fields.structure.empty": "No entries yet.",
     "fields.structure.entry.error": "该条目无法找到",
+    "fields.structure.max.error": "No new items allowed or field is readonly",
     "fields.structure.cancel": "取消",
     "fields.structure.save": "确认",
     "fields.structure.edit": "编辑",

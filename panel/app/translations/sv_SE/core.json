@@ -272,6 +272,7 @@
     "fields.structure.add.first": "Lägg till första posten",
     "fields.structure.empty": "Inga poster än.",
     "fields.structure.entry.error": "Artikeln kan ej hittas",
+    "fields.structure.max.error": "No new items allowed or field is readonly",
     "fields.structure.cancel": "Avbryt",
     "fields.structure.save": "Spara",
     "fields.structure.edit": "Ändra",

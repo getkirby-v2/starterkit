@@ -11,8 +11,6 @@ class TextareaField extends TextField {
   public function __construct() {
     $this->label   = l::get('fields.textarea.label', 'Text');
     $this->buttons = true;
-    $this->min     = 0;
-    $this->max     = false;
   }
 
   public function routes() {
@@ -76,19 +74,6 @@ class TextareaField extends TextField {
   public function buttons() {
     require_once(__DIR__ . DS . 'buttons.php');
     return new Buttons($this, $this->buttons);
-  }
-
-  public function validate() {
-
-    if($this->validate and is_array($this->validate)) {
-      return parent::validate();
-    } else {
-      if($this->min and !v::min($this->result(), $this->min)) return false;
-      if($this->max and !v::max($this->result(), $this->max)) return false;
-    }
-
-    return true;
-
   }
 
 }

@@ -272,6 +272,7 @@
     "fields.structure.add.first": "最初のカードを作成してください。",
     "fields.structure.empty": "カードがありません。",
     "fields.structure.entry.error": "The item could not be found",
+    "fields.structure.max.error": "No new items allowed or field is readonly",
     "fields.structure.cancel": "キャンセル",
     "fields.structure.save": "保存",
     "fields.structure.edit": "編集",

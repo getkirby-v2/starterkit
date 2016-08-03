@@ -359,6 +359,23 @@ class Url {
   }
 
   /**
+   * Tries to convert an internationalized domain name to
+   * the UTF8 representation
+   * Requires the intl PHP extension
+   *
+   * @param string $url
+   * @return string
+   */
+  public static function idn($url) {
+
+    if(static::isAbsolute($url)) $url = static::short($url);
+
+    if(!function_exists('idn_to_utf8')) return $url;
+    return idn_to_utf8($url);
+
+  }
+
+  /**
    * Returns the URL for document root no 
    * matter what the path is. 
    * 

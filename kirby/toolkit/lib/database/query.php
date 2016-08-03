@@ -548,6 +548,7 @@ class Query {
 
     $fetch  = $this->fetch;
     $row    = $this->select($method . '(' . $column . ') as aggregation')->fetch('Obj')->first();
+    if($this->debug) return $row;
     $result = $row ? $row->get('aggregation') : $default;
     $this->fetch($fetch);
     return $result;
@@ -650,13 +651,21 @@ class Query {
     $counter = clone $this;
 
     // count the total number of rows for this query
-    $count = $counter->count();
+    $count = $counter->debug(false)->count();
 
     // pagination
     $pagination = new Pagination($count, $limit, $options);
 
     // apply it to the dataset and retrieve all rows. make sure to use Collection as the iterator to be able to attach the pagination object
-    $collection = $this->offset($pagination->offset())->limit($pagination->limit())->all();
+    $iterator = $this->iterator;
+    $collection = $this->offset($pagination->offset())->limit($pagination->limit())->iterator('Collection')->all();
+    $this->iterator($iterator);
+
+    // return debug information if debug mode is active
+    if($this->debug) {
+      $collection['totalcount'] = $count;
+      return $collection;
+    }
 
     // store all pagination vars in a separate object
     if($collection) $collection->paginate($pagination);
@@ -694,6 +703,7 @@ class Query {
       'iterator' => 'array',
       'fetch'    => 'array',
     ));
+    if($this->debug) return $results;
 
     $results = a::extract($results, $column);
 
@@ -733,6 +743,7 @@ class Query {
    */
   public function insert($values = null) {
     $query = $this->execute($this->values($values)->build('insert'));
+    if($this->debug) return $query;
     return ($query) ? $this->database->lastId() : false;
   }
 

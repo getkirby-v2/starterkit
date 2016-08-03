@@ -272,6 +272,7 @@
     "fields.structure.add.first": "Добавете първото въвеждане",
     "fields.structure.empty": "Няма все още въвеждания",
     "fields.structure.entry.error": "Това не може да бъде намерено",
+    "fields.structure.max.error": "No new items allowed or field is readonly",
     "fields.structure.cancel": "Откажи",
     "fields.structure.save": "Ок",
     "fields.structure.edit": "Редактирай",

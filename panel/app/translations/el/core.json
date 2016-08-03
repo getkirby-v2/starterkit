@@ -272,6 +272,7 @@
     "fields.structure.add.first": "Προσθέστε την πρώτη σας καταχώριση",
     "fields.structure.empty": "Δεν υπάρχουν ακόμη καταχωρίσεις.",
     "fields.structure.entry.error": "Το αντικείμενο δεν μπορούσε να βρεθεί",
+    "fields.structure.max.error": "No new items allowed or field is readonly",
     "fields.structure.cancel": "Ακύρωση",
     "fields.structure.save": "Εντάξει",
     "fields.structure.edit": "Επεξεργασία",

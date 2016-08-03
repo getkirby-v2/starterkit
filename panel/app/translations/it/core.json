@@ -272,6 +272,7 @@
     "fields.structure.add.first": "Aggiungi il primo elemento",
     "fields.structure.empty": "Non ci sono ancora elementi.",
     "fields.structure.entry.error": "L'elemento non esiste",
+    "fields.structure.max.error": "No new items allowed or field is readonly",
     "fields.structure.cancel": "Annulla",
     "fields.structure.save": "Salva",
     "fields.structure.edit": "Modifica",
