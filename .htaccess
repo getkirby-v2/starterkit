@@ -16,6 +16,9 @@ RewriteEngine on
 #
 # RewriteBase /mysite
 
+# block .git from being accessed directly
+RewriteRule ^(.*/)?\.git/$ index.php [L]
+
 # block text files in the content folder from being accessed directly
 RewriteRule ^content/(.*)\.(txt|md|mdown)$ index.php [L]
 
