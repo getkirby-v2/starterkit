@@ -10,12 +10,12 @@ class UI {
     $this->page = $page;
   }
 
+  public function show() {
+    return $this->page->options()->show();
+  }
+
   public function read() {
-    if($this->page->options()->read() === false) {
-      return false;
-    } else {
-      return $this->page->event('read:ui')->isAllowed();      
-    }
+    return $this->page->event('read:ui')->isAllowed();      
   }
 
   public function create() {

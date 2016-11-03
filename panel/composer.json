@@ -3,7 +3,7 @@
   "description": "The Kirby 2 panel.",
   "keywords": ["panel", "kirby", "cms"],
   "homepage": "https://getkirby.com",
-  "license": "https://getkirby.com/license",
+  "license": "proprietary",
   "authors": [
     {
       "name": "Bastian Allgeier",

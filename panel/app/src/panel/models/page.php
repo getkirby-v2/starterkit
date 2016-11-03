@@ -295,11 +295,6 @@ class Page extends \Page {
 
   public function sort($to = null) {
 
-    // check if sorting is available at all
-    if($this->options()->visibility() === false) {
-      throw new PermissionsException();
-    }
-
     // keep the old state of the page object
     $old   = clone $this;
     $event = $this->event('visibility:action', [
