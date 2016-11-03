@@ -4,18 +4,8 @@ use Kirby\Panel\Form;
 
 class DatetimeField extends BaseField {
 
-  public function __construct() {
-
-    $this->date = array(
-      'format'   => 'YYYY-MM-DD'
-    );
-
-    $this->time = array(
-      'interval' => 60,
-      'format'   => 24
-    );
-
-  }
+  public $date = [];
+  public $time = [];
 
   public function validate() {
     
@@ -33,48 +23,28 @@ class DatetimeField extends BaseField {
 
     $value = array_filter($this->value());
 
-    if(empty($value) or !isset($value['date']) or !isset($value['time'])) {
+    if(empty($value) || !isset($value['date'])) {
       return '';
     }
 
-    return a::get($value, 'date') . ' ' . a::get($value, 'time') . ':00';
+    $date = a::get($value, 'date');
+    $time = a::get($value, 'time');
+
+    return empty($time) ? $date : $date . ' ' . $time . ':00';
 
   } 
 
   public function content() {
 
-    if(is_array($this->value())) {
-      $timestamp = strtotime($this->result());      
-    } else {
-      $timestamp = strtotime($this->value());      
-    }
+    $value = $this->value();
 
-    $dateDefault = a::get($this->date, 'default', ($this->required() ? 'now' : false));
-    $timeDefault = a::get($this->time, 'default', ($this->required() ? 'now' : false));
+    if(is_array($value)) {
+      $value = $this->result();
+    } 
 
-    $dateValue = $timestamp ? date('Y-m-d', $timestamp) : $dateDefault;
-    $timeValue = $timestamp ? date('H:i', $timestamp)   : $timeDefault;
-
-    $date = form::field('date', array(
-      'name'     => $this->name() . '[date]',
-      'value'    => $dateValue,
-      'format'   => a::get($this->date, 'format', 'YYYY-MM-DD'),      
-      'id'       => 'form-field-' . $this->name() . '-date',
-      'required' => $this->required(),
-      'readonly' => $this->readonly(),
-      'disabled' => $this->disabled()
-    ));
-
-    $time = form::field('time', array(
-      'name'     => $this->name() . '[time]',
-      'value'    => $timeValue,
-      'format'   => a::get($this->time, 'format', 24),
-      'interval' => a::get($this->time, 'interval', 60),
-      'id'       => 'form-field-' . $this->name() . '-time',
-      'required' => $this->required(),
-      'readonly' => $this->readonly(),
-      'disabled' => $this->disabled()
-    ));
+    $ts   = strtotime($value);      
+    $date = $this->dateField($value, $ts);
+    $time = $this->timeField($value, $ts);
 
     $grid  = '<div class="field-grid">';
     $grid .= '<div class="field-grid-item field-grid-item-1-2">' . $date->content() . '</div>';
@@ -82,6 +52,96 @@ class DatetimeField extends BaseField {
     $grid .= '</div>';
 
     return $grid;
+
+  }
+
+  public function dateOptions() {
+
+    $options = array_merge([
+      'format'   => 'YYYY-MM-DD',
+      'required' => $this->required(),
+      'default'  => false,
+    ], (array)$this->date);
+
+    if($options['required'] && !$options['default']) {
+      $options['default'] = 'now';
+    }
+
+    return $options;
+
+  }
+
+  public function dateValue($timestamp, $default) {
+    return $timestamp ? date('Y-m-d', $timestamp) : $default;
+  }
+
+  public function dateField($value, $timestamp) {
+
+    $options = $this->dateOptions();
+    $value   = $this->dateValue($timestamp, $options['default']);
+
+    return form::field('date', array(
+      'name'     => $this->name() . '[date]',
+      'id'       => 'form-field-' . $this->name() . '-date',
+      'value'    => $value,
+      'format'   => $options['format'],      
+      'required' => $options['required'],
+      'readonly' => $this->readonly(),
+      'disabled' => $this->disabled()
+    ));
+
+  }
+
+  public function timeOptions() {
+
+    $options = array_merge([
+      'interval' => 60,
+      'format'   => 24,
+      'required' => null,
+      'default'  => false,
+    ], (array)$this->time);
+
+    if($this->required() && $options['required'] !== false) {
+      $options['required'] = true;
+    }
+
+    if($options['required'] && !$options['default']) {
+      $options['default'] = date('H:i');
+    }
+
+    return $options;
+
+  } 
+
+  public function timeExists($date) {
+    return !preg_match('!^[0-9]{4}-[0-9]{2}-[0-9]{2}$!', $date);
+  }
+
+  public function timeValue($value, $timestamp, $default) {
+
+    if($this->timeExists($value)) {
+      return $timestamp ? date('H:i', $timestamp) : $default;      
+    } else {
+      return $default;
+    }
+
+  }
+
+  public function timeField($value, $timestamp) {
+
+    $options = $this->timeOptions();
+    $value   = $this->timeValue($value, $timestamp, $options['default']);
+
+    return form::field('time', array(
+      'name'     => $this->name() . '[time]',
+      'id'       => 'form-field-' . $this->name() . '-time',
+      'value'    => $value,
+      'format'   => $options['format'],
+      'interval' => $options['interval'],
+      'required' => $options['required'],
+      'readonly' => $this->readonly(),
+      'disabled' => $this->disabled()
+    ));
 
   }
 

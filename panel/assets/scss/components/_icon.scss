@@ -1,0 +1,32 @@
+.fa.icon {
+  font-size: 14px;
+}
+.fa.fa-lg.icon {
+  font-size: 20px;
+}
+
+.icon {
+  font-size: 14px;
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+}
+.icon-left {
+  body.ltr & {
+    padding-right: .5em;
+  }
+  body.rtl & {
+    padding-left: .5em;
+  }
+}
+.icon-right {
+  body.ltr & {
+    padding-left: .5em;
+  }
+  body.rtl & {
+    padding-right: .5em;
+  }
+}

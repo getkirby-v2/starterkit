@@ -307,6 +307,7 @@
     "editor.image.empty": "Această pagină nu conţine imagini.",
     "autocomplete.method.error": "Invalid autocomplete method",
     "blueprints.error.default.missing": "Missing default blueprint",
+    "permissions.error": "You are not allowed to do this",
     "error": "Eroare",
     "error.headline": "Eroare"
 }

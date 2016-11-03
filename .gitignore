@@ -1,4 +1,30 @@
+# System files
+# ------------
+
+Icon
 .DS_Store
-/site/accounts
-/assets/avatars
+
+# Temporary files
+# ---------------
+
 /thumbs/*
+!/thumbs/index.html
+
+/site/cache/*
+!/site/cache/index.html
+
+# -------------SECURITY-------------
+# NEVER publish these files via Git!
+# -------------SECURITY-------------
+
+# Kirby accounts
+# ---------------
+
+/site/accounts/*
+!/site/accounts/index.html
+
+# Avatars
+# ---------------
+
+/assets/avatars/*
+!/assets/avatars/index.html

@@ -44,7 +44,8 @@ return array(
     'pattern' => 'options',
     'action'  => 'OptionsController::index',
     'method'  => 'GET|POST',
-    'filter'  => 'auth'
+    'filter'  => 'auth',
+    'area'    => 'options'
   ),
 
   // Files
@@ -63,15 +64,6 @@ return array(
       'pages/(:all)/file/(:any)/context',
     ),
     'action'  => 'FilesController::context',
-    'filter'  => 'auth',
-    'method'  => 'GET',
-  ),
-  array(
-    'pattern' => array(
-      'site(/)file/(:any)/thumb',
-      'pages/(:all)/file/(:any)/thumb',
-    ),
-    'action'  => 'FilesController::thumb',
     'filter'  => 'auth',
     'method'  => 'GET',
   ),
@@ -238,25 +230,29 @@ return array(
   array(
     'pattern' => 'users',
     'action'  => 'UsersController::index',
-    'filter'  => 'auth'
+    'filter'  => 'auth',
+    'area'    => 'users'
   ),
   array(
     'pattern' => 'users/add',
     'action'  => 'UsersController::add',
     'filter'  => 'auth',
-    'method'  => 'POST|GET'
+    'method'  => 'POST|GET',
+    'area'    => 'users'
   ),
   array(
     'pattern' => 'users/(:any)/edit',
     'action'  => 'UsersController::edit',
     'filter'  => 'auth',
-    'method'  => 'POST|GET'
+    'method'  => 'POST|GET',
+    'area'    => 'users'
   ),
   array(
     'pattern' => 'users/(:any)/delete',
     'action'  => 'UsersController::delete',
     'filter'  => 'auth',
-    'method'  => 'POST|GET'
+    'method'  => 'POST|GET',
+    'area'    => 'users'
   ),
 
   // Avatars
@@ -264,13 +260,15 @@ return array(
     'pattern' => 'users/(:any)/avatar',
     'action'  => 'AvatarsController::upload',
     'filter'  => 'auth',
-    'method'  => 'POST'
+    'method'  => 'POST',
+    'area'    => 'users'
   ),
   array(
     'pattern' => 'users/(:any)/avatar/delete',
     'action'  => 'AvatarsController::delete',
     'filter'  => 'auth',
-    'method'  => 'POST|GET'
+    'method'  => 'POST|GET',
+    'area'    => 'users'
   ),
 
   // Autocomplete

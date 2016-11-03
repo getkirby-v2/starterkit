@@ -77,4 +77,13 @@ class Translation {
     return $this->code;
   }
 
+  public function __debuginfo() {
+    return [
+      'title'     => $this->title(),
+      'code'      => $this->code(),
+      'root'      => $this->root(),
+      'direction' => $this->direction(),
+    ];
+  }
+
 }

@@ -1,13 +1,25 @@
 <?php
 
+use Kirby\Panel\Exceptions\PermissionsException;
+
 class AvatarsController extends Kirby\Panel\Controllers\Base {
 
   public function upload($username) {
 
-    $user = $this->user($username);
+    $user   = $this->user($username);
+    $avatar = $user->avatar();
 
     try {
-      $user->avatar()->upload();        
+
+      if($avatar->exists() && $avatar->ui()->replace() === false) {
+        throw new PermissionsException();
+      } 
+
+      if(!$avatar->exists() && $avatar->ui()->upload() === false) {
+        throw new PermissionsException();
+      }
+
+      $avatar->upload();        
       $this->notify(':)');
     } catch(Exception $e) {
       $this->alert($e->getMessage());
@@ -24,10 +36,11 @@ class AvatarsController extends Kirby\Panel\Controllers\Base {
     $avatar = $user->avatar();
 
     if(!$avatar->exists()) {
-      return $this->modal('error', array(
-        'text' => l('users.avatar.missing'),
-        'back' => $user->url()
-      ));
+      throw new Exception(l('users.avatar.missing'));
+    }
+
+    if($avatar->ui()->delete() === false) {
+      throw new PermissionsException();
     }
 
     $form = $avatar->form('delete', function($form) use($user, $avatar, $self) {

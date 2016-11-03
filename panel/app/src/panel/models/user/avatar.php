@@ -7,8 +7,10 @@ use Exception;
 use Error;
 use Thumb;
 
+use Kirby\Panel\Event;
 use Kirby\Panel\Upload;
 use Kirby\Panel\Models\User;
+use Kirby\Panel\Models\User\Avatar\UI as AvatarUI;
 
 class Avatar extends \Avatar {
 
@@ -29,17 +31,24 @@ class Avatar extends \Avatar {
 
   public function upload() {
 
-    if(!panel()->user()->isAdmin() and !$this->user->isCurrent()) {
-      throw new Exception(l('users.avatar.error.permission'));
+    if($this->exists()) {
+      $root  = $this->root();
+      $event = $this->event('replace:action');
+    } else {
+      $root  = $this->user->avatarRoot('{safeExtension}');          
+      $event = $this->event('upload:action');
     }
 
-    $root = $this->exists() ? $this->root() : $this->user->avatarRoot('{safeExtension}');
-
     $upload = new Upload($root, array(
-      'accept' => function($upload) {
+      'accept' => function($upload) use($event) {
         if($upload->type() != 'image') {
           throw new Error(l('users.avatar.error.type'));
         }
+
+        // check for permissions
+        $event->target->upload = $upload;
+        $event->check();
+
       }
     ));
 
@@ -51,18 +60,23 @@ class Avatar extends \Avatar {
     // used somewhere on the site (i.e. for profiles)
     kirby()->cache()->flush();
 
-    kirby()->trigger('panel.avatar.upload', $this);
+    kirby()->trigger($event, $this);
 
   }
 
   public function delete() {
 
-    if(!panel()->user()->isAdmin() and !$this->user->isCurrent()) {
-      throw new Exception(l('users.avatar.delete.error.permission'));
-    } else if(!$this->exists()) {
+    if(!$this->exists()) {
       return true;
     }
 
+    // create the delete event
+    $event = $this->event('delete:action');
+
+    // check for permissions
+    $event->check();
+
+    // delete the avatar file
     if(!parent::delete()) {
       throw new Exception(l('users.avatar.delete.error'));
     } 
@@ -71,8 +85,19 @@ class Avatar extends \Avatar {
     // used somewhere on the site (i.e. for profiles)
     kirby()->cache()->flush();
 
-    kirby()->trigger('panel.avatar.delete', $this);
+    kirby()->trigger($event, $this);
 
+  }
+
+  public function ui() {
+    return new AvatarUI($this);
+  }
+
+  public function event($type, $args = []) {  
+    return new Event('panel.avatar.' . $type, array_merge([
+      'user'   => $this->user,
+      'avatar' => $this
+    ], $args));
   }
 
 }

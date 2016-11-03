@@ -1,0 +1,35 @@
+.grid {
+  body.ltr & {
+    margin-left: -1.5em;
+  }
+  body.rtl & {
+    margin-right: -1.5em;
+  }
+}
+.grid-item {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  body.ltr & {
+    padding-left: 1.5em;
+  }
+  body.rtl & {
+    padding-right: 1.5em;
+  }
+}
+.grid-full {
+  body.ltr & {
+    margin-left: 0;
+  }
+  body.rtl & {
+    margin-right: 0;
+  }
+}
+.grid-full .grid-item {
+  body.ltr & {
+    padding-left: 0;
+  }
+  body.rtl & {
+    padding-right: 0;
+  }
+}

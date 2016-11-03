@@ -1,0 +1,208 @@
+.items.users {
+  margin-bottom: 1.5em;
+}
+.items .item {
+  margin-bottom: 1.5em;
+}
+.items-with-borders {
+  border: 1px solid #ddd;
+}
+.items .item:last-child {
+  margin-bottom: 0;
+}
+@media screen and (min-width: 50em) {
+  .items .item {
+    margin-bottom: 1px;
+  }
+}
+.item {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  line-height: 1em;
+}
+.item-content {
+  position: relative;
+  border-bottom: 1px solid #efefef;
+  overflow: hidden;
+}
+.item-info {
+  padding: 1em;
+  height: 4.25em;
+  overflow: hidden;
+}
+.item-title {
+  padding: 0 .5em;
+  display: block;
+  margin-bottom: .25em;
+  white-space: nowrap;
+}
+.item-meta {
+  padding: 0 .5em;
+  display: block;
+  white-space: nowrap;
+}
+.item-options {
+  background: #fff;
+}
+.item-options li {
+  width: 50%;
+  body.ltr & {
+    border-left: 1px solid #efefef;
+  }
+  body.rtl & {
+    border-right: 1px solid #efefef;
+  }
+}
+.item-options-three li {
+  width: 33.33%;
+}
+.item-options li:first-child {
+  body.ltr & {
+    border-left: 0;
+  }
+  body.rtl & {
+    border-right: 0;
+  }
+}
+.item-options .btn {
+  padding: 1em 1.5em;
+}
+
+@media screen and (min-width: 50em) {
+
+  .item-content {
+    border: 0;
+    line-height: 1em;
+  }
+  .item-info {
+    height: 3em;
+  }
+  .item-title {
+    margin-bottom: 0;
+    body.ltr & {
+      float: left;
+    }
+    body.rtl & {
+      float: right;
+    }
+  }
+  .item-meta {
+    body.ltr & {
+      float: left;
+    }
+    body.rtl & {
+      float: right;
+    }
+  }
+  .item-options {
+    position: absolute;
+    top: 0;
+    body.ltr & {
+      right: 0;
+      border-left: 1px solid #efefef;
+    }
+    body.rtl & {
+      left: 0;
+      border-left: 1px solid #efefef;
+    }
+  }
+  .item-options li {
+    width: auto;
+  }
+
+}
+.item-image {
+  position: absolute;
+  width: 4.25em;
+  height: 4.25em;
+}
+.item-image img {
+  height: 100%;
+  width: 100%;
+}
+.item-with-image .item-info {
+  body.ltr & {
+    margin-left: 4.25em;
+  }
+  body.rtl & {
+    margin-right: 4.25em;
+  }
+}
+
+@media screen and (min-width: 50em) {
+
+  .item-image {
+    width: 3em;
+    height: 3em;
+  }
+  .item-with-image .item-info {
+    body.ltr & {
+      margin-left: 3em;
+    }
+    body.rtl & {
+      margin-right: 3em;
+    }
+  }
+
+}
+.item-condensed .item-info {
+  padding: .75em .5em;
+  height: auto;
+}
+.item-condensed .item-options .btn {
+  padding: 1em;
+}
+@media screen and (min-width: 50em) {
+  .item-condensed .item-info {
+    height: auto;
+  }
+  .item-condensed .item-options .btn {
+    padding: .75em 1.25em;
+  }
+  .item-condensed .item-options a span {
+    display: none;
+  }
+  .item-condensed .item-options i {
+    body.ltr & {
+      padding-right: 0;
+    }
+    body.rtl & {
+      padding-left: 0;
+    }
+  }
+
+}
+.item-condensed.item-with-image .item-image {
+  position: absolute;
+  width: 3em;
+  height: 3em;
+}
+.item-condensed.item-with-image .item-info {
+  body.ltr & {
+    margin-left: 3.75em;
+  }
+  body.rtl & {
+    margin-right: 3.75em;
+  }
+}
+
+@media screen and (min-width: 50em) {
+
+  .item-condensed.item-with-image .item-image {
+    width: 2.5em;
+    height: 2.5em;
+  }
+  .item-condensed.item-with-image .item-info {
+    body.ltr & {
+      margin-left: 2.5em;
+    }
+    body.rtl & {
+      margin-right: 2.5em;
+    }
+  }
+
+}
+.item-options .icon.marginalia {
+  min-width: 1em;
+}

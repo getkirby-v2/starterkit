@@ -29,7 +29,7 @@ class Sidebar {
 
   public function subpages() {
 
-    if(!$this->page->canShowSubpages()) {
+    if($this->page->ui()->pages() === false) {
       return null;
     }
 
@@ -56,7 +56,7 @@ class Sidebar {
 
   public function files() {
 
-    if(!$this->page->canShowFiles()) {
+    if($this->page->ui()->files() === false) {
       return null;
     }
 

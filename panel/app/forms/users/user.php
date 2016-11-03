@@ -1,5 +1,7 @@
 <?php
 
+use Kirby\Panel\Event;
+
 return function($user) {
 
   $mode         = $user ? 'edit' : 'add';
@@ -112,6 +114,19 @@ return function($user) {
 
   if($mode == 'add') {
     $form->buttons->submit->value = l('add');
+  }
+
+  if($user) {
+    $event = $user->event('update:ui');
+  } else {
+    $event = panel()->user()->event('create:ui');
+  }
+
+  if($event->isDenied()) {
+    $form->disable();
+    $form->centered = true;
+    $form->buttons->submit = '';
+    $form->buttons->cancel = '';
   }
 
   return $form;

@@ -13,55 +13,79 @@
 
       <ul class="nav nav-list sidebar-list">
 
-        <?php if(!$user->isCurrent()): ?>
         <li>
+          <?php if($user->isCurrent()): ?>
+          <a href="mailto:<?php echo $user->email() ?>">
+            <?php i('power-off', 'left') . _l('logout') ?>
+          </a>
+          <?php else: ?>
           <a href="mailto:<?php echo $user->email() ?>">
             <?php i('envelope-square', 'left') . _l('users.form.options.message') ?>
           </a>
+          <?php endif ?>
         </li>
-        <?php endif ?>
 
         <li>
+          <?php if($user->ui()->delete()): ?>
           <a data-modal title="#" data-shortcut="#" href="<?php __($user->url('delete')) ?>">
             <?php i('trash-o', 'left') . _l('users.form.options.delete') ?>
           </a>
+          <?php endif ?>
         </li>
 
       </ul>
 
-      <h2 class="hgroup hgroup-single-line<?php e(!$user->avatar()->exists(), ' hgroup-compressed') ?> cf">
-        <span class="hgroup-title"><?php _l('users.form.avatar.headline') ?></span>
-      </h2>
+      <?php if($user->avatar()->ui()->active()): ?>
 
-      <?php if($user->avatar()->exists()): ?>
-      <div class="field">
-        <a data-upload class="avatar avatar-large" href="#upload"><img src="<?php echo $user->avatar(150)->url()  ?>"></a>
-      </div>
-      <?php endif ?>
-
-      <ul class="nav nav-list sidebar-list">
+        <h2 class="hgroup hgroup-single-line<?php e(!$user->avatar()->exists(), ' hgroup-compressed') ?> cf">
+          <span class="hgroup-title"><?php _l('users.form.avatar.headline') ?></span>
+        </h2>
 
         <?php if($user->avatar()->exists()): ?>
-        <li>
-          <a data-upload href="#upload">
-            <?php i('pencil', 'left') . _l('users.form.avatar.replace') ?>
+        <div class="field">
+          <?php if($user->avatar()->ui()->replace()): ?>
+          <a data-upload class="avatar avatar-large" href="#upload">
+            <img src="<?php echo $user->avatar(150)->url()  ?>">
           </a>
-        </li>
-
-        <li>
-          <a data-modal href="<?php __($user->url('avatar/delete')) ?>">
-            <?php i('trash-o', 'left') . _l('users.form.avatar.delete') ?>
-          </a>
-        </li>
-        <?php else: ?>
-        <li>
-          <a data-upload href="#upload">
-            <?php i('cloud-upload', 'left') . _l('users.form.avatar.upload') ?>
-          </a>
-        </li>
+          <?php else: ?>
+          <span class="avatar avatar-large">
+            <img src="<?php echo $user->avatar(150)->url()  ?>">
+          </span>
+          <?php endif ?>
+        </div>
         <?php endif ?>
 
-      </ul>
+        <ul class="nav nav-list sidebar-list">
+
+          <?php if($user->avatar()->exists()): ?>
+
+            <?php if($user->avatar()->ui()->replace()): ?>
+              <li>
+                <a data-upload href="#upload">
+                  <?php i('pencil', 'left') . _l('users.form.avatar.replace') ?>
+                </a>
+              </li>
+            <?php endif ?>
+
+            <?php if($user->avatar()->ui()->delete()): ?>
+              <li>
+                <a data-modal href="<?php __($user->url('avatar/delete')) ?>">
+                  <?php i('trash-o', 'left') . _l('users.form.avatar.delete') ?>
+                </a>
+              </li>
+            <?php endif ?>
+
+          <?php elseif($user->avatar()->ui()->upload()): ?>
+            <li>
+              <a data-upload href="#upload">
+                <?php i('cloud-upload', 'left') . _l('users.form.avatar.upload') ?>
+              </a>
+            </li>
+          <?php endif ?>
+
+        </ul>
+
+      <?php endif ?>
 
       <?php elseif($user and !$writable): ?>
       <h2 class="hgroup hgroup-single-line hgroup-compressed cf">

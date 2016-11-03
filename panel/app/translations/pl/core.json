@@ -307,6 +307,7 @@
     "editor.image.empty": "Ta strona nie ma obrazków",
     "autocomplete.method.error": "Nieprawidłowa metoda autouzupełniania",
     "blueprints.error.default.missing": "Brak domyślnego szablonu",
+    "permissions.error": "You are not allowed to do this",
     "error": "Błąd",
     "error.headline": "Błąd"
 }

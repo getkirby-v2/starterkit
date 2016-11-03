@@ -91,4 +91,10 @@ class History {
 
   }
 
+  public function __debuginfo() {
+    return (array)array_map(function($page) {
+      return $page->id();
+    }, (array)$this->get());
+  }
+
 }

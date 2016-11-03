@@ -307,6 +307,7 @@
     "editor.image.empty": "Tato stránka nemá žádné obrázky",
     "autocomplete.method.error": "Neplatná našeptávací metoda",
     "blueprints.error.default.missing": "Chybí výchozí blueprint",
+    "permissions.error": "You are not allowed to do this",
     "error": "Chyba",
     "error.headline": "Chyba"
 }

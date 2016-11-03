@@ -1,0 +1,117 @@
+.hgroup {
+  position: relative;
+  padding-bottom: .5em;
+  line-height: 1.5em;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 1.5em;
+}
+.hgroup a {
+  position: relative;
+  display: inline-block;
+}
+.hgroup a:after {
+  position: absolute;
+  content: "";
+  bottom: -.5em;
+  margin-bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background: #000;
+  body.ltr & {
+    left: 0;
+  }
+  body.rtl & {
+    right: 0;
+  }
+}
+.hgroup-title {
+  display: block;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: .5em;
+  margin-bottom: .5em;
+  font-weight: 600;
+  font-size: 1em;
+}
+.hgroup-options {
+  display: block;
+  font-size: 1em;
+  font-weight: 400;
+  color: #777;
+}
+.hgroup-options a {
+  display: inline-block;
+}
+.hgroup-options a:hover {
+  color: #000;
+}
+.hgroup-option-left {
+  body.ltr & {
+    float: left;
+  }
+  body.rtl & {
+    float: right;
+  }
+}
+.hgroup-option-right {
+  body.ltr & {
+    float: right;
+  }
+  body.rtl & {
+    float: left;
+  }
+}
+.hgroup-option-right a {
+  body.ltr & {
+    margin-left: 1em;
+  }
+  body.rtl & {
+    margin-right: 1em;
+  }
+}
+@media screen and (max-width:70em){
+  .hgroup-option-right > a .icon-left {
+    body.ltr & {
+      padding-right: 0em;
+    }
+    body.rtl & {
+      padding-left: 0em;
+    }
+  }
+  .hgroup-option-right > a span {
+    display: none;
+  }
+}
+.hgroup-options .icon {
+  top: 0;
+  color: #000;
+}
+.hgroup-single-line {
+  border: 0;
+  padding-bottom: 0;
+}
+.hgroup-single-line .hgroup-title {
+  margin-bottom: 0;
+}
+.hgroup-single-line .hgroup-options {
+  position: absolute;
+  top: 0;
+  body.ltr & {
+    right: 0;
+  }
+  body.rtl & {
+    left: 0;
+  }
+}
+.hgroup-compressed {
+  margin-bottom: .5em;
+}
+
+
+.hgroup .dropdown {
+  position: absolute;
+  z-index: 1;
+  margin-top: -2px;
+}
+.hgroup .dropdown a {
+  font-weight: 400
+}

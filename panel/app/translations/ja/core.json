@@ -307,6 +307,7 @@
     "editor.image.empty": "'このページには画像がありません',",
     "autocomplete.method.error": "オートコンプリートがエラーを起こしました",
     "blueprints.error.default.missing": "デフォルトの定義ファイル（/site/blueprints/default.php）がありません",
+    "permissions.error": "You are not allowed to do this",
     "error": "エラー",
     "error.headline": "エラー"
 }

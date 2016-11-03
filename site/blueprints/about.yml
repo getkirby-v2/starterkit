@@ -1,0 +1,26 @@
+title: About
+
+pages:
+  template: team
+  num: zero
+
+files: false
+
+options: 
+  template: false  
+  status: false  
+  
+fields:
+  title:
+    label: Title
+    type: title
+    
+  intro:
+    label: Intro
+    type: textarea
+    size: small
+    
+  text:
+    label: Text
+    type: textarea
+    size: large

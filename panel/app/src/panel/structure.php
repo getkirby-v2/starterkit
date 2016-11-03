@@ -25,7 +25,7 @@ class Structure {
   public function __construct($model, $id) {
 
     $this->model     = $model;
-    $this->id        = 'structure_' . sha1($id);
+    $this->id        = 'kirby_panel_structure_' . sha1($id);
     $this->blueprint = $this->model->blueprint();
 
   }

@@ -20,6 +20,9 @@ RewriteEngine on
 RewriteRule ^content/(.*)\.(txt|md|mdown)$ index.php [L]
 
 # block all files in the site folder from being accessed directly
+# except for requests to plugin assets files
+#RewriteRule ^assets/plugins/([a-zA-Z0-9\.\-_%=]+)/(.*)$ site/plugins/$1/assets/$2 [L,N]
+#RewriteCond $1 !^plugins/[a-zA-Z0-9\.\-_%=]+/assets/.*
 RewriteRule ^site/(.*) index.php [L]
 
 # block all files in the kirby folder from being accessed directly

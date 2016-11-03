@@ -1,0 +1,43 @@
+.topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 3em;
+  background: #000;
+}
+
+.topbar .nav-icon {
+  position: absolute;
+  top: 0;
+}
+.topbar .nav-icon-left {
+  body.ltr & {
+    left: 0;
+  }
+  body.rtl & {
+    right: 0;
+  }
+}
+.topbar .nav-icon-right {
+  body.ltr & {
+    right: 0;
+  }
+  body.rtl & {
+    left: 0;
+  }
+}
+.topbar .breadcrumb {
+  body.ltr & {
+    margin-left: 4em;
+  }
+  body.rtl & {
+    margin-right: 4em;
+  }
+}
+.topbar .dropdown {
+  position: absolute;
+  z-index: 1000;
+  top: 3em;
+}

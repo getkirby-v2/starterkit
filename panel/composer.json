@@ -1,0 +1,20 @@
+{
+  "name": "getkirby/panel",
+  "description": "The Kirby 2 panel.",
+  "keywords": ["panel", "kirby", "cms"],
+  "homepage": "https://getkirby.com",
+  "license": "https://getkirby.com/license",
+  "authors": [
+    {
+      "name": "Bastian Allgeier",
+      "email": "bastian@getkirby.com",
+      "homepage": "http://bastianallgeier.com"
+    }
+  ],
+  "support": {
+    "email": "support@getkirby.com",
+    "issues": "https://github.com/getkirby/panel/issues",
+    "forum": "https://forum.getkirby.com",
+    "source": "https://github.com/getkirby/panel"
+  }
+}

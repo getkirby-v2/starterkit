@@ -1,0 +1,57 @@
+.shiv:after {
+  position: absolute;
+  content: "";
+  width: 2em;
+  height: 100%;
+  top: 0;
+}
+.shiv-left:after {
+  body.ltr & {
+    left: -2em;
+  }
+  body.rtl & {
+    right: -2em;
+  }
+}
+.shiv-right:after {
+  body.ltr & {
+    right: -2em;
+  }
+  body.rtl & {
+    left: -2em;
+  }
+}
+.shiv-white {
+  background: #fff;
+}
+.shiv-white:after {
+  body.ltr & {
+    background: -webkit-linear-gradient(left, rgba(255,255,255, 0), #fff);
+    background: -moz-linear-gradient(left, rgba(255,255,255, 0), #fff);
+    background: -ms-linear-gradient(left, rgba(255,255,255, 0), #fff);
+    background: linear-gradient(left, rgba(255,255,255, 0), #fff);
+  }
+  body.rtl & {
+    background: -webkit-linear-gradient(right, rgba(255,255,255, 0), #fff);
+    background: -moz-linear-gradient(right, rgba(255,255,255, 0), #fff);
+    background: -ms-linear-gradient(right, rgba(255,255,255, 0), #fff);
+    background: linear-gradient(right, rgba(255,255,255, 0), #fff);
+  }
+}
+.shiv-grey {
+  background: #efefef;
+}
+.shiv-grey:after {
+  body.ltr & {
+    background: -webkit-linear-gradient(left, rgba(239,239,239, 0), #efefef);
+    background: -moz-linear-gradient(left, rgba(239,239,239, 0), #efefef);
+    background: -ms-linear-gradient(left, rgba(239,239,239, 0), #efefef);
+    background: linear-gradient(left, rgba(239,239,239, 0), #efefef);
+  }
+  body.rtl & {
+    background: -webkit-linear-gradient(right, rgba(239,239,239, 0), #efefef);
+    background: -moz-linear-gradient(right, rgba(239,239,239, 0), #efefef);
+    background: -ms-linear-gradient(right, rgba(239,239,239, 0), #efefef);
+    background: linear-gradient(right, rgba(239,239,239, 0), #efefef);
+  }
+}

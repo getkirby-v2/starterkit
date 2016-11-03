@@ -18,7 +18,7 @@ class InputListField extends InputField {
 
     $input = $this->input($value);
 
-    $label = new Brick('label', $this->i18n($text));
+    $label = new Brick('label', '<span>' . $this->i18n($text) . '</span>');
     $label->addClass('input');
     $label->attr('data-focus', 'true');
     $label->prepend($input);

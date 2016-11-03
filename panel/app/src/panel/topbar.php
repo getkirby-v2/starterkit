@@ -60,7 +60,7 @@ class Topbar {
 
   public function message() {
 
-    if($message = s::get('message') and is_array($message)) {
+    if($message = s::get('kirby_panel_message') and is_array($message)) {
 
       $text = a::get($message, 'text');
       $type = a::get($message, 'type', 'notification');
@@ -89,7 +89,7 @@ class Topbar {
         return $toggle;
       });
 
-      s::remove('message');
+      s::remove('kirby_panel_message');
 
       return $element;
 

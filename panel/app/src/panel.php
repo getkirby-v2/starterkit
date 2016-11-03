@@ -24,6 +24,7 @@ use Toolkit;
 use Tpl;
 use Url;
 
+use Kirby\Panel\Event;
 use Kirby\Panel\Installer;
 use Kirby\Panel\Form;
 use Kirby\Panel\Models\Site;
@@ -33,13 +34,13 @@ use Kirby\Panel\Models\Page\Blueprint as PageBlueprint;
 
 class Panel {
 
-  static public $version = '2.3.2';
+  static public $version = '2.4.0 beta 2';
 
   // minimal requirements
   static public $requires = array(
     'php'     => '5.4.0',
-    'toolkit' => '2.2.2',
-    'kirby'   => '2.2.1'
+    'toolkit' => '2.4.0 beta 2',
+    'kirby'   => '2.4.0 beta 2'
   );
 
   static public $instance;
@@ -91,7 +92,11 @@ class Panel {
     // store the instance as a singleton
     static::$instance = $this;
 
+    // init the core
     $this->kirby = $kirby;
+    $this->site  = $this->site();
+
+    // store the roots and urls for the panel
     $this->roots = new \Kirby\Panel\Roots($this, $root);
     $this->urls  = new \Kirby\Panel\Urls($this, $root);
 
@@ -101,9 +106,6 @@ class Panel {
     // setup the blueprints roots
     UserBlueprint::$root = $this->kirby->roots()->blueprints() . DS . 'users';
     PageBlueprint::$root = $this->kirby->roots()->blueprints();
-
-    // load the site object
-    $this->site = $this->site();
 
     // setup the session
     $this->session();
@@ -137,12 +139,21 @@ class Panel {
     $this->router = new Router($this->routes);
 
     // register router filters
-    $this->router->filter('auth', function() use($kirby) {      
+    $this->router->filter('auth', function($route) use($kirby) {      
+
+      $panel = panel();
+
       try {
         $user = panel()->user();
       } catch(Exception $e) {
         panel()->redirect('login');
       }
+
+      // check for area access
+      if($area = $route->area()) {
+        $panel->access($area)->check();
+      }
+
     });
 
     // check for a completed installation
@@ -202,7 +213,7 @@ class Panel {
     if(!is_null($this->csrf)) return $this->csrf;
 
     // see if there's a token in the session
-    $token = s::get('csrf');
+    $token = s::get('kirby_panel_csrf');
 
     // create a new csrf token if not available yet
     if(str::length($token) !== 32) {
@@ -210,7 +221,7 @@ class Panel {
     } 
 
     // store the new token in the session
-    s::set('csrf', $token);
+    s::set('kirby_panel_csrf', $token);
 
     // create a new csrf token
     return $this->csrf = $token;
@@ -221,7 +232,7 @@ class Panel {
 
     $csrf = get('csrf');
 
-    if(empty($csrf) or $csrf !== s::get('csrf')) {        
+    if(empty($csrf) or $csrf !== s::get('kirby_panel_csrf')) {        
   
       try {
         $this->user()->logout();
@@ -254,7 +265,7 @@ class Panel {
 
     if(!$this->site->multilang()) {
       $language = null;
-    } else if($language = get('language') or $language = s::get('lang')) {
+    } else if($language = get('language') or $language = s::get('kirby_panel_lang')) {
       // $language is already set
     } else {
       $language = null;
@@ -268,7 +279,7 @@ class Panel {
 
     // store the language code
     if($this->site->multilang()) {
-      s::set('lang', $this->site->language()->code());      
+      s::set('kirby_panel_lang', $this->site->language()->code());      
     }
 
   }
@@ -378,23 +389,15 @@ class Panel {
 
     ob_start();
 
-    try {
+    // react on invalid routes
+    if(!$this->route) {
+      throw new Exception(l('routes.error.invalid'));
+    }
 
-      // react on invalid routes
-      if(!$this->route) {
-        throw new Exception(l('routes.error.invalid'));
-      }
-
-      if(is_callable($this->route->action())) {
-        $response = call($this->route->action(), $this->route->arguments());
-      } else {
-        $response = $this->response();
-      }
-
-    } catch(Exception $e) {
-      require_once($this->roots->controllers . DS . 'error.php');
-      $controller = new ErrorController();
-      $response   = $controller->index($e->getMessage(), $e);
+    if(is_callable($this->route->action())) {
+      $response = call($this->route->action(), $this->route->arguments());
+    } else {
+      $response = $this->response();
     }
 
     // check for a valid response object
@@ -488,14 +491,14 @@ class Panel {
   }
 
   public function notify($text) {
-    s::set('message', array(
+    s::set('kirby_panel_message', array(
       'type' => 'notification', 
       'text' => $text,
     ));
   }
 
   public function alert($text) {
-    s::set('message', array(
+    s::set('kirby_panel_message', array(
       'type' => 'error', 
       'text' => $text,
     ));
@@ -554,6 +557,25 @@ class Panel {
       'content' => $message . $where
     ]);
 
+  }
+
+  public function access($area) {
+    return new Event('panel.access.' . $area);
+  }
+
+  public function __debuginfo() {
+    return [
+      'version'      => $this->version(),
+      'license'      => $this->license(),
+      'roots'        => $this->roots(),
+      'urls'         => $this->urls(),
+      'csrf'         => $this->csrf(),
+      'translations' => $this->translations()->keys(),
+      'translation'  => $this->translation(),
+      'routes'       => $this->routes(),
+      'kirby'        => $this->kirby(),
+      'site'         => $this->site(),
+    ];
   }
 
 }

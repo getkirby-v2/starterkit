@@ -1,0 +1,22 @@
+.avatar {
+  display: block;
+  line-height: 0;
+}
+.avatar img {
+  width: 4.5em;
+  height: 4.5em;
+  padding: 2px;
+  border: 2px solid #ddd;
+}
+.avatar-large img {
+  width: 9em;
+  height: 9em;
+}
+.avatar-centered {
+  text-align: center;
+}
+.avatar-full img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}

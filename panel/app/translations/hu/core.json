@@ -307,6 +307,7 @@
     "editor.image.empty": "Az oldalnak nincsenek képei",
     "autocomplete.method.error": "Érvénytelen auto-kiegészítés metódus",
     "blueprints.error.default.missing": "Hiányzó alapértelmezett blueprint",
+    "permissions.error": "You are not allowed to do this",
     "error": "Hiba",
     "error.headline": "Hiba"
 }

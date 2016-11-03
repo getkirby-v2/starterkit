@@ -307,6 +307,7 @@
     "editor.image.empty": "Esta página não tem imagens",
     "autocomplete.method.error": "Método de auto-completar inválido",
     "blueprints.error.default.missing": "Blueprint \"default\" não encontrada ",
+    "permissions.error": "You are not allowed to do this",
     "error": "Erro",
     "error.headline": "Erro"
 }

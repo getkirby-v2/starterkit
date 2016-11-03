@@ -22,7 +22,7 @@ class InputField extends BaseField {
     ));
 
     if(!is_array($this->value())) {
-      $input->val(html($this->value(), false));
+      $input->val($this->value());
     }
 
     if($this->readonly()) {

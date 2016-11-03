@@ -1,0 +1,82 @@
+.file {
+  background: #fff;
+  display: block;
+}
+.file-preview {
+  position: relative;
+  display: block;
+  padding-bottom: 66.66%;
+  line-height: 0;
+  background: #000;
+  overflow: hidden;
+}
+.file-preview-is-image {
+  background: url(../images/pattern.png);
+}
+.file-preview object,
+.file-preview img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 100%;
+  max-height: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);  
+}
+.file-preview object {
+  pointer-events: none;
+}
+.file-preview span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+.file-info {
+  padding: 1em 1.5em;
+  line-height: 1.5em;
+  border-bottom: 1px solid #ddd;
+}
+.file-name {
+  display: block;
+  color: #000;
+}
+.file-meta {
+  display: block;
+}
+.file-options .btn {
+  width: 50%;
+  border-bottom: 0;
+  padding: .75em 1.5em;
+
+  body.ltr & {
+    float: left;
+    text-align: center;
+  }
+  body.rtl & {
+    float: right;
+    text-align: center;
+  }
+}
+.file-options .btn:first-child {
+  border-right: 1px solid #ddd;
+}
+.file-options .btn span {
+  display: none;
+}
+.file-options .btn:last-child {
+  border-bottom: 0;
+}
+@media screen and (min-width: 120em) {
+  .file-options .btn {
+    padding: 1em 1.5em;
+  }
+  .file-options .btn span {
+    display: inline;
+  }
+}

@@ -1,0 +1,53 @@
+.pagination {
+  position: relative;
+  margin-bottom: 2.5em;
+}
+.pagination a,
+.pagination span {
+  padding: .5em 0;
+  display: block;
+}
+.pagination .pagination-prev {
+  body.ltr & {
+    float: left;
+    padding-right: 1em;
+  }
+  body.rtl & {
+    float: right;
+    padding-left: 1em;
+  }
+}
+.pagination-index {
+  position: absolute;
+  left: 2em;
+  right: 2em;
+  text-align: center;
+  color: #777;
+}
+.pagination-index select {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  cursor: pointer;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  min-width: 6em;
+  opacity: 0;
+}
+.pagination .pagination-next {
+  body.ltr & {
+    float: right;
+    padding-left: 1em;
+  }
+  body.rtl & {
+    float: left;
+    padding-right: 1em;
+  }
+}
+.pagination .pagination-inactive {
+  color: #ddd;
+  pointer-events: none;
+}

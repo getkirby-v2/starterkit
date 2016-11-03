@@ -272,7 +272,7 @@
     "fields.structure.add.first": "Créer la première entrée",
     "fields.structure.empty": "Aucune entrée pour le moment.",
     "fields.structure.entry.error": "L’élément n’a pu être trouvé",
-    "fields.structure.max.error": "No new items allowed or field is readonly",
+    "fields.structure.max.error": "Aucun élément supplémentaire n'est autorisé, ou le champ est en lecture seule.",
     "fields.structure.cancel": "Annuler",
     "fields.structure.save": "Valider",
     "fields.structure.edit": "Modifier",
@@ -307,6 +307,7 @@
     "editor.image.empty": "Cette page n’a aucune image attachée",
     "autocomplete.method.error": "Méthode d’auto-complétion incorrecte",
     "blueprints.error.default.missing": "Blueprint par défaut manquant",
+    "permissions.error": "Vous n’êtes pas autorisé à faire cela",
     "error": "Erreur",
     "error.headline": "Erreur"
 }

@@ -1,11 +1,20 @@
 title: Projects
+
+files: false
+
 pages:
   template: project
-files: false
+
+options: 
+  template: false  
+  status: false  
+  url: false  
+
 fields:
   title:
     label: Title
     type:  text
+
   text:
     label: Text
     type:  textarea

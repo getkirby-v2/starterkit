@@ -1,0 +1,56 @@
+.autocomplete {
+  position: absolute;
+  margin-top: .5em;
+  width: auto;
+  z-index: 1000;
+}
+.autocomplete:after {
+  position: absolute;
+  content: "";
+  top: -.5em;
+  border-left: .5em solid transparent;
+  border-right: .5em solid transparent;
+  border-bottom: .5em solid #000;
+
+  body.ltr & { left: 1em; }
+  body.rtl & { right: 1em; }
+}
+.autocomplete button {
+  display: block;
+  width: 100%;
+  background: none;
+  border: 0;
+  padding: .5em 1em;
+  border-bottom: 1px solid rgba(255,255,255, .2);
+  color: #fff;
+  background: #000;
+  cursor: pointer;
+
+  body.ltr & { text-align: left; }
+  body.rtl & { text-align: right; }
+}
+.autocomplete button:first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.autocomplete button:last-child {
+  border: none;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-shadow: rgba(0,0,0, .1) 0px 5px 10px;
+}
+.autocomplete button:focus {
+  outline: 0;
+  background: #8dae28;
+}
+.autocomplete button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+.autocomplete button strong {
+  color: #8dae28;
+  font-weight: 400;
+}
+.autocomplete button:focus strong {
+  color: #000;
+}

@@ -18,6 +18,7 @@ class Pages extends Obj {
   public $sortable = true;
   public $hide     = false;
   public $build    = array();
+  public $add      = true;
 
   public function __construct($params = array()) {
 
@@ -28,6 +29,7 @@ class Pages extends Obj {
       $this->max      = 0;
       $this->sortable = false;
       $this->hide     = true;
+      $this->add      = false;
     } else if(is_array($params)) {
       $template = a::get($params, 'template');
       if($template == false) {
@@ -44,6 +46,7 @@ class Pages extends Obj {
       $this->max      = a::get($params, 'max', $this->max);
       $this->hide     = a::get($params, 'hide', $this->hide);
       $this->build    = a::get($params, 'build', $this->build);
+      $this->add      = a::get($params, 'add', $this->add);
     } else if(is_string($params)) {
       $this->template = array($params);
     }

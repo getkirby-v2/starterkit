@@ -1,0 +1,41 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  background: rgba(30,30,30, .8);
+  z-index: 1000;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  padding-top: 3rem;
+}
+.modal-content {
+  position: relative;
+  background: #fff;
+  box-shadow: rgba(0,0,0, .2) 0 2px 10px;
+  overflow: auto;
+  z-index: 2;
+  border-radius: 3px;
+  margin: 0 1.5em 3em;
+}
+.modal-content .form {
+  padding: 1.5em;
+}
+
+@media screen and (min-width: 30em) {
+  .modal-content {
+    width: 22em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .modal-content-large {
+    width: 90%;
+    max-width: 40em;
+  }
+  .modal-content-medium {
+    width: 70%;
+    max-width: 30em;
+  }
+}

@@ -1,0 +1,86 @@
+.dashboard-section {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5em;
+  width: 100%;
+  vertical-align: top;
+  padding: 1em 1.5em;
+}
+.dashboard-section:last-child {
+  margin-bottom: 0;
+}
+.dashboard-section ul {
+  margin-bottom: 0;
+}
+.dashboard-section .field:last-child {
+  margin-bottom: .5em;
+}
+@media screen and (min-width: 40em) {
+  .dashboard {
+    -webkit-column-count: 2;
+    -webkit-column-gap: 1.5em;
+    -moz-column-count: 2;
+    -moz-column-gap: 1.5em;
+    column-count: 2;
+    column-gap: 1.5em;
+  }
+}
+@media screen and (min-width: 60em) {
+  .dashboard {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+}
+
+/* Dashboard Boxes */
+.dashboard-box {
+  position: relative;
+  display: block;
+  border: 2px solid #ddd;
+  overflow: hidden;
+  background: #efefef;
+  margin-bottom: .5em;
+}
+.dashboard-box .text {
+  padding: .75em 1em;
+}
+.dashboard-box .text :last-child {
+  margin-bottom: 0;
+}
+
+.dashboard-items {
+  list-style: none;
+}
+.dashboard-items .dashboard-item {
+  border-bottom: 1px solid #ddd;
+}
+.dashboard-items .dashboard-item:last-child {
+  border-bottom: 0;
+}
+
+.dashboard-item {
+  white-space: nowrap;
+}
+.dashboard-item-icon {
+  display: inline-block;
+  vertical-align: middle;
+  height: 2.5em;
+  width: 2.5em;
+  text-align: center;
+}
+.dashboard-item-icon-with-border {
+  border-right: 1px solid #ddd;    
+}
+.dashboard-item-icon i {
+  position: static;
+  padding-top: .9em;
+}
+.dashboard-item-text {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  padding: 0 .75em;
+  width: calc(100% - 2.5em);
+  text-overflow: ellipsis;
+}

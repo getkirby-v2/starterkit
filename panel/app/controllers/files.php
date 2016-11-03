@@ -1,6 +1,7 @@
 <?php
 
 use Kirby\Panel\Models\File;
+use Kirby\Panel\Exceptions\PermissionsException;
 
 class FilesController extends Kirby\Panel\Controllers\Base {
 
@@ -10,8 +11,8 @@ class FilesController extends Kirby\Panel\Controllers\Base {
     $files = $page->files();
 
     // don't create the view if the page is not allowed to have files
-    if(!$page->canHaveFiles()) {
-      throw new Exception(l('files.index.error.disabled'));
+    if($page->ui()->files() === false) {
+      throw new PermissionsException();
     }
 
     // sort action
@@ -42,13 +43,14 @@ class FilesController extends Kirby\Panel\Controllers\Base {
     // setup the form and form action
     $form = $file->form('edit', function($form) use($file, $page, $self) {
 
-      $form->validate();
-
-      if(!$form->isValid()) {
-        return $self->alert(l('files.show.error.form'));
-      }
-
       try {
+
+        $form->validate();
+
+        if(!$form->isValid()) {
+          throw new Exception(l('files.show.error.form'));
+        }
+
         $file->update($form->serialize());
         $self->notify(':)');
         $self->redirect($file);
@@ -76,6 +78,11 @@ class FilesController extends Kirby\Panel\Controllers\Base {
 
     $page = $this->page($id);
 
+    // check if files can be uploaded for the page
+    if($page->ui()->upload() === false) {
+      throw new PermissionsException();
+    }
+
     try {
       $page->upload();        
       $this->notify(':)');
@@ -91,6 +98,11 @@ class FilesController extends Kirby\Panel\Controllers\Base {
 
     $page = $this->page($id);
     $file = $this->file($page, $filename);
+
+    // check if files can be replaced
+    if($file->ui()->replace() === false) {
+      throw new PermissionsException();
+    }
 
     try {
       $file->replace();        
@@ -112,36 +124,16 @@ class FilesController extends Kirby\Panel\Controllers\Base {
 
   }
 
-  public function thumb($id, $filename) {
-
-    $page   = $this->page($id);
-    $file   = $this->file($page, $filename);
-    $width  = intval(get('width'));
-    $height = intval(get('height'));
-
-    if(!$file->canHavePreview()) {
-      return response::error('No preview available', 404);
-    }
-
-    if(!$file->canHaveThumb()) {
-      go($file->url());
-    }
-
-    if(get('crop') == true) {
-      $thumb = $file->crop($width, $height, 80);
-    } else {
-      $thumb = $file->resize($width, $height, 80);
-    }
-
-    go($thumb->url());
-
-  }
-
   public function delete($id, $filename) {
 
     $self = $this;
     $page = $this->page($id);
     $file = $this->file($page, $filename);
+
+    if($file->ui()->delete() === false) {
+      throw new PermissionsException();
+    }
+
     $form = $this->form('files/delete', $file, function($form) use($file, $page, $self) {
 
       try {
@@ -177,14 +169,13 @@ class FilesController extends Kirby\Panel\Controllers\Base {
     $filenames = get('filenames');
     $counter   = 0;
 
-    foreach($filenames as $filename) {
-      if($file = $page->file($filename)) {
-        $counter++;
-        try {
-          $file->update('sort', $counter);
-        } catch(Exception $e) {
+    $files = $page->files()->find($filenames);
 
-        }
+    foreach ($files as $file) {
+      $counter++;
+      try {
+        $file->update('sort', $counter);
+      } catch(Exception $e) {
       }
     }
 

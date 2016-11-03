@@ -307,6 +307,7 @@
     "editor.image.empty": "این صفحه فاقد تصویر است",
     "autocomplete.method.error": "روال تکمیل خودکار معتبر نیست",
     "blueprints.error.default.missing": "طرح الگوی پیش‌فرض یافت نشد",
+    "permissions.error": "You are not allowed to do this",
     "error": "خطا",
     "error.headline": "خطا"
 }

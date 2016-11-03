@@ -1,22 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="<?= site()->language() ? site()->language()->code() : 'en' ?>">
 <head>
 
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
-  <title><?php echo $site->title()->html() ?> | <?php echo $page->title()->html() ?></title>
-  <meta name="description" content="<?php echo $site->description()->html() ?>">
-  <meta name="keywords" content="<?php echo $site->keywords()->html() ?>">
+  <title><?= $site->title()->html() ?> | <?= $page->title()->html() ?></title>
+  <meta name="description" content="<?= $site->description()->html() ?>">
 
-  <?php echo css('assets/css/main.css') ?>
+  <?= css('assets/css/index.css') ?>
 
 </head>
 <body>
 
-  <header class="header cf" role="banner">
-    <a class="logo" href="<?php echo url() ?>">
-      <img src="<?php echo url('assets/images/logo.svg') ?>" alt="<?php echo $site->title()->html() ?>" />
-    </a>
-    <?php snippet('menu') ?>
+  <header class="header wrap wide" role="banner">
+    <div class="grid">
+
+      <div class="branding column">
+        <a href="<?= url() ?>" rel="home"><?= $site->title()->html() ?></a>
+      </div>
+
+      <?php snippet('menu') ?>
+
+    </div>
   </header>

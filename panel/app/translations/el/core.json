@@ -19,7 +19,7 @@
     "installation.check.text": "Το Kirby αντιμετώπισε τα παρακάτω προβλήματα κατά την εγκατάσταση…",
     "installation.check.retry": "Επανάληψη",
     "installation.check.error": "Υπάρχουν κάποια προβλήματα!",
-    "installation.check.error.allowed": "You are only allowed to run the panel installer from the same computer that is the server or by setting the option panel.install to true in your /site/config/config.php",
+    "installation.check.error.allowed": "Μπορείτε να εκτελείτε τον εγκαταστάτη του Πίνακα Ελέγχου μόνο από τον υπολογιστή που είναι και εξυπηρετητής (server) ή με το να θέσετε την επιλογή panel.install ίση με true στο αρχείο /site/config/config.php",
     "installation.check.error.accounts": "Ο φάκελος /site/accounts δεν είναι εγγράψιμος",
     "installation.check.error.avatars": "Ο φάκελος/assets/avatars δεν είναι εγγράψιμος",
     "installation.check.error.blueprints": "Παρακαλούμε προσθέστε τον φάκελο /site/blueprints",
@@ -272,7 +272,7 @@
     "fields.structure.add.first": "Προσθέστε την πρώτη σας καταχώριση",
     "fields.structure.empty": "Δεν υπάρχουν ακόμη καταχωρίσεις.",
     "fields.structure.entry.error": "Το αντικείμενο δεν μπορούσε να βρεθεί",
-    "fields.structure.max.error": "No new items allowed or field is readonly",
+    "fields.structure.max.error": "Δεν επιτρέπονται νέα αντικείμενα ή το αρχείο είναι μόνο για ανάγνωση",
     "fields.structure.cancel": "Ακύρωση",
     "fields.structure.save": "Εντάξει",
     "fields.structure.edit": "Επεξεργασία",
@@ -307,6 +307,7 @@
     "editor.image.empty": "Αυτή η σελίδα δεν περιέχει υποσελίδες",
     "autocomplete.method.error": "Μη έγκυρη μέθοδος αυτόματης συμπλήρωσης",
     "blueprints.error.default.missing": "Το προεπιλεγμένο blueprint απουσιάζει",
+    "permissions.error": "Δεν επιτρέπεται αυτή η ενέργεια",
     "error": "Σφάλμα",
     "error.headline": "Σφάλμα"
 }

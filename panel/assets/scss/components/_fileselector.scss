@@ -1,0 +1,19 @@
+.file-selector {
+  border: 1px solid #efefef;
+  max-height: 15.4em;
+  overflow: auto;
+}
+.file-selector label {
+  cursor: pointer;
+}
+.file-selector input {
+  position: absolute;
+  top: 1.1em;
+
+  body.ltr & {
+    right: 1.5em;
+  }
+  body.rtl & {
+    left: 1.5em;
+  }
+}

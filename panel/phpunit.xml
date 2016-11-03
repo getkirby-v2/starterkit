@@ -1,0 +1,16 @@
+<phpunit stderr="true" bootstrap="tests/lib/bootstrap.php">
+  <testsuites>
+    <testsuite name="panel">
+      <file>tests/tests/AutocompleteTest.php</file>
+      <file>tests/tests/ChangesTest.php</file>
+      <file>tests/tests/FileModelTest.php</file>
+      <file>tests/tests/HistoryTest.php</file>
+      <file>tests/tests/NumberingTest.php</file>
+      <file>tests/tests/PageModelTest.php</file>
+      <file>tests/tests/PanelTest.php</file>
+      <file>tests/tests/SiteModelTest.php</file>
+      <file>tests/tests/StructureTest.php</file>
+      <file>tests/tests/UserModelTest.php</file>
+    </testsuite>
+  </testsuites>
+</phpunit>

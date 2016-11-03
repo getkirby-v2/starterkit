@@ -172,6 +172,8 @@
     "files.replace.click": "…or click to replace",
     "files.replace.error.type": "The uploaded file must have the same file type",
     "files.delete.headline": "Do you really want to delete this file?",
+    "files.delete.error.headline": "The file cannot be deleted",
+    "files.delete.error.text": "You are trying to delete a file, which cannot be deleted.",
     "files.error.missing.page": "The page could not be found",
     "files.error.missing.file": "The file could not be found",
     "users": "Users",
@@ -307,6 +309,7 @@
     "editor.image.empty": "This page has no images",
     "autocomplete.method.error": "Invalid autocomplete method",
     "blueprints.error.default.missing": "Missing default blueprint",
+    "permissions.error": "You are not allowed to do this",
     "error": "Error",
     "error.headline": "Error"
 }

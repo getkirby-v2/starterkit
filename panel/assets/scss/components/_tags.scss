@@ -1,0 +1,70 @@
+.tag {
+  margin: 3px;
+  vertical-align: top;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  background: #000;
+  border-radius: 3px;
+}
+a.tag {
+  line-height: 1.25em;
+}
+@media screen and (min-width: 30em) {
+  .tag {
+    display: inline-block;
+  }
+}
+.tag .tag-label {
+  display: block;
+  width: 100%;
+  color: #fff;
+  z-index: 1;
+  padding: .25em 1em;
+  text-align: left;
+  white-space: nowrap;
+  border-radius: 3px;
+}
+.tag .tag-label:focus,
+.tag-is-focused .tag-label {
+  outline: 0;
+  background: #8dae28;
+}
+.tag button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.tag button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+.tag button.tag-label {
+  body.ltr & {
+    padding-right: 3.5em;
+  }
+  body.rtl & {
+    padding-left: 3.5em;
+  }
+}
+.tag .tag-x {
+  position: absolute;
+  top: 0;
+  line-height: 1em;
+  padding: .4em 1em;
+  font-style: normal;
+  z-index: 1;
+  color: rgba(255,255,255, .7);
+  body.ltr & {
+    right: 0;
+    border-left: 1px solid rgba(255,255,255, .3);
+  }
+  body.rtl & {
+    left: 0;
+    border-right: 1px solid rgba(255,255,255, .3);
+  }
+}
+.tag .tag-x:hover,
+.tag .tag-x:focus {
+  color: #fff;
+}

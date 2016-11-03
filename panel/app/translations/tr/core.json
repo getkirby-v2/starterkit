@@ -272,7 +272,7 @@
     "fields.structure.add.first": "İlk girdini ekle",
     "fields.structure.empty": "Henüz bir girdi yok",
     "fields.structure.entry.error": "Öğe bulunamadı",
-    "fields.structure.max.error": "No new items allowed or field is readonly",
+    "fields.structure.max.error": "Yeni öğelere izin verilmiyor veya alan salt okunur.",
     "fields.structure.cancel": "İptal",
     "fields.structure.save": "Kaydet",
     "fields.structure.edit": "Düzenle",
@@ -307,6 +307,7 @@
     "editor.image.empty": "Bu sayfanın henüz bir resmi yok",
     "autocomplete.method.error": "Geçersiz otomatik doldurma metodu",
     "blueprints.error.default.missing": "Varsayılan taslak dosyası eksik",
+    "permissions.error": "Bu işlemi yapmaya yetkiniz yok",
     "error": "Hata",
     "error.headline": "Hata"
 }

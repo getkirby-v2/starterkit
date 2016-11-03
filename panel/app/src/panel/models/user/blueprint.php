@@ -37,6 +37,9 @@ class Blueprint extends Obj {
     // try to find a user blueprint
     $file = kirby()->get('blueprint', 'users/' . $this->name);
 
+    // fall back to the default user blueprint
+    if(!$file) $file = kirby()->get('blueprint', 'users/default');
+
     if($file) {
       $this->file = $file;
       $this->yaml = data::read($this->file, 'yaml');

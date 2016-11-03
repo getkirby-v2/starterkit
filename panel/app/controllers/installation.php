@@ -46,7 +46,7 @@ class InstallationController extends Kirby\Panel\Controllers\Base {
         $user = site()->users()->create($data);
 
         // store the new username for the login screen
-        s::set('username', $user->username());
+        s::set('kirby_panel_username', $user->username());
 
         // try to login the user automatically
         if($user->hasPanelAccess()) {

@@ -56,7 +56,10 @@ class Menu {
 
     $list->append($this->previewOption());
     $list->append($this->editOption());
-    $list->append($this->deleteOption());
+
+    if($this->file->ui()->delete()) {      
+      $list->append($this->deleteOption());
+    }
 
     return '<nav class="dropdown dropdown-dark contextmenu">' . $list . '</nav>';
 

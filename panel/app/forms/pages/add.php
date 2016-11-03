@@ -2,7 +2,7 @@
 
 return function($page) {
 
-  $options = array();
+  $options = [];
 
   foreach($page->blueprint()->pages()->template() as $template) {
     $options[$template->name()] = $template->title();

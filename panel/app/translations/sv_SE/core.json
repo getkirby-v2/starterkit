@@ -307,6 +307,7 @@
     "editor.image.empty": "Den här sidan saknar bilder",
     "autocomplete.method.error": "Ogiltig metod för automatisk komplettering",
     "blueprints.error.default.missing": "Standard-blueprint saknas",
+    "permissions.error": "You are not allowed to do this",
     "error": "Fel",
     "error.headline": "Error"
 }

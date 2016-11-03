@@ -1,0 +1,153 @@
+.fileview {
+  background: #fff;
+}
+.fileview-image {
+  position: relative;
+  padding-bottom: 66.66%;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpCOTdEOEI3OUE3MDMxMUUzOEIxNEZERTM0N0EzRjlGMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpCOTdEOEI3QUE3MDMxMUUzOEIxNEZERTM0N0EzRjlGMSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkI5N0Q4Qjc3QTcwMzExRTM4QjE0RkRFMzQ3QTNGOUYxIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkI5N0Q4Qjc4QTcwMzExRTM4QjE0RkRFMzQ3QTNGOUYxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+jGcG/wAAAAlQTFRF////zMzMzc3NCvMx6wAAACJJREFUeNpiYGRkYgQBBhgYIAGEBCO6SpIFmKCADDMAAgwATVgAkU8MrdIAAAAASUVORK5CYII=);
+  text-align: center;
+  overflow: hidden;
+}
+.fileview-image-link {
+  position: absolute;
+  top: 50%;
+  max-width: 75%;
+  max-height: 75%;
+  width: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.fileview-image-link span {
+  background: #000;
+  display: inline-block;
+  line-height: 1.5em;
+  padding: 1em 1.5em;
+  border-radius: 3px;
+  color: #999;
+  font-weight: 300;
+  overflow: hidden;
+}
+.fileview-image-link strong {
+  color: #fff;
+  font-weight: 400;
+  display: block;
+}
+.fileview-preview-link {
+  height: 100%;
+}
+.fileview-preview-link img,
+.fileview-preview-link object,
+.fileview-preview-link span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 100%;
+  max-height: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);  
+}
+.fileview-preview-link object {
+  pointer-events: none;
+}
+.fileview-nav {
+  position: absolute;
+  top: 50%;
+  left: 0em;
+  right: 0em;
+  margin-top: -1.5em;
+}
+.fileview-nav a {
+  display: block;
+  padding: 1em;
+}
+.fileview-nav-prev {
+  float: left;
+}
+.fileview-nav-next {
+  float: right;
+}
+.fileview-options {
+  margin-top: 6em;
+  border-top: 2px solid #ddd;
+}
+.fileview-options li {
+  width: 100%;
+}
+.fileview-options .btn {
+  padding: .75em 0;
+  border-bottom: 1px solid #ddd;
+}
+
+@media screen and (min-width: 50em) {
+  .fileview {
+    position: absolute;
+    top: 3em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
+  .fileview-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding:0;
+
+    .ltr & {
+      left: 0;
+      right: 50%;
+    }
+    .rtl & {
+      left: 50%;
+      right: 0;
+    }
+
+  }
+  .fileview-sidebar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    overflow: auto;
+    .ltr & {
+      right: 0;
+    }
+    .rtl & {
+      left: 0;
+    }
+  }
+  .fileview-options {
+    margin-bottom: 6em;
+  }
+  .fileview-options li {
+    width: 33.33%;
+  }
+  .fileview-options .btn {
+    padding: 1em;
+    text-align: center;
+    border-bottom: none;
+  }
+}
+
+@media screen and (min-width: 65em) {
+  .fileview-nav {
+    left: 1.5em;
+    right: 1.5em;
+  }
+  .fileview-image {
+    .ltr & {
+      right: 33.33%;
+    }
+    .rtl & {
+      left: 33.33%;
+    }
+  }
+  .fileview-sidebar {
+    width: 33.33%;
+  }
+}

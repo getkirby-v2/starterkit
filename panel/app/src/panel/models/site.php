@@ -4,6 +4,7 @@ namespace Kirby\Panel\Models;
 
 use Exception;
 use Kirby;
+use Kirby\Panel\Event;
 use Kirby\Panel\Snippet;
 use Kirby\Panel\Structure;
 use Kirby\Panel\Topbar;
@@ -15,6 +16,8 @@ use Kirby\Panel\Models\Page\Blueprint;
 use Kirby\Panel\Models\Page\Changes;
 use Kirby\Panel\Models\Page\Sidebar;
 use Kirby\Panel\Models\Page\Uploader;
+use Kirby\Panel\Models\Site\UI;
+use Kirby\Panel\Models\Site\Options;
 
 class Site extends \Site {
 
@@ -79,10 +82,6 @@ class Site extends \Site {
     return $this->getBlueprintFields()->toArray();
   }
 
-  public function canSortFiles() {
-    return $this->blueprint()->files()->sortable();
-  }
-
   public function files() {
     return new Files($this);    
   }
@@ -91,26 +90,24 @@ class Site extends \Site {
     return new Children($this);
   }
 
-  public function filterInput($input) {
-    $data = array();
-    foreach($this->content()->toArray() as $key => $value) {
-      $data[$key] = null;  
-    }
-    return array_merge($data, $input);
-  }
+  public function update($data = array(), $lang = null) {
 
-  public function update($input = array(), $lang = null) {
+    // create the update event
+    $event = $this->event('update:action', [
+      'data' => $data
+    ]);
+
+    // check for permissions
+    $event->check();
 
     // keep the old state of the site object
     $old = clone $this;
-
-    $data = $this->filterInput($input);
 
     $this->changes()->discard();
 
     parent::update($data, $lang);
 
-    kirby()->trigger('panel.site.update', array($this, $old));
+    kirby()->trigger($event, [$this, $old]);
 
   }
 
@@ -120,6 +117,14 @@ class Site extends \Site {
 
   public function upload() {
     return new Uploader($this);        
+  }
+
+  public function ui() {
+    return new UI($this);
+  }
+
+  public function options() {
+    return new Options($this);
   }
 
   public function addButton() {
@@ -177,42 +182,21 @@ class Site extends \Site {
     return is_null($max) ? 2147483647 : $max;    
   }
 
-  public function canHaveSubpages() {
-    return $this->maxSubpages() !== 0;
-  }
+  public function event($type, $args = []) {
 
-  public function canShowSubpages() {
-    return ($this->blueprint()->pages()->hide() !== true and $this->canHaveSubpages());    
-  }
-
-  public function canHaveFiles() {
-    return $this->maxFiles() !== 0;
-  }
-
-  public function canShowFiles() {
-    return ($this->blueprint()->files()->hide() !== true and $this->canHaveFiles());    
-  }
-
-  public function canHaveMoreSubpages() {
-    if(!$this->canHaveSubpages()) {
-      return false;
-    } else if($this->children()->count() >= $this->maxSubpages()) {
-      return false;
+    if(in_array($type, ['create', 'create:ui', 'create:action'])) {
+      // rewrite the page create event
+      $type = 'panel.page.' . $type;    
+    } else if(in_array($type, ['upload', 'upload:ui', 'upload:action'])) {
+      // rewrite the upload event
+      $type = 'panel.file.' . $type;
     } else {
-      return true;
+      $type = 'panel.site.' . $type;
     }
-  }
 
-  public function canHaveMoreFiles() {
-    if(!$this->canHaveFiles()) {
-      return false;
-    } else if($this->files()->count() >= $this->maxFiles()) {
-      return false;
-    } else {
-      return true;
-    }    
-  }
+    return new Event($type, array_merge(['site' => $this, 'page' => $this], $args));
 
+  }
 
   public function structure() {
     return new Structure($this, 'site_' . $this->lang());

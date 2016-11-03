@@ -25,7 +25,7 @@ class TitleField extends TextField {
       // TODO: move this to the css file
       $style = 'padding-left: .5rem; color: #777; border:none';
 
-      if($this->page->canChangeUrl()) {
+      if($this->page->ui()->url()) {
         $this->help .= '&rarr;<a style="' . $style . '" data-modal title="' . $this->page->url('preview') . '" href="' . $this->page->url('url') . '">' . $slug . '</a>';      
       } else {
         $this->help .= '&rarr;<span style="' . $style . '" title="' . $this->page->url('preview') . '">' . $slug . '</span>';      

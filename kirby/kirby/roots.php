@@ -45,19 +45,23 @@ class Roots extends Obj {
   }
 
   public function config() {
-    return $this->site() . DS . 'config';
+    return isset($this->config) ? $this->config : $this->site() . DS . 'config';
   }
 
   public function accounts() {
     return isset($this->accounts) ? $this->accounts : $this->site() . DS . 'accounts';
   }
 
+  public function roles() {
+    return isset($this->roles) ? $this->roles : $this->site() . DS . 'roles';
+  }
+
   public function blueprints() {
-    return $this->site() . DS . 'blueprints';
+    return isset($this->blueprints) ? $this->blueprints : $this->site() . DS . 'blueprints';
   }
 
   public function plugins() {
-    return $this->site() . DS . 'plugins';
+    return isset($this->plugins) ? $this->plugins : $this->site() . DS . 'plugins';
   }
 
   public function cache() {
@@ -65,35 +69,55 @@ class Roots extends Obj {
   }
 
   public function tags() {
-    return $this->site() . DS . 'tags';
+    return isset($this->tags) ? $this->tags : $this->site() . DS . 'tags';
   }
 
   public function fields() {
-    return $this->site() . DS . 'fields';
+    return isset($this->fields) ? $this->fields : $this->site() . DS . 'fields';
   }
 
   public function widgets() {
-    return $this->site() . DS . 'widgets';
+    return isset($this->widgets) ? $this->widgets : $this->site() . DS . 'widgets';
   }
 
   public function controllers() {
-    return $this->site() . DS . 'controllers';
+    return isset($this->controllers) ? $this->controllers : $this->site() . DS . 'controllers';
   }
 
   public function models() {
-    return $this->site() . DS . 'models';
+    return isset($this->models) ? $this->models : $this->site() . DS . 'models';
   }
 
   public function templates() {
-    return $this->site() . DS . 'templates';
+    return isset($this->templates) ? $this->templates : $this->site() . DS . 'templates';
   }
 
   public function snippets() {
-    return $this->site() . DS . 'snippets';
+    return isset($this->snippets) ? $this->snippets : $this->site() . DS . 'snippets';
   }
 
   public function languages() {
-    return $this->site() . DS . 'languages';
+    return isset($this->languages) ? $this->languages : $this->site() . DS . 'languages';
+  }
+
+  /**
+   * Improved var_dump() output
+   * 
+   * @return array
+   */
+  public function __debuginfo() {
+    return [
+      'index'   => $this->index(),
+      'kirby'   => $this->kirby(),
+      'content' => $this->content(),
+      'site'    => $this->site(),
+      'cache'   => $this->cache(),
+      'thumbs'  => $this->thumbs(),
+      'assets'  => $this->assets(),
+      'autocss' => $this->autocss(),
+      'autojs'  => $this->autojs(),
+      'avatars' => $this->avatars(),
+    ];
   }
 
 }

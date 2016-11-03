@@ -45,7 +45,7 @@ class Blueprint extends Obj {
     $this->type      = a::get($this->yaml, 'type', 'page');
     $this->pages     = new Pages(a::get($this->yaml, 'pages', true));
     $this->files     = new Files(a::get($this->yaml, 'files', true));
-    $this->options   = new Options(a::get($this->yaml, 'options', array()));
+    $this->options   = new Options(a::get($this->yaml, 'options', []));
 
   }
 

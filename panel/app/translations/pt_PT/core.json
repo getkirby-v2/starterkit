@@ -307,6 +307,7 @@
     "editor.image.empty": "Esta página não tem imagens",
     "autocomplete.method.error": "Método inválido de auto-contemplação",
     "blueprints.error.default.missing": "Falta do blueprint padrão",
+    "permissions.error": "You are not allowed to do this",
     "error": "Erro",
     "error.headline": "Erro"
 }

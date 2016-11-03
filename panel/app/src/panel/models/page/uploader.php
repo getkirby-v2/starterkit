@@ -6,6 +6,7 @@ use Error;
 use Exception;
 use F;
 use Str;
+use Kirby\Panel\Event;
 use Kirby\Panel\Upload;
 
 class Uploader {
@@ -33,11 +34,6 @@ class Uploader {
 
   public function upload() {
 
-    // check if more files can be uploaded for the page
-    if(!$this->page->canHaveMoreFiles()) {
-      throw new Exception(l('files.add.error.max'));
-    }
-
     $upload = new Upload($this->page->root() . DS . $this->filename, array(
       'overwrite' => true,
       'accept'    => function($file) {
@@ -53,11 +49,17 @@ class Uploader {
       }
     ));
 
-    $file = $this->move($upload);
+    $event = $this->page->event('upload:action');
+    $file  = $this->move($upload, $event);
 
     // create the initial meta file
     // without triggering the update hook
-    $file->createMeta(false);
+    try {
+      $file->createMeta(false);      
+    } catch(Exception $e) {
+      // don't react on meta errors
+      // the meta file can still be generated later
+    }
 
     // make sure that the file is being marked as updated
     touch($file->root());
@@ -65,17 +67,13 @@ class Uploader {
     // clean the thumbs folder
     $this->page->removeThumbs();
 
-    kirby()->trigger('panel.file.upload', $file);          
+    kirby()->trigger($event, $file);          
 
   }
 
   public function replace() {
 
-    $file = $this->file;
-    
-    // keep the old state of the file object
-    $old = clone $file;
-    
+    $file   = $this->file;    
     $upload = new Upload($file->root(), array(
       'overwrite' => true,
       'accept' => function($upload) use($file) {
@@ -85,7 +83,10 @@ class Uploader {
       }
     ));
 
-    $file = $this->move($upload);
+    // keep the old state of the file object
+    $old   = clone $file;
+    $event = $file->event('replace:action');
+    $file  = $this->move($upload, $event);
 
     // make sure that the file is being marked as updated
     touch($file->root());
@@ -93,11 +94,11 @@ class Uploader {
     // clean the thumbs folder
     $this->page->removeThumbs();
 
-    kirby()->trigger('panel.file.replace', array($file, $old));
+    kirby()->trigger($event, [$file, $old]);
 
   }
 
-  public function move($upload) {
+  public function move($upload, $event) {
 
     // flush all cached files
     $this->page->reset();
@@ -120,7 +121,11 @@ class Uploader {
     }
 
     try {
-      // security checks
+      // add the uploaded file to the event target
+      $event->target->upload = $file;
+      // and check for permissions
+      $event->check();
+      // run additional file checks
       $this->checkUpload($file);
       return $file;
     } catch(Exception $e) {

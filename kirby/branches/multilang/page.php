@@ -115,7 +115,14 @@ class Page extends PageAbstract {
 
     // Kirby is trying to remove the home folder name from the url
     if($this->isHomePage()) {
-      return $this->site->url($lang);
+      $url = $this->site->url($lang);
+
+      // append a query param if the new language is on another domain
+      if($this->site->language->host() !== $this->site->language($lang)->host()) {
+        $url = url::build(['query' => ['language' => 'switch']], $url);
+      }
+
+      return $url;
     } else if($this->parent->isHomePage()) {
       return $this->site->url($lang) . '/' . $this->parent->slug($lang) . '/' . $this->slug($lang);
     } else {
@@ -196,7 +203,7 @@ class Page extends PageAbstract {
 
         // replace all missing fields with values from the default content
         foreach($defaultContent->data as $key => $field) {
-          if(empty($content->data[$key]->value)) {
+          if(!isset($content->data[$key]) || $content->data[$key]->value == '') {
             $content->data[$key] = $field;
           }
         }

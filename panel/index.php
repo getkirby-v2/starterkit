@@ -37,14 +37,8 @@ if(!isset($kirby->roots->thumbs)) {
   $kirby->roots->thumbs = $index . DS . 'thumbs';
 }
 
-try {
+// create the panel object
+$panel = new Panel($kirby, __DIR__);  
 
-  // create the panel object
-  $panel = new Panel($kirby, __DIR__);  
-
-  // launch the panel
-  echo $panel->launch();
-
-} catch(Exception $e) {
-  echo Panel::fatal($e, __DIR__);
-}
+// launch the panel
+echo $panel->launch();

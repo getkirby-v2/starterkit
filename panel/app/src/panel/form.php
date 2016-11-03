@@ -330,6 +330,20 @@ class Form extends Brick {
 
   }
 
+  public function disable() {
+
+    // disable all form fields
+    foreach($this->fields as $field) {
+      $field->readonly = true;
+    }  
+
+    // hide all the buttons
+    $this->centered = true;
+    $this->buttons->cancel = '';
+    $this->buttons->submit = '';
+
+  }
+
   public function __toString() {
     
     $this->toHTML();

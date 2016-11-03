@@ -1,0 +1,29 @@
+h1,
+.alpha,
+.text h1,
+h2,
+.beta,
+.text h2,
+h3,
+.gamma,
+.text h3,
+h4,
+.delta,
+.text h4,
+h5,
+.epsilon,
+.text h5,
+h6,
+.zeta,
+.text h6 {
+  font-size: 1em;
+  font-weight: 600;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  color: inherit;
+}

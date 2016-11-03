@@ -1,0 +1,25 @@
+* {
+  font-size: 100%;
+  font-family: "Source Sans Pro", "Apple LiGothic Medium", "Microsoft JhengHei UI", "Helvetica Neue", Arial, sans-serif;
+}
+.light {
+  font-weight: 300;
+}
+b,
+strong,
+.strong {
+  font-weight: 600;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+.marginalia {
+  color: #777;
+}
+hr {
+  display: block;
+  height: 2px;
+  background: #ddd;
+  border: 0;
+}

@@ -1,0 +1,25 @@
+.main {
+  height: 100%;
+}
+.main .loader {
+  display: none;
+}
+.main .loader:after {
+  position: fixed;
+  content: "";
+  top: 50%;
+  width: 3em;
+  height: 3em;
+  margin-top: -1.5em;
+  background: #fff url(../images/loader.black.gif) no-repeat center center;
+  border-radius: 50%;
+  z-index: 10000000;
+  body.ltr & {
+    left: 50%;
+    margin-left: -1.5em;
+  }
+  body.rtl & {
+    right: 50%;
+    margin-right: -1.5em;
+  }
+}

@@ -19,49 +19,53 @@ abstract class RolesAbstract extends Collection {
    */
   public function __construct() {
 
-    $roles = kirby::instance()->option('roles');
+    $kirby = kirby();
 
-    // set the default set of roles, if roles are not configured
-    if(empty($roles)) {
-      $roles = array(
-        array(
-          'id'          => 'admin',
-          'name'        => 'Admin',
-          'default'     => true
-        ),
-        array(
-          'id'          => 'editor',
-          'name'        => 'Editor',
-          'permissions' => array(
-            'panel.access'       => true,
-            'panel.site.update'  => false,
-            'panel.page.create'  => true,
-            'panel.page.update'  => true,
-            'panel.page.move'    => true,
-            'panel.page.sort'    => true,
-            'panel.page.hide'    => true,
-            'panel.page.delete'  => true,
-            'panel.file.upload'  => true,
-            'panel.file.replace' => true,
-            'panel.file.update'  => true,
-            'panel.file.delete'  => true,
-            'panel.user.add'     => false,
-            'panel.user.edit'    => false,
-            'panel.user.role'    => false,
-            'panel.user.delete'  => false
-          )
-        )
-      );
+    // fetch a list of roles from roles dir & registry
+    foreach($kirby->get('role') as $roleName) {
+      $role = $kirby->get('role', $roleName);
+      if(is_array($role)) {
+        $role['id'] = $roleName;
+        $role = new Role($role);
+        $this->data[$role->id()] = $role;
+      }
     }
 
-    foreach($roles as $role) {
-      $role = new Role($role);
-      $this->data[$role->id()] = $role;
+    // fetch roles from the Kirby "roles" option (deprecated)
+    foreach($kirby->option('roles') as $role) {
+      if(is_array($role)) {
+        $role = new Role($role);
+        $this->data[$role->id()] = $role;
+      }
     }
 
-    // check for a valid admin role
+    // set the default set of roles if roles are not configured
+    if(empty($this->data)) {
+      $editor = new Role([
+        'id'          => 'editor',
+        'name'        => 'Editor',
+        'permissions' => [
+          '*'                 => true,
+          'panel.site.update' => false,
+          'panel.avatar.*'    => function() {
+            return $this->user()->is($this->target()->user());
+          },
+          'panel.user.*'      => false,
+          'panel.user.read'   => true,
+          'panel.user.update' => function() {
+            return $this->user()->is($this->target()->user());
+          }
+        ]
+      ]);
+      $this->data = ['editor' => $editor];
+    }
+
+    // check for a valid admin role and provide a default one otherwise
     if(!isset($this->data['admin'])) {
-      throw new Exception('There must be an admin role');
+      $this->data['admin'] = new Role([
+        'id'   => 'admin',
+        'name' => 'Admin'
+      ]);
     }
 
     // check for a valid default role
@@ -79,6 +83,15 @@ abstract class RolesAbstract extends Collection {
   public function findDefault() {
     if(!is_null($this->default)) return $this->default;
     return $this->default = $this->findBy('isDefault', true);
+  }
+
+  /**
+   * Improved @var_dump output
+   * 
+   * @return array
+   */
+  public function __debuginfo() {
+    return array_keys($this->data);
   }
 
 }

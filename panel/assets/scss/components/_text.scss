@@ -1,0 +1,66 @@
+.text {
+  font-size: 1em;
+  line-height: 1.5em;
+}
+.text p {
+  margin-bottom: 1.5em;
+}
+.text a {
+  font-weight: 400;
+  border-bottom: 2px solid #ddd;
+}
+.text a:hover {
+  border-color: #000;
+}
+.text mark {
+  background: #8dae28;
+  padding: 0 5px;
+  color: #fff;
+}
+.text blockquote {
+  body.ltr & {
+    padding-left: 1.5em;
+    border-left: 6px solid #ddd;
+  }
+  body.rtl & {
+    padding-right: 1.5em;
+    border-right: 6px solid #ddd;
+  }
+}
+.text figure {
+  display: block;
+  margin-bottom: 1.5em;
+}
+.text hr {
+  margin: 1.5em 0;
+}
+.text ul {
+  margin-bottom: 1.5em;
+}
+.text ul ul,
+.text ul ol {
+  margin-bottom: 0;
+}
+.text ul {
+  body.ltr & {
+    margin-left: 1em;
+  }
+  body.rtl & {
+    margin-right: 1em;
+  }
+}
+.text ol {
+  margin-bottom: 1.5em;
+}
+.text ol ol,
+.text ol ul {
+  margin-bottom: 0;
+}
+.text ol {
+  body.ltr & {
+    margin-left: 1.25em;
+  }
+  body.rtl & {
+    margin-right: 1.25em;
+  }
+}

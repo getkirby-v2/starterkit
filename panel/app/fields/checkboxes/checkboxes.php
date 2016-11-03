@@ -23,14 +23,15 @@ class CheckboxesField extends RadioField {
 
     $value = InputListField::value();
 
-    if(is_array($value)) {
-      return $value;
-    } else {
-      return str::split($value, ',');
+    if(!is_array($value)) {
+      $value = str::split($value, ',');
     }
 
-  }
+    // Remove items from value array that are not present in the options array
+    return array_keys(array_intersect_key(array_flip($value), $this->options()));
 
+  }
+  
   public function result() {
     $result = parent::result();
     return is_array($result) ? implode(', ', $result) : '';

@@ -9,7 +9,6 @@
       <li>
         <a class="btn btn-with-icon" href="<?php __($subpage->url('edit')) ?>">
           <i class="icon icon-left marginalia"><?php __($subpage->displayNum()) ?></i>
-          <span>Move</span>
         </a>
       </li>
       <li>
@@ -19,10 +18,17 @@
         </a>
       </li>
       <li>
+        <?php if($subpage->ui()->delete()): ?>
         <a data-modal class="btn btn-with-icon" href="<?php __($subpage->url('delete') . '?_redirect=' . $page->uri('subpages')) ?>">
           <?php i('trash-o', 'left') ?>
           <span>Delete</span>
         </a>
+        <?php else: ?>
+        <a class="btn btn-with-icon btn-disabled">
+          <?php i('trash-o', 'left') ?>
+          <span>Delete</span>
+        </a>
+        <?php endif ?>
       </li>
     </ul>
   </nav>

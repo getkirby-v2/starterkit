@@ -7,7 +7,7 @@ class SubpagesController extends Kirby\Panel\Controllers\Base {
     $page = $this->page($id);
 
     // don't create the view if the page is not allowed to have subpages
-    if(!$page->canHaveSubpages()) {
+    if($page->options()->pages() === false) {
       throw new Exception(l('subpages.add.error'));
     }
 

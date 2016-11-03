@@ -307,6 +307,7 @@
     "editor.image.empty": "Denne siden har ingen bilder",
     "autocomplete.method.error": "Ugyldig autocomplete metode",
     "blueprints.error.default.missing": "Mangler standard blåkopi",
+    "permissions.error": "You are not allowed to do this",
     "error": "Feil",
     "error.headline": "Feil"
 }

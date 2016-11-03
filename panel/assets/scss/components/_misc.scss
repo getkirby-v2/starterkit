@@ -1,0 +1,79 @@
+html,
+body {
+  height: 100%;
+}
+body.rtl {
+  direction: rtl;
+}
+.app {
+  padding-top: 3em;
+}
+.cf:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.cut {
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+.hidden {
+  display: none !important;
+}
+.grey {
+  background: #efefef;
+}
+.white {
+  background: #fff;
+}
+.app {
+  background: #efefef;
+}
+.section {
+  padding: 1.5em;
+}
+.bars {
+  position: relative;
+  min-height: 100%;
+}
+.draggable-helper {
+  position: fixed;
+  z-index: 10000;
+  white-space: nowrap;
+  background: #000;
+  padding: .25em 1em;
+  color: #fff;
+  width: auto !important;
+  list-style: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.draggable-helper a {
+  color: #fff !important;
+}
+.draggable-helper-with-image {
+  border: 2px solid #000;
+  padding: 0;
+  line-height: 0;
+  border-radius: 0;
+  width: 79px;
+  height: 79px;
+  background: #000 url(../images/pattern.png);
+}
+.draggable-helper-with-image img {
+  position: relative;
+  z-index: 1;
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+}
+
+.uid-preview {
+  max-width: 20em;
+  overflow: hidden;
+  display: block;
+  -ms-word-break: break-word;
+  word-break: break-word;
+  text-overflow: ellipsis;
+}

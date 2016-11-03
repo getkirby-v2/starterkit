@@ -15,7 +15,7 @@
         <?php i('arrow-circle-left', 'left') . _l('files.index.back') ?>
       </a>
 
-      <?php if($page->hasFiles() and $page->canHaveMoreFiles()): ?>
+      <?php if($page->hasFiles() && $page->ui()->upload()): ?>
       <a data-upload class="hgroup-option-right" href="#upload">
         <?php i('plus-circle', 'left') . _l('files.index.upload') ?>
       </a>
@@ -34,7 +34,7 @@
           <a class="file-preview file-preview-is-<?php __($file->type()) ?>" href="<?php __($file->url('edit')) ?>">
             <?php if($file->extension() == 'svg'): ?>
             <object data="<?php __($file->url('preview')) ?>"></object>
-            <?php elseif($file->canHavePreview()): ?>
+            <?php elseif($file->options()->preview()): ?>
             <img src="<?php __($file->crop(400, 266)->url()) ?>" alt="<?php __($file->filename()) ?>">
             <?php else: ?>
             <span><?php __($file->extension()) ?></span>
@@ -52,9 +52,15 @@
               <?php i('pencil', 'left') ?><span><?php _l('files.index.edit') ?></span>
             </a>
 
+            <?php if($file->ui()->delete()): ?>
             <a data-modal class="btn btn-with-icon" href="<?php __($file->url('delete') . '?_redirect=' . $page->uri('files')) ?>">
               <?php i('trash-o', 'left') ?><span><?php _l('files.index.delete') ?></span>
             </a>
+            <?php else: ?>
+            <span class="btn btn-with-icon btn-disabled">
+              <?php i('trash-o', 'left') ?><span><?php _l('files.index.delete') ?></span>
+            </span>
+            <?php endif ?>
 
           </nav>
         </figure>
@@ -70,7 +76,7 @@
   <div class="instruction">
     <div class="instruction-content">
       <p class="instruction-text"><?php _l('files.index.upload.first.text') ?></p>
-      <?php if($page->canHaveMoreFiles()) : ?>
+      <?php if($page->ui()->upload()) : ?>
       <a data-upload data-shortcut="+" class="btn btn-rounded" href="#upload">
         <?php _l('files.index.upload.first.button') ?>
       </a>

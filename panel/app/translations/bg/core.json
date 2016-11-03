@@ -307,6 +307,7 @@
     "editor.image.empty": "Тази страница няма изображения",
     "autocomplete.method.error": "Невалиден метод за автоматично довършване",
     "blueprints.error.default.missing": "Липсва blueprint по подразбиране",
+    "permissions.error": "You are not allowed to do this",
     "error": "Грешка",
     "error.headline": "Грешка"
 }

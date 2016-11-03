@@ -42,13 +42,13 @@ class DateField extends InputField {
     $input->data(array(
       'field'  => 'date',
       'format' => $this->format(),
-      'i18n'   => html(json_encode(array(
+      'i18n'   => json_encode(array(
         'previousMonth' => '&lsaquo;',
         'nextMonth'     => '&rsaquo;',
         'months'        => l::get('fields.date.months'),
         'weekdays'      => l::get('fields.date.weekdays'),
         'weekdaysShort' => l::get('fields.date.weekdays.short')
-      )), false)
+      ))
     ));
 
     $hidden = new Brick('input', null);

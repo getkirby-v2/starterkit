@@ -1,0 +1,43 @@
+.nav > li {
+  list-style: none;
+}
+.nav > li > a {
+  display: block;
+}
+.nav-bar > li {
+  body.ltr & {
+    float: left;
+  }
+  body.rtl & {
+    float: right;
+  }
+}
+.nav-icon {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 1em 0 1em;
+  text-align: center;
+  line-height: 1em;
+  height: 3em;
+  width: 4em;
+}
+.nav-icon:hover {
+  color: #999;
+}
+.nav-icon-left {
+  body.ltr & {
+    border-right: 1px solid #555;
+  }
+  body.rtl & {
+    border-left: 1px solid #555;
+  }
+}
+.nav-icon-right {
+  body.ltr & {
+    border-left: 1px solid #555;
+  }
+  body.rtl & {
+    border-right: 1px solid #555;
+  }
+}

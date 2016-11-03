@@ -1,0 +1,35 @@
+.dropload {
+  position: relative;
+  border: 2px dashed rgba(0,0,0, .15);
+  border-radius: .2em;
+  transition: border-color .3s;
+  margin-bottom: 1.5em;
+}
+.dropload:hover,
+.dropload.over,
+.dropload:focus {
+  border-color: #8dae28;
+}
+.dropload-text {
+  display: none;
+  text-align: center;
+}
+.dropload-text strong {
+  display: block;
+}
+.dropload.is-active [type=file] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.dropload.is-active [type=submit] {
+  display: none;
+}
+.dropload.is-active .dropload-text {
+  display: block;
+}

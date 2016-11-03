@@ -272,7 +272,7 @@
     "fields.structure.add.first": "Afegir la primera entrada",
     "fields.structure.empty": "Encara no hi ha entrades.",
     "fields.structure.entry.error": "No s'ha trobat",
-    "fields.structure.max.error": "No new items allowed or field is readonly",
+    "fields.structure.max.error": "No es permeten nous elements o el camp és només de lectura ",
     "fields.structure.cancel": "Cancel·lar",
     "fields.structure.save": "Ok",
     "fields.structure.edit": "Editar",
@@ -307,6 +307,7 @@
     "editor.image.empty": "Aquesta pàgina no té imatges",
     "autocomplete.method.error": "Mètode d'autocompletar incorrecte",
     "blueprints.error.default.missing": "El \"blueprint\" per defecte no s'ha trobat",
+    "permissions.error": "No pots fer això",
     "error": "Error",
     "error.headline": "Error"
 }
