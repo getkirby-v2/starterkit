@@ -18,9 +18,7 @@ fields:
   intro:
     label: Intro
     type: textarea
-    size: small
     
   text:
     label: Text
     type: textarea
-    size: large
