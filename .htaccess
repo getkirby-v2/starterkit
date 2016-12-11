@@ -30,8 +30,8 @@ RewriteRule ^content/(.*)\.(txt|md|mdown)$ index.php [L]
 #RewriteCond $1 !^plugins/[a-zA-Z0-9\.\-_%=]+/assets/.*
 RewriteRule ^site/(.*) index.php [L]
 
-# block all files in the kirby folder from being accessed directly
-RewriteRule ^kirby/(.*) index.php [L]
+# block direct access to kirby and the panel sources
+RewriteRule ^(kirby|panel\/app|panel\/tests)/(.*) index.php [L]
 
 # make panel links work
 RewriteCond %{REQUEST_FILENAME} !-f
