@@ -11,6 +11,7 @@ load(array(
   'kirby\\panel\\login'                            => 'panel' . DS . 'login.php',
   'kirby\\panel\\translation'                      => 'panel' . DS . 'translation.php',
   'kirby\\panel\\autocomplete'                     => 'panel' . DS . 'autocomplete.php',
+  'kirby\\panel\\errorhandling'                    => 'panel' . DS . 'errorhandling.php',
   'kirby\\panel\\roots'                            => 'panel' . DS . 'roots.php',
   'kirby\\panel\\urls'                             => 'panel' . DS . 'urls.php',
   'kirby\\panel\\view'                             => 'panel' . DS . 'view.php',

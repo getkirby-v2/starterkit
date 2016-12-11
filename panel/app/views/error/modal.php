@@ -7,7 +7,7 @@
       <label class="label"><?php __($headline) ?></label>
       <?php endif ?>
       <div class="text">
-        <p><?php __($text) ?></p>
+        <p><?php echo html($text) ?></p>
       </div>
     </div>
     <div class="buttons buttons-centered cf">

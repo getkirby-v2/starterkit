@@ -7,7 +7,14 @@ class UsersController extends Kirby\Panel\Controllers\Base {
 
   public function index() {
 
-    $users      = panel()->users()->paginate(20, array('method' => 'query'));
+    $users = panel()->users();
+
+    // filter all users which cannot be read
+    $users = $users->filter(function($user) {
+      return $user->ui()->read();
+    });
+
+    $users      = $users->paginate(20, array('method' => 'query'));
     $admin      = panel()->user()->isAdmin();    
     $pagination = $this->snippet('pagination', array(
       'pagination' => $users->pagination(),

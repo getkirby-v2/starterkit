@@ -2,9 +2,7 @@
 
 class ErrorController extends Kirby\Panel\Controllers\Base {
 
-  public function index($text = null, $exception = null) {
-
-    $this->auth();
+  public function index($text = null) {
 
     if(is_null($text)) {
       $text = l('pages.error.missing');
@@ -17,19 +15,10 @@ class ErrorController extends Kirby\Panel\Controllers\Base {
       ));
     } else {
       return $this->screen('error/index', 'error', array(
-        'text'      => $text, 
-        'exception' => $exception
+        'text' => $text
       ));      
     }
 
-  }
-
-  public function auth() {
-    try {
-      $user = panel()->user();      
-    } catch(Exception $e) {
-      $this->redirect('login');
-    }
   }
 
 }

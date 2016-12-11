@@ -62,7 +62,7 @@ class Options {
    * Option to have pages
    */
   public function pages() {
-    return true;
+    return $this->site->maxSubpages() !== 0;
   }
 
 }

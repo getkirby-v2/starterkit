@@ -11,7 +11,7 @@ class UI {
   }
 
   public function show() {
-    return $this->page->options()->show();
+    return $this->page->options()->show() && $this->read();
   }
 
   public function read() {

@@ -37,6 +37,8 @@ class Site extends \Site {
   public function uri($action = null) {
     if(empty($action)) {
       return parent::uri();
+    } else if($action === 'edit') {
+      return 'options';
     } else {
       return 'site/' . $action;            
     }

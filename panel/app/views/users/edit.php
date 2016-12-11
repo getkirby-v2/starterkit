@@ -15,7 +15,7 @@
 
         <li>
           <?php if($user->isCurrent()): ?>
-          <a href="mailto:<?php echo $user->email() ?>">
+          <a href="<?php echo purl('logout') ?>">
             <?php i('power-off', 'left') . _l('logout') ?>
           </a>
           <?php else: ?>

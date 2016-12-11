@@ -268,7 +268,7 @@ class Page extends \Page {
     $old->removeThumbs();
 
     // hit the hook
-    kirby()->trigger($event, [$this, $old]);
+    kirby()->trigger('panel.page.move', [$this, $old]);
   
   }
 
@@ -310,7 +310,7 @@ class Page extends \Page {
     // run the hook if the number changed
     if($old->num() != $this->num()) {
       // hit the hook
-      kirby()->trigger($event, array($this, $old));
+      kirby()->trigger('panel.page.sort', [$this, $old]);
     }
 
     return $this->num();
@@ -339,7 +339,8 @@ class Page extends \Page {
 
     parent::hide();
     $this->sorter()->hide();
-    kirby()->trigger($event, [$this, $old]);
+
+    kirby()->trigger('panel.page.hide', [$this, $old]);
 
   }
 
@@ -350,7 +351,7 @@ class Page extends \Page {
 
     if($mode === 'default') {
 
-      if($position > 0) {
+      if($position > 0 || $this->isInvisible()) {
         $this->sort($position);                  
       } else {
         $this->hide();

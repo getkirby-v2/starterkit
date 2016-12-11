@@ -5847,7 +5847,7 @@ var Context = function() {
     text = $.trim(text.toLowerCase());
 
     $.each($.slug.table || {}, function(key, val) {
-      text = text.replace(key, val);
+      text = text.split(key).join(val);
     });
 
     return text

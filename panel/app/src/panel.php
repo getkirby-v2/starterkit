@@ -25,6 +25,7 @@ use Tpl;
 use Url;
 
 use Kirby\Panel\Event;
+use Kirby\Panel\ErrorHandling;
 use Kirby\Panel\Installer;
 use Kirby\Panel\Form;
 use Kirby\Panel\Models\Site;
@@ -34,13 +35,13 @@ use Kirby\Panel\Models\Page\Blueprint as PageBlueprint;
 
 class Panel {
 
-  static public $version = '2.4.0';
+  static public $version = '2.4.1';
 
   // minimal requirements
   static public $requires = array(
     'php'     => '5.4.0',
-    'toolkit' => '2.4.0 beta 2',
-    'kirby'   => '2.4.0 beta 2'
+    'toolkit' => '2.4.1',
+    'kirby'   => '2.4.1'
   );
 
   static public $instance;
@@ -94,7 +95,9 @@ class Panel {
 
     // init the core
     $this->kirby = $kirby;
-    $this->site  = $this->site();
+
+    // configure the site setup
+    $this->site = $this->site();
 
     // store the roots and urls for the panel
     $this->roots = new \Kirby\Panel\Roots($this, $root);
@@ -386,6 +389,9 @@ class Panel {
     
     // set the current url
     $this->urls->current = rtrim($this->urls->index() . '/' . $this->path, '/');
+
+    // start the error handling
+    new ErrorHandling($this->kirby, $this);
 
     ob_start();
 

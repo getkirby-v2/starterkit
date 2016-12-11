@@ -64,7 +64,7 @@
 
           <li>
             <?php if($file->ui()->delete()): ?>
-            <a data-modal title="#" data-shortcut="#" href="<?php __($file->url('delete') . '?_redirect=' . $returnTo) ?>" class="btn btn-with-icon">
+            <a data-modal title="#" data-shortcut="#" href="<?php __($file->url('delete') . '?_redirect=' . urlencode($returnTo)) ?>" class="btn btn-with-icon">
               <?php i('trash-o', 'left') ?>
               <?php _l('files.show.delete') ?>
             </a>

@@ -38,4 +38,8 @@ class UI {
     return $this->site->options()->files();
   }
 
+  public function pages() {
+    return $this->site->options()->pages();
+  }
+
 }

@@ -63,23 +63,27 @@ class SubpagesController extends Kirby\Panel\Controllers\Base {
 
       $subpage = $this->page($page->id() . '/' . $id);
 
-      switch($action) {
-        case 'sort':
-          try {
-            $subpage->sort(get('to'));
-          } catch(Exception $e) {
-            // no error handling, because if sorting 
-            // breaks, the refresh will fix it.
-          }
-          break;
-        case 'hide':
-          try {
-            $subpage->hide();
-          } catch(Exception $e) {
-            // no error handling, because if sorting 
-            // breaks, the refresh will fix it.
-          }
-          break;
+      if($subpage->ui()->visibility() !== false) {
+
+        switch($action) {
+          case 'sort':
+            try {
+              $subpage->sort(get('to'));
+            } catch(Exception $e) {
+              // no error handling, because if sorting 
+              // breaks, the refresh will fix it.
+            }
+            break;
+          case 'hide':
+            try {
+              $subpage->hide();
+            } catch(Exception $e) {
+              // no error handling, because if sorting 
+              // breaks, the refresh will fix it.
+            }
+            break;
+        }
+
       }
 
       $this->redirect($page, 'subpages');
