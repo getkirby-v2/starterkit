@@ -80,5 +80,5 @@ or send us an email: <support@getkirby.com>
 
 ## Copyright
 
-© 2009-2016 Bastian Allgeier (Bastian Allgeier GmbH)
+© 2009-2017 Bastian Allgeier (Bastian Allgeier GmbH)
 <http://getkirby.com>
