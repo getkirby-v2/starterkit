@@ -15,6 +15,7 @@ RewriteEngine on
 # Set the RewriteBase to:
 #
 # RewriteBase /mysite
+RewriteBase /
 
 # In some enviroments it's necessary to
 # set the RewriteBase to:
