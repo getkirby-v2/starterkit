@@ -7,33 +7,53 @@ use Str;
 
 class Fields extends Collection {
 
-  public function __construct($fields = array(), $model) {
+  protected $model;
+  protected $formtype;
+
+  public function __construct($fields = array(), $model, $formtype = 'default') {
 
     if(empty($fields) or !is_array($fields)) $fields = array();
 
+    $this->model    = $model;
+    $this->formtype = $formtype;
+
     foreach($fields as $name => $field) {
+      $this->createField($name, $field);
+    }
 
-      // sanitize the name
-      $name = str_replace('-','_', str::lower($name));
+  }
 
-      // import a field by name
-      if(is_string($field)) {
-        $field = array(
-          'name'    => $name,
-          'extends' => $field
-        );
+  public function createField($name, $field) {
+
+    // sanitize the name
+    $name = str_replace('-','_', str::lower($name));
+
+    // import a field by name
+    if(is_string($field)) {
+      $field = array(
+        'name'    => $name,
+        'extends' => $field
+      );
+    }    
+
+    // add the name to the field
+    $field['name'] = $name;
+        
+    // create the field object
+    $field = new Field($field, $this->model, $this->formtype);
+
+    if($field->type === 'group') {
+      
+      foreach($field->fields as $name => $subfield) {
+        $this->createField($name, $subfield);
       }
 
-      // add the name to the field
-      $field['name'] = $name;
-          
-      // create the field object
-      $field = new Field($field, $model);
-
+      return;
+    } else {
       // append it to the collection
-      $this->append($name, $field);
-
+      $this->append($name, $field);      
     }
+
 
   }
 

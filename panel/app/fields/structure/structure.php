@@ -17,6 +17,8 @@ class StructureField extends BaseField {
   public $style     = 'items';
   public $modalsize = 'medium';
   public $limit     = null;
+  public $sort      = null;
+  public $flip      = false;
 
   public function routes() {
 
@@ -54,6 +56,18 @@ class StructureField extends BaseField {
     return in_array($this->style, $styles) ? $this->style : 'items';
   }
 
+  public function sort() {
+    return $this->sort ? str::split($this->sort) : false;
+  }
+
+  public function flip() {
+    return $this->flip === true ? true : false;
+  }
+
+  public function sortable() {
+    return !$this->readonly() && !$this->sort() && !$this->flip();
+  }
+
   public function structure() {
     if(!is_null($this->structure)) {
       return $this->structure;
@@ -77,7 +91,16 @@ class StructureField extends BaseField {
   }
 
   public function entries() {
-    return $this->structure()->data();
+    $entries = $this->structure()->data();
+
+    if($sort = $this->sort()) {
+      $entries = call([$entries, 'sortBy'], $sort);
+    }
+    if($this->flip()) {
+      $entries = $entries->flip();
+    }
+
+    return $entries;
   }
 
   public function result() {  

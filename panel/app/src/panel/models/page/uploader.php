@@ -64,9 +64,6 @@ class Uploader {
     // make sure that the file is being marked as updated
     touch($file->root());
 
-    // clean the thumbs folder
-    $this->page->removeThumbs();
-
     kirby()->trigger($event, $file);          
 
   }
@@ -91,8 +88,8 @@ class Uploader {
     // make sure that the file is being marked as updated
     touch($file->root());
 
-    // clean the thumbs folder
-    $this->page->removeThumbs();
+    // clean all thumbs of the file
+    $file->removeThumbs();
 
     kirby()->trigger($event, [$file, $old]);
 

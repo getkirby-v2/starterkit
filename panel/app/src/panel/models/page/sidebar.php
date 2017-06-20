@@ -29,7 +29,7 @@ class Sidebar {
 
   public function subpages() {
 
-    if($this->page->ui()->pages() === false) {
+    if($this->blueprint->pages()->hide() === true) {
       return null;
     }
 

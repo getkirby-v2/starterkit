@@ -158,8 +158,6 @@ class Options {
       return false;
     } else if($this->page->isErrorPage()) {
       return false;
-    } else if($this->page->hasChildren()) {
-      return false;
     } else if($this->page->blueprint()->deletable() === false) {
       return false;
     } else if($this->page->blueprint()->options()->delete() === false) {

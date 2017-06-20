@@ -3,6 +3,7 @@
 namespace Kirby\Panel\Models;
 
 use C;
+use F;
 use Kirby\Panel\Event;
 use Kirby\Panel\Structure;
 use Kirby\Panel\Models\File\Menu;
@@ -100,8 +101,10 @@ class File extends \File {
     // rename and get the new filename          
     $filename = parent::rename($name, $safeName);
 
-    // clean the thumbs folder
-    $this->page()->removeThumbs();
+    // clean the thumbs
+    // we don't rename them as there may be totally different thumb sizes
+    // for this new filename; re-generating for this single image isn't much work
+    $old->removeThumbs();
 
     // trigger the rename hook
     kirby()->trigger($event, array($this, $old));          
@@ -173,11 +176,11 @@ class File extends \File {
     // check for permissions
     $event->check();
 
+    // remove all thumbs
+    $this->removeThumbs();
+
     // delete the file
     parent::delete();
-
-    // clean the thumbs folder
-    $this->page()->removeThumbs();
 
     kirby()->trigger($event, $this);    
 
@@ -280,6 +283,21 @@ class File extends \File {
       'page' => $this->page(),
       'file' => $this
     ], $args));
+  }
+
+  /**
+   * Remove all thumbs of the file
+   */
+  public function removeThumbs() {
+
+    $pattern = $this->kirby->roots()->thumbs() . '/' . $this->page()->id() . '/' . $this->name() . '-*.' . $this->extension();
+
+    if(!empty($pattern)) {
+      foreach(glob($pattern) as $thumb) {
+        f::remove($thumb);
+      }      
+    }
+
   }
 
 }

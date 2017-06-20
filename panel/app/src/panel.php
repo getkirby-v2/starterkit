@@ -35,7 +35,7 @@ use Kirby\Panel\Models\Page\Blueprint as PageBlueprint;
 
 class Panel {
 
-  static public $version = '2.4.1';
+  static public $version = '2.5.0';
 
   // minimal requirements
   static public $requires = array(
@@ -75,6 +75,7 @@ class Panel {
       'panel.session.lifetime' => 0,
       'panel.info.license'     => true,
       'panel.info.versions'    => true,
+      'panel.favicon'          => false,
       'panel.widgets'          => array(
         'pages'   => true,
         'site'    => true,

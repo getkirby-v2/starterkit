@@ -18,7 +18,7 @@
           <a href="<?php echo purl('logout') ?>">
             <?php i('power-off', 'left') . _l('logout') ?>
           </a>
-          <?php else: ?>
+          <?php elseif($user->email()): ?>
           <a href="mailto:<?php echo $user->email() ?>">
             <?php i('envelope-square', 'left') . _l('users.form.options.message') ?>
           </a>

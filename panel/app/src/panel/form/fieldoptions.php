@@ -23,12 +23,14 @@ class FieldOptions {
 
     if(is_array($this->field->options)) {
       $this->options = $this->field->options;
-    } else if($this->isUrl($this->field->options)) {
-      $this->options = $this->optionsFromApi($this->field->options);
     } else if($this->field->options == 'query') {
       $this->options = $this->optionsFromQuery($this->field->query);
     } else if($this->field->options == 'field') {
       $this->options = $this->optionsFromField($this->field->field);
+    } else if($this->field->options == 'url') {
+      $this->options = $this->optionsFromApi($this->field->url);
+    } else if($this->isUrl($this->field->options)) {
+      $this->options = $this->optionsFromApi($this->field->options);
     } else {
       $this->options = $this->optionsFromPageMethod($this->field->page, $this->field->options);
     }
@@ -57,7 +59,7 @@ class FieldOptions {
   }
 
   public function optionsFromApi($url) {
-    $response = remote::get($url);
+    $response = remote::get(url($url));
     $options  = @json_decode($response->content(), true);
     return is_array($options) ? $options : array();
   }

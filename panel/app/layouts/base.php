@@ -13,6 +13,7 @@
   <?php endif ?>
   
   <?php echo $js ?>
+  <?php echo $favicon ?>
 
 </head>
 <body class="app <?php __($direction) ?> <?php __($bodyclass) ?>">

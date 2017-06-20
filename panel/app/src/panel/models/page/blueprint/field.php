@@ -18,13 +18,13 @@ class Field extends Obj {
   public $required  = false;
   public $translate = true;
 
-  public function __construct($params = array(), $model) {
+  public function __construct($params = array(), $model, $formtype = 'default') {
 
     if(!empty($params['extends'])) {
       $params = $this->_extend($params);
     }
 
-    if(a::get($params, 'name') == 'title') {
+    if($formtype === 'default' && a::get($params, 'name') == 'title') {
       $params['type'] = 'title';
 
       if(!isset($params['required'])) {
@@ -63,7 +63,7 @@ class Field extends Obj {
     $file = kirby()->get('blueprint', 'fields/' . $extends);
 
     if(empty($file) || !is_file($file)) {
-      throw new Exception(l('fields.error.extended'));
+      throw new Exception(l('fields.error.extended') . ' "' . $extends . '"');
     }
 
     $yaml   = data::read($file, 'yaml');

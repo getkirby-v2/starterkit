@@ -30,7 +30,7 @@ class DatetimeField extends BaseField {
     $date = a::get($value, 'date');
     $time = a::get($value, 'time');
 
-    return empty($time) ? $date : $date . ' ' . $time . ':00';
+    return empty($time) ? $date : $date . ' ' . $time;
 
   } 
 
@@ -60,10 +60,11 @@ class DatetimeField extends BaseField {
     $options = array_merge([
       'format'   => 'YYYY-MM-DD',
       'required' => $this->required(),
-      'default'  => false,
+      'override' => $this->override(),
+      'default'  => a::get($this->default(), 'date', false),
     ], (array)$this->date);
 
-    if($options['required'] && !$options['default']) {
+    if(($options['required'] || $options['override']) && !$options['default']) {
       $options['default'] = 'now';
     }
 
@@ -80,15 +81,13 @@ class DatetimeField extends BaseField {
     $options = $this->dateOptions();
     $value   = $this->dateValue($timestamp, $options['default']);
 
-    return form::field('date', array(
+    return form::field('date', array_merge($options, [
       'name'     => $this->name() . '[date]',
       'id'       => 'form-field-' . $this->name() . '-date',
       'value'    => $value,
-      'format'   => $options['format'],      
-      'required' => $options['required'],
       'readonly' => $this->readonly(),
       'disabled' => $this->disabled()
-    ));
+    ]));
 
   }
 
@@ -98,15 +97,16 @@ class DatetimeField extends BaseField {
       'interval' => 60,
       'format'   => 24,
       'required' => null,
-      'default'  => false,
+      'override' => $this->override(),
+      'default'  => a::get($this->default(), 'time', false),
     ], (array)$this->time);
 
     if($this->required() && $options['required'] !== false) {
       $options['required'] = true;
     }
 
-    if($options['required'] && !$options['default']) {
-      $options['default'] = date('H:i');
+    if(($options['required'] || $options['override']) && !$options['default']) {
+      $options['default'] = date($this->timeFormat($options['format']));
     }
 
     return $options;
@@ -117,10 +117,14 @@ class DatetimeField extends BaseField {
     return !preg_match('!^[0-9]{4}-[0-9]{2}-[0-9]{2}$!', $date);
   }
 
-  public function timeValue($value, $timestamp, $default) {
+  public function timeFormat($format) {
+    return $format == 12 ? 'h:i A' : 'H:i';
+  }
+
+  public function timeValue($value, $timestamp, $default, $format) {
 
     if($this->timeExists($value)) {
-      return $timestamp ? date('H:i', $timestamp) : $default;      
+      return $timestamp ? date($this->timeFormat($format), $timestamp) : $default;      
     } else {
       return $default;
     }
@@ -130,18 +134,14 @@ class DatetimeField extends BaseField {
   public function timeField($value, $timestamp) {
 
     $options = $this->timeOptions();
-    $value   = $this->timeValue($value, $timestamp, $options['default']);
-
-    return form::field('time', array(
+    $value   = $this->timeValue($value, $timestamp, $options['default'], $options['format']);
+    return form::field('time', array_merge($options, [
       'name'     => $this->name() . '[time]',
       'id'       => 'form-field-' . $this->name() . '-time',
       'value'    => $value,
-      'format'   => $options['format'],
-      'interval' => $options['interval'],
-      'required' => $options['required'],
       'readonly' => $this->readonly(),
       'disabled' => $this->disabled()
-    ));
+    ]));
 
   }
 

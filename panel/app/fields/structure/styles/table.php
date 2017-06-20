@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <?php foreach($field->fields() as $f): ?>
+      <?php if($f['type'] === 'hidden') continue ?>
       <th>
         <?php echo html($field->i18n($f['label']), false) ?>
       </th>
@@ -15,6 +16,7 @@
     <?php foreach($field->entries() as $entry): ?>
     <tr id="structure-entry-<?php echo $entry->id() ?>">
       <?php foreach($field->fields() as $f): ?>
+      <?php if($f['type'] === 'hidden') continue ?>
       <td>
         <a data-modal href="<?php __($field->url($entry->id() . '/update')) ?>">
           <?php if(!empty($entry->{$f['name']})): ?>
