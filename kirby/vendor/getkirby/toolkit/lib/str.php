@@ -92,12 +92,12 @@ class Str {
 
   /**
    * Default options for string methods
-   * 
+   *
    * @var array
    */
   public static $defaults = array(
     'slug' => array(
-      'separator' => '-', 
+      'separator' => '-',
       'allowed'   => 'a-z0-9'
     )
   );
@@ -223,6 +223,9 @@ class Str {
         return (array)@parse_url($string);
       case 'php':
         return @unserialize($string);
+      case 'query':
+        @parse_str($string, $result);
+        return $result;
       default:
         return $string;
     }
@@ -241,11 +244,11 @@ class Str {
     for($i = 0; $i < static::length($string); $i++) {
       $char = static::substr($string, $i, 1);
       if(MB) {
-        list(, $code) = unpack('N', mb_convert_encoding($char, 'UCS-4BE', 'UTF-8'));        
+        list(, $code) = unpack('N', mb_convert_encoding($char, 'UCS-4BE', 'UTF-8'));
       } else {
         $code = ord($char);
       }
-      
+
       $encoded .= rand(1, 2) == 1 ? '&#' . $code . ';' : '&#x' . dechex($code) . ';';
     }
     return $encoded;
@@ -314,7 +317,7 @@ class Str {
 
   /**
    * Checks if the given string is a URL
-   * 
+   *
    * @param string $string
    * @return boolean
    */
@@ -443,7 +446,7 @@ class Str {
 
   /**
    * Generates a random string that may be used for cryptographic purposes
-   * 
+   *
    * WARNING (PHP < 7.0): This function does *not* produce secure random
    * strings and falls back to str::quickRandom with PHP < 7.0!
    *
@@ -514,7 +517,7 @@ class Str {
 
     // replace spaces with simple dashes
     $string = preg_replace('![^' . $allowed . ']!i', $separator, $string);
-    
+
     if(strlen($separator) > 0) {
       // remove double separators
       $string = preg_replace('![' . preg_quote($separator) . ']{2,}!', $separator, $string);
@@ -741,50 +744,78 @@ class Str {
 
   /**
    * Returns the beginning of a string before the given character
-   * 
+   *
    * @param string $string
    * @param string $char
    * @return string
    */
   public static function before($string, $char) {
-    $pos = strpos($string, $char);
-    return static::substr($string, 0, $pos);
+    $pos = strpos($string, $char);    
+    if($pos !== false) {
+      return static::substr($string, 0, $pos);      
+    } else {
+      return false;
+    }
   }
 
   /**
    * Returns the beginning of a string until the given character
-   * 
+   *
    * @param string $string
    * @param string $char
    * @return string
    */
   public static function until($string, $char) {
     $pos = strpos($string, $char);
-    return static::substr($string, 0, $pos + str::length($char));
+    if($pos !== false) {
+      return static::substr($string, 0, $pos + str::length($char));      
+    } else {
+      return false;
+    }
   }
 
   /**
    * Returns the rest of the string after the given character
-   * 
+   *
    * @param string $string
    * @param string $char
    * @return string
    */
   public static function after($string, $char) {
     $pos = strpos($string, $char);
-    return static::substr($string, $pos+1);
+    if($pos !== false) {
+      return static::substr($string, $pos + str::length($char));      
+    } else {
+      return false;
+    }
   }
 
   /**
    * Returns the rest of the string starting from the given character
-   * 
+   *
    * @param string $string
    * @param string $char
    * @return string
    */
   public static function from($string, $char) {
     $pos = strpos($string, $char);
-    return static::substr($string, $pos);
+    if($pos !== false) {
+      return static::substr($string, $pos);      
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * Returns everything between two strings from the first occurrence of a given string
+   * 
+   * @param string $string
+   * @param string $start
+   * @param string $end
+   * @return string
+   */
+  public static function between($string, $start, $end) {
+    return static::before(static::after($string, $start), $end);
   }
 
 

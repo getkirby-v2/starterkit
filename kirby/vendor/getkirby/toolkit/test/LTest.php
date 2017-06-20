@@ -4,7 +4,7 @@ require_once('lib/bootstrap.php');
 
 class LTest extends PHPUnit_Framework_TestCase {
   
-  public function __construct() {
+  protected function setUp() {
 
     l::set('testvar', 'testvalue');
 
@@ -32,6 +32,15 @@ class LTest extends PHPUnit_Framework_TestCase {
 
     $this->assertEquals('value1', l::get('var1'));
     $this->assertEquals('value2', l::get('var2'));
+
+  }
+
+  public function testFormatter() {
+
+    l::set('message', 'This is a {message}');
+
+    // with default locale (en_US)
+    $this->assertEquals('This is a test', l::get('message', ['message' => 'test']));
 
   }
 

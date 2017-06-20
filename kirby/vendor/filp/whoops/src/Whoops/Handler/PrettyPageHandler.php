@@ -60,6 +60,19 @@ class PrettyPageHandler extends Handler
     private $applicationPaths;
 
     /**
+     * @var array[]
+     */
+    private $blacklist = [
+        '_GET' => [],
+        '_POST' => [],
+        '_FILES' => [],
+        '_COOKIE' => [],
+        '_SESSION' => [],
+        '_SERVER' => [],
+        '_ENV' => [],
+    ];
+
+    /**
      * A string identifier for a known IDE/text editor, or a closure
      * that resolves a string that can be used to open a given file
      * in an editor. If the string contains the special substrings
@@ -85,6 +98,11 @@ class PrettyPageHandler extends Handler
     ];
 
     /**
+     * @var TemplateHelper
+     */
+    private $templateHelper;
+
+    /**
      * Constructor.
      */
     public function __construct()
@@ -98,6 +116,30 @@ class PrettyPageHandler extends Handler
 
         // Add the default, local resource search path:
         $this->searchPaths[] = __DIR__ . "/../Resources";
+
+        // blacklist php provided auth based values
+        $this->blacklist('_SERVER', 'PHP_AUTH_PW');
+
+        $this->templateHelper = new TemplateHelper();
+
+        if (class_exists('Symfony\Component\VarDumper\Cloner\VarCloner')) {
+            $cloner = new VarCloner();
+            // Only dump object internals if a custom caster exists.
+            $cloner->addCasters(['*' => function ($obj, $a, $stub, $isNested, $filter = 0) {
+                $class = $stub->class;
+                $classes = [$class => $class] + class_parents($class) + class_implements($class);
+
+                foreach ($classes as $class) {
+                    if (isset(AbstractCloner::$defaultCasters[$class])) {
+                        return $a;
+                    }
+                }
+
+                // Remove all internals
+                return [];
+            }]);
+            $this->templateHelper->setCloner($cloner);
+        }
     }
 
     /**
@@ -120,28 +162,6 @@ class PrettyPageHandler extends Handler
 
                 return Handler::DONE;
             }
-        }
-
-        // @todo: Make this more dynamic
-        $helper = new TemplateHelper();
-
-        if (class_exists('Symfony\Component\VarDumper\Cloner\VarCloner')) {
-            $cloner = new VarCloner();
-            // Only dump object internals if a custom caster exists.
-            $cloner->addCasters(['*' => function ($obj, $a, $stub, $isNested, $filter = 0) {
-                $class = $stub->class;
-                $classes = [$class => $class] + class_parents($class) + class_implements($class);
-
-                foreach ($classes as $class) {
-                    if (isset(AbstractCloner::$defaultCasters[$class])) {
-                        return $a;
-                    }
-                }
-
-                // Remove all internals
-                return [];
-            }]);
-            $helper->setCloner($cloner);
         }
 
         $templateFile = $this->getResource("views/layout.html.php");
@@ -188,14 +208,22 @@ class PrettyPageHandler extends Handler
             "javascript" => file_get_contents($jsFile),
 
             // Template paths:
-            "header"      => $this->getResource("views/header.html.php"),
-            "frame_list"  => $this->getResource("views/frame_list.html.php"),
-            "frame_code"  => $this->getResource("views/frame_code.html.php"),
-            "env_details" => $this->getResource("views/env_details.html.php"),
+            "header"                     => $this->getResource("views/header.html.php"),
+            "header_outer"               => $this->getResource("views/header_outer.html.php"),
+            "frame_list"                 => $this->getResource("views/frame_list.html.php"),
+            "frames_description"         => $this->getResource("views/frames_description.html.php"),
+            "frames_container"           => $this->getResource("views/frames_container.html.php"),
+            "panel_details"              => $this->getResource("views/panel_details.html.php"),
+            "panel_details_outer"        => $this->getResource("views/panel_details_outer.html.php"),
+            "panel_left"                 => $this->getResource("views/panel_left.html.php"),
+            "panel_left_outer"           => $this->getResource("views/panel_left_outer.html.php"),
+            "frame_code"                 => $this->getResource("views/frame_code.html.php"),
+            "env_details"                => $this->getResource("views/env_details.html.php"),
 
             "title"          => $this->getPageTitle(),
             "name"           => explode("\\", $inspector->getExceptionName()),
-            "message"        => $inspector->getException()->getMessage(),
+            "message"        => $inspector->getExceptionMessage(),
+            "docref_url"     => $inspector->getExceptionDocrefUrl(),
             "code"           => $code,
             "plain_exception" => Formatter::formatExceptionPlain($inspector),
             "frames"         => $frames,
@@ -207,13 +235,13 @@ class PrettyPageHandler extends Handler
             "has_frames_tabs"   => $this->getApplicationPaths(),
 
             "tables"      => [
-                "GET Data"              => $_GET,
-                "POST Data"             => $_POST,
-                "Files"                 => $_FILES,
-                "Cookies"               => $_COOKIE,
-                "Session"               => isset($_SESSION) ? $_SESSION :  [],
-                "Server/Request Data"   => $_SERVER,
-                "Environment Variables" => $_ENV,
+                "GET Data"              => $this->masked($_GET, '_GET'),
+                "POST Data"             => $this->masked($_POST, '_POST'),
+                "Files"                 => isset($_FILES) ? $this->masked($_FILES, '_FILES') : [],
+                "Cookies"               => $this->masked($_COOKIE, '_COOKIE'),
+                "Session"               => isset($_SESSION) ? $this->masked($_SESSION, '_SESSION') :  [],
+                "Server/Request Data"   => $this->masked($_SERVER, '_SERVER'),
+                "Environment Variables" => $this->masked($_ENV, '_ENV'),
             ],
         ];
 
@@ -228,19 +256,23 @@ class PrettyPageHandler extends Handler
         }, $this->getDataTables());
         $vars["tables"] = array_merge($extraTables, $vars["tables"]);
 
-        if (\Whoops\Util\Misc::canSendHeaders()) {
-            header('Content-Type: text/html');
-        }
-
         $plainTextHandler = new PlainTextHandler();
         $plainTextHandler->setException($this->getException());
         $plainTextHandler->setInspector($this->getInspector());
-        $vars["preface"] = "<!--\n\n\n" . $plainTextHandler->generateResponse() . "\n\n\n\n\n\n\n\n\n\n\n-->";
+        $vars["preface"] = "<!--\n\n\n" .  $this->templateHelper->escape($plainTextHandler->generateResponse()) . "\n\n\n\n\n\n\n\n\n\n\n-->";
 
-        $helper->setVariables($vars);
-        $helper->render($templateFile);
+        $this->templateHelper->setVariables($vars);
+        $this->templateHelper->render($templateFile);
 
         return Handler::QUIT;
+    }
+
+    /**
+     * @return string
+     */
+    public function contentType()
+    {
+        return 'text/html';
     }
 
     /**
@@ -379,7 +411,7 @@ class PrettyPageHandler extends Handler
     {
         $editor = $this->getEditor($filePath, $line);
 
-        if (!$editor) {
+        if (empty($editor)) {
             return false;
         }
 
@@ -425,42 +457,44 @@ class PrettyPageHandler extends Handler
      * act as an Ajax request. The editor must be a
      * valid callable function/closure
      *
-     * @throws UnexpectedValueException  If editor resolver does not return a boolean
-     * @param  string                   $filePath
-     * @param  int                      $line
-     * @return mixed
+     * @param  string $filePath
+     * @param  int    $line
+     * @return array
      */
     protected function getEditor($filePath, $line)
     {
-        if ($this->editor === null && !is_string($this->editor) && !is_callable($this->editor))
-        {
-            return false;
+        if (!$this->editor || (!is_string($this->editor) && !is_callable($this->editor))) {
+            return [];
         }
-        else if(is_string($this->editor) && isset($this->editors[$this->editor]) && !is_callable($this->editors[$this->editor]))
-        {
+
+        if (is_string($this->editor) && isset($this->editors[$this->editor]) && !is_callable($this->editors[$this->editor])) {
            return [
                 'ajax' => false,
                 'url' => $this->editors[$this->editor],
             ];
         }
-        else if(is_callable($this->editor) || (isset($this->editors[$this->editor]) && is_callable($this->editors[$this->editor])))
-        {
-            if(is_callable($this->editor))
-            {
+
+        if (is_callable($this->editor) || (isset($this->editors[$this->editor]) && is_callable($this->editors[$this->editor]))) {
+            if (is_callable($this->editor)) {
                 $callback = call_user_func($this->editor, $filePath, $line);
-            }
-            else
-            {
+            } else {
                 $callback = call_user_func($this->editors[$this->editor], $filePath, $line);
+            }
+
+            if (is_string($callback)) {
+                return [
+                    'ajax' => false,
+                    'url' => $callback,
+                ];
             }
 
             return [
                 'ajax' => isset($callback['ajax']) ? $callback['ajax'] : false,
-                'url' => (is_array($callback) ? $callback['url'] : $callback),
+                'url' => isset($callback['url']) ? $callback['url'] : $callback,
             ];
         }
 
-        return false;
+        return [];
     }
 
     /**
@@ -484,7 +518,7 @@ class PrettyPageHandler extends Handler
      * Adds a path to the list of paths to be searched for
      * resources.
      *
-     * @throws InvalidArgumnetException If $path is not a valid directory
+     * @throws InvalidArgumentException If $path is not a valid directory
      *
      * @param  string $path
      * @return void
@@ -599,5 +633,47 @@ class PrettyPageHandler extends Handler
     public function setApplicationPaths($applicationPaths)
     {
         $this->applicationPaths = $applicationPaths;
+    }
+
+    /**
+     * Set the application root path.
+     *
+     * @param string $applicationRootPath
+     */
+    public function setApplicationRootPath($applicationRootPath)
+    {
+        $this->templateHelper->setApplicationRootPath($applicationRootPath);
+    }
+
+    /**
+     * blacklist a sensitive value within one of the superglobal arrays.
+     *
+     * @param $superGlobalName string the name of the superglobal array, e.g. '_GET'
+     * @param $key string the key within the superglobal
+     */
+    public function blacklist($superGlobalName, $key) {
+        $this->blacklist[$superGlobalName][] = $key;
+    }
+
+    /**
+     * Checks all values within the given superGlobal array.
+     * Blacklisted values will be replaced by a equal length string cointaining only '*' characters.
+     *
+     * We intentionally dont rely on $GLOBALS as it depends on 'auto_globals_jit' php.ini setting.
+     *
+     * @param $superGlobal array One of the superglobal arrays
+     * @param $superGlobalName string the name of the superglobal array, e.g. '_GET'
+     * @return array $values without sensitive data
+     */
+    private function masked(array $superGlobal, $superGlobalName) {
+        $blacklisted = $this->blacklist[$superGlobalName];
+
+        $values = $superGlobal;
+        foreach($blacklisted as $key) {
+            if (isset($superGlobal[$key])) {
+                $values[$key] = str_repeat('*', strlen($superGlobal[$key]));
+            }
+        }
+        return $values;
     }
 }

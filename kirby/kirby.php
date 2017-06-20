@@ -10,7 +10,7 @@ use Kirby\Urls;
 
 class Kirby {
 
-  static public $version = '2.4.1';
+  static public $version = '2.5.0';
   static public $instance;
   static public $hooks = array();
   static public $triggered = array();
@@ -110,8 +110,8 @@ class Kirby {
     return $this->registry;
   }
 
-  public function url() {
-    return $this->urls->index();
+  public function url($url = null) {
+    return $this->urls->index($url);
   }
 
   public function options() {
@@ -171,8 +171,8 @@ class Kirby {
     $this->options = array_merge($this->options, c::$data);
 
     // overwrite the autodetected url
-    if($this->options['url']) {
-      $this->urls->index = $this->options['url'];
+    if($url = $this->options['url']) {
+      $this->url($url);
     }
 
     // connect the url class with its handlers
@@ -258,7 +258,7 @@ class Kirby {
         // build language homepage URL including params and/or query
         $url = $language->url();
         if($params = url::params()) $url .= '/' . url::paramsToString($params);
-        if($query  = url::query())  $url .= '?' . url::queryToString($query);
+        if($query  = url::query())  $url .= '/?' . url::queryToString($query);
 
         // redirect to the language homepage
         if($language && rtrim(url::current(), '/') !== rtrim($url, '/')) {
@@ -308,9 +308,10 @@ class Kirby {
       'action'  => function($extension = null) {
         // ignore invalid extensions
         if($extension === '.') $extension = '';
-        if($extension) $extension = '/' . $extension;
 
-        redirect::send(site()->homepage()->url() . $extension, 307);
+        redirect::send(url::build([
+          'fragments' => ($extension)? [$extension] : null
+        ]), 307);
       }
     );
 
@@ -530,6 +531,16 @@ class Kirby {
     // load all options
     $this->configure();
 
+    // check for an existing site directory
+    if(!is_dir($this->roots()->site())) {
+      trigger_error('The site directory is missing', E_USER_ERROR);
+    }
+
+    // check for an existing content directory
+    if(!is_dir($this->roots()->content())) {
+      trigger_error('The content directory is missing', E_USER_ERROR);
+    }
+
     // setup the cache
     $this->cache();
 
@@ -586,7 +597,7 @@ class Kirby {
     pagination::$defaults['url'] = $page->url() . r($params, '/') . $params;
 
     // cache the result if possible
-    if($this->options['cache'] and $page->isCachable()) {
+    if($this->options['cache'] && $page->isCachable() && in_array(r::method(), ['GET', 'HEAD'])) {
 
       // try to read the cache by cid (cache id)
       $cacheId = md5(url::current() . $page->representation());
