@@ -13,6 +13,7 @@ class InputListField extends InputField {
 
   public function label() {
     $label = parent::label();
+    if(is_null($label)) return null;
 
     // use a legend to avoid having a label
     // that is just connected to the first input

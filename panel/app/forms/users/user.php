@@ -25,7 +25,7 @@ return function($user) {
   // the default set of fields
   $fields = array();
 
-  if(!$user->password()) {
+  if($user && !$user->password()) {
     // Warning that the user does not have a password and can't login
     $fields['noPasswordHelp'] = array(
       'type' => 'info',
