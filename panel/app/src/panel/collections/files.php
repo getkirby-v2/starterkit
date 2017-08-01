@@ -22,7 +22,7 @@ class Files extends \Files {
       $this->data[strtolower($file->filename())] = $file;
     }
 
-    if($this->page->canSortFiles()) {
+    if($this->page->options()->sortFiles()) {
       $sorted = $this->sortBy('sort', 'asc');
       $this->data = $sorted->data;
     } 

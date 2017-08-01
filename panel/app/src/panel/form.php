@@ -70,15 +70,30 @@ class Form extends Brick {
 
       $field['name']    = $name;
       $field['default'] = a::get($field, 'default', null);
-      $field['value']   = a::get($this->values(), $name, $field['default']);
+      $field['value']   = $this->value($name, $field['default']);
 
       // Pass through parent field name (structureField)
       $field['parentField'] = $this->parentField;
 
-      // Check for untranslatable fields
-      if($translated and isset($field['translate']) and $field['translate'] === false) {
-        $field['readonly'] = true;
-        $field['disabled'] = true;
+      // Check for untranslatable and optionally translatable fields
+      if($translated && isset($field['translate'])) {
+        if($field['translate'] === false) {
+          // prevent edits in secondary languages entirely
+          $field['readonly'] = true;
+          $field['disabled'] = true;
+        } else if($field['translate'] === 'optional') {
+          $currentLang = $site->language()->code();
+          $defaultLang = $site->defaultLanguage()->code();
+
+          $currentValue = $field['page']->content($currentLang)->get($name)->value();
+          $defaultValue = $field['page']->content($defaultLang)->get($name)->value();
+
+          // make the field empty if the value was inherited from the default language
+          // and if it's not also the one that's currently stored for the current language
+          if($field['value'] === $defaultValue && $field['value'] !== $currentValue) {
+            $field['value'] = null;
+          }
+        }
       }
 
       $this->fields->append($name, static::field($field['type'], $field));
@@ -95,8 +110,8 @@ class Form extends Brick {
     return $this;
   }
 
-  public function value($name) {
-    return a::get($this->values(), $name, null);
+  public function value($name, $default = null) {
+    return a::get($this->values(), $name, $default);
   }
 
   public function validate() {
@@ -108,14 +123,14 @@ class Form extends Brick {
     foreach($this->fields() as $field) {
 
       // don't validate fields, which are not translatable
-      if($translated and $field->translate() === false) continue;
+      if($translated && $field->translate() === false) continue;
 
       $name  = $field->name();
       $value = $this->value($name);
 
-      if($field->required() and $value == '') {
+      if($field->required() && $value == '') {
         $field->error = true;
-      } else if($value !== '' and $field->validate() == false) {
+      } else if($value !== '' && $field->validate() == false) {
         $field->error = true;
       }
 
@@ -172,7 +187,7 @@ class Form extends Brick {
     }
 
     // unset untranslatable fields in all languages but the default lang
-    if($site->multilang() and $site->language() != $site->defaultLanguage()) {
+    if($site->multilang() && $site->language() != $site->defaultLanguage()) {
       foreach($fields as $field) {
         if($field->translate() === false) {
           $data[$field->name()] = null;

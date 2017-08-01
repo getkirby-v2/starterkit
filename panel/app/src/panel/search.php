@@ -55,8 +55,10 @@ class Search {
     if(empty($users)) {
       foreach(panel()->users() as $user) {
         $users[] = array(
-          'username' => $user->username(),
-          'email'    => $user->email()
+          'username'    => $user->username(),
+          'email'       => $user->email(),
+          'firstname'   => $user->firstName(),
+          'lastname'    => $user->lastName()
         );
       }
       $this->cache->set('users', $users);
@@ -87,7 +89,9 @@ class Search {
     foreach($data['users'] as $user) {
       if(
         str::contains($user['username'], $this->query) or 
-        str::contains($user['email'], $this->query)
+        str::contains($user['email'], $this->query) or 
+        str::contains($user['firstname'], $this->query) or
+        str::contains($user['lastname'], $this->query)
       ) {
         $this->users->append($user['username'], $user);
       }

@@ -22,7 +22,7 @@ class FilesController extends Kirby\Panel\Controllers\Base {
       'page'     => $page,
       'files'    => $files,
       'back'     => $page->url('edit'),
-      'sortable' => $page->canSortFiles(),
+      'sortable' => $page->options()->sortFiles(),
       'uploader' => $this->snippet('uploader', array('url' => $page->url('upload')))
     ));
 

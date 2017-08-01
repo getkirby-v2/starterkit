@@ -132,6 +132,13 @@ class Options {
   }
 
   /**
+   * Option to sort files
+   */
+  public function sortFiles() {
+    return $this->page->blueprint()->files()->sortable();
+  }
+
+  /**
    * Option to have subpages
    */
   public function pages() {

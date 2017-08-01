@@ -292,5 +292,11 @@ return array(
     'method'  => 'GET',
     'filter'  => 'auth'
   ),
+  array(
+    'pattern' => 'plugins/(:any)/(:all)',
+    'action'  => 'AssetsController::other',
+    'method'  => 'GET',
+    'filter'  => 'auth'
+  ),
 
 );

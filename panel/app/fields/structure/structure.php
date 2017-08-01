@@ -11,6 +11,7 @@ class StructureField extends BaseField {
     )
   );
 
+  public $default   = array();
   public $fields    = array();
   public $entry     = null;
   public $structure = null;
@@ -72,7 +73,16 @@ class StructureField extends BaseField {
     if(!is_null($this->structure)) {
       return $this->structure;
     } else {
-      return $this->structure = $this->model->structure()->forField($this->name);      
+      $structure = $this->model->structure()->forField($this->name);
+
+      // add default items if the default value is being used
+      if($this->value() === $this->default()) {
+        foreach($this->default() as $defaultItem) {
+          $structure->store()->add($defaultItem);
+        }
+      }
+
+      return $this->structure = $structure;
     }
   }
 
@@ -80,9 +90,21 @@ class StructureField extends BaseField {
 
     $output = array();
 
-    foreach($this->structure->fields() as $k => $v) {
-      $v['name']  = $k;
-      $v['value'] = '{{' . $k . '}}';
+    // use the configured fields if available
+    $fieldData = $this->structure->fields();
+    $fields = $this->entry;
+    if(!is_array($fields)) {
+      // fall back to all existing fields
+      $fields = array_keys($fieldData);
+    }
+
+    foreach($fields as $f) {
+      if(!isset($fieldData[$f])) continue;
+      $v = $fieldData[$f];
+
+      $v['name']  = $f;
+      $v['value'] = '{{' . $f . '}}';
+
       $output[] = $v;
     }
 

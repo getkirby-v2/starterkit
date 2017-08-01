@@ -34,7 +34,7 @@
           <a class="file-preview file-preview-is-<?php __($file->type()) ?>" href="<?php __($file->url('edit')) ?>">
             <?php if($file->extension() == 'svg'): ?>
             <object data="<?php __($file->url('preview')) ?>"></object>
-            <?php elseif($file->options()->preview()): ?>
+            <?php elseif($file->options()->preview() && $file->type() === 'image'): ?>
             <img src="<?php __($file->crop(400, 266)->url()) ?>" alt="<?php __($file->filename()) ?>">
             <?php else: ?>
             <span><?php __($file->extension()) ?></span>

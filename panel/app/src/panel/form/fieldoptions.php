@@ -215,6 +215,12 @@ class FieldOptions {
       case 'invisibleChildren':
         $items = $page->children()->invisible();
         break;
+      case 'visibleGrandchildren':
+        $items = $page->grandChildren()->visible();
+        break;
+      case 'invisibleGrandchildren':
+        $items = $page->grandChildren()->invisible();
+        break;
       case 'siblings':
         $items = $page->siblings()->not($page);
         break;

@@ -1,7 +1,7 @@
 <div class="structure<?php e($field->readonly(), ' structure-readonly') ?>" 
   data-field="structure" 
   data-api="<?php __($field->url('sort')) ?>" 
-  data-sortable="<?php e($field->sortable(), 'true', 'false') ?>"
+  data-sortable="<?php e($field->sortable() && $field->entries()->count(), 'true', 'false') ?>"
   data-style="<?php echo $field->style() ?>">
 
   <?php echo $field->headline() ?>
