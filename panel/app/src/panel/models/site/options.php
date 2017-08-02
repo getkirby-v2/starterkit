@@ -59,6 +59,13 @@ class Options {
   }
 
   /**
+   * Option to sort files
+   */
+  public function sortFiles() {
+    return $this->site->blueprint()->files()->sortable();
+  }
+
+  /**
    * Option to have pages
    */
   public function pages() {
