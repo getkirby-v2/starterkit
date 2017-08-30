@@ -370,7 +370,7 @@ textarea.input {
   }
   body.rtl & {
     float: right;
-    margin: .3em .25em .3em 1;
+    margin: .3em .25em .3em 1em;
   }
 }
 .selectbox {
@@ -532,10 +532,9 @@ textarea.input {
 }
 
 /* Special fields */
-#form-field-username {
+body:not(.login) #form-field-username {
   text-transform: lowercase;
 }
-
 
 
 @media screen and (min-width: 50em) {

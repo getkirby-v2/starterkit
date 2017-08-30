@@ -753,7 +753,7 @@ body.ltr .input-with-checkbox .checkbox {
 
 body.rtl .input-with-checkbox .checkbox {
   float: right;
-  margin: .3em .25em .3em 1; }
+  margin: .3em .25em .3em 1em; }
 
 .selectbox {
   width: 100%; }
@@ -897,7 +897,7 @@ body.rtl .buttons .btn-submit {
   float: none !important; }
 
 /* Special fields */
-#form-field-username {
+body:not(.login) #form-field-username {
   text-transform: lowercase; }
 
 @media screen and (min-width: 50em) {

@@ -73,16 +73,7 @@ class StructureField extends BaseField {
     if(!is_null($this->structure)) {
       return $this->structure;
     } else {
-      $structure = $this->model->structure()->forField($this->name);
-
-      // add default items if the default value is being used
-      if($this->value() === $this->default()) {
-        foreach($this->default() as $defaultItem) {
-          $structure->store()->add($defaultItem);
-        }
-      }
-
-      return $this->structure = $structure;
+      return $this->structure = $this->model->structure()->forField($this->name, $this->value());
     }
   }
 

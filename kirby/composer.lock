@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1764baa6acfcfe72f4d5d4a7a8cb2e4c",
-    "content-hash": "3f4fec956b93c2906e26529c33d1bd5f",
+    "hash": "87af614fbec5a02037c7f760956be50e",
+    "content-hash": "a58f35eaa036ed3015b493d3f1c38f5a",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -95,16 +95,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.1.9",
+            "version": "2.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "b238974e1c7cc1859b0c16ddc1c02ecb70ecc07f"
+                "reference": "ffbbd2c06c64b08fb47974eed5dbce4ca2bb0eec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/b238974e1c7cc1859b0c16ddc1c02ecb70ecc07f",
-                "reference": "b238974e1c7cc1859b0c16ddc1c02ecb70ecc07f",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/ffbbd2c06c64b08fb47974eed5dbce4ca2bb0eec",
+                "reference": "ffbbd2c06c64b08fb47974eed5dbce4ca2bb0eec",
                 "shasum": ""
             },
             "require": {
@@ -152,20 +152,20 @@
                 "whoops",
                 "zf2"
             ],
-            "time": "2017-06-03 18:33:07"
+            "time": "2017-08-03 18:23:40"
         },
         {
             "name": "getkirby/toolkit",
-            "version": "2.5.4",
+            "version": "2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getkirby/toolkit.git",
-                "reference": "df540a8db729ff8829a294df4cef5d8e0e9e8f2a"
+                "reference": "4720c7584f770004e1c20ca6bb03183fce52ad66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getkirby/toolkit/zipball/df540a8db729ff8829a294df4cef5d8e0e9e8f2a",
-                "reference": "df540a8db729ff8829a294df4cef5d8e0e9e8f2a",
+                "url": "https://api.github.com/repos/getkirby/toolkit/zipball/4720c7584f770004e1c20ca6bb03183fce52ad66",
+                "reference": "4720c7584f770004e1c20ca6bb03183fce52ad66",
                 "shasum": ""
             },
             "require": {
@@ -193,7 +193,7 @@
             "keywords": [
                 "toolkit"
             ],
-            "time": "2017-08-02 11:20:41"
+            "time": "2017-08-30 08:31:09"
         },
         {
             "name": "michelf/php-smartypants",

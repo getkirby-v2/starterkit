@@ -552,7 +552,7 @@ class Page extends \Page {
     if($this->site()->multilang()) {
       
       foreach($this->site()->languages() as $lang) {
-        $old = $this->textfile(null, $lang->code());
+        $old = $this->textfile($oldTemplate, $lang->code());
         $new = $this->textfile($newTemplate, $lang->code());
         f::move($old, $new);
         $this->reset();

@@ -50,7 +50,7 @@ class Field extends Obj {
     }
 
     // create the default value
-    $params['default'] = $this->_default(a::get($params, 'default'));
+    $params['default'] = $this->_default($params, a::get($params, 'default'));
 
     parent::__construct($params);
 
@@ -73,7 +73,7 @@ class Field extends Obj {
 
   }
 
-  public function _default($default) {
+  public function _default($params, $default) {
 
     if($default === true) {
       return 'true';
@@ -84,24 +84,9 @@ class Field extends Obj {
     } else if(is_string($default)) {
       return $default;
     } else {
-      $type = a::get($default, 'type');
-
-      switch($type) {
-        case 'date':
-          $format = a::get($default, 'format', 'Y-m-d');
-          return date($format);
-          break;
-        case 'datetime':
-          $format = a::get($default, 'format', 'Y-m-d H:i:s');
-          return date($format);
-          break;
-        case 'user':
-          $user = isset($default['user']) ? site()->users()->find($default['user']) : site()->user();
-          if(!$user) return '';
-          return (isset($default['field']) and $default['field'] != 'password') ? $user->{$default['field']}() : $user->username();
-          break;
+      switch(a::get($params, 'type')) {
         case 'structure':
-          return "\n" . \data::encode(array($default), 'yaml') . "\n";
+          return "\n" . \data::encode($default, 'yaml') . "\n";
           break;
         default:
           return $default;

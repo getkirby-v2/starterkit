@@ -171,12 +171,12 @@ class Uploader {
 
     // Files blueprint option 'type'
     if(count($filesettings->type()) > 0 and !in_array($file->type(), $filesettings->type())) {
-      throw new Exception(l('files.add.blueprint.type.error') . implode(', ', $filesettings->type()));
+      throw new Exception(l('files.add.blueprint.type.error') . ' ' . implode(', ', $filesettings->type()));
     }
 
     // Files blueprint option 'size'
     if($filesettings->size() and f::size($file->root()) > $filesettings->size()) {
-      throw new Exception(l('files.add.blueprint.size.error') . f::niceSize($filesettings->size()));
+      throw new Exception(l('files.add.blueprint.size.error') . ' ' . f::niceSize($filesettings->size()));
     }
 
     // Files blueprint option 'width'

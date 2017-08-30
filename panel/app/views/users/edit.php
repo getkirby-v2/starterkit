@@ -25,13 +25,13 @@
           <?php endif ?>
         </li>
 
+        <?php if($user->ui()->delete()): ?>
         <li>
-          <?php if($user->ui()->delete()): ?>
-          <a data-modal title="#" data-shortcut="#" href="<?php __($user->url('delete')) ?>">
+          <a data-modal title="#" data-shortcut="#" href="<?php __($user->url('delete')) ?>"<?php if($user->isLastAdmin()): ?> class="btn-disabled"<?php endif ?>>
             <?php i('trash-o', 'left') . _l('users.form.options.delete') ?>
           </a>
-          <?php endif ?>
         </li>
+        <?php endif ?>
 
       </ul>
 
