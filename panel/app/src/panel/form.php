@@ -148,7 +148,7 @@ class Form extends Brick {
     $this->message->addClass('message');
 
     if($type == 'error') {
-      $this->message->addClass('message-is-alert');      
+      $this->message->addClass('message-is-alert');
     } else {
       $this->message->addClass('message-is-notice');
     }
@@ -228,7 +228,7 @@ class Form extends Brick {
 
         $kirbytext = kirby()->option('panel.kirbytext', true);
 
-        $this->data('textarea', get('textarea'));    
+        $this->data('textarea', get('textarea'));
         $this->data('autosubmit', 'false');
         $this->data('kirbytext', r($kirbytext, 'true', 'false'));
         $this->buttons->submit->val(l('insert'));
@@ -244,7 +244,7 @@ class Form extends Brick {
   public function cancel() {
     if($redirect = $this->redirect()) {
       $this->buttons->cancel->href = purl($redirect);
-    } else {    
+    } else {
       $this->buttons->cancel->href = call('purl', func_get_args());
     }
   }
@@ -254,7 +254,7 @@ class Form extends Brick {
     $class = $type . 'field';
 
     if(!class_exists($class)) {
-      throw new Exception('The ' . $type . ' field is missing. Please add it to your installed fields or remove it from your blueprint');      
+      throw new Exception('The ' . $type . ' field is missing. Please add it to your installed fields or remove it from your blueprint');
     }
 
     $field = new $class;
@@ -288,7 +288,7 @@ class Form extends Brick {
     $submit->attr('type', 'submit');
     $submit->addClass('btn-submit');
     $submit->data('saved', l('saved'));
-    $submit->val(l('save'));        
+    $submit->val(l('save'));
 
     $this->buttons->append('submit', $submit);
 
@@ -299,9 +299,9 @@ class Form extends Brick {
   public function on($action, $callback) {
 
     // auto-trigger the submit event when the form is being echoed
-    if(r::is('post')) {    
+    if(r::is('post')) {
       $callback($this);
-    } 
+    }
 
     $this->fields->append('csrf', static::field('hidden', array(
       'name'  => 'csrf',
@@ -311,17 +311,17 @@ class Form extends Brick {
   }
 
   public function toHTML() {
-    
+
     if($this->message) {
-      $this->append($this->message);      
+      $this->append($this->message);
     }
-    
+
     $fieldset = new Brick('fieldset');
     $fieldset->addClass('fieldset field-grid cf');
 
     foreach($this->fields() as $field) $fieldset->append($field);
-  
-    // pass the redirect url   
+
+    // pass the redirect url
     $redirectField = new Brick('input');
     $redirectField->type  = 'hidden';
     $redirectField->name  = '_redirect';
@@ -350,7 +350,7 @@ class Form extends Brick {
     // disable all form fields
     foreach($this->fields as $field) {
       $field->readonly = true;
-    }  
+    }
 
     // hide all the buttons
     $this->centered = true;
@@ -360,9 +360,9 @@ class Form extends Brick {
   }
 
   public function __toString() {
-    
+
     $this->toHTML();
-    return parent::__toString();    
+    return parent::__toString();
 
   }
 

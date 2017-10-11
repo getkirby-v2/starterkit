@@ -126,7 +126,7 @@ class Uploader {
       $this->checkUpload($file);
       return $file;
     } catch(Exception $e) {
-      $file->delete();
+      $file->delete(true);
       throw $e;
     }
 

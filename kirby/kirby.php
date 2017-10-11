@@ -10,7 +10,7 @@ use Kirby\Urls;
 
 class Kirby {
 
-  static public $version = '2.5.5';
+  static public $version = '2.5.6';
   static public $instance;
   static public $hooks = array();
   static public $triggered = array();
@@ -30,6 +30,8 @@ class Kirby {
   public $request;
   public $components = [];
   public $registry;
+
+  protected $configuring = false;
 
   static public function instance($class = null) {
     if(!is_null(static::$instance)) return static::$instance;
@@ -149,6 +151,11 @@ class Kirby {
   }
 
   public function configure() {
+
+    // prevent loading configuration twice
+    // this prevents issues if config is loaded indirectly from the config
+    if($this->configuring) return;
+    $this->configuring = true;
 
     // load all available config files
     $root    = $this->roots()->config();
@@ -351,7 +358,12 @@ class Kirby {
       $routes['others'] = array(
         'pattern' => '(.*)', // this can't be (:all) to avoid overriding the actual language route
         'method'  => 'ALL',
-        'action'  => function() use($site) {
+        'action'  => function($uri) use($site) {
+          // first try to find a page with the given URI
+          $page = page($uri);
+          if($page) return go($page);
+
+          // the URI is not a valid page, redirect to the homepage of the default language
           return go($site->defaultLanguage()->url());
         }
       );

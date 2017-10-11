@@ -29,12 +29,19 @@
     text = text.replace('(', '[');
     text = text.replace(')', ']');
 
-    if(!text.length) {
-      var tag = '<' + address + '>';
-    } else if(form.data('kirbytext')) {
-      var tag = '(email: ' + address + ' text: ' + text + ')';
+    var tag;
+    if(form.data('kirbytext')) {
+      if(text.length) {
+        tag = '(email: ' + address + ' text: ' + text + ')';
+      } else {
+        tag = '(email: ' + address + ')';
+      }
     } else {
-      var tag = '[' + text + '](mailto:' + address + ')';
+      if(text.length) {
+        tag = '[' + text + '](mailto:' + address + ')';
+      } else {
+        tag = '<' + address + '>';
+      }
     }
 
     textarea.insertAtCursor(tag);
