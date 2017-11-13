@@ -33,7 +33,7 @@
         <figure title="<?php __($file->filename()) ?>" class="file">
           <a class="file-preview file-preview-is-<?php __($file->type()) ?>" href="<?php __($file->url('edit')) ?>">
             <?php if($file->extension() == 'svg'): ?>
-            <object data="<?php __($file->url('preview')) ?>"></object>
+            <img src="<?php __($file->url('preview')) ?>" alt="<?php __($file->filename()) ?>">
             <?php elseif($file->options()->preview() && $file->type() === 'image'): ?>
             <img src="<?php __($file->crop(400, 266)->url()) ?>" alt="<?php __($file->filename()) ?>">
             <?php else: ?>

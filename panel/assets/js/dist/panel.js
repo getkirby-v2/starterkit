@@ -6696,6 +6696,9 @@ var Form = function(form, params) {
 
   var form = $(form);
 
+  // remove all event handlers from the form
+  form.off();
+
   var defaults = {
     focus    : false,
     returnTo : false,
@@ -6708,7 +6711,7 @@ var Form = function(form, params) {
 
   form.find('[data-focus=true]').fakefocus('input-is-focused');
 
-  // setup all field plugins  
+  // setup all field plugins
   form.find('[data-field]').each(function() {
     var el  = $(this);
     var key = el.data('field');
@@ -6717,7 +6720,7 @@ var Form = function(form, params) {
 
   // keep changes on updates to avoid data loss
   if(form.data('keep')) {
-    
+
     form.on('keep', function() {
       $.post(form.data('keep'), form.serializeObject())
     });
@@ -6728,9 +6731,9 @@ var Form = function(form, params) {
 
   }
 
-  // focus the right field  
+  // focus the right field
   if(options.focus) {
-    form.find('[autofocus]').focus();    
+    form.find('[autofocus]').focus();
   }
 
   // don't setup a form submission action
@@ -6742,7 +6745,7 @@ var Form = function(form, params) {
   form.find('.btn-addit').on('click', function() {
     // change the form action
     form.attr('action', $(this).data('action'));
-  }); 
+  });
 
   // hook up the form submission
   form.on('submit', function(e) {
@@ -6751,7 +6754,7 @@ var Form = function(form, params) {
     // to setup your own submission action
     if(form.data('autosubmit') == false) {
       return false;
-    } 
+    }
 
     // submission event
     options.submit(form);
@@ -6767,7 +6770,7 @@ var Form = function(form, params) {
 
       // hide the loading indicator
       if(app) app.isLoading(false);
-    
+
       // handle redirection and replacement of data
       options.redirect(response);
 
@@ -6789,6 +6792,7 @@ var Form = function(form, params) {
   });
 
 };
+
 (function($) {
 
   $.fn.message = function() {
@@ -7248,9 +7252,9 @@ var Search = function() {
     });
 
     $('[data-upload]').on('click', function() {
-      form.find('input[type=file]').trigger('click').on('change', function() {
+      form.find('input[type=file]').on('change', function() {
         upload(this.files);
-      });
+      }).trigger('click');
       return false;
     });
 

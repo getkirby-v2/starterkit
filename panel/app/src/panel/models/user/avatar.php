@@ -2,9 +2,10 @@
 
 namespace Kirby\Panel\Models\User;
 
-use Media;
 use Exception;
 use Error;
+use F;
+use Media;
 use Thumb;
 
 use Kirby\Panel\Event;
@@ -31,11 +32,10 @@ class Avatar extends \Avatar {
 
   public function upload() {
 
+    $root = $this->user->avatarRoot('{safeExtension}');
     if($this->exists()) {
-      $root  = $this->root();
       $event = $this->event('replace:action');
     } else {
-      $root  = $this->user->avatarRoot('{safeExtension}');          
       $event = $this->event('upload:action');
     }
 
@@ -55,6 +55,10 @@ class Avatar extends \Avatar {
     if(!$upload->file()) {
       throw $upload->error();
     }
+
+    // delete old avatar in case the file extension changed
+    // $this->root() still points to the root of the old avatar!
+    if($upload->to() != $this->root()) f::remove($this->root());
 
     // flush the cache in case if the user data is 
     // used somewhere on the site (i.e. for profiles)

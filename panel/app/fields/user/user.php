@@ -22,7 +22,13 @@ class UserField extends SelectField {
 
   public function value() {
     $value = parent::value();
-    return empty($value) ? site()->user()->username() : parent::value();
+
+    // default to current user if no default one is defined
+    if(empty($value) && !$this->default && $this->default !== false) {
+      return site()->user()->username();
+    } else {
+      return $value;
+    }
   }
 
 }

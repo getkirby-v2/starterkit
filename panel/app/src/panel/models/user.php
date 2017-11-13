@@ -43,10 +43,6 @@ class User extends \User {
     // keep the old state of the user object
     $old = clone $this;
 
-    if(!panel()->user()->isAdmin() and !$this->isCurrent()) {
-      throw new Exception(l('users.form.error.update.rights'));
-    }
-
     // users which are not an admin cannot change their role
     if(!panel()->user()->isAdmin()) {
       unset($data['role']);

@@ -143,17 +143,17 @@
     },
     {
         "name": "filp/whoops",
-        "version": "2.1.10",
-        "version_normalized": "2.1.10.0",
+        "version": "2.1.12",
+        "version_normalized": "2.1.12.0",
         "source": {
             "type": "git",
             "url": "https://github.com/filp/whoops.git",
-            "reference": "ffbbd2c06c64b08fb47974eed5dbce4ca2bb0eec"
+            "reference": "a99f0b151846021ba7a73b4e3cba3ebc9f14f03e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/filp/whoops/zipball/ffbbd2c06c64b08fb47974eed5dbce4ca2bb0eec",
-            "reference": "ffbbd2c06c64b08fb47974eed5dbce4ca2bb0eec",
+            "url": "https://api.github.com/repos/filp/whoops/zipball/a99f0b151846021ba7a73b4e3cba3ebc9f14f03e",
+            "reference": "a99f0b151846021ba7a73b4e3cba3ebc9f14f03e",
             "shasum": ""
         },
         "require": {
@@ -169,7 +169,7 @@
             "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
             "whoops/soap": "Formats errors as SOAP responses"
         },
-        "time": "2017-08-03 18:23:40",
+        "time": "2017-10-15 13:05:10",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -200,8 +200,51 @@
             "exception",
             "handling",
             "library",
-            "whoops",
-            "zf2"
+            "throwable",
+            "whoops"
+        ]
+    },
+    {
+        "name": "getkirby/toolkit",
+        "version": "2.5.7",
+        "version_normalized": "2.5.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/getkirby/toolkit.git",
+            "reference": "add160fe23b568ec2b8385e08b0e1d6a59553e7e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/getkirby/toolkit/zipball/add160fe23b568ec2b8385e08b0e1d6a59553e7e",
+            "reference": "add160fe23b568ec2b8385e08b0e1d6a59553e7e",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2017-11-13 14:11:34",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "files": [
+                "bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Bastian Allgeier",
+                "email": "bastian@getkirby.com",
+                "homepage": "http://bastianallgeier.com"
+            }
+        ],
+        "description": "The Kirby 2 toolkit is a set of handy classes and helpers which make your life with PHP easier.",
+        "homepage": "http://toolkit.getkirby.com",
+        "keywords": [
+            "toolkit"
         ]
     },
     {
@@ -251,49 +294,6 @@
             "log",
             "psr",
             "psr-3"
-        ]
-    },
-    {
-        "name": "getkirby/toolkit",
-        "version": "2.5.6",
-        "version_normalized": "2.5.6.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/getkirby/toolkit.git",
-            "reference": "abb0ca76dc02db60727c969914253fe8013dffde"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/getkirby/toolkit/zipball/abb0ca76dc02db60727c969914253fe8013dffde",
-            "reference": "abb0ca76dc02db60727c969914253fe8013dffde",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0"
-        },
-        "time": "2017-10-11 12:59:14",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "files": [
-                "bootstrap.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Bastian Allgeier",
-                "email": "bastian@getkirby.com",
-                "homepage": "http://bastianallgeier.com"
-            }
-        ],
-        "description": "The Kirby 2 toolkit is a set of handy classes and helpers which make your life with PHP easier.",
-        "homepage": "http://toolkit.getkirby.com",
-        "keywords": [
-            "toolkit"
         ]
     }
 ]

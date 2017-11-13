@@ -10,7 +10,7 @@ use Kirby\Urls;
 
 class Kirby {
 
-  static public $version = '2.5.6';
+  static public $version = '2.5.7';
   static public $instance;
   static public $hooks = array();
   static public $triggered = array();
@@ -327,14 +327,22 @@ class Kirby {
       'pattern' => 'assets/plugins/(:any)/(:all)',
       'method'  => 'GET',
       'action'  => function($plugin, $path) use($kirby) {
-        $root = $kirby->roots()->plugins() . DS . $plugin . DS . 'assets' . DS . $path;
-        $file = new Media($root);
+        $errorResponse = new Response('The file could not be found', 'txt', 404);
 
-        if($file->exists()) {
-          return new Response(f::read($root), f::extension($root));
-        } else {
-          return new Response('The file could not be found', f::extension($path), 404);
-        }
+        // filter out plugin names that contain directory traversal attacks
+        if(preg_match('{[\\\\/]}', urldecode($plugin))) return $errorResponse;
+        if(preg_match('{^[.]+$}', $plugin))             return $errorResponse;
+
+        // build the path to the requested file
+        $pluginRoot = $kirby->roots()->plugins() . DS . $plugin . DS . 'assets';
+        $fileRoot   = $pluginRoot . DS . str_replace('/', DS, $path);
+        if(!is_file($fileRoot)) return $errorResponse;
+
+        // make sure that we are still in the plugin's asset dir
+        if(!str::startsWith(realpath($fileRoot), realpath($pluginRoot))) return $errorResponse;
+
+        // success, serve the file
+        return new Response(f::read($fileRoot), f::extension($fileRoot));
       }
     );
 
@@ -359,12 +367,17 @@ class Kirby {
         'pattern' => '(.*)', // this can't be (:all) to avoid overriding the actual language route
         'method'  => 'ALL',
         'action'  => function($uri) use($site) {
-          // first try to find a page with the given URI
-          $page = page($uri);
-          if($page) return go($page);
+          if($uri && $uri !== '/') {
+            // first try to find a page with the given URI
+            $page = page($uri);
+            if($page) return go($page);
 
-          // the URI is not a valid page, redirect to the homepage of the default language
-          return go($site->defaultLanguage()->url());
+            // the URI is not a valid page -> error page
+            return $site->errorPage();
+          } else {
+            // no URI is given, redirect to the homepage of the default language
+            return go($site->defaultLanguage()->url());
+          }
         }
       );
 

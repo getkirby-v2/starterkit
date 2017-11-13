@@ -68,13 +68,17 @@
   text-align: left;
   vertical-align: top;
 }
+.structure-readonly td, .structure-readonly th {
+  background: #efefef;
+  color: #777;
+}
 .structure-table th {
   padding: .5em;
   font-weight: 400;
   color: #777;
   font-style: italic;
 }
-.structure-table td a {
+.structure-table td a, .structure-table td span {
   display: block;
   padding: .5em;
   overflow: hidden;
