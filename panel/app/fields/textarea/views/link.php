@@ -6,45 +6,49 @@
 
 (function() {
 
-  var form      = $('.modal .form');
-  var textarea  = $('#' + form.data('textarea'));
-  var selection = textarea.getSelection();
-  var urlField  = form.find('input[name=url]');
-  var textField = form.find('input[name=text]');
+  app.modal.root.on('setup', function () {
 
-  if(selection.length) {
-    if(selection.match(/^http|s\:\/\//)) {
-      urlField.val(selection);
-    } else {
-      textField.val(selection);
-    }
-  }
+    var form      = $('.modal .form');
+    var textarea  = $('#' + form.data('textarea'));
+    var selection = textarea.getSelection();
+    var urlField  = form.find('input[name=url]');
+    var textField = form.find('input[name=text]');
 
-  form.on('submit', function() {
-
-    var url  = urlField.val();
-    var text = textField.val();
-
-    // make sure not to add invalid parenthesis
-    text = text.replace('(', '[');
-    text = text.replace(')', ']');
-
-    if(!text.length) {
-      if(url.match(/^http|s\:\/\//)) {
-        var tag = '<' + url + '>';
-      } else if(form.data('kirbytext')) {
-        var tag = '(link: ' + url + ')';
+    if(selection.length) {
+      if(selection.match(/^http|s\:\/\//)) {
+        urlField.val(selection);
       } else {
-        var tag = '<' + url + '>';
+        textField.val(selection);
       }
-    } else if(form.data('kirbytext')) {
-      var tag = '(link: ' + url + ' text: ' + text + ')';
-    } else {
-      var tag = '[' + text + '](' + url + ')';
     }
 
-    textarea.insertAtCursor(tag);
-    app.modal.close();
+    form.on('submit', function() {
+
+      var url  = urlField.val();
+      var text = textField.val();
+
+      // make sure not to add invalid parenthesis
+      text = text.replace('(', '[');
+      text = text.replace(')', ']');
+
+      if(!text.length) {
+        if(url.match(/^http|s\:\/\//)) {
+          var tag = '<' + url + '>';
+        } else if(form.data('kirbytext')) {
+          var tag = '(link: ' + url + ')';
+        } else {
+          var tag = '<' + url + '>';
+        }
+      } else if(form.data('kirbytext')) {
+        var tag = '(link: ' + url + ' text: ' + text + ')';
+      } else {
+        var tag = '[' + text + '](' + url + ')';
+      }
+
+      textarea.insertAtCursor(tag);
+      app.modal.close();
+
+    });
 
   });
 

@@ -10,7 +10,7 @@ use Kirby\Urls;
 
 class Kirby {
 
-  static public $version = '2.5.7';
+  static public $version = '2.5.8';
   static public $instance;
   static public $hooks = array();
   static public $triggered = array();
@@ -717,7 +717,7 @@ class Kirby {
 
     // start the router
     $this->router = new Router($this->routes());
-    $this->route  = $this->router->run($this->path());
+    $this->route  = $this->router->run(trim($this->path(), '/'));
 
     // check for a valid route
     if(is_null($this->route)) {

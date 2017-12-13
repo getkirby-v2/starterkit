@@ -8,7 +8,7 @@ var Modal = function(app) {
     return $('.modal').length > 0;
   };
 
-  // initialize all modal events as soon 
+  // initialize all modal events as soon
   // as the modal content is loaded
   var on = function() {
 
@@ -27,7 +27,7 @@ var Modal = function(app) {
     content.find('.btn-cancel').on('click', function() {
       if($('.modal').length) {
         close();
-        return false;        
+        return false;
       }
     });
 
@@ -45,10 +45,10 @@ var Modal = function(app) {
     // setup the form
     var form = content.find('.form');
 
-    // switch to native form 
+    // switch to native form
     // submission on modal pages
     if(!isOverlay()) {
-      form.data('autosubmit', 'native');      
+      form.data('autosubmit', 'native');
     }
 
     Form(form, {
@@ -56,16 +56,18 @@ var Modal = function(app) {
       redirect: function(response) {
         if($.type(response) == 'object') {
           if(response.url) {
-            app.content.open(response.url);                        
+            app.content.open(response.url);
             return;
           } else if(response.content) {
             replace(response.content);
             return;
-          } 
-        } 
+          }
+        }
         window.location.reload();
       }
     });
+
+    root.trigger('setup');
 
   };
 
@@ -93,7 +95,7 @@ var Modal = function(app) {
     close();
 
     // switch off content events
-    // to avoid conflicts    
+    // to avoid conflicts
     app.content.off();
 
     // load the modal view
@@ -105,7 +107,7 @@ var Modal = function(app) {
       // add the modal to the body
       $('body').append(root);
 
-      // make sure the modal closes when 
+      // make sure the modal closes when
       // the backdrop is being clicked
       root.on('click', function() {
         close();
@@ -148,7 +150,7 @@ var Modal = function(app) {
 
     // switch content events back on
     app.content.on();
-    
+
   };
 
   // return the modal form element
@@ -159,7 +161,7 @@ var Modal = function(app) {
   var setup = function() {
 
     // init an existing modal on load
-    if(app.hasModal()) {      
+    if(app.hasModal()) {
       on();
     }
 
@@ -167,7 +169,7 @@ var Modal = function(app) {
 
   return {
     root: root,
-    open: open,  
+    open: open,
     close: close,
     replace: replace,
     form: form,

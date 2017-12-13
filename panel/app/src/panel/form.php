@@ -328,6 +328,15 @@ class Form extends Brick {
     $redirectField->value = $this->redirect();
     $fieldset->append($redirectField);
 
+    // pass the language code
+    if (panel()->site()->multilang() === true) {
+      $langField = new Brick('input');
+      $langField->type  = 'hidden';
+      $langField->name  = '_language';
+      $langField->value = panel()->site()->language()->code();
+      $fieldset->append($langField);
+    }
+
     $this->append($fieldset);
 
     $buttons = new Brick('fieldset');

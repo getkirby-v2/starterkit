@@ -30,6 +30,10 @@ class Site extends \Site {
     return $this->cache['blueprint'] = new Blueprint('site');
   }
 
+  public function filterInput($input) {
+    return $input;
+  }
+
   public function changes() {
     return new Changes($this);
   }
@@ -71,6 +75,9 @@ class Site extends \Site {
 
     // make sure the title is always there
     $data['title'] = $this->title();
+
+    // add the changes to the content array
+    $data = array_merge($data, $this->changes()->get());
 
     return $data;
 

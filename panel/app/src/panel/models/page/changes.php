@@ -98,11 +98,11 @@ class Changes {
 
   public function update($field, $data = null) {
 
+    $store = $this->data();
+
     if(is_null($data) and is_array($field)) {
-      $store = $this->data();
       $store[$this->id()] = $field;
     } else if(is_string($field)) {
-      $store = $this->data();
       if(!isset($store[$this->id()]) or !is_array($store[$this->id()])) {
         $store[$this->id()] = array();
       }

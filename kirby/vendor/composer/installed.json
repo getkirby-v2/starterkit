@@ -98,62 +98,18 @@
         ]
     },
     {
-        "name": "erusev/parsedown",
-        "version": "1.6.3",
-        "version_normalized": "1.6.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/erusev/parsedown.git",
-            "reference": "728952b90a333b5c6f77f06ea9422b94b585878d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/erusev/parsedown/zipball/728952b90a333b5c6f77f06ea9422b94b585878d",
-            "reference": "728952b90a333b5c6f77f06ea9422b94b585878d",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2017-05-14 14:47:48",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Parsedown": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Emanuil Rusev",
-                "email": "hello@erusev.com",
-                "homepage": "http://erusev.com"
-            }
-        ],
-        "description": "Parser for Markdown.",
-        "homepage": "http://parsedown.org",
-        "keywords": [
-            "markdown",
-            "parser"
-        ]
-    },
-    {
         "name": "filp/whoops",
-        "version": "2.1.12",
-        "version_normalized": "2.1.12.0",
+        "version": "2.1.14",
+        "version_normalized": "2.1.14.0",
         "source": {
             "type": "git",
             "url": "https://github.com/filp/whoops.git",
-            "reference": "a99f0b151846021ba7a73b4e3cba3ebc9f14f03e"
+            "reference": "c6081b8838686aa04f1e83ba7e91f78b7b2a23e6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/filp/whoops/zipball/a99f0b151846021ba7a73b4e3cba3ebc9f14f03e",
-            "reference": "a99f0b151846021ba7a73b4e3cba3ebc9f14f03e",
+            "url": "https://api.github.com/repos/filp/whoops/zipball/c6081b8838686aa04f1e83ba7e91f78b7b2a23e6",
+            "reference": "c6081b8838686aa04f1e83ba7e91f78b7b2a23e6",
             "shasum": ""
         },
         "require": {
@@ -162,14 +118,14 @@
         },
         "require-dev": {
             "mockery/mockery": "0.9.*",
-            "phpunit/phpunit": "^4.8 || ^5.0",
+            "phpunit/phpunit": "^4.8.35 || ^5.7",
             "symfony/var-dumper": "^2.6 || ^3.0"
         },
         "suggest": {
             "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
             "whoops/soap": "Formats errors as SOAP responses"
         },
-        "time": "2017-10-15 13:05:10",
+        "time": "2017-11-23 18:22:44",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -205,24 +161,71 @@
         ]
     },
     {
-        "name": "getkirby/toolkit",
-        "version": "2.5.7",
-        "version_normalized": "2.5.7.0",
+        "name": "erusev/parsedown",
+        "version": "1.6.4",
+        "version_normalized": "1.6.4.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/getkirby/toolkit.git",
-            "reference": "add160fe23b568ec2b8385e08b0e1d6a59553e7e"
+            "url": "https://github.com/erusev/parsedown.git",
+            "reference": "fbe3fe878f4fe69048bb8a52783a09802004f548"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/getkirby/toolkit/zipball/add160fe23b568ec2b8385e08b0e1d6a59553e7e",
-            "reference": "add160fe23b568ec2b8385e08b0e1d6a59553e7e",
+            "url": "https://api.github.com/repos/erusev/parsedown/zipball/fbe3fe878f4fe69048bb8a52783a09802004f548",
+            "reference": "fbe3fe878f4fe69048bb8a52783a09802004f548",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^4.8.35"
+        },
+        "time": "2017-11-14 20:44:03",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Parsedown": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Emanuil Rusev",
+                "email": "hello@erusev.com",
+                "homepage": "http://erusev.com"
+            }
+        ],
+        "description": "Parser for Markdown.",
+        "homepage": "http://parsedown.org",
+        "keywords": [
+            "markdown",
+            "parser"
+        ]
+    },
+    {
+        "name": "getkirby/toolkit",
+        "version": "2.5.8",
+        "version_normalized": "2.5.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/getkirby/toolkit.git",
+            "reference": "d492775a8bcc0c2770f60b4df7bb4ee0abdb41a8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/getkirby/toolkit/zipball/d492775a8bcc0c2770f60b4df7bb4ee0abdb41a8",
+            "reference": "d492775a8bcc0c2770f60b4df7bb4ee0abdb41a8",
             "shasum": ""
         },
         "require": {
             "php": ">=5.4.0"
         },
-        "time": "2017-11-13 14:11:34",
+        "time": "2017-12-13 10:08:31",
         "type": "library",
         "installation-source": "source",
         "autoload": {

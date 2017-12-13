@@ -59,7 +59,8 @@ var Form = function(form, params) {
     // auto submission can be switched off via a data attribute
     // to setup your own submission action
     if(form.data('autosubmit') == false) {
-      return false;
+      e.preventDefault();
+      return;
     }
 
     // submission event
