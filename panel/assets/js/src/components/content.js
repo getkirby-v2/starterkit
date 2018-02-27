@@ -12,8 +12,8 @@ var Content = function() {
 
     mainbar: 0,
     sidebar: 0,
-    
-    save : function() {      
+
+    save : function() {
       scroll.mainbar = $('.mainbar').scrollTop();
       scroll.sidebar = $('.sidebar').scrollTop();
     },
@@ -58,7 +58,7 @@ var Content = function() {
       redirect: function(response) {
 
         if($.type(response) == 'object' && response.url) {
-          open(response.url);                        
+          open(response.url);
         } else {
           replace(response.content);
         }
@@ -73,7 +73,7 @@ var Content = function() {
 
   // clean all registered events and remove generated elements
   var off = function() {
-    
+
     // stop all delays
     app.delay.stop();
 
@@ -88,36 +88,36 @@ var Content = function() {
 
   };
 
-  var open = function(url, state) {
+  var open = function(url, complete) {
 
     app.load(url, 'content', function(response) {
       // handle redirects
       if(response.url) {
-        open(response.url);
+        open(response.url, complete);
       } else {
-        replace(response.content, url);
+        replace(response.content, url, complete);
       }
     });
 
   };
 
-  var replace = function(content, url) {
+  var replace = function(content, url, complete) {
 
     // close all context menus
     $(document).trigger('click.contextmenu');
 
     // close all modals
-    app.modal.close();      
+    app.modal.close();
 
-    root.html(content);    
+    root.html(content);
 
     // change the history
     if(url) {
-      if(window.location.href != url) {                
-        focus.forget();            
+      if(window.location.href != url) {
+        focus.forget();
         try {
           path = url.replace(window.location.origin, '');
-          window.history.pushState({path: path}, document.title, path);                    
+          window.history.pushState({path: path}, document.title, path);
         } catch(e) {
           window.location.href = url;
         }
@@ -128,13 +128,20 @@ var Content = function() {
     on();
 
     // restore the previous scroll position
-    scroll.restore();          
+    scroll.restore();
+
+    if ($.type(complete) === 'function') {
+      complete();
+    }
 
   };
 
   var reload = function() {
     scroll.save();
-    open(document.location);
+    $('body').addClass('loading');
+    open(document.location, function () {
+      $('body').removeClass('loading');
+    });
   };
 
   var shortcuts = function() {
@@ -147,7 +154,7 @@ var Content = function() {
 
   var setup = function() {
 
-    $(window).on('popstate', function(e) {      
+    $(window).on('popstate', function(e) {
       open(document.location);
     });
 
@@ -166,7 +173,7 @@ var Content = function() {
     shortcuts: shortcuts,
     form: form,
     focus: focus,
-    setup: setup, 
+    setup: setup,
     scroll: scroll
   };
 

@@ -56,6 +56,12 @@ var Form = function(form, params) {
   // hook up the form submission
   form.on('submit', function(e) {
 
+    if (form.hasClass('loading')) {
+      return false;
+    }
+
+    form.addClass('loading');
+
     // auto submission can be switched off via a data attribute
     // to setup your own submission action
     if(form.data('autosubmit') == false) {
@@ -78,6 +84,8 @@ var Form = function(form, params) {
       // hide the loading indicator
       if(app) app.isLoading(false);
 
+      form.removeClass('loading');
+
       // handle redirection and replacement of data
       options.redirect(response);
 
@@ -85,6 +93,8 @@ var Form = function(form, params) {
 
       // hide the loading indicator
       if(app) app.isLoading(false);
+
+      form.removeClass('loading');
 
       if(response.responseJSON && response.responseJSON.message) {
         alert(response.responseJSON.message);

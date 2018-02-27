@@ -39,7 +39,11 @@ var app = {
     });
 
     // event delegation for all clicks on links
-    $(document).on('click', 'a', function(e) {      
+    $(document).on('click', 'a', function(e) {
+      // don't break browser special behavior on links (like page in new window)
+      if(e.which > 1 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+        return true;
+      }  
 
       var link = $(this);
       var href = link.attr('href');

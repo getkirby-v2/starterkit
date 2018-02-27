@@ -20,16 +20,24 @@ class Pages extends Obj {
   public $build    = array();
   public $add      = true;
 
-  public function __construct($params = array()) {
+  public function __construct($blueprintName, $params = array()) {
 
     if($params === true) {
       $this->template = blueprint::all();
     } else if($params === false) {
-      $this->limit    = 0;
-      $this->max      = 0;
-      $this->sortable = false;
-      $this->hide     = true;
-      $this->add      = false;
+      if($blueprintName === 'site') {
+        $this->limit    = 20;
+        $this->max      = 1;
+        $this->sortable = false;
+        $this->hide     = false;
+        $this->add      = false;
+      } else {
+        $this->limit    = 0;
+        $this->max      = 0;
+        $this->sortable = false;
+        $this->hide     = true;
+        $this->add      = false;
+      }
     } else if(is_array($params)) {
       $template = a::get($params, 'template');
       if($template == false) {

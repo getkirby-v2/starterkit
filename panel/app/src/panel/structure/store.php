@@ -81,7 +81,7 @@ class Store {
 
     if($ageStore < $ageModel || $ageStore < $ageModelDefL) {
       $this->reset();
-      $this->age = $ageModel;
+      $this->age = max($ageModel, $ageModelDefL);
     } else {
       $this->age = $ageStore;
     }

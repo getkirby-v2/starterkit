@@ -209,23 +209,23 @@
     },
     {
         "name": "getkirby/toolkit",
-        "version": "2.5.8",
-        "version_normalized": "2.5.8.0",
+        "version": "2.5.9",
+        "version_normalized": "2.5.9.0",
         "source": {
             "type": "git",
             "url": "https://github.com/getkirby/toolkit.git",
-            "reference": "d492775a8bcc0c2770f60b4df7bb4ee0abdb41a8"
+            "reference": "1a4250022185788fe1181ffac670f1a65c54f92b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/getkirby/toolkit/zipball/d492775a8bcc0c2770f60b4df7bb4ee0abdb41a8",
-            "reference": "d492775a8bcc0c2770f60b4df7bb4ee0abdb41a8",
+            "url": "https://api.github.com/repos/getkirby/toolkit/zipball/1a4250022185788fe1181ffac670f1a65c54f92b",
+            "reference": "1a4250022185788fe1181ffac670f1a65c54f92b",
             "shasum": ""
         },
         "require": {
             "php": ">=5.4.0"
         },
-        "time": "2017-12-13 10:08:31",
+        "time": "2018-02-27 15:38:10",
         "type": "library",
         "installation-source": "source",
         "autoload": {

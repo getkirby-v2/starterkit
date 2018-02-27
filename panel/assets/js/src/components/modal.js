@@ -54,9 +54,14 @@ var Modal = function(app) {
     Form(form, {
       focus: true,
       redirect: function(response) {
+
         if($.type(response) == 'object') {
           if(response.url) {
-            app.content.open(response.url);
+            $('.modal').remove();
+            $('body').addClass('loading');
+            app.content.open(response.url, function () {
+              $('body').removeClass('loading');
+            });
             return;
           } else if(response.content) {
             replace(response.content);
