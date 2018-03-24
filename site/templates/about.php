@@ -26,9 +26,11 @@
         <?php foreach($page->children()->visible() as $member): ?>
           <li class="team-item column">
             
-            <figure class="team-portrait">
-              <img src="<?= $member->image()->url() ?>" alt="Portrait of <?= $member->title()->html() ?>" />
-            </figure>
+            <?php if($image = $member->image()): ?>
+              <figure class="team-portrait">
+                <img src="<?= $image->url() ?>" alt="Portrait of <?= $member->title()->html() ?>" />
+              </figure>
+            <?php endif ?>
             
             <div class="team-info">
               <h3 class="team-name"><?= $member->title()->html() ?></h3>
