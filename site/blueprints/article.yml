@@ -1,27 +1,43 @@
 title: Article
 
+# disables creation of subpages
 pages: false
 
+# icon: page
+
 fields:
-  title:
-    label: Title
-    type:  title
-    
-  coverimage:
-    label: Cover Image
-    type: image
-    width: 1/2
-    
-  date:
-    icon: calendar
-    label: Date
-    type: date
-    format: LL
-    placeholder: Select a date…
-    default: today
-    required: true
-    width: 1/2
-  
-  text:
-    label: Text
-    type: textarea
+   title:
+      label: Title
+      type: title
+
+   datetime:
+      label: Date and Time
+      type: datetime
+      default:
+         date: now
+      date:
+         format: DD-MM-YYYY
+      time:
+         format: 24
+         interval: 5
+      required: true
+
+   author:
+      label: Author
+      type: tags
+      index: all
+      icon: user
+
+   coverimage:
+      label: Cover Image
+      type: image
+      width: 1/2
+
+   residents:
+      label: Residents
+      type: tags
+      index: all
+
+   text:
+      label: Text
+      type: markdown

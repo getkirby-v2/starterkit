@@ -1,0 +1,3 @@
+[submodule "site/fields/markdown"]
+	path = site/fields/markdown
+	url = https://github.com/JonasDoebertin/kirby-visual-markdown.git

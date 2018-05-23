@@ -1,0 +1,37 @@
+title: Resident
+
+pages: false
+
+icon: user
+
+fields:
+   title:
+      label: Name
+      type: title
+      # width: 2/3
+
+   name:
+      label: Name
+      type: text
+      # width: 2/3
+
+   photograph:
+      label: Portrait
+      type: image
+      width: 1/4
+
+   homepage:
+      label: Resident's website
+      type: url
+      width: 3/4
+
+   residents:
+      label: Associated tag(s)
+      type: tags
+      index: all
+      help: >
+         Articles tagged with one or more matching tags will show up underneath this page.
+
+   text:
+      label: Text
+      type: markdown

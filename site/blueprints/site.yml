@@ -5,14 +5,14 @@ fields:
     label: Title
     type:  text
 
-  author:
+  author: (meta)
     label: Author
     type:  text
 
   description:
-    label: Description
-    type:  textarea
-    
+    label: Description (meta)
+    type:  markdown
+
   copyright:
     label: Copyright
-    type:  textarea
+    type:  markdown

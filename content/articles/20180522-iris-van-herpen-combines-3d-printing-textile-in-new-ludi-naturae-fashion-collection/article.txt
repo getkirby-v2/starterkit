@@ -1,0 +1,83 @@
+Datetime: 2018-05-22 11:15
+
+----
+
+Residents: Iris van Herpen,Jouke Verlinden
+
+----
+
+Text: 
+
+A mega long interview
+
+**Iris van Herpen** Lorum ipsum dorlor sit amet
+
+**Jouke Verlinden** Amet sit dolor ipsum Lorum.
+
+**Iris van Herpen** Lorum ipsum dorlor sit amet
+
+**Jouke Verlinden** Amet sit dolor ipsum Lorum.
+
+**Iris van Herpen** Lorum ipsum dorlor sit amet
+
+**Jouke Verlinden** Amet sit dolor ipsum Lorum.
+
+**Iris van Herpen** Lorum ipsum dorlor sit amet
+
+**Jouke Verlinden** Amet sit dolor ipsum Lorum.
+
+**Iris van Herpen** Lorum ipsum dorlor sit amet
+
+**Jouke Verlinden** Amet sit dolor ipsum Lorum.
+
+----
+
+Title: Iris van Herpen combines 3D printing & textile in new ‘Ludi Naturae’ fashion collection
+
+----
+
+Auxiliary: http://facebook.com
+
+----
+
+Comment: 
+
+----
+
+External: http://f.com
+
+----
+
+Datetime-feed: 2018-05-21 20:35
+
+----
+
+Auxiliaryurl: http://google.com
+
+----
+
+Imageurl: http://www.3ders.org/images2018/iris-van-herpen-combines-3d-printing-textile-new-ludi-naturae-fashion-collection-150.jpg
+
+----
+
+Description: Dutch designer Iris van Herpen has once again wowed her audiences with her latest fashion collection ‘Ludi Naturae.’ A golden 3D printed dress, made in collaboration with TU Delft, was the undeniable standout.
+
+----
+
+Publisher: 3ders.org
+
+----
+
+Author: Iris van der Wal
+
+----
+
+Dummy: 
+
+----
+
+url_src: http://www.3ders.org/articles/20180124-iris-van-herpen-combines-3d-printing-textile-in-new-ludi-naturae-fashion-collection.html
+
+----
+
+Coverimage: 

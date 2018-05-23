@@ -1,13 +1,16 @@
-Title: Kirby Starterkit
+Title: Crossing Parallels
 
 ----
 
-Author: Bastian Allgeier GmbH
+Author: Crossing Parallels (This is an author text-box in some global site-info section)
 
 ----
 
-Description: This is Kirby's Starterkit.
+Description: 
+
+Are these meta tags?
+This is a decription text-box in some global site-info section
 
 ----
 
-Copyright: © 2009–(date: Year) (link: http://getkirby.com text: The Kirby Team)
+Copyright: Delft University of Technology and TodaysArt are (link: http://www.crossingparallels.nl text: Crossing Parallels) © 2017–(date: Year)

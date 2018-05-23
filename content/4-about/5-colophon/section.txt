@@ -1,0 +1,30 @@
+Title: Credits
+
+----
+
+Tags: 
+
+----
+
+Coverimage: 
+
+----
+
+Date: 2018-05-03
+
+----
+
+Text: 
+
+Editors:
+Image:
+Contributors:
+Design and development:
+
+----
+
+Section: 
+
+Editors Michael Tjia, Iris van der Wal
+Contributors
+Design and web development Michael Tjia

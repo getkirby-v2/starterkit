@@ -1,0 +1,27 @@
+Title: Partners
+
+----
+
+Tags: 
+
+----
+
+Coverimage: 
+
+----
+
+Date: 2018-05-03
+
+----
+
+Text: Crossing Parallels is a joint initiative by TodaysArt and Delft University of Technology…
+
+----
+
+Section: 
+
+(link: www.tudelft.nl/en text: Delft University of Technology)
+
+(link: http://www.todaysart.org text: TodaysArt)
+
+(link: https://www.mondriaanfonds.nl/en/ text: Mondriaan Fund) (pilot year)

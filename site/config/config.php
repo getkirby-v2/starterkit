@@ -14,8 +14,7 @@ valid license key. Please read the End User License Agreement
 for more information: http://getkirby.com/license
 
 */
-
-c::set('license', 'put your license key here');
+c::set('license', 'put your license key here'); // to do (iris?)
 
 /*
 
@@ -28,3 +27,5 @@ make Kirby work. For more fine-grained configuration
 of the system, please check out http://getkirby.com/docs/advanced/options
 
 */
+c::set('debug', true); // debugging mode
+c::set('home','current-affairs'); // custom home page

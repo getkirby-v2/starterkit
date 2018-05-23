@@ -1,18 +1,23 @@
-  <footer class="footer cf" role="contentinfo">
-    <div class="wrap wide">
+<footer role="contentinfo">
+	<?= $site->copyright()->kirbytext(); ?>
+	<p><a href="#" onclick="showPre(); return false;">show</a>/<a href="#" onclick="hidePre(); return false;">hide</a> dev notes</p>
+</footer>
 
-      <p class="footer-copyright"><?php
-        // Parse Kirbytext to support dynamic year,
-        // but remove all HTML like paragraph tags:
-        echo html::decode($site->copyright()->kirbytext())
-      ?></p>
-
-      <p class="footer-madewithkirby">
-        <a href="http://getkirby.com/made-with-kirby-and-love">Made with Kirby and <b class="heart">♥</b></a>
-      </p>
-    
-    </div>
-  </footer>
+<script type="text/javascript">
+	function showPre(){
+		var pre = document.getElementsByTagName('pre');
+		for (var i = 0; i < pre.length; i++) {
+			pre[i].style.display = '';
+		}
+	}
+	function hidePre(){
+		var pre = document.getElementsByTagName('pre');
+		for (var i = 0; i < pre.length; i++) {
+			pre[i].style.display = 'none';
+		}
+	}
+	hidePre();
+</script>
 
 </body>
 </html>

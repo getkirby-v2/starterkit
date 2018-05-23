@@ -1,0 +1,75 @@
+.debugger-hooks {
+	position: relative;
+	border: 2px solid #b3000a;
+	background: #fff;
+	color: #b3000a;
+	padding: 1em;
+}
+
+.debugger-hooks-excerpt {
+	display: flex;
+}
+
+.debugger-hooks-icon {
+	font-size: 32px;
+	margin-right: .5em;
+}
+
+.debugger-hooks-time {
+	font-size: 13px;
+	margin-bottom: .5em;
+	color: #888;
+}
+
+.debugger-hooks-title .fa {
+	margin-right: .5em;
+	width: 18px;
+}
+
+.debugger-hooks-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: 2px solid transparent;
+	border-top: none;
+	border-right: none;
+}
+
+.debugger-hooks-hook {
+	background: #eee;
+	color: #000;
+	border: 1px solid #ddd;
+	font-weight: normal;
+}
+
+.debugger-hooks-close a {
+	color: #b3000a;
+	display: block;
+	padding: .5em 1em;
+}
+
+.debugger-hooks-close:hover {
+	color: #fff;
+}
+
+.debugger-hooks-close:hover a {
+	background: #b3000a;
+	color: #fff;
+}
+
+.debugger-hooks-title {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.debugger-hooks-file {
+	color: #000;
+	font-style: italic;
+	font-size: .9em;
+	margin-bottom: .5em;
+}
+
+.debugger-hooks-message {
+	margin-bottom: 0;
+	font-weight: 600;
+}
