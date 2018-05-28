@@ -1,9 +1,9 @@
-Title: Contact Information
+Title: Contact information
 
 ----
 
 Section: 
 
-info@crossingparallels.nl
+[info@crossingparallels.nl](mailto:info@crossingparallels.nl)
 Mijnbouwstraat 120
 2628 RX Delft

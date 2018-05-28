@@ -8,8 +8,9 @@
 	<title><?= $site->title()->html() ?> | <?= $page->title()->html() ?></title>
 	<meta name="description" content="<?= $site->description()->html() ?>">
 
-	<!-- add meta and or opengraph generators here! -->
 	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+		<!-- add meta and or opengraph generators here! -->
+	<?= $page->metaTags() ?>
 
 	<?= css('assets/css/index.css') ?>
 
@@ -17,8 +18,11 @@
 <body>
 	<pre>header snippet</pre>
 	<header>
-		<h1>
-			<a href="<?= url() ?>" rel="home"><?= $site->title()->html() ?></a>
-		</h1>
+		<a href="<?= url() ?>" rel="home">
+			<svg class="worm" viewBox="0 0 771.3 109.9">
+				<text><?= $site->title()->html() ?></text>
+				<use xlink:href="/assets/svg/symbols.svg#crossing-parallels-worm" />
+			</svg>
+		</a>
 		<?php snippet('menu') ?>
 	</header>

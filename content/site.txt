@@ -2,15 +2,12 @@ Title: Crossing Parallels
 
 ----
 
-Author: Crossing Parallels (This is an author text-box in some global site-info section)
+Author: Crossing Parallels
 
 ----
 
-Description: 
-
-Are these meta tags?
-This is a decription text-box in some global site-info section
+Description: Crossing Parallels brings together artists and scientists to collaborate on innovative projects, stimulate future technologies, and reflect upon scientific inventions and its challenges for society at large.
 
 ----
 
-Copyright: Delft University of Technology and TodaysArt are (link: http://www.crossingparallels.nl text: Crossing Parallels) © 2017–(date: Year)
+Copyright: are (link: http://www.crossingparallels.nl text: Crossing Parallels) © 2017–(date: Year)

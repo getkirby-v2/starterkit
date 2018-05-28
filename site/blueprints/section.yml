@@ -7,10 +7,22 @@ icon: info-circle
 preview: parent
 
 fields:
-  title:
-    label: Title
-    type: title
+   title:
+      label: Title
+      type: title
 
-  section:
-    label: Information Section
-    type: markdown
+   section:
+      label: Information Section
+      type: markdown
+      # toolbar: hide
+      tools:
+         # - header1
+         - header2
+         # - bold
+         - italic
+         # - blockquote
+         - unorderedList
+         - orderedList
+         - link
+         - image
+         # - line

@@ -1,60 +1,766 @@
-/*
-Crossing Parallels
+@charset "UTF-8";
+/************************************************************************************************
+CROSSING PARALLELS
+-
+crossingparallels.nl
+tjjjia.work
 
-manual styles
-*/
-
-html, body, pre {
-	font-size: 12px;
-	margin: 1rem 2rem;
-	font-family: 'IBM Plex Mono';
-	font-weight: 400;
-	line-height: 1.6;
-}
-
-* {
+*************************************************************************************************/
+@import url(MyFontsWebfontsKit.css);
+/* =================================
+resets
+--------------------------------- */
+/* line 4, src/scss/_resets.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
 	margin: 0;
-	padding: .1rem;
-	max-width: 100%;
-	list-style: none;
-	text-decoration: none;
-}
+	padding: 0;
+	border: 0;
+	list-style-type: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box; }
 
-h1,h2,h3,h4,h5,h6 {
-	/* font-family: -apple-system, sans-serif; */
-	font-family: 'Permanent Headline URW D';
-	font-size: 6rem;
-	line-height: 5rem;
-	margin-top: 1rem;
+/* line 23, src/scss/_resets.scss */
+a, a:link, a:visited, a:hover, a:active {
+	color: #fff;
+	text-decoration: none; }
+
+/* =================================
+typography
+--------------------------------- */
+/* line 5, src/scss/_typography.scss */
+.height-1 {
+	height: 3rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-2 {
+	height: 6rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-3 {
+	height: 9rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-4 {
+	height: 12rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-5 {
+	height: 15rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-6 {
+	height: 18rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-7 {
+	height: 21rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-8 {
+	height: 24rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-9 {
+	height: 27rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-10 {
+	height: 30rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-11 {
+	height: 33rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-12 {
+	height: 36rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-13 {
+	height: 39rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-14 {
+	height: 42rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-15 {
+	height: 45rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-16 {
+	height: 48rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-17 {
+	height: 51rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-18 {
+	height: 54rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-19 {
+	height: 57rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-20 {
+	height: 60rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-21 {
+	height: 63rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-22 {
+	height: 66rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-23 {
+	height: 69rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-24 {
+	height: 72rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-25 {
+	height: 75rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-26 {
+	height: 78rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-27 {
+	height: 81rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-28 {
+	height: 84rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-29 {
+	height: 87rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-30 {
+	height: 90rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-31 {
+	height: 93rem; }
+
+/* line 5, src/scss/_typography.scss */
+.height-32 {
+	height: 96rem; }
+
+/* line 53, src/scss/_typography.scss */
+html, body {
+	font-size: 6px; }
+
+/* line 57, src/scss/_typography.scss */
+h1 {
+	font-family: "PermanentHeaURWD-Reg", sans-serif;
+	font-size: 15;
 	font-weight: normal;
+	line-height: 12;
+	margin-top: -1.5;
+	margin-bottom: 3;
+	letter-spacing: 0.06;
 	text-transform: uppercase;
-}
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto; }
 
-section, main, header, footer, nav {
-	margin: 1rem 0;
-	border: 1px solid #ccc;
-}
-.is-active {
-	opacity: 1;
-	font-weight: 700;
-}
-.is-inactive {
-	opacity: .5;
-}
+/* line 60, src/scss/_typography.scss */
+h2 {
+	font-family: "PermanentHeaURWD-Reg", sans-serif;
+	font-size: 12;
+	font-weight: normal;
+	line-height: 9.6;
+	margin-top: -1.2;
+	margin-bottom: 2.4;
+	letter-spacing: 0.048;
+	text-transform: uppercase;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto; }
+
+/* line 81, src/scss/_typography.scss */
+section p strong, section blockquote strong,
+section ul strong, section li strong, article p strong, article blockquote strong,
+article ul strong, article li strong, footer p strong, footer blockquote strong,
+footer ul strong, footer li strong {
+	font-weight: 600;
+	text-transform: uppercase; }
+
+/* line 86, src/scss/_typography.scss */
+sectionp, section ul, articlep, article ul, footerp, footer ul {
+	margin-bottom: 3rem; }
+
+/* line 95, src/scss/_typography.scss */
+article li {
+	margin-left: 0rem;
+	text-indent: -3.6rem;
+	padding-left: 3.6rem; }
+
+/* line 100, src/scss/_typography.scss */
+article ul li::before {
+	content: '–\00a0\00a0'; }
+
+/* line 105, src/scss/_typography.scss */
+article ol {
+	counter-reset: i; }
+
+/* line 108, src/scss/_typography.scss */
+article ol li::before {
+	content: counter(i) "  ";
+	counter-increment: i; }
+
+/* =================================
+layout
+--------------------------------- */
+/* line 4, src/scss/_layout.scss */
+html, body {
+	display: block;
+	overflow: auto;
+	color: #fff; }
+
+/* line 10, src/scss/_layout.scss */
+#mobius {
+	position: fixed;
+	top: 0;
+	z-index: -10;
+	/* mix-blend-mode: screen; */ }
+
+/* line 17, src/scss/_layout.scss */
+body > header {
+	position: fixed;
+	top: 0;
+	z-index: 10;
+	width: 100%;
+	padding: 2rem 4rem; }
+	/* line 25, src/scss/_layout.scss */
+	body > header svg {
+		float: left;
+		height: 5.2rem;
+		margin-right: 3rem; }
+	/* line 32, src/scss/_layout.scss */
+	body > header nav ul {
+		text-align: right;
+		font-size: 0; }
+		/* line 36, src/scss/_layout.scss */
+		body > header nav ul li {
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 1rem .5rem;
+			padding: .5rem 1.5rem;
+			border-radius: 1.5rem;
+			background-color: rgba(0, 0, 255, 0.8);
+			font-family: "IBM Plex Mono", monospace;
+			font-weight: 400;
+			font-size: 2rem;
+			line-height: 3rem;
+			-moz-hyphens: auto;
+			-webkit-hyphens: auto;
+			-ms-hyphens: auto;
+			hyphens: auto; }
+			/* line 47, src/scss/_layout.scss */
+			body > header nav ul li.is-active {
+				background-color: #bbb; }
+
+/* line 59, src/scss/_layout.scss */
+main {
+	position: relative;
+	padding: 2rem; }
+
+/* line 68, src/scss/_layout.scss */
+body > footer {
+	width: 100%;
+	padding: 2rem 4rem;
+	font-family: "IBM Plex Mono", monospace;
+	font-weight: 400;
+	font-size: 2rem;
+	line-height: 3rem;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto; }
+
+/* =================================
+svg
+--------------------------------- */
+/* line 4, src/scss/_img-and-svg.scss */
 svg {
-	max-height: 5rem;
-}
+	fill: #fff; }
 
-a:link, a:visited,
-a:hover, a:active {
-	color: #000;
-}
+/* line 7, src/scss/_img-and-svg.scss */
+footer svg.logo-todaysart {
+	height: 2.2rem;
+	margin-bottom: .25rem;
+	vertical-align: bottom;
+	/* because y descender */ }
 
-li.metascraper {
-	background: #ccc;
-	margin: .5rem;
-}
-li.article {
-	background: #00f;
-	margin: .5rem;
-}
+/* line 12, src/scss/_img-and-svg.scss */
+footer svg.logo-tudelft {
+	height: 3.4rem;
+	margin-top: -2rem; }
+
+/* line 17, src/scss/_img-and-svg.scss */
+svg.partner-logo {
+	vertical-align: top; }
+
+/* line 20, src/scss/_img-and-svg.scss */
+svg.logo-mondriaan {
+	height: 9.8rem; }
+
+/* =================================
+video
+--------------------------------- */
+/* =================================
+img
+--------------------------------- */
+/* line 32, src/scss/_img-and-svg.scss */
+video, img {
+	margin: 1.5rem 0 1.5rem;
+	max-width: 100%; }
+
+/* =================================
+big screens
+--------------------------------- */
+@media only screen and (min-width: 720px) {
+	/* line 5, src/scss/_bigscreen.scss */
+	html, body {
+		font-size: 8px; }
+	/* line 8, src/scss/_bigscreen.scss */
+	p, ul, li {
+		-moz-hyphens: none;
+		-webkit-hyphens: none;
+		-ms-hyphens: none;
+		hyphens: none; } }
+
+/* line 4, src/scss/_card.scss */
+section.list {
+	margin: 70vh 0;
+	text-align: center; }
+	/* line 8, src/scss/_card.scss */
+	section.list ul li {
+		text-align: left;
+		display: flex;
+		flex-flow: row wrap; }
+		/* line 14, src/scss/_card.scss */
+		section.list ul li .card--main {
+			flex: 1 100%;
+			padding: 1rem 2rem;
+			background-color: rgba(0, 0, 255, 0.75);
+			border-top: 0.25rem solid #fff;
+			border-right: 0.25rem solid #fff;
+			border-left: 0.25rem solid #fff; }
+			/* line 25, src/scss/_card.scss */
+			section.list ul li .card--main p {
+				font-family: "IBM Plex Mono", monospace;
+				font-weight: 400;
+				font-size: 2rem;
+				line-height: 3rem;
+				-moz-hyphens: auto;
+				-webkit-hyphens: auto;
+				-ms-hyphens: auto;
+				hyphens: auto; }
+		/* line 29, src/scss/_card.scss */
+		section.list ul li .card--infobox {
+			flex: 1 100%;
+			padding: 0.5rem 2rem;
+			background-color: rgba(0, 0, 255, 0.9);
+			border-top: 0.25rem solid #fff;
+			border-right: 0.25rem solid #fff;
+			border-left: 0.25rem solid #fff; }
+			/* line 40, src/scss/_card.scss */
+			section.list ul li .card--infobox:last-of-type {
+				border-bottom: 0.25rem solid #fff; }
+			/* line 44, src/scss/_card.scss */
+			section.list ul li .card--infobox p {
+				font-family: "IBM Plex Mono", monospace;
+				font-weight: 500;
+				font-size: 1.5rem;
+				line-height: 2.25rem;
+				-moz-hyphens: auto;
+				-webkit-hyphens: auto;
+				-ms-hyphens: auto;
+				hyphens: auto; }
+		/* line 50, src/scss/_card.scss */
+		section.list ul li.article {
+			max-width: 120rem;
+			margin: 15rem auto;
+			box-shadow: 0px 0px 1rem 0.2rem rgba(0, 0, 255, 0.8); }
+			/* line 55, src/scss/_card.scss */
+			section.list ul li.article .card--main {
+				background-size: cover;
+				background-blend-mode: color; }
+			/* line 60, src/scss/_card.scss */
+			section.list ul li.article h3 {
+				font-family: "PermanentHeaURWD-Reg", sans-serif;
+				font-size: 12rem;
+				font-weight: normal;
+				line-height: 9.6rem;
+				margin-top: -1.2rem;
+				margin-bottom: 2.4rem;
+				letter-spacing: 0.048rem;
+				text-transform: uppercase;
+				-moz-hyphens: auto;
+				-webkit-hyphens: auto;
+				-ms-hyphens: auto;
+				hyphens: auto;
+				padding: 3rem 0;
+				text-align: center;
+				text-transform: uppercase;
+				min-height: 44rem; }
+		/* line 69, src/scss/_card.scss */
+		section.list ul li.metascraper {
+			max-width: 90rem;
+			margin: 8rem auto;
+			box-shadow: 0px 0px 1rem 0.2rem rgba(0, 0, 255, 0.8); }
+			/* line 74, src/scss/_card.scss */
+			section.list ul li.metascraper h3 {
+				font-family: "PermanentHeaURWD-Reg", sans-serif;
+				font-size: 7.5rem;
+				font-weight: normal;
+				line-height: 6rem;
+				margin-top: -0.75rem;
+				margin-bottom: 1.5rem;
+				letter-spacing: 0.03rem;
+				text-transform: uppercase;
+				-moz-hyphens: auto;
+				-webkit-hyphens: auto;
+				-ms-hyphens: auto;
+				hyphens: auto;
+				text-transform: uppercase; }
+
+@media only screen and (min-width: 720px) {
+	/* line 86, src/scss/_card.scss */
+	section.list ul li .card--infobox {
+		flex: 1 50%;
+		border-bottom: 0.25rem solid #fff;
+		border-right: none; }
+		/* line 92, src/scss/_card.scss */
+		section.list ul li .card--infobox:last-of-type {
+			border-right: 0.25rem solid #fff; } }
+
+/* line 4, src/scss/_residents.scss */
+section.list {
+	text-align: center; }
+	/* line 8, src/scss/_residents.scss */
+	section.list ul li {
+		text-align: left; }
+		/* line 11, src/scss/_residents.scss */
+		section.list ul li.resident {
+			margin: 3rem auto; }
+			/* line 13, src/scss/_residents.scss */
+			section.list ul li.resident h3 {
+				font-family: "PermanentHeaURWD-Reg", sans-serif;
+				font-size: 12rem;
+				font-weight: normal;
+				line-height: 9.6rem;
+				margin-top: -1.2rem;
+				margin-bottom: 2.4rem;
+				letter-spacing: 0.048rem;
+				text-transform: uppercase;
+				-moz-hyphens: auto;
+				-webkit-hyphens: auto;
+				-ms-hyphens: auto;
+				hyphens: auto;
+				margin-left: auto;
+				margin-right: auto;
+				text-align: center; }
+
+/* line 5, src/scss/_article.scss */
+article header {
+	text-align: left;
+	display: flex;
+	flex-flow: row wrap;
+	background-color: rgba(0, 0, 255, 0.8);
+	box-shadow: 0px 0px 1rem 0.2rem rgba(0, 0, 255, 0.9);
+	max-width: 120rem;
+	margin: 15rem auto; }
+
+/* line 19, src/scss/_article.scss */
+article h1 {
+	font-family: "PermanentHeaURWD-Reg", sans-serif;
+	font-size: 12rem;
+	font-weight: normal;
+	line-height: 9.6rem;
+	margin-top: -1.2rem;
+	margin-bottom: 2.4rem;
+	letter-spacing: 0.048rem;
+	text-transform: uppercase;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+	padding: 3rem 0;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	text-transform: uppercase; }
+
+/* line 28, src/scss/_article.scss */
+article h2 {
+	font-family: "IBM Plex Sans", sans-serif;
+	font-weight: 300;
+	font-size: 4rem;
+	line-height: 6rem;
+	letter-spacing: .01rem;
+	max-width: 90rem;
+	margin-right: auto;
+	margin-left: auto;
+	text-transform: none;
+	text-align: left; }
+
+/* line 38, src/scss/_article.scss */
+article h3 {
+	font-family: "PermanentHeaURWD-Reg", sans-serif;
+	font-size: 12rem;
+	font-weight: normal;
+	line-height: 9.6rem;
+	margin-top: -1.2rem;
+	margin-bottom: 2.4rem;
+	letter-spacing: 0.048rem;
+	text-transform: uppercase;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+	padding: 3rem 0;
+	text-align: center;
+	text-transform: uppercase;
+	min-height: 44rem; }
+
+/* line 46, src/scss/_article.scss */
+article .card--main {
+	flex: 1 100%;
+	padding: 1rem 2rem;
+	background-color: rgba(0, 0, 255, 0.8);
+	background-size: cover;
+	background-blend-mode: color;
+	border-top: 0.25rem solid #fff;
+	border-right: 0.25rem solid #fff;
+	border-left: 0.25rem solid #fff; }
+	/* line 58, src/scss/_article.scss */
+	article .card--main p {
+		font-family: "IBM Plex Mono", monospace;
+		font-weight: 400;
+		font-size: 2rem;
+		line-height: 3rem;
+		-moz-hyphens: auto;
+		-webkit-hyphens: auto;
+		-ms-hyphens: auto;
+		hyphens: auto; }
+
+/* line 62, src/scss/_article.scss */
+article .card--infobox {
+	flex: 1 100%;
+	padding: 0.5rem 2rem;
+	background-color: rgba(0, 0, 255, 0.9);
+	border-top: 0.25rem solid #fff;
+	border-right: 0.25rem solid #fff;
+	border-left: 0.25rem solid #fff; }
+	/* line 73, src/scss/_article.scss */
+	article .card--infobox:last-of-type {
+		border-bottom: 0.25rem solid #fff; }
+	/* line 77, src/scss/_article.scss */
+	article .card--infobox p {
+		font-family: "IBM Plex Mono", monospace;
+		font-weight: 500;
+		font-size: 1.5rem;
+		line-height: 2.25rem;
+		-moz-hyphens: auto;
+		-webkit-hyphens: auto;
+		-ms-hyphens: auto;
+		hyphens: auto; }
+
+/* line 82, src/scss/_article.scss */
+article .intro {
+	margin: 15rem auto;
+	max-width: 140rem;
+	background-color: rgba(0, 0, 255, 0.8);
+	box-shadow: 0px 0px 6rem 2rem rgba(0, 0, 255, 0.9); }
+	/* line 89, src/scss/_article.scss */
+	article .intro p {
+		font-family: "IBM Plex Sans", sans-serif;
+		font-weight: 300;
+		font-size: 4rem;
+		line-height: 6rem;
+		letter-spacing: .01rem; }
+
+/* line 93, src/scss/_article.scss */
+article .text {
+	margin: 2rem auto;
+	text-align: center;
+	background-color: rgba(0, 0, 255, 0.8);
+	box-shadow: 0px 0px 6rem 4rem rgba(0, 0, 255, 0.9); }
+	/* line 100, src/scss/_article.scss */
+	article .text ul, article .text li, article .text p {
+		max-width: 90rem;
+		margin-right: auto;
+		margin-left: auto;
+		text-align: left;
+		font-family: "IBM Plex Mono", monospace;
+		font-weight: 400;
+		font-size: 2rem;
+		line-height: 3rem;
+		-moz-hyphens: auto;
+		-webkit-hyphens: auto;
+		-ms-hyphens: auto;
+		hyphens: auto; }
+	/* line 107, src/scss/_article.scss */
+	article .text p {
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem; }
+	/* line 112, src/scss/_article.scss */
+	article .text figure {
+		margin: 2rem auto;
+		text-align: left;
+		max-width: 140rem; }
+		/* line 117, src/scss/_article.scss */
+		article .text figure figcaption {
+			width: 100%;
+			text-align: left;
+			font-family: "IBM Plex Mono", monospace;
+			font-weight: 500;
+			font-size: 1.5rem;
+			line-height: 2.25rem;
+			-moz-hyphens: auto;
+			-webkit-hyphens: auto;
+			-ms-hyphens: auto;
+			hyphens: auto; }
+	/* line 124, src/scss/_article.scss */
+	article .text img {
+		max-width: 100%; }
+
+@media only screen and (min-width: 720px) {
+	/* line 134, src/scss/_article.scss */
+	article header .card--infobox {
+		flex: 1 50%;
+		border-bottom: 0.25rem solid #fff;
+		border-right: none; }
+		/* line 140, src/scss/_article.scss */
+		article header .card--infobox:last-of-type {
+			border-right: 0.25rem solid #fff; } }
+
+/* line 4, src/scss/_further-reading.scss */
+nav.further-reading {
+	text-align: center; }
+	/* line 7, src/scss/_further-reading.scss */
+	nav.further-reading h2 {
+		font-family: "IBM Plex Sans", sans-serif;
+		font-weight: 300;
+		font-size: 4rem;
+		line-height: 6rem;
+		letter-spacing: .01rem;
+		max-width: 90rem;
+		margin-right: auto;
+		margin-left: auto;
+		text-transform: none; }
+	/* line 16, src/scss/_further-reading.scss */
+	nav.further-reading li {
+		display: flex;
+		flex-flow: row wrap;
+		max-width: 100%;
+		margin: 3rem auto; }
+		/* line 23, src/scss/_further-reading.scss */
+		nav.further-reading li h3 {
+			font-family: "PermanentHeaURWD-Reg", sans-serif;
+			font-size: 7.5rem;
+			font-weight: normal;
+			line-height: 6rem;
+			margin-top: -0.75rem;
+			margin-bottom: 1.5rem;
+			letter-spacing: 0.03rem;
+			text-transform: uppercase;
+			-moz-hyphens: auto;
+			-webkit-hyphens: auto;
+			-ms-hyphens: auto;
+			hyphens: auto;
+			text-transform: uppercase; }
+		/* line 28, src/scss/_further-reading.scss */
+		nav.further-reading li p {
+			font-family: "IBM Plex Mono", monospace;
+			font-weight: 500;
+			font-size: 1.5rem;
+			line-height: 2.25rem;
+			-moz-hyphens: auto;
+			-webkit-hyphens: auto;
+			-ms-hyphens: auto;
+			hyphens: auto;
+			text-align: left; }
+		/* line 33, src/scss/_further-reading.scss */
+		nav.further-reading li .card--main {
+			flex: 1 100%;
+			padding: 1rem 2rem;
+			background-color: rgba(0, 0, 255, 0.75);
+			background-size: cover;
+			background-blend-mode: color;
+			border-top: 0.25rem solid #fff;
+			border-right: 0.25rem solid #fff;
+			border-left: 0.25rem solid #fff; }
+		/* line 45, src/scss/_further-reading.scss */
+		nav.further-reading li .card--infobox {
+			flex: 1 100%;
+			padding: 0.5rem 2rem;
+			background-color: rgba(0, 0, 255, 0.9);
+			border-top: 0.25rem solid #fff;
+			border-right: 0.25rem solid #fff;
+			border-left: 0.25rem solid #fff; }
+			/* line 56, src/scss/_further-reading.scss */
+			nav.further-reading li .card--infobox:last-of-type {
+				border-bottom: 0.25rem solid #fff; }
+
+@media only screen and (min-width: 720px) {
+	/* line 68, src/scss/_further-reading.scss */
+	nav.further-reading li {
+		max-width: 60rem;
+		display: inline-flex;
+		margin: 3rem; }
+		/* line 74, src/scss/_further-reading.scss */
+		nav.further-reading li .card--infobox {
+			flex: 1 50%;
+			border-bottom: 0.25rem solid #fff;
+			border-right: none; }
+			/* line 80, src/scss/_further-reading.scss */
+			nav.further-reading li .card--infobox:last-of-type {
+				border-right: 0.25rem solid #fff; } }
+
+/* line 1, src/scss/_accessibility.scss */
+svg text {
+	/*for accessibility */
+	overflow: hidden;
+	fill: transparent;
+	opacity: 0;
+	white-space: nowrap; }
+
+/* line 8, src/scss/_accessibility.scss */
+.accessibility {
+	display: none; }
+
+/* line 41, src/scss/index.scss */
+.dev-bg {
+	background-image: url("/assets/img/wide-textured-frame-40.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center; }

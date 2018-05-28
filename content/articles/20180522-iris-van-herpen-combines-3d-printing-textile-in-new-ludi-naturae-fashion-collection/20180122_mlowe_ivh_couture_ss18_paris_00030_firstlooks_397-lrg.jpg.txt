@@ -1,0 +1,9 @@
+Caption: 
+
+----
+
+Credits: Credits Here (2017)
+
+----
+
+Focus: {"x":0.48,"y":0.03}

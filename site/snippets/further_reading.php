@@ -31,17 +31,43 @@ if (isset($limit)) {
 
 <pre>this is the further reading snippet</pre>
 
-<nav>
+<nav class="further-reading">
 	<h2>Further reading</h2>
 	<ul>
 		<?php foreach($articles as $article): ?>
 			<li>
-				<a href="<?= $article->url() ?>">
-					<h3><?= $article->title()->html() ?></h3>
-					<?php if($image = $article->images()->sortBy('sort', 'asc')->first()): $thumb = $image->crop(100, 100); ?>
-						<img src="<?= $thumb->url() ?>" alt="Thumbnail for <?= $article->title()->html() ?>" />
-					<?php endif ?>
-				</a>
+				<?php // image check
+					$image = $article->image($article->coverimage());
+					if($image):
+				?>
+					<div class="card--main" style="background-image: url(<?php echo $image->url() ?>); background-position: <?php echo $image->focusPercentageX() ?>% <?php echo $image->focusPercentageY() ?>%;">
+				<?php else: ?>
+					<div class="card--main">
+				<?php endif ?>
+						<a href="<?= $article->url() ?>">
+							<h3><?= $article->title()->html() ?></h3>
+						</a>
+					</div>
+				<?php if(! $article->teaser()->empty() ): ?>
+					<div class="card--main">
+						<p><?= $article->teaser() ?></p>
+					</div>
+				<?php elseif(! $article->text()->empty() ): ?>
+					<div class="card--main">
+						<p><?= excerpt($article->text(), 300) ?></p>
+					</div>
+				<?php else: ?>
+				<?php endif ?>
+				<?php if(! $article->datetime()->empty() ): ?>
+					<div class="card--infobox">
+						<p>Published: <?= $article->datetime() ?></p>
+					</div>
+				<?php endif ?>
+				<?php if(! $article->author()->empty() ): ?>
+					<div class="card--infobox">
+						<p>Author: <?= $article->author() ?></p>
+					</div>
+				<?php endif ?>
 			</li>
 		<?php endforeach ?>
 	</ul>

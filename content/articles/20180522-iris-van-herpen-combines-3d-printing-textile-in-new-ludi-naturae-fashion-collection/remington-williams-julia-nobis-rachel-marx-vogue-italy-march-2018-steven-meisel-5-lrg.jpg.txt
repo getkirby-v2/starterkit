@@ -1,0 +1,5 @@
+Caption: Caption goes here
+
+----
+
+Credits: [this is a hyperlinked source](http://google.com)

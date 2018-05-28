@@ -1,8 +1,0 @@
-{
-  "name": "kirby-hooks-debugger",
-  "description": "Debug Kirby Panel hooks",
-  "author": "Jens Törnell <jens.tornell@gmail.com>",
-  "version": "0.2",
-  "type": "kirby-plugin",
-  "license": "MIT"
-}

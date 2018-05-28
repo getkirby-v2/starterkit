@@ -1,0 +1,63 @@
+/*
+Crossing Parallels
+
+manual styles
+*/
+
+html, body, pre {
+	font-size: 12px;
+	margin: 1rem 2rem;
+	font-family: 'IBM Plex Mono';
+	font-weight: 400;
+	line-height: 1.6;
+}
+
+* {
+	margin: 0;
+	padding: .1rem;
+	max-width: 100%;
+	list-style: none;
+	text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	/* font-family: -apple-system, sans-serif; */
+	font-family: 'Permanent Headline URW D';
+	/* font-size: 6rem; */
+	line-height: .9;
+	margin-top: 1rem;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+h1 { font-size: 6rem; }
+h2 { font-size: 4rem; }
+h3 { font-size: 3rem; }
+
+section, main, header, footer, nav {
+	margin: 1rem 0;
+	border: 1px solid #ccc;
+}
+.is-active {
+	opacity: 1;
+	font-weight: 700;
+}
+.is-inactive {
+	opacity: .5;
+}
+svg {
+	max-height: 5rem;
+}
+
+a:link, a:visited,
+a:hover, a:active {
+	color: #000;
+}
+
+li.metascraper {
+	background: #ccc;
+	margin: .5rem;
+}
+li.article {
+	background: #00f;
+	margin: .5rem;
+}

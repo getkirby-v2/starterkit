@@ -1,19 +1,19 @@
 <?php snippet('header') ?>
 <pre>this is the information template</pre>
 <main class="main" role="main">
-	<div class="wrap">
-		<header>
-			<h1><?= $page->title()->html() ?></h1>
-			<?= $page->text()->kirbytext() ?>
+	<article class="information">
+		<header class="article--header">
+			<h1 class="accessibility"><?= $page->title()->html() ?></h1>
 		</header>
 
 		<?php foreach($page->children()->visible() as $section): ?>
-			<section>
-				<h3><?= $section->title()->html() ?></h3>
+			<div class="text">
+				<h1><?= $section->title()->html() ?></h1>
 				<?= $section->section()->kirbytext() ?>
-			</section>
+			</div>
 		<?php endforeach ?>
-	</div>
+	</article>
+
 </main>
 
 <?php snippet('footer') ?>

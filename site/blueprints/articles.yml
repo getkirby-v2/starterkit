@@ -1,0 +1,33 @@
+title: Articles
+
+icon: folder
+
+files: false
+
+pages:
+   num:
+      mode: date
+      field: datetime
+   sort: datetime desc
+
+   template:
+      # - metascraper
+      - article
+      - resident
+
+   # options:
+      # template: false
+      # status: false
+      # url: false
+
+fields:
+   title:
+      label: Title
+      type:  text
+
+      # an information dialog should come here
+      # explain Title == also displayed in menu bar?
+
+   # introduction:
+   #    label: Introduction
+   #    type:  markdown
