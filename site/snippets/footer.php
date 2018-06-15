@@ -66,6 +66,36 @@
 </script>
 
 <div id="mobius"></div>
+
 <script src="/assets/js/bundle.min.js"></script>
+
+<svg xmlns="http://www.w3.org/2000/svg" class="asset">
+	<defs>
+		<filter id="alpha" x="0%" y="0%" width="100%" height="100%">
+			<feColorMatrix type="matrix" values=".7 0 0 0 0,
+				.7 0 0 0 0,
+				0 0 0 1 0,
+				1 1 1 0 0" />
+		</filter>
+		<filter id="alpha2" x="0%" y="0%" width="100%" height="100%">
+			<feColorMatrix type="matrix" values="1.0 0 0 0 -.3,
+				1.0 0 0 0 -.3,
+				0 0 0 1 0,
+				1 1 1 0 0" />
+		</filter>
+		<filter id="opaque" x="0%" y="0%" width="100%" height="100%">
+			<feColorMatrix type="matrix" values="1.0 0 0 0 -.3,
+				1.0 0 0 0 -.3,
+				0 0 0 1 0,
+				0 0 0 1 0" />
+		</filter>
+	</defs>
+</svg>
+<style media="screen">
+	.cover--image, .card--image {
+		-webkit-filter: url(#alpha2);
+		filter: url(#alpha2);
+	}
+</style>
 </body>
 </html>

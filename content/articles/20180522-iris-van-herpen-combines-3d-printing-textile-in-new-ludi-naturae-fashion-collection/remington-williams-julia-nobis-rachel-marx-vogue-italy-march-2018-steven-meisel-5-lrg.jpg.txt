@@ -2,4 +2,8 @@ Caption: Caption goes here
 
 ----
 
-Credits: [this is a hyperlinked source](http://google.com)
+Credits: Jane Doe at [Studio Iris van Herpen](http://irisvanherpen.com)
+
+----
+
+Focus: 

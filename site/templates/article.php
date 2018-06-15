@@ -8,19 +8,20 @@
 				$image = $page->image($page->coverimage());
 				if($image):
 			?>
-				<div class="card--main" style="background-image: url(<?php echo $image->url() ?>); background-position: <?php echo $image->focusPercentageX() ?>% <?php echo $image->focusPercentageY() ?>%;">
-			<?php else: ?>
-				<div class="card--main">
+				<!-- <img src="<?php echo $image->url() ?>"> -->
+				<div class="cover--image" style="background-image: url(<?php echo $image->url() ?>); background-position: <?php echo $image->focusPercentageX() ?>% <?php echo $image->focusPercentageY() ?>%;">
+				</div>
 			<?php endif ?>
+				<div class="cover--title">
 					<h1><?= $page->title()->html() ?></h1>
 				</div>
 			<?php if(! $page->datetime()->empty() ): ?>
-				<div class="card--infobox">
+				<div class="cover--infobox">
 					<p>Published: <?= $page->datetime() ?></p>
 				</div>
 			<?php endif ?>
 			<?php if(! $page->author()->empty() ): ?>
-				<div class="card--infobox">
+				<div class="cover--infobox">
 					<p>Author: <?= $page->author() ?></p>
 				</div>
 			<?php endif ?>

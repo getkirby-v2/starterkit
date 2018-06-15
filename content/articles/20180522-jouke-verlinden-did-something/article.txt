@@ -6,7 +6,7 @@ Datetime: 2018-05-22 12:10
 
 ----
 
-Author: 
+Author: Crossing Parallels
 
 ----
 
@@ -19,3 +19,17 @@ Residents: Jouke Verlinden
 ----
 
 Text: 
+
+1. one
+2. two
+3. three
+4. four
+5. five
+
+----
+
+Teaser: You will not believe what!
+
+----
+
+Intro: 10 things you did not know about Jouke verlinden

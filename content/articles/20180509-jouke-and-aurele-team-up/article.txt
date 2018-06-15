@@ -6,7 +6,7 @@ Datetime: 2018-05-09 23:30
 
 ----
 
-Author: 
+Author: Michael Tjia
 
 ----
 
@@ -19,3 +19,11 @@ Residents: Jouke Verlinden,Aurèle Adam
 ----
 
 Text: 
+
+----
+
+Teaser: 
+
+----
+
+Intro: 

@@ -25,6 +25,11 @@ Design and development:
 
 Section: 
 
-Editors Michael Tjia, Iris van der Wal
-Contributors
-Design and web development Michael Tjia
+## Editors
+Iris van der Wal
+
+## Contributors
+t.b.c. 
+
+## Design and web development
+(link: http://www.tjjjia.work text: Michael Tjia)

@@ -2,8 +2,8 @@ Caption:
 
 ----
 
-Credits: Credits Here (2017)
+Credits: John Doe at [Studio Iris van Herpen](http://irisvanherpen.com)
 
 ----
 
-Focus: {"x":0.48,"y":0.03}
+Focus: {"x":0.38,"y":0.05}

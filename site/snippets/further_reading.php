@@ -36,18 +36,20 @@ if (isset($limit)) {
 	<ul>
 		<?php foreach($articles as $article): ?>
 			<li>
-				<?php // image check
-					$image = $article->image($article->coverimage());
-					if($image):
-				?>
-					<div class="card--main" style="background-image: url(<?php echo $image->url() ?>); background-position: <?php echo $image->focusPercentageX() ?>% <?php echo $image->focusPercentageY() ?>%;">
-				<?php else: ?>
-					<div class="card--main">
-				<?php endif ?>
-						<a href="<?= $article->url() ?>">
-							<h3><?= $article->title()->html() ?></h3>
+				<div class="card--title">
+					<a href="<?= $article->url() ?>">
+						<h3><?= $article->title()->html() ?></h3>
+						<?php // image check
+							$image = $article->image($article->coverimage());
+							if($image):
+						?>
+							<div class="card--image" style="background-image: url(<?php echo $image->url() ?>); background-position: <?php echo $image->focusPercentageX() ?>% <?php echo $image->focusPercentageY() ?>%;">
+						<?php else: ?>
+							<div class="card--image">
+						<?php endif ?>
+							</div>
 						</a>
-					</div>
+				</div>
 				<?php if(! $article->teaser()->empty() ): ?>
 					<div class="card--main">
 						<p><?= $article->teaser() ?></p>
@@ -58,6 +60,8 @@ if (isset($limit)) {
 					</div>
 				<?php else: ?>
 				<?php endif ?>
+
+				<!--
 				<?php if(! $article->datetime()->empty() ): ?>
 					<div class="card--infobox">
 						<p>Published: <?= $article->datetime() ?></p>
@@ -68,6 +72,7 @@ if (isset($limit)) {
 						<p>Author: <?= $article->author() ?></p>
 					</div>
 				<?php endif ?>
+			-->
 			</li>
 		<?php endforeach ?>
 	</ul>

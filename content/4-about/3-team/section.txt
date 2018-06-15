@@ -1,11 +1,14 @@
-Title: Team
+Title: Organisation
 
 ----
 
 Section: 
 
-* Michael van der Meer
-* Teun Verkerk
-* Iris van der Wal
-* Olof van Winden
-* Nabi Kambiz
+## Delft University of Technology
+Michael van der Meer
+Teun Verkerk
+
+## TodaysArt
+Nabi Kambiz
+Iris van der Wal
+Olof van Winden

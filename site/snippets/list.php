@@ -15,17 +15,19 @@ This list returns all articles related to a resident (original content)
 			<?php foreach($articles as $article): ?>
 				<?php if($article->intendedTemplate() == 'article'): ?>
 					<li class="<?= $article->intendedTemplate() ?>">
-						<?php // image check
-							$image = $article->image($article->coverimage());
-							if($image):
-						?>
-							<div class="card--main" style="background-image: url(<?php echo $image->url() ?>); background-position: <?php echo $image->focusPercentageX() ?>% <?php echo $image->focusPercentageY() ?>%;">
-						<?php else: ?>
-							<div class="card--main">
-						<?php endif ?>
+							<div class="card--title">
 								<a href="<?= $article->url() ?>">
 									<h3><?= $article->title()->html() ?></h3>
-								</a>
+									<?php // image check
+										$image = $article->image($article->coverimage());
+										if($image):
+									?>
+										<div class="card--image" style="background-image: url(<?php echo $image->url() ?>); background-position: <?php echo $image->focusPercentageX() ?>% <?php echo $image->focusPercentageY() ?>%;">
+									<?php else: ?>
+										<div class="card--image">
+									<?php endif ?>
+										</div>
+									</a>
 							</div>
 						<?php if(! $article->teaser()->empty() ): ?>
 							<div class="card--main">
@@ -58,11 +60,11 @@ This list returns all articles related to a resident (original content)
 									<?php endforeach ?>
 								</ul>
 							</div> -->
-						<pre><?php print_r($article); ?></pre>
+						<!-- <pre><?php print_r($article); ?></pre> -->
 					</li>
 
 				<?php elseif($article->intendedTemplate() == 'metascraper'): ?>
-					<li class="<?= $article->intendedTemplate() ?> scatter--<?= random_int(1, 6)?>">
+					<li class="<?= $article->intendedTemplate() ?>">
 						<div class="card--main">
 							<a href="<?= $article->url_src() ?>" target="_blank">
 								<h3><?= $article->title()->html() ?></h3>

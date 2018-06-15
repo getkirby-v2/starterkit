@@ -80,18 +80,20 @@ __webpack_require__.r(__webpack_exports__);
 
 _js_mobius_webpack__WEBPACK_IMPORTED_MODULE_0___default()();
 
-
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
-
-var testvar = "content";
 
 var app = function() {
 	var THREE = __webpack_require__(2);
 	var _ = __webpack_require__(3);
 
 	THREE.ParametricGeometries = __webpack_require__(6)(THREE);
+
+
+	// var test = require('./logger');
+	// test();
+
 	/************************************************************************************************
 	CROSSING PARALLELS
 	-
@@ -117,11 +119,10 @@ var app = function() {
 	var texture, texture__reverse;
 
 	var gridHelper, velocity;
+	var camera__displacement = 0;
 
 	var raycaster = new THREE.Raycaster();
-	var mouse = new THREE.Vector2(0,0); // set to prevent initial mouseOver
-	var viewtarget = new THREE.Vector3(-.3,0,0);
-
+	var mouse = new THREE.Vector2(-1,-1); // set to prevent initial mouseOver
 	var intersected;
 
 	var time;
@@ -141,17 +142,18 @@ var app = function() {
 
 		time = new THREE.Clock(); // time in seconds
 
-		// scene.fog = new THREE.FogExp2( 0x0000ff, .2 );
-		// scene.fog = new THREE.Fog( 0x0000ff, 15, 3 );
+		// scene.fog = new THREE.FogExp2( 0x0000ff, .05 );
+		scene.fog = new THREE.Fog( 0x0000ff, 10, 50 );
 
 		// camera -------------------------------------------------------------------
+		// var camera__aspect = window.innerWidth / window.innerHeight;
 		// camera = new THREE.OrthographicCamera( -6, 6, 6/camera__aspect, -6/camera__aspect, 1, 1000 );
+
 		camera = new THREE.PerspectiveCamera( 35, 1.6, 1, 2000 );
 		camera.aspect = window.innerWidth / window.innerHeight;
 		camera.updateProjectionMatrix();
-		camera.displacement_y = 0;
 
-		camera.position.set( 0, 5, 8 );
+		camera.position.set( 8, 5, 0 );
 		camera.lookAt( scene.position );
 
 		// lights -------------------------------------------------------------------
@@ -168,8 +170,8 @@ var app = function() {
 		scene.add( light[0], light[1] );
 
 		// materials ---------------------------------------------------
-		texture = new THREE.TextureLoader().load( '/assets/textures/headline-4096-512-cw-fff-000.png' );
-		texture__reverse = new THREE.TextureLoader().load( '/assets/textures/headline-4096-512-cw-fff-000-flipx.png' );
+		texture = new THREE.TextureLoader().load( 'assets/textures/headline-4096-512-cw-fff-000.png' );
+		texture__reverse = new THREE.TextureLoader().load( 'assets/textures/headline-4096-512-cw-fff-000-flipx.png' );
 		texture.wrapT = texture__reverse.wrapT = THREE.RepeatWrapping;
 		texture.magFilter = texture__reverse.magFilter = THREE.NearestFilter;
 		texture.anisotropy = texture__reverse.anisotropy = 16;
@@ -194,22 +196,20 @@ var app = function() {
 		mobius__hit.name = "mobius";
 		mobius__hit.href = "#";
 
-		mobius.position.set( 0, 0, 0 );
-		mobius__hit.position.set( 0, 0, 0 );
+		mobius.position.set( 0, .2, 0 );
+		mobius__hit.position.set( 0, .2, 0 );
 
 		mobius.rotation.x = mobius__hit.rotation.x = (Date.now()/1000) / (2*Math.PI);
 		// mobius.rotation.y = mobius__hit.rotation.y = (Date.now()/1000) / (2*Math.PI *3);
 		mobius.rotation.y = mobius__hit.rotation.y = (.4 * Math.PI) * Math.sin( (Date.now()/1000) / (2*Math.PI) );
 		mobius.rotation.z = mobius__hit.rotation.z = (Date.now()/1000) / (2*Math.PI *10);
 
-		mobius.energy = 0;
-
 		gridHelper = new THREE.GridHelper( 5, 10, 0xffffff, 0xffffff );
-		// gridHelper.position.set( 0, -2, 0 );
-		gridHelper.position.set( 0, 0, 0 );
+		gridHelper.position.set( 0, -2, 0 );
+		// gridHelper.position.set( 0, 0, 0 );
 		// gridHelper.rotation.z = Math.PI*.6;
 
-		// scene.add( gridHelper );
+		scene.add( gridHelper );
 
 		// var plane = new THREE.PlaneGeometry( 1000, 1000 );
 		// var planemesh = new THREE.Mesh( plane, material__matte );
@@ -223,26 +223,14 @@ var app = function() {
 
 
 		//renderer -------------------------------------------------------------------
+		renderer = new THREE.WebGLRenderer( { antialias: true } ); // alpha:true makes canvas bg trnasparent
+
 		var pixelRatio = window.devicePixelRatio;
-		if ( pixelRatio > 1 ) {
-			renderer = new THREE.WebGLRenderer({
-				alpha: true
-			});
-		} else {
-			renderer = new THREE.WebGLRenderer({
-				antialias: true,
-				alpha: true
-			});
-		}
+		if ( pixelRatio > 1 ) { pixelRatio = 1 };
 
-		// what did this do? lowering retina's pixelratio does what?
-		// var pixelRatio = window.devicePixelRatio;
-		// if ( pixelRatio > 1 ) { pixelRatio = 1 };
-		// renderer.setPixelRatio( pixelRatio );
-
+		renderer.setPixelRatio( pixelRatio );
 		renderer.setSize( window.innerWidth, window.innerHeight );
-		renderer.setClearColor( 0x0000ff, 0); // for transparent bg
-		// renderer.setClearColor( 0x0000ff, 1); // for opaque bg
+		renderer.setClearColor( 0x0000ff, 1);
 
 		container.appendChild( renderer.domElement );
 
@@ -254,75 +242,48 @@ var app = function() {
 		}
 		requestAnimationFrame( animate );
 
+		// console.log( time.getDelta() );
 		var timeDelta = time.getDelta();
 		var timeElapsed = time.getElapsedTime();
 
-		/*
-		Look in opposite direction of cursor
-		*/
-		var camera_target_delta = {};
-		camera_target_delta.x = Math.abs( camera.quaternion._x - viewtarget.x);
-		camera_target_delta.y = Math.abs( camera.quaternion._y - viewtarget.y);
-
-		// camera.velocity = Math.max( (1-Math.abs(window.scrollY / window.innerHeight))*.2 , .02);
-		// returns a value between 1 and .2;
-		camera.velocity = .02;
-
-		if ( camera_target_delta.x > .002 ) {
-			if ( camera.quaternion._x < viewtarget.x ) {
-				// camera.quaternion._x = viewtarget.x
-				// camera.quaternion._x += .001;
-				/* formula: _x = _x + 20% of the remainder; */
-				camera.quaternion._x += camera.velocity * camera_target_delta.x;
-				// console.log("moving up | delta: "+ (camera_target_delta.x) );
-			} else if ( camera.quaternion._x > viewtarget.x ) {
-				// camera.quaternion._x = viewtarget.x
-				// camera.quaternion._x -= .001;
-				/* formula: _x = _x - 20% of the remainder; */
-				camera.quaternion._x -= camera.velocity * camera_target_delta.x;
-				// console.log("moving down | delta: "+ (camera_target_delta.x) );
-			}
-		} else {
-			// console.log("x equlibrium reached")
-		}
-		if ( camera_target_delta.y > .002 ) {
-			if ( camera.quaternion._y < viewtarget.y ) {
-				camera.quaternion._y += camera.velocity * camera_target_delta.y;
-			} else if ( camera.quaternion._y > viewtarget.y ) {
-				camera.quaternion._y -= camera.velocity * camera_target_delta.y;
-			}
-			mobius.rotation.y = mobius__hit.rotation.y += camera.velocity * .2 * (camera.quaternion._y - viewtarget.y);
+		// camera__rotate_around_origin(10);
+		function camera__rotate_around_origin( radius ) {
+			var period = 2// in minutes
+			camera.position.x = radius * Math.sin( ( timeElapsed ) / (2*Math.PI * period) );
+			camera.position.z = radius * Math.cos( ( timeElapsed ) / (2*Math.PI * period) );
+			camera.lookAt( scene.position );
 		}
 
-		/*
-		Mobius rotate (auto + energy)
-		*/
-		mobius.rotation.x = mobius__hit.rotation.x += timeDelta / (2*Math.PI) + mobius.energy * .1;
+		mobius.rotation.x = mobius__hit.rotation.x += timeDelta / (2*Math.PI);
 		// mobius.rotation.y = mobius__hit.rotation.y += timeDelta / (2*Math.PI *3);
-		mobius.rotation.y = mobius__hit.rotation.y += (.4 * Math.PI) * Math.sin( timeDelta / (2*Math.PI) ) + mobius.energy * .1;
-		mobius.rotation.z = mobius__hit.rotation.z += timeDelta / (2*Math.PI);
-		// texture.offset.y = texture__reverse.offset.y += mobius.energy * 0.05; // scroll -> texture
+		mobius.rotation.y = mobius__hit.rotation.y += (.4 * Math.PI) * Math.sin( timeDelta / (2*Math.PI) );
+		mobius.rotation.z = mobius__hit.rotation.z += timeDelta / (2*Math.PI *10);
 
-		/*
-		Mobius rotate (added energy)
-		*/
-		if ( Math.abs(mobius.energy) > .01 ) {
-			mobius.energy = mobius.energy *.9;
-		} else if (mobius.energy !== 0) {
-			mobius.energy = 0;
-		}
-
-		/*
-		Laggy/sticky camera effect : catchup section
-		*/
+		// if (scrolling === false) {
+		// 	if ( velocity > 0.1 || velocity < -.1) {
+		// 		velocity *= .7;
+		// 	} else if ( velocity !== 0 ) {
+		// 		velocity = 0;
+		// 	}
+		// }
 		if ( scrolling === false ) {
-			if ( Math.abs( camera.displacement_y) > .01 ) {
-				 camera.displacement_y *= .97;
+			// if ( camera__displacement > .01 ) {
+			// 	camera__displacement -= .01;
+			// } else if ( camera__displacement < .01 ) {
+			// 	camera__displacement += .01;
+			// }
+
+
+			if ( Math.abs(camera__displacement) > .01 ) {
+				camera__displacement *= .97;
 			} else {
-				 camera.displacement_y = 0;
+				camera__displacement = 0;
 			}
-			camera.position.y = 5 +  camera.displacement_y;
+
+			camera.position.y = 5 + camera__displacement;
 		}
+
+
 		scrolling = false;
 
 		render();
@@ -348,57 +309,32 @@ var app = function() {
 
 		velocity = Math.min(80,Math.abs( windowScroll_delta )) * windowScroll_direction;
 
-		/*
-		Laggy/sticky camera effect : displacement section
-		*/
-		camera.displacement_y -= .001 * velocity;
-		camera.position.y = 5 +  camera.displacement_y;
 
-		// if ( windowScroll / window.innerHeight < 1 ){
-			// console.log( windowScroll +", "+ window.innerHeight )
-			// camera.fov = 35 + (windowScroll / window.innerHeight) * 30;
-		// }
+		camera__displacement -= .001* velocity;
+		camera.position.y = 5 + camera__displacement;
 
-		/*
-		Interactive mobius onScroll
-		*/
+
+		// gridHelper.rotation.z = velocity * .005 + Math.PI*.6;
+		// gridHelper.rotation.z = velocity * .005 + Math.PI*.6;
+		// camera.position.y = velocity * .05  + 5;
+		// camera.position.x = velocity * .01  + 8;
+
+		// camera.position.y = windowScroll_delta * .05 + 5;
+		// camera.lookAt( scene.position );
+
+		mobius.rotation.x = mobius__hit.rotation.x += windowScroll_delta * .0005; // scroll -> spin
+		// mobius.rotation.y = mobius__hit.rotation.y += windowScroll_delta * .002; // scroll -> spin
 		// mobius.rotation.z = mobius__hit.rotation.z += windowScroll_delta * .001; // scroll -> spin
-		mobius.rotation.y = mobius__hit.rotation.y += windowScroll_delta * .0005; // scroll -> spin
-		mobius.rotation.z = mobius__hit.rotation.z += windowScroll_delta * .001; // scroll -> spin
+
 		texture.offset.y = texture__reverse.offset.y += windowScroll_delta * - 0.001; // scroll -> texture
 
-		windowScroll_previous = windowScroll;// cache scroll distance at the very end (for windowScroll_delta)
-
+		windowScroll_previous = windowScroll;// at the very end
 	}, 16);
 
-
-	// set boundaries for viewport
-	var pivot = {
-		'x' : {
-			// 'min' : -(1/3),
-			// 'max' : -.25
-			'min' : -.45,
-			'max' : -.15
-		},
-		'y' : {
-			'min' : .15,
-			'max' : -.15
-		}
-	};
-
 	var onMouseMove = _.throttle(function(e) {
-		// Mouse object updates
 		mouse.x = ( e.clientX / window.innerWidth ) * 2 - 1;
-		mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1; // reverse: down = -, up is +
-		mouse.distance = Math.hypot(mouse.x,mouse.y);
-
-		/*
-		Look in opposite direction of cursor : translation to pivot boundaries
-		*/
-		viewtarget.x = mouse.y.map(-1,1, pivot.x.min, pivot.x.max );
-		viewtarget.y = mouse.x.map(-1,1, pivot.y.min, pivot.y.max );
-		// console.log( "mouse.y:\t"+ mouse.y + "\nviewtarget.x:\t"+viewtarget.x );
-		// console.log( "mouse.x:\t"+ mouse.x + "\nviewtarget.y:\t"+viewtarget.y );
+		mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
+		// console.log(mouse.x +"; "+mouse.y)
 	}, 16);
 
 	var onResize = _.debounce(function() {
@@ -423,43 +359,34 @@ var app = function() {
 	function onDocumentTouchStart(e) {
 		mouse.x = (e.touches[0].clientX/window.innerWidth) * 2 - 1; // for touch devices
 		mouse.y = -(e.touches[0].clientY/window.innerHeight) * 2 + 1;
-		mobiusClick();
+		followHref();
 	}
 
 	window.addEventListener( 'scroll', onScroll );
 	window.addEventListener( 'resize', onResize );
 	window.addEventListener( 'mousemove', onMouseMove );
-	container.addEventListener( 'mousedown', mobiusClick, false ); // works on iphone
+	container.addEventListener( 'mousedown', followHref, false ); // works on iphone
 
 	// ! find out how windows mobile + android deal with this?
 	// container.addEventListener( 'touchstart', onDocumentTouchStart, false ); // not necessary on iphone
 
-	function mobiusClick() {
+	function followHref() {
 		var intersects = raycaster.intersectObjects( scene.children );
-
+		var target;
 		if ( intersects.length > 0 ) {
-			if ( intersects[0].object.name == 'mobius' ) {
-				// click event starts here for mobius
-				// add random val -1 or 1 for mobius.energy
-				// mobius.energy = Math.random() < 0.5 ? -1 : 1;
-
-				// add random val within range (min,max)
-				mobius.energy = getRandomArbitrary(-1,1) * 1.5;
-				console.log( time.getElapsedTime() );
+			if ( intersects[0].object.type == "Mesh") {
+				window.open( intersects[0].object.href, "_self" );
 			}
 		}
 	};
 
 
 	function render() {
-		/*
-		Raycasting (highly verbose)
-		*/
 		raycaster.setFromCamera( mouse, camera );
 		var intersects = raycaster.intersectObjects( scene.children );
 
 		if ( intersects.length > 0 ) {
-			// is it the same as before?
+			// is it the same as before? is ther
 			if ( intersected !== intersects[0].object ) {
 				// we have a new selection! change it
 				// (but first clear current selection if there is one)
@@ -468,7 +395,6 @@ var app = function() {
 					container.classList.remove("interaction--pointer--important");
 					// intersected.material.emissive = 0x000000;
 					// intersected.material.color.set( 0xffffff );
-
 					intersected = null;
 				}
 
@@ -477,19 +403,15 @@ var app = function() {
 					// console.log( intersected.href +" [IN]" );
 					container.classList.add("interaction--pointer--important");
 					// intersected.material.color.set( 0xccccff );
-					// if (camera.fov > 30) { camera.fov *= .9; }
-
 				};
+
 
 			} else{
 				// no changes, but do we shave an intersection?
 				if ( intersected ) {
-					// if (camera.fov > 30) { camera.fov *= .9; }
-
 					// console.log( intersected.href +" (sustain)" );
 				};
 			}
-
 		} else {
 			// nothing hovered now, previously we did!
 			if ( intersected ) {
@@ -504,7 +426,6 @@ var app = function() {
 
 		}
 
-		camera.updateProjectionMatrix();
 		renderer.render( scene, camera );
 
 	}
@@ -515,15 +436,6 @@ var app = function() {
 	function getRandomArbitrary(min, max) {
 		return Math.random() * (max - min) + min;
 	}
-
-	/*
-	map.js (Github Gist)
-	author : @xposedbones
-	*/
-	Number.prototype.map = function ( in_min, in_max, out_min, out_max ) {
-		return ( this - in_min ) * ( out_max - out_min ) / (in_max - in_min) + out_min;
-	}
-
 };
 module.exports = app;
 

@@ -8,7 +8,7 @@
 
 		<?php foreach($page->children()->visible() as $section): ?>
 			<div class="text">
-				<h1><?= $section->title()->html() ?></h1>
+				<h1 class="row-span"><?= $section->title()->html() ?></h1>
 				<?= $section->section()->kirbytext() ?>
 			</div>
 		<?php endforeach ?>

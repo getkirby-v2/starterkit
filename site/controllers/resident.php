@@ -2,8 +2,6 @@
 /*
 This is the Resident controller
 Retreive all articles that match current tags
-
-
 */
 return function($site, $pages, $page) {
 	$perpage  = $page->perpage()->int();

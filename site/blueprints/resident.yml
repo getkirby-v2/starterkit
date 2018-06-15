@@ -1,29 +1,59 @@
 title: Resident
+# loosely based ot article blueprint (article.yml)
 
 pages: false
 
 icon: user
 
+files:
+   fields:
+      caption:
+         label: Caption
+         type: textarea
+         buttons: false
+      credits:
+         label: Credits
+         type: textarea
+         buttons:
+            - link
+            - email
+      focus:
+         label: Focus
+         help: Cropped versions of this image will be centered around this point.
+         type: focus
+
 fields:
    title:
-      label: Name
+      label: Title
       type: title
-      # width: 2/3
+      help: >
+         Format as [artist's full name] & [academic's full name]. Example: Iris van Herpen & Jouke Verlinden.
 
-   name:
-      label: Name
-      type: text
-      # width: 2/3
+   datetime:
+      label: Date and Time
+      type: datetime
+      default:
+         date: now
+      date:
+         format: DD-MM-YYYY
+      time:
+         format: 24
+         interval: 5
+      required: true
+      help: >
+         Only used for admin purposes
 
-   photograph:
-      label: Portrait
+   coverimage:
+      label: Cover Image
       type: image
       width: 1/4
 
-   homepage:
-      label: Resident's website
-      type: url
-      width: 3/4
+   teaser:
+      label: Teaser
+      type: textarea
+      buttons: false
+      help: >
+         This will only appear in lists and overviews on this website, and may appear in social media posts or search engine results.
 
    residents:
       label: Associated tag(s)
@@ -31,6 +61,15 @@ fields:
       index: all
       help: >
          Articles tagged with one or more matching tags will show up underneath this page.
+
+   homepage:
+      label: Resident's website
+      type: url
+      width: 3/4
+
+   intro:
+      label: Introduction
+      type: markdown
 
    text:
       label: Text

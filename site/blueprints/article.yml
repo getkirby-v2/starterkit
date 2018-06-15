@@ -15,8 +15,8 @@ files:
          label: Credits
          type: textarea
          buttons:
-               - link
-               - email
+            - link
+            - email
       focus:
          label: Focus
          help: Cropped versions of this image will be centered around this point.
@@ -45,6 +45,7 @@ fields:
       type: tags
       index: all
       icon: user
+      required: true
 
    coverimage:
       label: Cover Image
