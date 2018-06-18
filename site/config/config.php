@@ -29,6 +29,7 @@ of the system, please check out http://getkirby.com/docs/advanced/options
 */
 c::set('debug', true); // debugging mode
 c::set('home','current-affairs'); // custom home page
+// c::set('home','crossing-parallels'); // custom home page
 
 c::set('meta-tags.templates', function(Page $page, Site $site) {
 	return [

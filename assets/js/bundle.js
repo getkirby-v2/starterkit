@@ -209,13 +209,17 @@ var app = function() {
 
 		// grid = new THREE.PolarGridHelper( 10, 48, 10, 64 );
 
-		grid = new THREE.GridHelper( 50, 10, 0xffffff, 0xffffff );
-		grid.position.set( 0, -2, 0 );
+		grid = new THREE.GridHelper( 100, 50, 0xffffff, 0xffffff );
+		grid.position.set( 0, -5, 0 );
 		// grid.position.set( 0, 0, 0 );
-		// grid.rotation.z = Math.PI*.6;
+		grid.rotation.x = Math.PI*.3;
 
 		if ( currentPage.classList.contains('about') || currentPage.classList.contains('current-affairs') ) {
 			scene.add( grid );
+		} else {
+			light[0].intensity = .1;
+			light[1].intensity = .4;
+			ambientLight.intensity = .5;
 		}
 
 		grid.material.transparent = true;
