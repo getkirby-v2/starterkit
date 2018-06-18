@@ -52,8 +52,12 @@ Teaser: Iris van Herpen & Jouke Verlinden are Crossing Parallels
 
 ----
 
-Datetime: 2018-06-07 13:00
+Datetime: 2017-06-07 13:00
 
 ----
 
 Intro: Exciting introduction to a longer bio/profile on both Iris van Herpen and Jouke Verlinden. Yes! This is probably something about the project.
+
+----
+
+Programme: residency

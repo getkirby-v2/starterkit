@@ -25,3 +25,23 @@ Photograph:
 ----
 
 Homepage: 
+
+----
+
+Datetime: 2018-06-18 15:35
+
+----
+
+Coverimage: 
+
+----
+
+Programme: residency
+
+----
+
+Teaser: 
+
+----
+
+Intro: 

@@ -22,4 +22,6 @@ Section:
 
 (link: www.tudelft.nl/en text: Delft University of Technology)
 (link: http://www.todaysart.org text: TodaysArt)
+
 (link: https://www.mondriaanfonds.nl/en/ text: Mondriaan Fund) (pilot year)
+(image: mondriaan-white.svg link: https://www.mondriaanfonds.nl/en/)

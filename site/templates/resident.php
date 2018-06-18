@@ -25,7 +25,6 @@
 		</div>
 
 	</article>
-
 	<?php snippet('list'); ?>
 
 </main>

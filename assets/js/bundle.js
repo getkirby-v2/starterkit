@@ -77,15 +77,17 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_mobius_webpack__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _js_mobius_webpack__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_mobius_webpack__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _js_navigation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _js_navigation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_navigation__WEBPACK_IMPORTED_MODULE_1__);
 
 _js_mobius_webpack__WEBPACK_IMPORTED_MODULE_0___default()();
+
+_js_navigation__WEBPACK_IMPORTED_MODULE_1___default()();
 
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
-
-var testvar = "content";
 
 var app = function() {
 	var THREE = __webpack_require__(2);
@@ -116,7 +118,7 @@ var app = function() {
 	var mobius, mobius__hit
 	var texture, texture__reverse;
 
-	var gridHelper, velocity;
+	var grid, velocity;
 
 	var raycaster = new THREE.Raycaster();
 	var mouse = new THREE.Vector2(0,0); // set to prevent initial mouseOver
@@ -126,6 +128,7 @@ var app = function() {
 
 	var time;
 
+	var currentPage = document.getElementsByClassName('main')[0];
 
 	init();
 	animate();
@@ -204,12 +207,20 @@ var app = function() {
 
 		mobius.energy = 0;
 
-		gridHelper = new THREE.GridHelper( 5, 10, 0xffffff, 0xffffff );
-		// gridHelper.position.set( 0, -2, 0 );
-		gridHelper.position.set( 0, 0, 0 );
-		// gridHelper.rotation.z = Math.PI*.6;
+		// grid = new THREE.PolarGridHelper( 10, 48, 10, 64 );
 
-		// scene.add( gridHelper );
+		grid = new THREE.GridHelper( 50, 10, 0xffffff, 0xffffff );
+		grid.position.set( 0, -2, 0 );
+		// grid.position.set( 0, 0, 0 );
+		// grid.rotation.z = Math.PI*.6;
+
+		if ( currentPage.classList.contains('about') || currentPage.classList.contains('current-affairs') ) {
+			scene.add( grid );
+		}
+
+		grid.material.transparent = true;
+		grid.material.opacity = 1;
+		console.log( grid );
 
 		// var plane = new THREE.PlaneGeometry( 1000, 1000 );
 		// var planemesh = new THREE.Mesh( plane, material__matte );
@@ -218,8 +229,8 @@ var app = function() {
 		// planemesh.position.set( 0, -3, 0 );
 
 		mobius__hit.href = "javascript:alert(\"mobius\")";; // doesnt work
-		gridHelper.href = "javascript:alert(\"grid\")";
-		gridHelper.href = "javascript:alert(\"grid\")";
+		grid.href = "javascript:alert(\"grid\")";
+		grid.href = "javascript:alert(\"grid\")";
 
 
 		//renderer -------------------------------------------------------------------
@@ -256,6 +267,13 @@ var app = function() {
 
 		var timeDelta = time.getDelta();
 		var timeElapsed = time.getElapsedTime();
+
+
+		/*
+		Fade out background grid
+		*/
+		grid.material.opacity = 1 - Math.min((window.scrollY / (.6*window.innerHeight)), 1);
+
 
 		/*
 		Look in opposite direction of cursor
@@ -355,8 +373,8 @@ var app = function() {
 		camera.position.y = 5 +  camera.displacement_y;
 
 		// if ( windowScroll / window.innerHeight < 1 ){
-			// console.log( windowScroll +", "+ window.innerHeight )
-			// camera.fov = 35 + (windowScroll / window.innerHeight) * 30;
+		// 	console.log( windowScroll +", "+ window.innerHeight +": "+ (windowScroll / window.innerHeight *100)+"% " )
+		// 	// camera.fov = 35 + (windowScroll / window.innerHeight) * 30;
 		// }
 
 		/*
@@ -63721,6 +63739,46 @@ module.exports = function( THREE ) {
 	};
 	return ParametricGeometries;
 }
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+var navigation = function() {
+	// toggle menu
+	var menu = document.getElementById('menu');
+	var hamburger = menu.getElementsByClassName('hamburger')[0];
+	var cross = menu.getElementsByClassName('cross')[0];
+	var list = menu.getElementsByTagName('ul')[0];
+
+	var main = document.getElementsByTagName('main')[0];
+
+	hamburger.addEventListener("click", menu__show, false);
+	cross.addEventListener("click", menu__hide, false);
+
+	function menu__show() {
+		hamburger.className += ' hidden';
+		// cross.className = 'cross';
+		removeClass(cross, hidden);
+		// list.className = '';
+		removeClass(list, hidden);
+		main.className += ' hidden';
+	}
+
+	function menu__hide() {
+		// back to initial
+		// hamburger.className = 'hamburger';
+		removeClass(hamburger, hidden);
+		cross.className += ' hidden';
+		list.className += ' hidden';
+		// main.className = 'main';
+		removeClass(main, hidden);
+	}
+
+	function removeClass(e,c) {e.className = e.className.replace( new RegExp('(?:^|\\s)'+c+'(?!\\S)') ,'');}
+
+};
+module.exports = navigation;
 
 /***/ })
 /******/ ]);

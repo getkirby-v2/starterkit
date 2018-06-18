@@ -41,12 +41,21 @@ fields:
          interval: 5
       required: true
       help: >
-         Only used for admin purposes
+         Resident list will be sorted by date
 
    coverimage:
       label: Cover Image
       type: image
-      width: 1/4
+      width: 1/3
+
+   programme:
+      label: Residency programme
+      type: select
+      options:
+         matching: Matching Programme
+         residency: Residency Programme
+      width: 2/3
+      required: true
 
    teaser:
       label: Teaser

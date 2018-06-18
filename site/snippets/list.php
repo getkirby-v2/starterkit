@@ -9,8 +9,15 @@ This list returns all articles related to a resident (original content)
 // echo "</pre>";
 ?>
 
-<section class="list">
+<section class="list <?=$cp_filter?>">
 	<?php if($articles->count()): ?>
+		<?php
+			echo '<pre>'.$articles.'</pre>';
+			if (isset($cp_filter)) {
+				$articles = $articles->filterBy('programme', $cp_filter,',');
+			}
+			echo '<pre>'.$articles.'</pre>';
+		?>
 		<ul>
 			<?php foreach($articles as $article): ?>
 				<?php if($article->intendedTemplate() == 'article'): ?>
@@ -22,9 +29,9 @@ This list returns all articles related to a resident (original content)
 										$image = $article->image($article->coverimage());
 										if($image):
 									?>
-										<div class="card--image" style="background-image: url(<?php echo $image->url() ?>); background-position: <?php echo $image->focusPercentageX() ?>% <?php echo $image->focusPercentageY() ?>%;">
+										<div class="card--image filter--blueAlpha" style="background-image: url(<?php echo $image->url() ?>); background-position: <?php echo $image->focusPercentageX() ?>% <?php echo $image->focusPercentageY() ?>%;">
 									<?php else: ?>
-										<div class="card--image">
+										<div class="card--image filter--blueAlpha">
 									<?php endif ?>
 										</div>
 									</a>
@@ -92,15 +99,15 @@ This list returns all articles related to a resident (original content)
 					</li>
 
 				<?php elseif($article->intendedTemplate() == 'resident'): ?>
-					<li class="<?= $article->intendedTemplate() ?>">
-						<a href="<?= $article->url() ?>">
-							<h3><?= $article->title()->html() ?></h3>
-							<!-- <?php if($image = $article->images()->sortBy('sort', 'asc')->first()): $thumb = $image->crop(720, 240); ?>
-								<img src="<?= $thumb->url() ?>" alt="Thumbnail for <?= $article->title()->html() ?>" />
-							<?php endif ?> -->
-						</a>
-						<pre><?php print_r($article); ?></pre>
-					</li>
+							<li class="<?= $article->intendedTemplate() ?>">
+								<a href="<?= $article->url() ?>">
+									<h3><?= $article->title()->html() ?></h3>
+									<!-- <?php if($image = $article->images()->sortBy('sort', 'asc')->first()): $thumb = $image->crop(720, 240); ?>
+										<img src="<?= $thumb->url() ?>" alt="Thumbnail for <?= $article->title()->html() ?>" />
+									<?php endif ?> -->
+								</a>
+								<pre><?php print_r($article); ?></pre>
+							</li>
 
 				<?php endif ?>
 			<?php endforeach ?>

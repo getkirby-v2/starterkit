@@ -1,7 +1,13 @@
 <?php snippet('header') ?>
 <pre>this is the information template</pre>
-<main class="main" role="main">
-	<article class="information">
+<?php
+	if ( $page ) {
+		echo '<main class="main '. $page .'" role="main">';
+	} else {
+		echo '<main class="main information" role="main">';
+	}
+?>
+	<article>
 		<header class="article--header">
 			<h1 class="accessibility"><?= $page->title()->html() ?></h1>
 		</header>

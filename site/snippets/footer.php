@@ -8,32 +8,6 @@
 </footer>
 
 <script type="text/javascript">
-	// toggle menu
-	var menu = document.getElementById('menu');
-	var hamburger = menu.getElementsByClassName('hamburger')[0];
-	var cross = menu.getElementsByClassName('cross')[0];
-	var list = menu.getElementsByTagName('ul')[0];
-
-	var main = document.getElementsByTagName('main')[0];
-
-	hamburger.addEventListener("click", menu__show, false);
-	cross.addEventListener("click", menu__hide, false);
-
-	function menu__show() {
-		hamburger.className = 'hamburger hidden';
-		cross.className = 'cross';
-		list.className = '';
-		main.className = 'main hidden';
-	}
-
-	function menu__hide() {
-		// back to initial
-		hamburger.className = 'hamburger';
-		cross.className = 'cross hidden';
-		list.className = 'hidden';
-		main.className = 'main';
-	}
-
 
 
 </script>
@@ -123,7 +97,7 @@
 </svg>
 
 <style media="screen">
-	.cover--image, .card--image {
+	.filter--blueAlpha {
 		-webkit-filter: url(#alpha2);
 		filter: url(#alpha2);
 	}

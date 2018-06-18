@@ -23,7 +23,7 @@ fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
+main, menu, nav, output, ruby, section, summary,
 time, mark, audio, video,
 button {
 	margin: 0;
@@ -78,119 +78,116 @@ article ol li::before {
 /* line 1, src/scss/_header.scss */
 body > header {
 	position: fixed;
-	display: block;
-	top: 0;
-	z-index: 50;
-	width: 100%;
-	background-color: rgba(0, 0, 255, 0.6);
-	border-bottom-left-radius: 3rem;
-	border-bottom-right-radius: 3rem;
-	padding: 3rem 2rem; }
-	/* line 16, src/scss/_header.scss */
+	z-index: 50; }
+	/* line 17, src/scss/_header.scss */
 	body > header svg {
+		display: none !important;
 		display: inline-block;
 		height: 5.2rem;
-		margin-right: 3rem; }
-	/* line 23, src/scss/_header.scss */
+		margin-right: 3rem;
+		margin-top: 1rem; }
+	/* line 27, src/scss/_header.scss */
 	body > header nav button {
 		position: fixed;
-		top: 3rem;
+		top: 3.4rem;
 		right: 2rem;
 		outline: none;
 		cursor: pointer;
 		color: #fff;
 		background: none;
 		display: block; }
-		/* line 35, src/scss/_header.scss */
+		/* line 39, src/scss/_header.scss */
 		body > header nav button.hamburger {
 			font-family: "IBM Plex Sans", sans-serif;
 			font-weight: 200;
 			font-size: 4rem;
-			line-height: 4rem;
-			letter-spacing: .1rem;
-			-moz-hyphens: auto;
-			-webkit-hyphens: auto;
-			-ms-hyphens: auto;
-			hyphens: auto; }
-		/* line 38, src/scss/_header.scss */
+			line-height: 4.5rem;
+			letter-spacing: .1rem; }
+		/* line 42, src/scss/_header.scss */
 		body > header nav button.cross {
 			font-family: "IBM Plex Sans", sans-serif;
 			font-weight: -200;
 			font-size: 6rem;
-			line-height: 4rem;
-			letter-spacing: .1rem;
-			-moz-hyphens: auto;
-			-webkit-hyphens: auto;
-			-ms-hyphens: auto;
-			hyphens: auto; }
-		/* line 41, src/scss/_header.scss */
+			line-height: 4.5rem;
+			letter-spacing: .1rem; }
+		/* line 45, src/scss/_header.scss */
 		body > header nav button.hidden {
 			display: none; }
-	/* line 49, src/scss/_header.scss */
+	/* line 53, src/scss/_header.scss */
 	body > header nav ul {
-		padding: 1rem 0;
-		min-height: 120vh; }
-		/* line 54, src/scss/_header.scss */
+		position: fixed;
+		top: 1rem;
+		left: 2rem;
+		display: block;
+		padding-left: 2rem; }
+		/* line 63, src/scss/_header.scss */
 		body > header nav ul li {
 			font-family: "IBM Plex Sans", sans-serif;
 			font-weight: 200;
 			font-size: 4rem;
-			line-height: 8rem;
+			line-height: 9rem;
 			letter-spacing: .1rem;
-			-moz-hyphens: auto;
-			-webkit-hyphens: auto;
-			-ms-hyphens: auto;
-			hyphens: auto; }
-			/* line 57, src/scss/_header.scss */
+			white-space: nowrap; }
+			/* line 67, src/scss/_header.scss */
 			body > header nav ul li a {
 				border-radius: 1.5rem;
 				margin: -1.875rem;
 				padding: 0.375rem 1.5rem;
 				background-color: rgba(0, 0, 255, 0.6); }
-			/* line 60, src/scss/_header.scss */
+			/* line 71, src/scss/_header.scss */
 			body > header nav ul li.is-active a {
 				background-color: rgba(187, 187, 187, 0.9); }
-		/* line 65, src/scss/_header.scss */
+		/* line 76, src/scss/_header.scss */
 		body > header nav ul.hidden {
 			display: none; }
 
+/* line 85, src/scss/_header.scss */
+.main.hidden {
+	visibility: hidden; }
+
 @media only screen and (min-width: 936px) {
-	/* line 74, src/scss/_header.scss */
+	/* line 93, src/scss/_header.scss */
+	.main {
+		margin-top: 12rem; }
+		/* line 96, src/scss/_header.scss */
+		.main.hidden {
+			visibility: visible; }
+	/* line 101, src/scss/_header.scss */
 	body > header {
+		position: fixed;
+		display: block;
+		top: 0;
+		width: 100%;
 		padding: 3rem 2rem;
 		background-color: transparent;
 		box-shadow: none; }
-		/* line 80, src/scss/_header.scss */
-		body > header nav {
-			float: right; }
-			/* line 85, src/scss/_header.scss */
-			body > header nav button {
-				display: none; }
-			/* line 89, src/scss/_header.scss */
-			body > header nav ul {
-				width: initial;
-				height: auto;
-				min-height: 0;
-				background: none;
-				text-align: right; }
-				/* line 90, src/scss/_header.scss */
-				body > header nav ul.hidden {
-					display: inline-block; }
-				/* line 100, src/scss/_header.scss */
-				body > header nav ul li {
-					display: inline-block;
-					margin-left: 4.5rem;
-					font-family: "IBM Plex Mono", monospace;
-					font-weight: 400;
-					font-size: 2rem;
-					line-height: 3rem;
-					-moz-hyphens: auto;
-					-webkit-hyphens: auto;
-					-ms-hyphens: auto;
-					hyphens: auto; }
-					/* line 101, src/scss/_header.scss */
-					body > header nav ul li a {
-						display: block; } }
+		/* line 126, src/scss/_header.scss */
+		body > header nav button {
+			display: none; }
+		/* line 130, src/scss/_header.scss */
+		body > header nav ul {
+			top: 6rem;
+			left: inherit;
+			right: 2rem;
+			padding-right: 2rem; }
+			/* line 131, src/scss/_header.scss */
+			body > header nav ul.hidden {
+				display: block; }
+			/* line 139, src/scss/_header.scss */
+			body > header nav ul li {
+				display: inline-block;
+				margin-left: 4.5rem;
+				font-family: "IBM Plex Mono", monospace;
+				font-weight: 400;
+				font-size: 2rem;
+				line-height: 3rem;
+				-moz-hyphens: auto;
+				-webkit-hyphens: auto;
+				-ms-hyphens: auto;
+				hyphens: auto; }
+				/* line 140, src/scss/_header.scss */
+				body > header nav ul li a {
+					display: block; } }
 
 /***********************************
 *	layout
@@ -198,34 +195,305 @@ body > header {
 /* line 4, src/scss/_main.scss */
 .main {
 	position: relative;
-	z-index: 10;
-	margin-top: 12rem;
-	padding: 3rem 1rem;
+	z-index: 30;
+	padding: 3rem 2rem;
 	max-width: 140rem;
-	font-size: .01px; }
-	/* line 5, src/scss/_main.scss */
-	.main.hidden {
-		visibility: hidden; }
-	/* line 16, src/scss/_main.scss */
-	.main.current-affairs, .main.resident {
-		margin: 20vh 0;
-		z-index: 30; }
+	font-size: 0px; }
+	/* line 11, src/scss/_main.scss */
+	.main.about {
+		margin-top: 70vh; }
 
-/* line 22, src/scss/_main.scss */
+/* line 15, src/scss/_main.scss */
 .article-header {
 	position: relative;
 	display: block; }
-	/* line 26, src/scss/_main.scss */
+	/* line 19, src/scss/_main.scss */
+	.article-header > div::first-of-type {
+		min-height: 75rem; }
+	/* line 22, src/scss/_main.scss */
 	.article-header .cover--image {
 		background-size: cover;
 		height: 75rem;
 		width: 100%; }
-	/* line 31, src/scss/_main.scss */
-	.article-header .cover--title {
+	/* line 28, src/scss/_main.scss */
+	.article-header .cover--title h1 {
 		position: absolute;
-		bottom: 0; }
-		/* line 35, src/scss/_main.scss */
-		.article-header .cover--title h1 {
+		bottom: 0;
+		font-family: "PermanentHeaURWD-Reg", sans-serif;
+		font-size: 12rem;
+		font-weight: normal;
+		line-height: 9.6rem;
+		padding-bottom: 3.6rem;
+		letter-spacing: 0.048rem;
+		text-transform: uppercase;
+		-moz-hyphens: auto;
+		-webkit-hyphens: auto;
+		-ms-hyphens: auto;
+		hyphens: auto;
+		padding-right: 1rem;
+		padding-left: 1rem; }
+
+/* line 45, src/scss/_main.scss */
+.intro > p {
+	padding: 0.5rem 1rem; }
+
+/* line 51, src/scss/_main.scss */
+.text > h1, .text h2, .text p, .text ul, .text ol, .text figure, .text img {
+	display: block;
+	max-width: 100%; }
+
+/* line 56, src/scss/_main.scss */
+.text > h1, .text h2, .text p, .text ul, .text ol {
+	text-align: left;
+	padding: 1.5rem 1rem; }
+
+/* line 75, src/scss/_main.scss */
+.text > figure {
+	margin: 2.25rem 0; }
+	/* line 78, src/scss/_main.scss */
+	.text > figure.figure--inline {
+		display: block;
+		margin-bottom: 1.5rem;
+		padding: 0 1rem; }
+		/* line 85, src/scss/_main.scss */
+		.text > figure.figure--inline img {
+			max-width: 18rem;
+			max-height: 15rem; }
+		/* line 90, src/scss/_main.scss */
+		.text > figure.figure--inline a {
+			background: none;
+			border: none;
+			text-decoration: none; }
+
+/* line 97, src/scss/_main.scss */
+.text > p:last-of-type {
+	margin-bottom: 4.5rem; }
+
+@media only screen and (min-width: 720px) {
+	/* line 107, src/scss/_main.scss */
+	.text {
+		text-align: right; }
+		/* line 114, src/scss/_main.scss */
+		.text figure, .text figcaption {
+			text-align: left;
+			padding: 1.5rem 0; }
+			/* line 118, src/scss/_main.scss */
+			.text figure.figure--inline, .text figcaption.figure--inline {
+				margin-left: 33%; }
+		/* line 122, src/scss/_main.scss */
+		.text > h2 {
+			float: left;
+			width: 33.33333%; }
+		/* line 126, src/scss/_main.scss */
+		.text > p, .text ul, .text ol {
+			display: inline-block;
+			width: 66.66667%;
+			margin-left: 33.33333%; }
+		/* line 131, src/scss/_main.scss */
+		.text > h2 + p,
+		.text > h2 + ul,
+		.text > h2 + ol,
+		.text > h2 + figure {
+			margin-left: 0; }
+		/* line 143, src/scss/_main.scss */
+		.text > p + p::before,
+		.text > ul + p::before,
+		.text > ol + p::before {
+			content: none; }
+		/* line 148, src/scss/_main.scss */
+		.text > p:last-of-type {
+			margin-bottom: 0; } }
+
+/***********************************
+*	styling
+***********************************/
+/* line 158, src/scss/_main.scss */
+.intro > p {
+	border-top: 0.45rem solid #fff;
+	border-bottom: 0.45rem solid #fff; }
+
+/* line 164, src/scss/_main.scss */
+.intro > h1, .text > h1 {
+	border-top: 0.45rem solid #fff;
+	border-bottom: 0.45rem solid #fff;
+	padding-top: 1.05rem;
+	padding-bottom: 1.05rem; }
+
+/* line 176, src/scss/_main.scss */
+.intro > h1 + h2, .text > h1 + h2 {
+	border-top: none; }
+
+/* line 187, src/scss/_main.scss */
+.intro:last-of-type, .text:last-of-type {
+	border-bottom: 0.45rem solid #fff; }
+
+@media only screen and (min-width: 720px) {
+	/* line 194, src/scss/_main.scss */
+	.text h2, .text p {
+		border-top: none;
+		border-bottom: none; } }
+
+/***********************************
+*	typography
+***********************************/
+/* line 205, src/scss/_main.scss */
+.intro > p {
+	font-family: "IBM Plex Sans", sans-serif;
+	font-weight: 200;
+	font-size: 4rem;
+	line-height: 6rem;
+	letter-spacing: .1rem;
+	text-align: justify; }
+
+/* line 211, src/scss/_main.scss */
+.text h1 {
+	font-family: "IBM Plex Mono", monospace;
+	font-weight: 400;
+	font-size: 2rem;
+	line-height: 3rem;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+	text-transform: uppercase; }
+
+/* line 215, src/scss/_main.scss */
+.text h2 {
+	font-family: "IBM Plex Mono", monospace;
+	font-weight: 400;
+	font-size: 2rem;
+	line-height: 3rem;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+	text-transform: uppercase;
+	margin-top: 1.5rem;
+	margin-bottom: 0rem; }
+
+/* line 222, src/scss/_main.scss */
+.text p, .text li {
+	font-family: "IBM Plex Mono", monospace;
+	font-weight: 400;
+	font-size: 2rem;
+	line-height: 3rem;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto; }
+
+/* line 226, src/scss/_main.scss */
+.text li:not(::first-line) {
+	background: #f00;
+	content: '+\00a0\00a0'; }
+
+/* line 231, src/scss/_main.scss */
+.text ul li::before {
+	content: '–\00a0\00a0'; }
+
+/* line 234, src/scss/_main.scss */
+.text ol {
+	counter-reset: i; }
+
+/* line 237, src/scss/_main.scss */
+.text ol li::before {
+	content: counter(i) "  ";
+	counter-increment: i; }
+
+/* line 244, src/scss/_main.scss */
+.text figcaption {
+	font-family: "IBM Plex Mono", monospace;
+	font-weight: 400;
+	font-size: 2rem;
+	line-height: 3rem;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto; }
+	/* line 249, src/scss/_main.scss */
+	.text figcaption .credits a:link, .text figcaption .credits a:visited,
+	.text figcaption .credits a:hover, .text figcaption .credits a:active {
+		border-radius: 0.45rem;
+		margin: -0.5625rem;
+		padding: 0.1125rem 0.45rem;
+		border: 0.25rem solid #fff; }
+
+/* line 257, src/scss/_main.scss */
+.text a:link, .text a:visited,
+.text a:hover, .text a:active {
+	border-radius: 0.75rem;
+	margin: -0.9375rem;
+	padding: 0.1875rem 0.75rem;
+	background-color: rgba(72, 72, 255, 0.8);
+	border-radius: 0.75rem;
+	margin: -0.9375rem;
+	padding: 0.1875rem 0.75rem;
+	border: 0.25rem solid rgba(255, 255, 255, 0.8); }
+
+@media only screen and (min-width: 720px) {
+	/* line 267, src/scss/_main.scss */
+	.text p, .text li {
+		-moz-hyphens: none;
+		-webkit-hyphens: none;
+		-ms-hyphens: none;
+		hyphens: none; }
+	/* line 270, src/scss/_main.scss */
+	.text h2 {
+		margin-top: 0; } }
+
+/* line 9, src/scss/_list.scss */
+section.list ul li .card--main {
+	padding: 0.75rem 1rem;
+	border-top: 0.45rem solid #fff; }
+	/* line 13, src/scss/_list.scss */
+	section.list ul li .card--main p {
+		font-family: "IBM Plex Mono", monospace;
+		font-weight: 400;
+		font-size: 2rem;
+		line-height: 3rem;
+		-moz-hyphens: auto;
+		-webkit-hyphens: auto;
+		-ms-hyphens: auto;
+		hyphens: auto; }
+
+/* line 17, src/scss/_list.scss */
+section.list ul li .card--infobox {
+	padding: 0.75rem 1rem;
+	border-top: 0.25rem solid #fff; }
+	/* line 23, src/scss/_list.scss */
+	section.list ul li .card--infobox:last-of-type {
+		border-bottom: 0.45rem solid #fff; }
+	/* line 27, src/scss/_list.scss */
+	section.list ul li .card--infobox p {
+		font-family: "IBM Plex Mono", monospace;
+		font-weight: 500;
+		font-size: 1.5rem;
+		line-height: 3rem;
+		-moz-hyphens: none;
+		-webkit-hyphens: none;
+		-ms-hyphens: none;
+		hyphens: none; }
+
+/* line 33, src/scss/_list.scss */
+section.list ul li.article {
+	position: relative;
+	margin-top: 15rem;
+	margin-bottom: 15rem;
+	box-shadow: 0px 0px 1rem 0.2rem rgba(0, 0, 255, 0.8); }
+	/* line 42, src/scss/_list.scss */
+	section.list ul li.article .card--title {
+		position: relative; }
+		/* line 45, src/scss/_list.scss */
+		section.list ul li.article .card--title a {
+			display: block;
+			min-height: 60rem;
+			width: 100%;
+			height: 100%; }
+		/* line 52, src/scss/_list.scss */
+		section.list ul li.article .card--title h3 {
+			position: absolute;
+			bottom: 0;
+			z-index: 5;
 			font-family: "PermanentHeaURWD-Reg", sans-serif;
 			font-size: 12rem;
 			font-weight: normal;
@@ -239,332 +507,75 @@ body > header {
 			hyphens: auto;
 			padding-right: 1rem;
 			padding-left: 1rem; }
+		/* line 61, src/scss/_list.scss */
+		section.list ul li.article .card--title .card--image {
+			position: absolute;
+			z-index: 0;
+			top: 0;
+			display: block;
+			width: 100%;
+			height: 100%;
+			background-size: cover; }
 
-/* line 49, src/scss/_main.scss */
-.intro > p {
-	padding: 0.5rem 1rem; }
-
-/* line 54, src/scss/_main.scss */
-.text > h1,
-.text > h1, .text h2, .text p, .text ul, .text ol {
-	padding: 1.5rem 1rem; }
-
-/* line 61, src/scss/_main.scss */
-.text h2, .text p, .text ul, .text ol, .text figure, .text img {
-	display: block;
-	max-width: 100%; }
-
-/* line 65, src/scss/_main.scss */
-.text > h2:first-child,
-.text > h1 + h2 {
-	margin-top: 0; }
-
-/* line 69, src/scss/_main.scss */
-.text > p + h1 {
-	margin-top: 6rem; }
-
-/* line 72, src/scss/_main.scss */
-.text > h2 {
-	margin-top: 3rem; }
-
-/* line 76, src/scss/_main.scss */
-.text > figure {
-	margin: 2.25rem 0; }
-
-/* line 79, src/scss/_main.scss */
-.text > p:last-of-type {
-	margin-bottom: 4.5rem; }
-
-@media only screen and (min-width: 720px) {
-	/* line 85, src/scss/_main.scss */
-	.main {
-		padding: 12rem 6rem; }
-		/* line 86, src/scss/_main.scss */
-		.main.hidden {
-			visibility: visible; }
-	/* line 92, src/scss/_main.scss */
-	.text {
-		text-align: right; }
-		/* line 95, src/scss/_main.scss */
-		.text > h1, .text h2, .text p, .text ul, .text ol {
-			padding: 1.5rem 1rem;
-			text-align: left; }
-		/* line 99, src/scss/_main.scss */
-		.text figure, .text figcaption {
-			text-align: left;
-			padding: 1.5rem 0; }
-		/* line 103, src/scss/_main.scss */
-		.text > h2 {
-			float: left;
-			width: 33.33333%;
-			margin: 0; }
-		/* line 108, src/scss/_main.scss */
-		.text > p, .text ul, .text ol {
-			display: inline-block;
-			width: 66.66667%;
-			margin-left: 33.33333%; }
-		/* line 113, src/scss/_main.scss */
-		.text > h2 + p,
-		.text > h2 + ul,
-		.text > h2 + ol,
-		.text > h2 + figure {
-			margin-left: 0; }
-		/* line 125, src/scss/_main.scss */
-		.text > p:last-of-type {
-			margin-bottom: 0; } }
-
-/***********************************
-*	styling
-***********************************/
-/* line 135, src/scss/_main.scss */
-.intro > p {
-	border-top: 0.45rem solid #fff;
-	border-bottom: 0.45rem solid #fff; }
-
-/* line 141, src/scss/_main.scss */
-.intro > h1, .text > h1 {
-	border-top: 0.45rem solid #fff;
-	border-bottom: 0.45rem solid #fff; }
-
-/* line 145, src/scss/_main.scss */
-.intro > h2:first-child,
-.intro > h1 + h2, .text > h2:first-child,
-.text > h1 + h2 {
-	border-top: none; }
-
-/* line 149, src/scss/_main.scss */
-.intro > h2, .text > h2 {
-	border-top: 0.25rem solid #fff;
-	border-bottom: 0.25rem solid #fff; }
-
-/* line 161, src/scss/_main.scss */
-.intro:last-of-type, .text:last-of-type {
-	border-bottom: 0.45rem solid #fff; }
+/* line 73, src/scss/_list.scss */
+section.list ul li.metascraper {
+	max-width: 92.4rem;
+	margin-top: 4.5rem;
+	margin-bottom: 4.5rem;
+	box-shadow: 0px 0px 1rem 0.2rem rgba(0, 0, 255, 0.8); }
+	/* line 80, src/scss/_list.scss */
+	section.list ul li.metascraper h3 {
+		font-family: "PermanentHeaURWD-Reg", sans-serif;
+		font-size: 7.5rem;
+		font-weight: normal;
+		line-height: 6rem;
+		padding-bottom: 2.25rem;
+		letter-spacing: 0.03rem;
+		text-transform: uppercase;
+		-moz-hyphens: auto;
+		-webkit-hyphens: auto;
+		-ms-hyphens: auto;
+		hyphens: auto;
+		text-transform: uppercase; }
+		/* line 92, src/scss/_list.scss */
+		section.list ul li.metascraper h3::after {
+			content: '↪';
+			position: relative;
+			top: -1rem;
+			font-size: 3rem;
+			line-height: 0;
+			margin-left: 1rem; }
+	/* line 105, src/scss/_list.scss */
+	section.list ul li.metascraper a {
+		cursor: alias; }
 
 @media only screen and (min-width: 720px) {
-	/* line 168, src/scss/_main.scss */
-	.text h2, .text p {
-		border-top: none;
-		border-bottom: none; } }
+	/* line 119, src/scss/_list.scss */
+	section.list ul li .card--infobox {
+		width: 50%;
+		display: inline-block;
+		border-bottom: 0.45rem solid #fff; }
+	/* line 127, src/scss/_list.scss */
+	section.list ul li.metascraper {
+		margin-left: 6rem; } }
 
-/***********************************
-*	typography
-***********************************/
-/* line 179, src/scss/_main.scss */
-.intro > p {
+/* line 2, src/scss/_residents.scss */
+main.residents h2 {
 	font-family: "IBM Plex Sans", sans-serif;
 	font-weight: 200;
 	font-size: 4rem;
 	line-height: 6rem;
-	letter-spacing: .1rem;
-	-moz-hyphens: auto;
-	-webkit-hyphens: auto;
-	-ms-hyphens: auto;
-	hyphens: auto;
-	text-align: justify; }
+	letter-spacing: .1rem; }
 
-/* line 185, src/scss/_main.scss */
-.text h1 {
-	font-family: "IBM Plex Mono", monospace;
-	font-weight: 400;
-	font-size: 2rem;
-	line-height: 3rem;
-	-moz-hyphens: auto;
-	-webkit-hyphens: auto;
-	-ms-hyphens: auto;
-	hyphens: auto;
-	text-transform: uppercase; }
-
-/* line 190, src/scss/_main.scss */
-.text h2 {
-	font-family: "IBM Plex Mono", monospace;
-	font-weight: 400;
-	font-size: 2rem;
-	line-height: 3rem;
-	-moz-hyphens: auto;
-	-webkit-hyphens: auto;
-	-ms-hyphens: auto;
-	hyphens: auto;
-	text-transform: uppercase; }
-
-/* line 194, src/scss/_main.scss */
-.text p, .text li {
-	font-family: "IBM Plex Mono", monospace;
-	font-weight: 400;
-	font-size: 2rem;
-	line-height: 3rem;
-	-moz-hyphens: auto;
-	-webkit-hyphens: auto;
-	-ms-hyphens: auto;
-	hyphens: auto; }
-
-/* line 198, src/scss/_main.scss */
-.text li:not(::first-line) {
-	background: #f00;
-	content: '+\00a0\00a0'; }
-
-/* line 203, src/scss/_main.scss */
-.text ul li::before {
-	content: '–\00a0\00a0'; }
-
-/* line 206, src/scss/_main.scss */
-.text ol {
-	counter-reset: i; }
-
-/* line 209, src/scss/_main.scss */
-.text ol li::before {
-	content: counter(i) "  ";
-	counter-increment: i; }
-
-/* line 216, src/scss/_main.scss */
-.text figcaption {
-	font-family: "IBM Plex Mono", monospace;
-	font-weight: 400;
-	font-size: 2rem;
-	line-height: 3rem;
-	-moz-hyphens: auto;
-	-webkit-hyphens: auto;
-	-ms-hyphens: auto;
-	hyphens: auto; }
-	/* line 221, src/scss/_main.scss */
-	.text figcaption .credits a:link, .text figcaption .credits a:visited,
-	.text figcaption .credits a:hover, .text figcaption .credits a:active {
-		border-radius: 0.45rem;
-		margin: -0.5625rem;
-		padding: 0.1125rem 0.45rem;
-		border: 0.25rem solid #fff; }
-
-/* line 229, src/scss/_main.scss */
-.text a:link, .text a:visited,
-.text a:hover, .text a:active {
-	border-radius: 0.75rem;
-	margin: -0.9375rem;
-	padding: 0.1875rem 0.75rem;
-	background-color: rgba(0, 0, 255, 0.8); }
-
-@media only screen and (min-width: 720px) {
-	/* line 236, src/scss/_main.scss */
-	.main {
-		margin-top: 0; }
-	/* line 240, src/scss/_main.scss */
-	.text p, .text li {
-		-moz-hyphens: none;
-		-webkit-hyphens: none;
-		-ms-hyphens: none;
-		hyphens: none; } }
-
-/* line 1, src/scss/_list.scss */
-section.list {
-	margin: 12rem 0; }
-	/* line 9, src/scss/_list.scss */
-	section.list ul li .card--main {
-		padding: 0.75rem 1rem;
-		border-top: 0.45rem solid #fff; }
-		/* line 13, src/scss/_list.scss */
-		section.list ul li .card--main p {
-			font-family: "IBM Plex Mono", monospace;
-			font-weight: 400;
-			font-size: 2rem;
-			line-height: 3rem;
-			-moz-hyphens: auto;
-			-webkit-hyphens: auto;
-			-ms-hyphens: auto;
-			hyphens: auto; }
-	/* line 17, src/scss/_list.scss */
-	section.list ul li .card--infobox {
-		padding: 0.75rem 1rem;
-		border-top: 0.25rem solid #fff; }
-		/* line 23, src/scss/_list.scss */
-		section.list ul li .card--infobox:last-of-type {
-			border-bottom: 0.45rem solid #fff; }
-		/* line 27, src/scss/_list.scss */
-		section.list ul li .card--infobox p {
-			font-family: "IBM Plex Mono", monospace;
-			font-weight: 500;
-			font-size: 1.5rem;
-			line-height: 3rem;
-			-moz-hyphens: none;
-			-webkit-hyphens: none;
-			-ms-hyphens: none;
-			hyphens: none; }
-	/* line 33, src/scss/_list.scss */
-	section.list ul li.article {
-		position: relative;
-		margin-top: 15rem;
-		margin-bottom: 15rem;
-		box-shadow: 0px 0px 1rem 0.2rem rgba(0, 0, 255, 0.8); }
-		/* line 42, src/scss/_list.scss */
-		section.list ul li.article .card--title {
-			position: relative; }
-			/* line 45, src/scss/_list.scss */
-			section.list ul li.article .card--title a {
-				display: block;
-				min-height: 60rem;
-				width: 100%;
-				height: 100%; }
-			/* line 52, src/scss/_list.scss */
-			section.list ul li.article .card--title h3 {
-				position: absolute;
-				bottom: 0;
-				z-index: 5;
-				font-family: "PermanentHeaURWD-Reg", sans-serif;
-				font-size: 12rem;
-				font-weight: normal;
-				line-height: 9.6rem;
-				padding-bottom: 3.6rem;
-				letter-spacing: 0.048rem;
-				text-transform: uppercase;
-				-moz-hyphens: auto;
-				-webkit-hyphens: auto;
-				-ms-hyphens: auto;
-				hyphens: auto;
-				padding-right: 1rem;
-				padding-left: 1rem; }
-			/* line 61, src/scss/_list.scss */
-			section.list ul li.article .card--title .card--image {
-				position: absolute;
-				z-index: 0;
-				top: 0;
-				display: block;
-				width: 100%;
-				height: 100%;
-				background-size: cover; }
-	/* line 73, src/scss/_list.scss */
-	section.list ul li.metascraper {
-		max-width: 92.4rem;
-		margin-top: 4.5rem;
-		margin-bottom: 4.5rem;
-		box-shadow: 0px 0px 1rem 0.2rem rgba(0, 0, 255, 0.8); }
-		/* line 80, src/scss/_list.scss */
-		section.list ul li.metascraper h3 {
-			font-family: "PermanentHeaURWD-Reg", sans-serif;
-			font-size: 7.5rem;
-			font-weight: normal;
-			line-height: 6rem;
-			padding-bottom: 2.25rem;
-			letter-spacing: 0.03rem;
-			text-transform: uppercase;
-			-moz-hyphens: auto;
-			-webkit-hyphens: auto;
-			-ms-hyphens: auto;
-			hyphens: auto;
-			text-transform: uppercase; }
-			/* line 92, src/scss/_list.scss */
-			section.list ul li.metascraper h3::after {
-				content: '↪';
-				position: relative;
-				top: -1rem;
-				font-size: 3rem;
-				line-height: 0;
-				margin-left: 1rem; }
-		/* line 105, src/scss/_list.scss */
-		section.list ul li.metascraper a {
-			cursor: alias; }
-	/* line 110, src/scss/_list.scss */
-	section.list ul li.resident {
-		display: inline-block; }
-		/* line 117, src/scss/_list.scss */
-		section.list ul li.resident h3 {
+/* line 5, src/scss/_residents.scss */
+main.residents section.list {
+	margin-bottom: 3rem; }
+	/* line 9, src/scss/_residents.scss */
+	main.residents section.list.residency ul li.resident {
+		display: inline; }
+		/* line 16, src/scss/_residents.scss */
+		main.residents section.list.residency ul li.resident h3 {
+			display: inline;
 			font-family: "PermanentHeaURWD-Reg", sans-serif;
 			font-size: 12rem;
 			font-weight: normal;
@@ -577,16 +588,29 @@ section.list {
 			-ms-hyphens: auto;
 			hyphens: auto;
 			text-transform: uppercase; }
-
-@media only screen and (min-width: 720px) {
-	/* line 133, src/scss/_list.scss */
-	section.list ul li .card--infobox {
-		width: 50%;
-		display: inline-block;
-		border-bottom: 0.45rem solid #fff; }
-	/* line 140, src/scss/_list.scss */
-	section.list ul li.metascraper {
-		margin-left: 6rem; } }
+			/* line 21, src/scss/_residents.scss */
+			main.residents section.list.residency ul li.resident h3::after {
+				content: ',\00a0\00a0'; }
+		/* line 26, src/scss/_residents.scss */
+		main.residents section.list.residency ul li.resident:last-of-type h3::after {
+			content: '.'; }
+	/* line 35, src/scss/_residents.scss */
+	main.residents section.list.matching ul li.resident {
+		display: inline; }
+		/* line 42, src/scss/_residents.scss */
+		main.residents section.list.matching ul li.resident h3 {
+			display: inline;
+			font-family: "IBM Plex Sans", sans-serif;
+			font-weight: 200;
+			font-size: 4rem;
+			line-height: 6rem;
+			letter-spacing: .1rem; }
+			/* line 46, src/scss/_residents.scss */
+			main.residents section.list.matching ul li.resident h3::after {
+				content: ',\00a0\00a0'; }
+		/* line 51, src/scss/_residents.scss */
+		main.residents section.list.matching ul li.resident:last-of-type h3::after {
+			content: '.'; }
 
 /***********************************
 *	layout
@@ -729,16 +753,16 @@ body > footer {
 		height: 3.4rem;
 		margin-top: -2rem; }
 
-/* line 31, src/scss/index.scss */
+/* line 33, src/scss/index.scss */
 html, body {
 	font-size: 7px;
 	background: #00f;
 	color: #fff; }
 
-/* line 36, src/scss/index.scss */
+/* line 38, src/scss/index.scss */
 svg {
 	fill: #fff; }
-	/* line 38, src/scss/index.scss */
+	/* line 40, src/scss/index.scss */
 	svg text {
 		overflow: hidden;
 		fill: transparent;
@@ -746,7 +770,7 @@ svg {
 		white-space: nowrap; }
 
 @media only screen and (min-width: 720px) {
-	/* line 47, src/scss/index.scss */
+	/* line 51, src/scss/index.scss */
 	html, body {
 		font-size: 8px; } }
 
@@ -765,13 +789,17 @@ zindex:
 	0
 		body
 */
-/* line 68, src/scss/index.scss */
+/* line 72, src/scss/index.scss */
 #mobius {
 	position: fixed;
 	top: 0;
 	z-index: 20;
 	pointer-events: none; }
-	/* line 74, src/scss/index.scss */
+	/* line 78, src/scss/index.scss */
 	#mobius.interaction--pointer--important {
 		pointer-events: initial !important;
 		cursor: pointer !important; }
+
+/* line 85, src/scss/index.scss */
+pre {
+	font-size: 1rem; }

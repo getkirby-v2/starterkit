@@ -98,7 +98,10 @@ kirbytext::$tags['image'] = array(
 			$figure->addClass($tag->attr('class'));
 			$figure->append($image);
 			if(!empty($caption) or !empty($credits)) {
+				$figure->addClass('figure--captioned');
 				$figure->append('<figcaption>' . kirbytextRaw($caption) . ' <span class="credits">Credits: ' . kirbytextRaw($credits) . '</span></figcaption>');
+			} else {
+				$figure->addClass('figure--inline');	
 			}
 			return $figure;
 		} else {
