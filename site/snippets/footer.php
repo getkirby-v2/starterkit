@@ -8,14 +8,6 @@
 </footer>
 
 <script type="text/javascript">
-
-
-</script>
-
-
-
-
-<script type="text/javascript">
 	var toggle = true;
 
 
