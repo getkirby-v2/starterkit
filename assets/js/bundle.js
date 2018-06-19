@@ -122,6 +122,8 @@ var app = function() {
 
 	var raycaster = new THREE.Raycaster();
 	var mouse = new THREE.Vector2(0,0); // set to prevent initial mouseOver
+	var gyro = new THREE.Vector3(-.3,0,0);
+
 	var viewtarget = new THREE.Vector3(-.3,0,0);
 
 	var intersected;
@@ -403,25 +405,12 @@ var app = function() {
 			'max' : -.15
 		},
 		'y' : {
+			// 'min' : .15,
+			// 'max' : -.15
 			'min' : .15,
 			'max' : -.15
 		}
 	};
-
-	var onMouseMove = _.throttle(function(e) {
-		// Mouse object updates
-		mouse.x = ( e.clientX / window.innerWidth ) * 2 - 1;
-		mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1; // reverse: down = -, up is +
-		mouse.distance = Math.hypot(mouse.x,mouse.y);
-
-		/*
-		Look in opposite direction of cursor : translation to pivot boundaries
-		*/
-		viewtarget.x = mouse.y.map(-1,1, pivot.x.min, pivot.x.max );
-		viewtarget.y = mouse.x.map(-1,1, pivot.y.min, pivot.y.max );
-		// console.log( "mouse.y:\t"+ mouse.y + "\nviewtarget.x:\t"+viewtarget.x );
-		// console.log( "mouse.x:\t"+ mouse.x + "\nviewtarget.y:\t"+viewtarget.y );
-	}, 16);
 
 	var onResize = _.debounce(function() {
 		var pixelRatio = window.devicePixelRatio;
@@ -448,9 +437,61 @@ var app = function() {
 		mobiusClick();
 	}
 
+	var onMouseMove = _.throttle(function(e) {
+		// Mouse object updates
+		mouse.x = ( e.clientX / window.innerWidth ) * 2 - 1;
+		mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1; // reverse: down = -, up is +
+		mouse.distance = Math.hypot(mouse.x,mouse.y);
+
+		/*
+		Look in opposite direction of cursor : translation to pivot boundaries
+		*/
+		viewtarget.x = mouse.y.map(-1,1, pivot.x.min, pivot.x.max );
+		viewtarget.y = mouse.x.map(-1,1, pivot.y.min, pivot.y.max );
+		// console.log( "mouse.y:\t"+ mouse.y + "\nviewtarget.x:\t"+viewtarget.x );
+		// console.log( "mouse.x:\t"+ mouse.x + "\nviewtarget.y:\t"+viewtarget.y );
+	}, 16);
+
+	gyro.calibrate = true;
+
+	var onGyroscope = _.throttle(function(e) {
+		// alert(e.beta + e.gamma + e.alpha);
+
+		if ( gyro.calibrate == true ) {
+			// 'calibration': load initial values:
+			gyro._x = e.beta;
+			gyro._y = e.gamma;
+			gyro._z = e.alpha;
+
+			gyro.calibrate = false;
+		}
+
+		// load difference
+		gyro.x = e.beta - gyro._x; // current - previous = delta
+		gyro.y = e.gamma - gyro._y; // 180 - 179 = 1
+		gyro.z = e.alpha - gyro._z;
+
+		/*
+		Look in opposite direction of cursor : translation to pivot boundaries
+		*/
+		// viewtarget.x = e.beta.map(-180, 180, pivot.x.min, pivot.x.max );
+		// viewtarget.y = e.gamma.map(-90, 90, pivot.y.min, pivot.y.max );
+
+		viewtarget.x += gyro.x;
+		viewtarget.y += gyro.y;
+
+		// cache for following run
+		gyro._x = e.beta;
+		gyro._y = e.gamma;
+		gyro._z = e.alpha;
+
+	}, 16);
+
 	window.addEventListener( 'scroll', onScroll );
 	window.addEventListener( 'resize', onResize );
 	window.addEventListener( 'mousemove', onMouseMove );
+	window.addEventListener( 'deviceorientation', onGyroscope );
+
 	container.addEventListener( 'mousedown', mobiusClick, false ); // works on iphone
 
 	// ! find out how windows mobile + android deal with this?
@@ -63763,20 +63804,20 @@ var navigation = function() {
 	function menu__show() {
 		hamburger.className += ' hidden';
 		// cross.className = 'cross';
-		removeClass(cross, hidden);
+		removeClass(cross, 'hidden');
 		// list.className = '';
-		removeClass(list, hidden);
+		removeClass(list, 'hidden');
 		main.className += ' hidden';
 	}
 
 	function menu__hide() {
 		// back to initial
 		// hamburger.className = 'hamburger';
-		removeClass(hamburger, hidden);
+		removeClass(hamburger, 'hidden');
 		cross.className += ' hidden';
 		list.className += ' hidden';
 		// main.className = 'main';
-		removeClass(main, hidden);
+		removeClass(main, 'hidden');
 	}
 
 	function removeClass(e,c) {e.className = e.className.replace( new RegExp('(?:^|\\s)'+c+'(?!\\S)') ,'');}

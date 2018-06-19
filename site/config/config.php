@@ -14,7 +14,7 @@ valid license key. Please read the End User License Agreement
 for more information: http://getkirby.com/license
 
 */
-c::set('license', 'put your license key here'); // to do (iris?)
+c::set('license', 'K2-PERSONAL-UgBsIWi7CX6WIemsooXkULxKhS6yHRZU');
 
 /*
 

@@ -20,8 +20,5 @@ Text: Crossing Parallels is a joint initiative by TodaysArt and Delft University
 
 Section: 
 
-(link: www.tudelft.nl/en text: Delft University of Technology)
-(link: http://www.todaysart.org text: TodaysArt)
-
-(link: https://www.mondriaanfonds.nl/en/ text: Mondriaan Fund) (pilot year)
-(image: mondriaan-white.svg link: https://www.mondriaanfonds.nl/en/)
+(image: logo-tudelft.svg link: https://www.tudelft.nl/en) (image:logo-todaysart.svg link: http://www.todaysart.org) 
+Supported by (image: logo-mondriaan.svg link: https://www.mondriaanfonds.nl/en/)

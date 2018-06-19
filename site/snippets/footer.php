@@ -65,9 +65,9 @@
 
 <div id="mobius"></div>
 
-<script type="text/javascript" src="http://localhost:3000/js/bundle.js"></script>
+<!-- <script type="text/javascript" src="http://localhost:3000/js/bundle.js"></script> -->
 
-<!-- <script src="/assets/js/bundle.min.js"></script> -->
+<script src="/assets/js/bundle.min.js"></script>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="asset" height="0">
 	<filter id="alpha" x="0%" y="0%" width="100%" height="100%">
