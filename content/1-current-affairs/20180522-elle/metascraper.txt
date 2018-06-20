@@ -1,8 +1,8 @@
-Inputsection: 
+Inputsection:
 
 ----
 
-Datetime: 2018-05-22 23:50
+Datetime: 2018-01-22 17:45
 
 ----
 
@@ -14,7 +14,7 @@ Residents: Iris van Herpen,Jouke Verlinden
 
 ----
 
-Dynsection: 
+Dynsection:
 
 ----
 
@@ -34,7 +34,7 @@ Description: De kersverse couture show van Iris van Herpen al gezien?
 
 ----
 
-Author: 
+Author:
 
 ----
 

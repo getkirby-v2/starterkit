@@ -1,8 +1,8 @@
-Inputsection: 
+Inputsection:
 
 ----
 
-Datetime: 2018-05-22 11:15
+Datetime: 2018-01-22
 
 ----
 
@@ -14,7 +14,7 @@ Residents: Iris van Herpen,Jouke Verlinden
 
 ----
 
-Dynsection: 
+Dynsection:
 
 ----
 
@@ -34,7 +34,7 @@ Description: Iris van Herpen Couture Lente 2018, gepresenteerd in Parijs.
 
 ----
 
-Author: 
+Author:
 
 ----
 

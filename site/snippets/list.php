@@ -8,8 +8,11 @@ This list returns all articles related to a resident (original content)
 // print_r( $articles );
 // echo "</pre>";
 ?>
-
-<section class="list <?=$cp_filter?>">
+<?php if (isset($cp_filter)): ?>
+	<section class="list <?=$cp_filter?>">
+<?php else: ?>
+	<section class="list">
+<?php endif; ?>
 	<?php if($articles->count()): ?>
 		<?php
 			echo '<pre>'.$articles.'</pre>';
@@ -74,7 +77,7 @@ This list returns all articles related to a resident (original content)
 					<li class="<?= $article->intendedTemplate() ?>">
 						<div class="card--main">
 							<a href="<?= $article->url_src() ?>" target="_blank">
-								<h3><?= $article->title()->html() ?></h3>
+								<h3><?= $article->title()->html() ?> <img src="/assets/svg/chain.svg" style="fill:#fff; height: 5rem; padding: .7rem;"></h3>
 							</a>
 							<p><?= excerpt($article->description(), 300) ?></p>
 						</div>

@@ -67,7 +67,29 @@ fields:
    intro:
       label: Introduction
       type: markdown
+      tools:
+         # - header1
+         # - header2
+         # - bold
+         - italic
+         # - blockquote
+         # - unorderedList
+         # - orderedList
+         - link
+         # - image
+         # - line
 
    text:
       label: Text
       type: markdown
+      tools:
+         - header1
+         - header2
+         # - bold
+         - italic
+         # - blockquote
+         - unorderedList
+         - orderedList
+         - link
+         - image
+         # - line

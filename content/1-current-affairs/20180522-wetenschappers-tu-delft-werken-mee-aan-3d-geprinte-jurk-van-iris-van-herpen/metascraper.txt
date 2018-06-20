@@ -1,8 +1,8 @@
-Inputsection: 
+Inputsection:
 
 ----
 
-Datetime: 2018-05-22 11:15
+Datetime: 2018-01-23
 
 ----
 
@@ -14,7 +14,7 @@ Residents: Iris van Herpen,Jouke Verlinden
 
 ----
 
-Dynsection: 
+Dynsection:
 
 ----
 
@@ -34,7 +34,7 @@ Description: De Nederlandse modeontwerpster Iris van Herpen, die onder meer Lady
 
 ----
 
-Author: 
+Author:
 
 ----
 

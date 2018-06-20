@@ -1,8 +1,8 @@
-Inputsection: 
+Inputsection:
 
 ----
 
-Datetime: 2018-01-23 16:05
+Datetime: 2018-01-23 16:00
 
 ----
 
@@ -10,11 +10,11 @@ Url-src: https://www.facebook.com/CrossingParallels52/posts/1531971353555334
 
 ----
 
-Residents: 
+Residents:
 
 ----
 
-Dynsection: 
+Dynsection:
 
 ----
 

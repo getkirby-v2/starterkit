@@ -1,8 +1,8 @@
-Inputsection: 
+Inputsection:
 
 ----
 
-Datetime: 2018-05-22 11:05
+Datetime: 2017-06-12 11:35
 
 ----
 
@@ -14,7 +14,7 @@ Residents: Jouke Verlinden,Aurèle Adam,Iris van Herpen,Mike Rijnierse
 
 ----
 
-Dynsection: 
+Dynsection:
 
 ----
 
@@ -34,8 +34,8 @@ Description: TU Delft en TodaysArt een nieuwe samenwerking: samen zetten zij een
 
 ----
 
-Author: 
+Author:
 
 ----
 
-Publisher: 
+Publisher:

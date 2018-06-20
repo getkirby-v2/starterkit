@@ -34,6 +34,13 @@ c::set('home','current-affairs'); // custom home page
 c::set('meta-tags.templates', function(Page $page, Site $site) {
 	return [
 		'article' => [ // template name
+			'meta' => function(Page $page) {
+				if (!empty( $page->teaser() )) {
+					return [
+						'description' => $page->teaser()
+					];
+				}
+			},
 			'og' => [  // tags group name
 				'type' => 'article', // overrides the default
 				'namespace:article' => [

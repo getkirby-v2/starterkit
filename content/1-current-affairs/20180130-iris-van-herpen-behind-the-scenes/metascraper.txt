@@ -1,4 +1,4 @@
-Inputsection: 
+Inputsection:
 
 ----
 
@@ -14,7 +14,7 @@ Residents: Iris van Herpen,Jouke Verlinden
 
 ----
 
-Dynsection: 
+Dynsection:
 
 ----
 

@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 	<title><?= $site->title()->html() ?>: <?= $page->title()->html() ?></title>
-	<meta name="description" content="<?= $site->description()->html() ?>">
+	<!-- <meta name="description" content="<?= $site->description()->html() ?>"> -->
 
 	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 		<!-- add meta and or opengraph generators here! -->

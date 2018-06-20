@@ -1,8 +1,8 @@
-Inputsection: 
+Inputsection:
 
 ----
 
-Datetime: 2018-05-22 11:05
+Datetime: 2017-06-22 14:00
 
 ----
 
@@ -14,7 +14,7 @@ Residents: Jouke Verlinden,Iris van Herpen,Mike Rijnierse,Aurèle Adam
 
 ----
 
-Dynsection: 
+Dynsection:
 
 ----
 
@@ -38,4 +38,4 @@ Author: Stimuleringsfonds Creatieve Industrie
 
 ----
 
-Publisher: 
+Publisher:

@@ -1,4 +1,4 @@
-Title: Credits
+Title: Colophon
 
 ----
 
@@ -33,6 +33,3 @@ t.b.c.
 
 ## Design and web development
 (link: http://www.tjjjia.work text: Michael Tjia)
-
-## Special thanks
-Nabi Kambiz, Soscha Monteiro and Aidan Wyber

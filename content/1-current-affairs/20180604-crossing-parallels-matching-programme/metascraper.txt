@@ -1,8 +1,8 @@
-Inputsection: 
+Inputsection:
 
 ----
 
-Datetime: 2018-06-04 15:45
+Datetime: 2018-05-22 15:00
 
 ----
 
@@ -14,7 +14,7 @@ Residents: Teun Vonk,Gabey Tjon a Tham
 
 ----
 
-Dynsection: 
+Dynsection:
 
 ----
 
@@ -30,7 +30,7 @@ Datetime-src: 2018-05-22 15:00
 
 ----
 
-Description: 
+Description:
 
 🎓 Did you know Crossing Parallels makes TU Delft's knowledge and machinery more accessible for artists and designers?
 

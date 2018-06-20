@@ -1,8 +1,4 @@
-Inputsection: 
-
-----
-
-Datetime-feed: 2018-05-22 11:00
+Inputsection:
 
 ----
 
@@ -14,7 +10,7 @@ Residents: Jouke Verlinden,Iris van Herpen,Mike Rijnierse,Aurèle Adam
 
 ----
 
-Dynsection: 
+Dynsection:
 
 ----
 
@@ -26,7 +22,7 @@ Imageurl: http://jegensentevens.nl/cms/wp-content/uploads/2017/06/unnamed.jpg
 
 ----
 
-Datetime: 2017-06-10 00:00
+Datetime: 2017-06-10 00:05
 
 ----
 
