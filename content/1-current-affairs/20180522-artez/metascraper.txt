@@ -1,0 +1,41 @@
+Inputsection:
+
+----
+
+Datetime: 2017-06-23
+
+----
+
+Url-src: http://innovatie.artez.nl/2017/06/todaysart-tu-delft-the-fading-boundaries-between-art-and-science/
+
+----
+
+Residents: Aurèle Adam,Mike Rijnierse,Iris van Herpen,Jouke Verlinden
+
+----
+
+Dynsection:
+
+----
+
+Title: TodaysArt + TU Delft = the fading boundaries between art and science
+
+----
+
+Imageurl: http://innovatie.artez.nl/wp-content/uploads/2017/06/residency-01-1-960x377.jpg
+
+----
+
+Datetime-src: 2017-06-23
+
+----
+
+Description: TU Delften TodaysArt kondigen een nieuw artist-in-residence programma aan, waarbij kunstenaars gaan samenwerken met vakgroepen van de TU Delft aan een onderzoek of kunstwerk. Dit jaar...
+
+----
+
+Author: Lenn Cox
+
+----
+
+Publisher: ArtEZ en Innovatie

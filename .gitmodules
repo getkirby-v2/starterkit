@@ -1,0 +1,9 @@
+[submodule "site/fields/markdown"]
+	path = site/fields/markdown
+	url = https://github.com/JonasDoebertin/kirby-visual-markdown.git
+[submodule "site/plugins/focus"]
+	path = site/plugins/focus
+	url = https://github.com/flokosiol/kirby-focus.git
+[submodule "site/plugins/meta-tags"]
+	path = site/plugins/meta-tags
+	url = https://github.com/pedroborges/kirby-meta-tags.git

@@ -9,8 +9,8 @@ fields:
 
   intro:
     label: Intro
-    type:  textarea
+    type:  markdown
 
   text:
     label: Text
-    type:  textarea
+    type:  markdown

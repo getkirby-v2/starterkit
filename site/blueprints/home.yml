@@ -1,16 +1,33 @@
 title: Home
 
-pages: false
+icon: flag
+
+files: false
+
+pages:
+   num:
+      mode: date
+      field: datetime
+   sort: datetime desc
+
+   template:
+      - metascraper
+      # - article
+      # - resident
+
+   # options:
+      # template: false
+      # status: false
+      # url: false
 
 fields:
-  title:
-    label: Title
-    type:  text
+   title:
+      label: Title
+      type:  text
 
-  intro:
-    label: Intro
-    type:  textarea
+      # an information dialog should come here
+      # explain Title == also displayed in menu bar?
 
-  text:
-    label: Text
-    type:  textarea
+   introduction:
+      label: Introduction
+      type:  markdown

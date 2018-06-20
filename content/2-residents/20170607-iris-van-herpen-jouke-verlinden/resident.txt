@@ -1,0 +1,63 @@
+Name: Iris van Herpen & Jouke Verlinden
+
+----
+
+Photograph: irisjoukezjenja.jpg
+
+----
+
+Homepage: http://www.irisvanherpen.com
+
+----
+
+Residents: Iris van Herpen,Jouke Verlinden
+
+----
+
+Text: 
+
+## Ludi Naturae
+Then a more elaborate piece about the project, preceded by the title of the project.
+
+# Iris van Herpen 
+## Profile
+Iris van Herpen (born 5 June 1984) is a Dutch fashion designer. She studied Fashion Design at ArtEZ Institute of the Arts Arnhem and interned at Alexander McQueen in London, and Claudy Jongstra in Amsterdam. In 2007, she started her own label. Since July 2011, she is a guest member of the Parisian Chambre Syndicale de la Haute Couture, part of the Fédération française de la couture. (wikipedia.org)
+
+Another paragraph about Iris van Herpen Lorum Ispum dolr sit amet. Another paragraph about Iris van Herpen Lorum Ispum dolr sit amet. Another paragraph about Iris van Herpen Lorum Ispum dolr sit amet. Another paragraph about Iris van Herpen Lorum Ispum dolr sit amet.
+
+## Website
+(link: http://www.irisvanherpen.nl)
+## Team
+Paul van As
+Bradly Dunn Klerks
+
+# Jouke Verlinden
+Jouke Verlinden obtained his PhD from
+## Team
+Zjenja Doubrovski
+Drim Stokhuijzen
+Noor Aberle
+
+----
+
+Title: Iris van Herpen & Jouke Verlinden
+
+----
+
+Coverimage: irisjoukezjenja.jpg
+
+----
+
+Teaser: Iris van Herpen & Jouke Verlinden are Crossing Parallels
+
+----
+
+Datetime: 2017-06-07 13:00
+
+----
+
+Intro: Exciting introduction to a longer bio/profile on both Iris van Herpen and Jouke Verlinden. Yes! This is probably something about the project.
+
+----
+
+Programme: residency

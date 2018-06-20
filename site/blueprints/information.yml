@@ -1,0 +1,23 @@
+title: Information
+
+icon: list-ul
+
+pages:
+   template: section
+   # num: zero # is leading numeral in filename
+   # https://getkirby.com/docs/panel/blueprints/subpages-settings
+
+   files: false
+
+options:
+   # template: false
+   # status: false
+
+fields:
+   title:
+      label: Title
+      type: title
+
+   # text:
+   #    label: Introduction
+   #    type: markdown

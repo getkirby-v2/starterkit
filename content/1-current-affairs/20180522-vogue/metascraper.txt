@@ -1,0 +1,41 @@
+Inputsection:
+
+----
+
+Datetime: 2018-01-22
+
+----
+
+Url-src: https://www.vogue.nl/fashion/shows/gallery/iris-van-herpen-couture-lente-2018
+
+----
+
+Residents: Iris van Herpen,Jouke Verlinden
+
+----
+
+Dynsection:
+
+----
+
+Title: Iris van Herpen Couture Lente 2018
+
+----
+
+Imageurl: https://vogue.gjstatic.nl/thumbnails/VogueGalleryBundle/Album/teaserFileUpload/detail/01/10/23/iris-van-herpen-couture-lente-2018-11023.jpg
+
+----
+
+Datetime-src: 2018-01-22
+
+----
+
+Description: Iris van Herpen Couture Lente 2018, gepresenteerd in Parijs.
+
+----
+
+Author:
+
+----
+
+Publisher: Vogue Nederland

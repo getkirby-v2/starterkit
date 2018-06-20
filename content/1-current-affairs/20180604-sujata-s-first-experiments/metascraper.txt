@@ -1,0 +1,41 @@
+Inputsection:
+
+----
+
+Datetime: 2018-06-04 15:00
+
+----
+
+Url-src: https://www.instagram.com/p/BjmlPMyBN33/?taken-by=crossingparallels
+
+----
+
+Residents: Sujata Majumdar,Stephen Picken
+
+----
+
+Dynsection:
+
+----
+
+Title: Sujata's first experiments
+
+----
+
+Imageurl: https://scontent-sjc3-1.cdninstagram.com/vp/b648f56f74c3e5b72a87d0c7bb70953a/5BC65E94/t51.2885-15/e35/33684879_263110317567859_822614257274191872_n.jpg
+
+----
+
+Datetime-src: 2018-06-04 15:00
+
+----
+
+Description: Sujata Majumdar finished her first concrete samples with @sjpicken’s coating. Can you spot the differences? 👀 Come by at the Crossing Parallels studio and check it out! #concrete #nanocoating #artscience #dustfree
+
+----
+
+Author: Iris van der Wal
+
+----
+
+Publisher: Instagram

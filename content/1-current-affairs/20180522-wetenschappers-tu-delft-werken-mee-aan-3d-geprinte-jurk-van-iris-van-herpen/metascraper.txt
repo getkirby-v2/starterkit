@@ -1,0 +1,41 @@
+Inputsection:
+
+----
+
+Datetime: 2018-01-23
+
+----
+
+Url-src: https://www.tudelft.nl/2018/tu-delft/wetenschappers-tu-delft-werken-mee-aan-3d-geprinte-jurk-van-iris-van-herpen/
+
+----
+
+Residents: Iris van Herpen,Jouke Verlinden
+
+----
+
+Dynsection:
+
+----
+
+Title: Wetenschappers TU Delft werken mee aan 3D-geprinte jurk van Iris van Herpen
+
+----
+
+Imageurl: https://d1rkab7tlqy5f1.cloudfront.net/News/2018/01_Januari/3D%20printed%20dress_Iris%20van%20Herpen_uitsnede.jpg
+
+----
+
+Datetime-src: 2018-01-23
+
+----
+
+Description: De Nederlandse modeontwerpster Iris van Herpen, die onder meer Lady Gaga en Beyonce heeft gekleed, heeft in de Galerie de Minéralogie et de Géologie in Parijs een jurk gepresenteerd die mede ontwikkeld is door wetenschappers van de TU Delft. De jurk, onderdeel van de bredere Haute Couture-collectie Ludi Naturae, is tot stand gekomen door middel van een nieuwe printmethode die het mogelijk maakt om kunststof te combineren met natuurlijke kledingstoffen.
+
+----
+
+Author:
+
+----
+
+Publisher: TU Delft

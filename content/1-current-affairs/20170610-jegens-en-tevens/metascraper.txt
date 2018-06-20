@@ -1,0 +1,41 @@
+Inputsection:
+
+----
+
+Url-src: http://jegensentevens.nl/2017/06/tu-delft-en-todaysart-nieuw-artist-in-residence-programma/
+
+----
+
+Residents: Jouke Verlinden,Iris van Herpen,Mike Rijnierse,Aurèle Adam
+
+----
+
+Dynsection:
+
+----
+
+Title: Nieuw artist-in-residence programma
+
+----
+
+Imageurl: http://jegensentevens.nl/cms/wp-content/uploads/2017/06/unnamed.jpg
+
+----
+
+Datetime: 2017-06-10 00:05
+
+----
+
+Description: 8 juni 2017 onthulden de TU Delft en TodaysArt een nieuwe samenwerking: samen zetten zij een artist-in-residence programma op. Binnen de residency gaan kunstenaars samenwerken met vakgroepen van de TU Delft aan een onderzoek of kunstwerk, dat onder andere gepresenteerd zal worden tijdens het TodaysArt festival en in museum Prinsenhof Delft.
+
+----
+
+Author: Jegens
+
+----
+
+Publisher: Jegens en Tevens
+
+----
+
+Datetime-src: 2017-06-10 00:05

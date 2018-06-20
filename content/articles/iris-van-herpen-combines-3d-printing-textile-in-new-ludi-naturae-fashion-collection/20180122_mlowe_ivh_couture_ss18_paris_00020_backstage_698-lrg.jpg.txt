@@ -1,0 +1,9 @@
+Caption: Novel 3d printing techniques enable intrinsic detailing and shapes.
+
+----
+
+Credits: Studio IvH
+
+----
+
+Focus: {"x":0.6,"y":0.24}

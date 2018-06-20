@@ -1,0 +1,9 @@
+Caption: 
+
+----
+
+Credits: John Doe at [Studio Iris van Herpen](http://irisvanherpen.com)
+
+----
+
+Focus: {"x":0.38,"y":0.05}

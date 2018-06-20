@@ -1,27 +1,95 @@
 title: Article
 
+# disables creation of subpages
 pages: false
 
+# icon: page
+
+files:
+   fields:
+      caption:
+         label: Caption
+         type: textarea
+         buttons: false
+      credits:
+         label: Credits
+         type: textarea
+         buttons:
+            - link
+            - email
+      focus:
+         label: Focus
+         help: Cropped versions of this image will be centered around this point.
+         type: focus
+
+
 fields:
-  title:
-    label: Title
-    type:  title
-    
-  coverimage:
-    label: Cover Image
-    type: image
-    width: 1/2
-    
-  date:
-    icon: calendar
-    label: Date
-    type: date
-    format: LL
-    placeholder: Select a date…
-    default: today
-    required: true
-    width: 1/2
-  
-  text:
-    label: Text
-    type: textarea
+   title:
+      label: Title
+      type: title
+
+   datetime:
+      label: Date and Time
+      type: datetime
+      default:
+         date: now
+      date:
+         format: DD-MM-YYYY
+      time:
+         format: 24
+         interval: 5
+      required: true
+
+   author:
+      label: Author
+      type: tags
+      index: all
+      icon: user
+      required: true
+
+   coverimage:
+      label: Cover Image
+      type: image
+      width: 1/2
+
+   teaser:
+      label: Teaser
+      type: textarea
+      buttons: false
+      help: >
+         This will only appear in lists and overviews on this website, and may appear in social media posts or search engine results.
+
+   residents:
+      label: Residents
+      type: tags
+      index: all
+
+   intro:
+      label: Introduction
+      type: markdown
+      tools:
+         # - header1
+         # - header2
+         # - bold
+         - italic
+         # - blockquote
+         # - unorderedList
+         # - orderedList
+         - link
+         # - image
+         # - line
+
+   text:
+      label: Text
+      type: markdown
+      tools:
+         - header1
+         - header2
+         # - bold
+         - italic
+         # - blockquote
+         - unorderedList
+         - orderedList
+         - link
+         - image
+         # - line

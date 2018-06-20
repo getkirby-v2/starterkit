@@ -1,0 +1,20 @@
+Title: Contact information
+
+----
+
+Section: 
+
+## Visiting address
+Mijnbouwstraat 120
+2628 RX Delft
+The Netherlands
+
+## Email
+[info@crossingparallels.nl](mailto:info@crossingparallels.nl)
+
+## Social media
+(link: https://twitter.com/CrossParallels text: Twitter)
+
+(link: https://www.instagram.com/crossingparallels/ text: Instagram)
+
+(link: https://www.facebook.com/CrossingParallels52/ text: Facebook)

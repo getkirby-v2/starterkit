@@ -1,13 +1,13 @@
-Title: Kirby Starterkit
+Title: Crossing Parallels
 
 ----
 
-Author: Bastian Allgeier GmbH
+Author: Crossing Parallels
 
 ----
 
-Description: This is Kirby's Starterkit.
+Description: Crossing Parallels brings together artists and scientists to collaborate on innovative projects, stimulate future technologies, and reflect upon scientific inventions and its challenges for society at large.
 
 ----
 
-Copyright: © 2009–(date: Year) (link: http://getkirby.com text: The Kirby Team)
+Copyright: are (link: http://www.crossingparallels.nl text: Crossing Parallels) © 2017–(date: Year)

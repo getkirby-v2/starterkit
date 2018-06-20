@@ -1,0 +1,41 @@
+Inputsection:
+
+----
+
+Datetime: 2017-09-22
+
+----
+
+Url-src: https://www.residentadvisor.net/reviews/21628
+
+----
+
+Residents: Jouke Verlinden,Aurèle Adam,Iris van Herpen,Mike Rijnierse
+
+----
+
+Dynsection:
+
+----
+
+Title: Review: TodaysArt 2017
+
+----
+
+Imageurl: https://www.residentadvisor.net/images/reviews/2017/ta-djpanic-stephan-c-kaffa-17.jpg
+
+----
+
+Datetime-src: 2017-09-22
+
+----
+
+Description: TodaysArt director Olof Van Winden has been arrested three times for actions relating to The Hague festival.
+
+----
+
+Author: Resident Advisor
+
+----
+
+Publisher: Resident Advisor

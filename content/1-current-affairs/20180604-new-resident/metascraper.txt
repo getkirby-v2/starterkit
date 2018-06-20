@@ -1,0 +1,41 @@
+Inputsection:
+
+----
+
+Datetime: 2018-05-09 15:00
+
+----
+
+Url-src: https://www.facebook.com/CrossingParallels52/posts/1638306179588517
+
+----
+
+Residents: Sujata Majumdar,Stephen Picken
+
+----
+
+Dynsection:
+
+----
+
+Title: New resident
+
+----
+
+Imageurl: https://external-sjc3-1.xx.fbcdn.net/safe_image.php?_nc_hash=AQDPOSsgwLVrA0df&cfs=1&d=AQCex3uiowmigHkz&h=400&url=http://www.sujata.nl/sujatawp/wp-content/uploads/2015/01/20130702-_DSC7094_2013-2.jpg&w=400
+
+----
+
+Datetime-src: 2018-05-09 15:00
+
+----
+
+Description: We are excited to announce that photographer Sujata Majumdar​ is our newest artist-in-residence! Together with Stephen Picken​, professor of Polymer Materials, she will work on the project *A Cure for Concrete.*
+
+----
+
+Author: Iris van der Wal
+
+----
+
+Publisher: Facebook

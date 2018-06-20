@@ -1,0 +1,41 @@
+Inputsection:
+
+----
+
+Datetime: 2018-01-22 17:45
+
+----
+
+Url-src: https://www.facebook.com/ELLENederland/videos/10160041852240193/
+
+----
+
+Residents: Iris van Herpen,Jouke Verlinden
+
+----
+
+Dynsection:
+
+----
+
+Title: ELLE: Iris van Herpen Couture Spring Summer 2018
+
+----
+
+Imageurl: https://scontent-sjc3-1.xx.fbcdn.net/v/t15.0-10/p960x960/27245040_10160041860840193_5811058028132171776_n.jpg?_nc_cat=0&oe=5B87885B&oh=0d9f9151c0015c398fbd8fe1e932b7fc
+
+----
+
+Datetime-src: 2018-01-22 17:45
+
+----
+
+Description: De kersverse couture show van Iris van Herpen al gezien?
+
+----
+
+Author:
+
+----
+
+Publisher: Elle

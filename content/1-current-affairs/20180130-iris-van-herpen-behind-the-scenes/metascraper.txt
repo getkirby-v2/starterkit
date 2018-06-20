@@ -1,0 +1,41 @@
+Inputsection:
+
+----
+
+Datetime: 2018-01-30 16:00
+
+----
+
+Url-src: https://www.facebook.com/CrossingParallels52/posts/1538734886212314
+
+----
+
+Residents: Iris van Herpen,Jouke Verlinden
+
+----
+
+Dynsection:
+
+----
+
+Title: Iris van Herpen - behind the scenes
+
+----
+
+Imageurl: https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-1/p200x200/26733455_1527689987316804_847309833727835871_n.png?_nc_cat=0&oe=5BA86C48&oh=538e06e8713372294df8a5aff1af51a3
+
+----
+
+Datetime-src: 2018-01-30 16:00
+
+----
+
+Description: Always wondered how atelier Iris van Herpen make their unique haute couture? Take a look into the design and production process of the Foliage dress, developed in our residency programme!
+
+----
+
+Author: Iris van der Wal
+
+----
+
+Publisher: Facebook

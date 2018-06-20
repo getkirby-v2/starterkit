@@ -1,0 +1,35 @@
+Title: Colophon
+
+----
+
+Tags: 
+
+----
+
+Coverimage: 
+
+----
+
+Date: 2018-05-03
+
+----
+
+Text: 
+
+Editors:
+Image:
+Contributors:
+Design and development:
+
+----
+
+Section: 
+
+## Editors
+Iris van der Wal
+
+## Contributors
+t.b.c. 
+
+## Design and web development
+(link: http://www.tjjjia.work text: Michael Tjia)

@@ -1,0 +1,47 @@
+Inputsection:
+
+----
+
+Datetime: 2018-05-22 15:00
+
+----
+
+Url-src: https://www.facebook.com/pg/CrossingParallels52/posts/?ref=page_internal
+
+----
+
+Residents: Teun Vonk,Gabey Tjon a Tham
+
+----
+
+Dynsection:
+
+----
+
+Title: Crossing Parallels' Matching Programme
+
+----
+
+Imageurl: https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-1/p200x200/26733455_1527689987316804_847309833727835871_n.png?_nc_cat=0&oe=5BA86C48&oh=538e06e8713372294df8a5aff1af51a3
+
+----
+
+Datetime-src: 2018-05-22 15:00
+
+----
+
+Description:
+
+🎓 Did you know Crossing Parallels makes TU Delft's knowledge and machinery more accessible for artists and designers?
+
+Next to our artist-in-residency, we now host a matching programme, in which artists and designers with specific questions are matched with academics to exchange in-depth knowledge or to have practical assistance in the workshop of the Science Centre Delft.
+
+So do you want to talk to a quantum computing expert, or an academic from one of the other inspiring departments to bring your art to the next level, contact us! 🔄
+
+----
+
+Author: Iris van der Wal
+
+----
+
+Publisher: Facebook

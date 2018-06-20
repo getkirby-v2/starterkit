@@ -1,0 +1,41 @@
+Inputsection:
+
+----
+
+Datetime: 2017-06-22 14:00
+
+----
+
+Url-src: https://twitter.com/StimuleerFonds/status/877873925417443328
+
+----
+
+Residents: Jouke Verlinden,Iris van Herpen,Mike Rijnierse,Aurèle Adam
+
+----
+
+Dynsection:
+
+----
+
+Title: Twitter
+
+----
+
+Imageurl: https://ma.twimg.com/twitter-mobile/8f3445bd0e5eb63b939e25a6ff29981d947a4a51/images/sprites/larry_28px.gif
+
+----
+
+Datetime-src: 2017-06-22 14:00
+
+----
+
+Description: Nieuw artist-in-residence programma aangekondigd door @tudelft & @TodaysArt​ met Mike Rijnierse & Iris van Herpen​ > http://ow.ly/scx630cNKiH
+
+----
+
+Author: Stimuleringsfonds Creatieve Industrie
+
+----
+
+Publisher:

@@ -1,0 +1,105 @@
+title: Metascraper
+
+icon: link
+
+pages: false
+# is possibility to creat subpages
+
+fields:
+   # info:
+   #    label: Info
+   #    type: info
+   #    text: >
+   #       Dear editor,
+   #
+   #       each project should have a **cover.jpg**, which will be displayed in the project overview.
+   #       You should also make sure to fill in all fields correctly.
+   #
+   #       In love,
+   #       Your admin
+
+# input section
+   inputSection:
+      label: Metascraper
+      type: headline
+
+   datetime:
+      label: Date and Time (local)
+      type: datetime
+      default:
+         date: now
+      date:
+         format: DD-MM-YYYY
+      time:
+         format: 24
+         interval: 5
+      required: true
+      # width: 1/2
+
+   url_src:
+      label: External URL
+      type: auxiliary
+      help: >
+         Click the icon (⟲) to the right of this field to scrape metadata. This might take a while.
+         This is an experimental feature.
+      # type: url
+      required: true
+   #
+   #
+   # dummy:
+   #    label: dummy URL
+   #    type: url
+
+   residents:
+      label: Residents
+      type: tags
+      index: all
+      help: Add all related residents. Please note duplicate entries.
+      # width: 1/3
+
+# dynamic section
+   dynSection:
+      label: Scraped content
+      type: headline
+      help: >
+         Please take your time to review the scraped metadata.
+         Blank fields are accepted for non-required fields.
+
+   title:
+      label: Title
+      type: title
+      # readonly: true
+
+   imageurl:
+      label: Image URL
+      type: url
+      # readonly: true
+
+   datetime_src:
+      label: Date and Time
+      type: datetime
+      date:
+         format: DD-MM-YYYY
+      time:
+         format: 24
+         interval: 5
+      # required: true
+      # width: 1/2
+
+   description:
+      label: Description/Quote
+      type: textarea
+      # readonly: true
+
+   author:
+      label: Author
+      type: text
+      width: 1/2
+      # readonly: true
+
+   publisher:
+      label: Website/Publisher
+      type: text
+      placeholder: Volksrant, The Creators Project, NOS
+      width: 1/2
+      # readonly: true
