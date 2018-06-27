@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Kirby\Panel\Models\Page;
 
@@ -15,14 +15,14 @@ class UI {
   }
 
   public function read() {
-    return $this->page->event('read:ui')->isAllowed();      
+    return $this->page->event('read:ui')->isAllowed();
   }
 
   public function create() {
     if($this->page->options()->create() === false) {
       return false;
     } else {
-      return $this->page->event('create:ui')->isAllowed();      
+      return $this->page->event('create:ui')->isAllowed();
     }
   }
 
@@ -30,7 +30,7 @@ class UI {
     if($this->page->options()->update() === false) {
       return false;
     } else {
-      return $this->page->event('update:ui')->isAllowed();      
+      return $this->page->event('update:ui')->isAllowed();
     }
   }
 
@@ -38,7 +38,7 @@ class UI {
     if($this->page->options()->delete() === false) {
       return false;
     } else {
-      return $this->page->event('delete:ui')->isAllowed();      
+      return $this->page->event('delete:ui')->isAllowed();
     }
   }
 
@@ -46,7 +46,7 @@ class UI {
     if($this->page->options()->url() === false) {
       return false;
     } else {
-      return $this->page->event('url:ui')->isAllowed();      
+      return $this->page->event('url:ui')->isAllowed();
     }
   }
 
@@ -54,7 +54,7 @@ class UI {
     if($this->page->options()->template() === false) {
       return false;
     } else {
-      return $this->page->event('template:ui')->isAllowed();      
+      return $this->page->event('template:ui')->isAllowed();
     }
   }
 
@@ -62,7 +62,7 @@ class UI {
     if($this->page->options()->visibility() === false) {
       return false;
     } else {
-      return $this->page->event('visibility:ui')->isAllowed();      
+      return $this->page->event('visibility:ui')->isAllowed();
     }
   }
 
@@ -71,14 +71,14 @@ class UI {
   }
 
   public function files() {
-    return $this->page->options()->files();
+    return $this->page->options()->files() && $this->page->blueprint()->files()->hide() !== true;
   }
 
   public function upload() {
     if($this->page->options()->upload() === false) {
       return false;
     } else {
-      return $this->page->event('upload:ui')->isAllowed();      
+      return $this->page->event('upload:ui')->isAllowed();
     }
   }
 

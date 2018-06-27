@@ -2,6 +2,7 @@
 
 namespace Kirby\Panel\Models\User;
 
+use Dir;
 use Exception;
 use Error;
 use F;
@@ -39,6 +40,9 @@ class Avatar extends \Avatar {
       $event = $this->event('upload:action');
     }
 
+    // create the avatar folder if it does not exist
+    Dir::make(kirby()->roots()->avatars());
+
     $upload = new Upload($root, array(
       'accept' => function($upload) use($event) {
         if($upload->type() != 'image') {
@@ -60,7 +64,7 @@ class Avatar extends \Avatar {
     // $this->root() still points to the root of the old avatar!
     if($upload->to() != $this->root()) f::remove($this->root());
 
-    // flush the cache in case if the user data is 
+    // flush the cache in case if the user data is
     // used somewhere on the site (i.e. for profiles)
     kirby()->cache()->flush();
 
@@ -83,9 +87,9 @@ class Avatar extends \Avatar {
     // delete the avatar file
     if(!parent::delete()) {
       throw new Exception(l('users.avatar.delete.error'));
-    } 
+    }
 
-    // flush the cache in case if the user data is 
+    // flush the cache in case if the user data is
     // used somewhere on the site (i.e. for profiles)
     kirby()->cache()->flush();
 
@@ -97,7 +101,7 @@ class Avatar extends \Avatar {
     return new AvatarUI($this);
   }
 
-  public function event($type, $args = []) {  
+  public function event($type, $args = []) {
     return new Event('panel.avatar.' . $type, array_merge([
       'user'   => $this->user,
       'avatar' => $this

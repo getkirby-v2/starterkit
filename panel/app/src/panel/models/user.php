@@ -4,6 +4,7 @@ namespace Kirby\Panel\Models;
 
 use A;
 use Exception;
+use Password;
 use Str;
 
 use Kirby\Panel\Event;
@@ -28,7 +29,7 @@ class User extends \User {
     return panel()->urls()->index() . '/' . $this->uri($action);
   }
 
-  public function form($action, $callback) {    
+  public function form($action, $callback) {
     return panel()->form('users/' . $action, $this, $callback);
   }
 
@@ -65,7 +66,7 @@ class User extends \User {
 
     parent::update($data);
 
-    // flush the cache in case if the user data is 
+    // flush the cache in case if the user data is
     // used somewhere on the site (i.e. for profiles)
     kirby()->cache()->flush();
 
@@ -75,13 +76,24 @@ class User extends \User {
 
   }
 
+  public function updatePassword($newPassword) {
+    if (password::isCryptHash($this->password()) === true) {
+      error_log($newPassword);
+      return parent::update([
+        'password' => $newPassword
+      ]);
+    }
+
+    return true;
+  }
+
   public function isLastAdmin() {
     if($this->isAdmin()) {
       if(panel()->users()->filterBy('role', 'admin')->count() == 1) {
         return true;
       }
     } else {
-      return false;       
+      return false;
     }
   }
 
@@ -89,7 +101,7 @@ class User extends \User {
 
     // create the delete event
     $event = $this->event('delete:action');
-    
+
     // check for permissions
     $event->check();
 
@@ -101,7 +113,7 @@ class User extends \User {
     // delete the user
     parent::delete();
 
-    // flush the cache in case if the user data is 
+    // flush the cache in case if the user data is
     // used somewhere on the site (i.e. for profiles)
     kirby()->cache()->flush();
 
@@ -111,7 +123,7 @@ class User extends \User {
 
   public function avatar($crop = null) {
     if($crop === null) {
-      return new Avatar($this);      
+      return new Avatar($this);
     } else {
       $avatar = $this->avatar();
       if($avatar->exists()) {
@@ -133,7 +145,7 @@ class User extends \User {
   public function topbar($topbar) {
 
     $topbar->append(purl('users'), l('users'));
-    $topbar->append($this->url(), $this->username());    
+    $topbar->append($this->url(), $this->username());
 
   }
 
@@ -162,7 +174,7 @@ class User extends \User {
     }
   }
 
-  public function event($type, $args = []) {  
+  public function event($type, $args = []) {
     return new Event('panel.user.' . $type, array_merge([
       'user' => $this
     ], $args));
