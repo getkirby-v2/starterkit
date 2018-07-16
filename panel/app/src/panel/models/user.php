@@ -78,7 +78,6 @@ class User extends \User {
 
   public function updatePassword($newPassword) {
     if (password::isCryptHash($this->password()) === true) {
-      error_log($newPassword);
       return parent::update([
         'password' => $newPassword
       ]);
