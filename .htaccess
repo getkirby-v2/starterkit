@@ -21,6 +21,10 @@ RewriteEngine on
 #
 # RewriteBase /
 
+# Block files and folders beginning with dot, such as .git
+# except for .well-known folder, which is used for Let's Encrypt and security.txt
+RewriteRule "(^|/)\.(?!well-known\/)" - [F]
+
 # block text files in the content folder from being accessed directly
 RewriteRule ^content/(.*)\.(txt|md|mdown)$ index.php [L]
 
