@@ -29,9 +29,6 @@ Kirby's Starterkit comes with a small demo website and a fully
 configured panel. Feel free to modify it and play with it as
 much as you like.
 
-There's also the [Langkit](https://github.com/getkirby/langkit.git)
-in case you need a multi-language installation.
-
 ## The Panel
 
 You can find the login for Kirby's admin interface at
@@ -50,41 +47,20 @@ copied to your server correctly**
 
 ### Requirements
 
-Kirby runs on PHP 5.4+, Apache or Nginx.
-
-### Download
-
-You can download the latest version of the Starterkit
-from https://download.getkirby.com
+Kirby runs on PHP 7.2+, Apache or Nginx.
 
 ### With Git
 
 If you are familiar with Git, you can clone Kirby's
 Starterkit repository from Github.
 
-    git clone https://github.com/getkirby/starterkit.git
+    git clone https://github.com/getkirby-v2/starterkit.git
 
 ## Documentation
 
-<https://getkirby.com/docs>
-
-## Issues and feedback
-
-If you have a Github account, please report issues
-directly on Github:
-
-- <https://github.com/getkirby/kirby/issues>
-- <https://github.com/getkirby/panel/issues>
-- <https://github.com/getkirby/starterkit/issues>
-
-Otherwise you can use Kirby's forum: https://forum.getkirby.com
-or send us an email: <support@getkirby.com>
-
-## Support
-
-<https://getkirby.com/support>
+<https://k2.getkirby.com>
 
 ## Copyright
 
-© 2009-2016 Bastian Allgeier (Bastian Allgeier GmbH)
+© 2009-2020 Bastian Allgeier (Bastian Allgeier GmbH)
 <http://getkirby.com>
