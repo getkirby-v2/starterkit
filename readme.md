@@ -1,7 +1,13 @@
-# Kirby
+# Kirby v2 Starterkit 
 
 Kirby is a file-based CMS.
 Easy to setup. Easy to use. Flexible as hell.
+
+## Kirby 2 - EOL
+
+Kirby 2 is an old version of Kirby CMS. We are supporting it with security updates until December 31st, 2020. 
+
+For the latest version of Kirby, check out https://getkirby.com
 
 ## Trial
 
