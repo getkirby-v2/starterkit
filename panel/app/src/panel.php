@@ -35,13 +35,13 @@ use Kirby\Panel\Models\Page\Blueprint as PageBlueprint;
 
 class Panel {
 
-  static public $version = '2.5.13';
+  static public $version = '2.5.14';
 
   // minimal requirements
   static public $requires = array(
     'php'     => '7.2.0',
-    'toolkit' => '2.5.13',
-    'kirby'   => '2.5.13'
+    'toolkit' => '2.5.14',
+    'kirby'   => '2.5.14'
   );
 
   static public $instance;
@@ -493,13 +493,47 @@ class Panel {
   }
 
   public function isLocal() {
-    $localhosts = array('::1', '127.0.0.1', '0.0.0.0');
-    return (
-      in_array(server::get('SERVER_ADDR'), $localhosts) ||
-      server::get('SERVER_NAME') == 'localhost' ||
-      str::endsWith(server::get('SERVER_NAME'), '.localhost') ||
-      str::endsWith(server::get('SERVER_NAME'), '.test')
-    );
+
+    $host = server::get('SERVER_NAME');
+    $ip   = server::get('SERVER_ADDR');
+
+    if ($host === 'localhost') {
+      return true;
+    }
+
+    if (str::endsWith($host, '.localhost') === true) {
+      return true;
+    }
+
+    if (str::endsWith($host, '.local') === true) {
+      return true;
+    }
+
+    if (str::endsWith($host, '.test') === true) {
+      return true;
+    }
+
+    if (in_array($ip, ['::1', '127.0.0.1']) === true) {
+
+      if (
+        isset($_SERVER['HTTP_X_FORWARDED_FOR']) === true &&
+        in_array($_SERVER['HTTP_X_FORWARDED_FOR'], ['::1', '127.0.0.1']) === false
+      ) {
+        return false;
+      }
+
+      if (
+        isset($_SERVER['HTTP_CLIENT_IP']) === true &&
+        in_array($_SERVER['HTTP_CLIENT_IP'], ['::1', '127.0.0.1']) === false
+      ) {
+        return false;
+      }
+
+      // no reverse proxy or the real client also comes from localhost
+      return true;
+    }
+
+    return false;
   }
 
   public function notify($text) {
